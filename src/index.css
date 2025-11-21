@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+@import "../public/assets/css/swiper.min8547.css";
+
 @import "../public/assets/css/style.css";
 @import "../public/assets/css/variable.css";
-@import "../public/assets/css/header.css";
+@import "../public/assets/css/main.css";
+
+@import "../public/assets/css/remixicon.css";
+@import "../public/assets/css/edublink-custom-icons.css";
+@import "../public/assets/css/custom-frontend-lite.minb8a9.css";
+@import "../public/assets/css/post-123368b4.css";
+@import "../public/assets/css/swiper-bundle.min8547.css";
+@import "../public/assets/css/metisMenu.css";
+@import "../public/assets/css/learnpress.min4189.css";
+@import "../public/assets/css/learnpress8547.css";
+@import "../public/assets/css/post-13579fc85.css";
+@import "../public/assets/css/odometer.min8a54.css";
+@import "../public/assets/css/post-13627d391.css";
+@import "../public/assets/css/edublink-core-main.css";
+@import "aos/dist/aos.css";
+@import "../public/assets/css/update.css";
