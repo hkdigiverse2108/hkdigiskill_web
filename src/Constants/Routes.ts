@@ -1,5 +1,16 @@
 export const ROUTES = {
   HOME: "/",
+  CONTACT: "/contact",
+  ABOUT: "/about",
+  GALLERY: "/gallery",
+  FAQ: "/faq",
+  RETURN_POLICY: "/return-cancellation-policy",
+  TERMS_CONDITION: "/terms-condition-policy",
+  PRIVACY_POLICY: "/privacy-policy",
+
+
+  // FAQ: "/faq",
+
   AUTH: {
     LOGIN: "/login",
     FORGOT_PASSWORD: "/forgot-password",
@@ -7,7 +18,6 @@ export const ROUTES = {
     Reset_PASSWORD: "/reset-password",
     CHANGE_PASSWORD: "/change-password",
   },
-
   WORKSHOP: {
     BASE: "/workshop",
     DETAILS: "/workshop/details/:id",
@@ -23,8 +33,5 @@ export const ROUTES = {
   BLOG: {
     BASE: "/blog",
     DETAILS: "/blog/details/:id",
-  },
-  CONTACT: {
-    BASE: "/contact",
   },
 } as const;

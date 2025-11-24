@@ -12,7 +12,6 @@ const Header = () => {
   const fix = StickyBar(200);
 
   const handleSubMenuToggle = (menu: string) => setActiveSubMenu((prev) => (prev === menu ? null : menu));
-  console.log(isMobileMenu);
 
   useEffect(() => {
     const menuItems = GetHeaderMenuItems() || [];
@@ -28,7 +27,7 @@ const Header = () => {
               <div className="site-branding site-logo-info">
                 <div className="logo-wrapper">
                   <a href="" className="navbar-brand site-main-logo" rel="home">
-                    <img width={158} height={50} src={`${ImagePath}/logo/logo.png`} className="site-logo" alt="logo" decoding="async" />
+                    <img width={158} height={50} src={`${ImagePath}/logo/logo-dark.png`} className="site-logo" alt="logo" decoding="async" />
                   </a>
                 </div>
               </div>
@@ -64,31 +63,6 @@ const Header = () => {
                             </NavLink>
                           </li>
                         ))}
-                        {/* <li id="menu-item-13615" className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-13615 active-mega-menu menu-item-has-children dropdown menu-align-fullwidth">
-                          <a className="nav-link" href="#">
-                            Home
-                          </a>
-                        </li>
-                        <li id="menu-item-13616" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left">
-                          <a className="nav-link" href="#">
-                            Workshop
-                          </a>
-                        </li>
-                        <li id="menu-item-13617" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13617 dropdown menu-align-left">
-                          <a className="nav-link" href="#">
-                            Courses
-                          </a>
-                        </li>
-                        <li id="menu-item-13618" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13618 dropdown menu-align-left">
-                          <a className="nav-link" href="#">
-                            Blog
-                          </a>
-                        </li>
-                        <li id="menu-item-13619" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13619 dropdown menu-align-left">
-                          <a className="nav-link" href="#">
-                            Contact
-                          </a>
-                        </li> */}
                       </ul>
                     </div>
                   </div>
@@ -100,7 +74,7 @@ const Header = () => {
                 </a>
                 <div className="quote-icon edublink-theme-nav-responsive hamburger-icon">
                   <div className="edublink-mobile-hamburger-menu" onClick={() => setMobileMenu(!isMobileMenu)}>
-                    <a href="#javascript">
+                    <a href="">
                       <i className="icon-54" />
                     </a>
                   </div>
@@ -117,19 +91,19 @@ const Header = () => {
             <div className="responsive-header-logo">
               <div className="logo-wrapper">
                 <a href="" className="navbar-brand site-main-logo" rel="home">
-                  <img width={158} height={50} src={`${ImagePath}/logo/logo.png`} className="site-logo" alt="EduBlink" decoding="async" />
+                  <img width={158} height={50} src={`${ImagePath}/logo/logo-dark.png`} className="site-logo" alt="EduBlink" decoding="async" />
                 </a>
               </div>
             </div>
             <div className="edublink-mobile-menu-close" onClick={() => setMobileMenu(!isMobileMenu)}>
-              <a href="#javascript">
+              <a href="">
                 <i className="icon-73" />
               </a>
             </div>
           </div>
           <ul id="edublink-mobile-menu-item" className="edublink-mobile-menu-item metismenu">
             <li className={`menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${activeSubMenu === "pages" ? "mm-active" : ""}`} onClick={() => handleSubMenuToggle("pages")}>
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="">
                 Category
               </a>
               <ul className="edublink-dropdown-menu">
@@ -148,31 +122,6 @@ const Header = () => {
                 </NavLink>
               </li>
             ))}
-            {/* <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13617 dropdown menu-align-left">
-              <a className="nav-link" href="#">
-                Home
-              </a>
-            </li>
-            <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13617 dropdown menu-align-left">
-              <a className="nav-link" href="#">
-                Workshop
-              </a>
-            </li>
-            <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13617 dropdown menu-align-left">
-              <a className="nav-link" href="#">
-                Courses
-              </a>
-            </li>
-            <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13618 dropdown menu-align-left">
-              <a className="nav-link" href="#">
-                Blog
-              </a>
-            </li>
-            <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13619 dropdown menu-align-left">
-              <a className="nav-link" href="#">
-                Contact
-              </a>
-            </li> */}
           </ul>
         </div>
       </div>

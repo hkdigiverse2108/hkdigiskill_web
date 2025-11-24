@@ -26,7 +26,7 @@ export const GetHeaderMenuItems = (): MenuItem[] => {
     },
     {
       Title: "Contact",
-      link: ROUTES.CONTACT.BASE,
+      link: ROUTES.CONTACT,
     },
     // {
     //   Title: "Download Now",
