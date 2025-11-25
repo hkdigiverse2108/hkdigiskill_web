@@ -1,8 +1,31 @@
 import { ImagePath } from "../Constants";
 import { Link, NavLink } from "react-router-dom";
 import { ContactDetails, FooterAboutText, FooterContactText, HK_DigiVerse_Link, QuickLinks, SocialMediaLinks, SupportPolicy } from "../Data";
+import { useState } from "react";
+import Mutations from "../api/Mutations";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
+  const { mutate: newsletter, isPending } = Mutations.useNewsletter();
+
+  const handleSubscribeBtn = async () => {
+    try {
+      if (!email) {
+        return false;
+      }
+
+      const payload = {
+        email: email,
+      };
+      newsletter(payload, {
+        onSuccess: () => {
+          setEmail("");
+        },
+      });
+    } catch (error) {}
+  };
+
   return (
     <footer id="edublink-footer" className="edublink-footer footer-builder-wrapper footer-common">
       <div className="edublink-footer-inner">
@@ -110,13 +133,13 @@ const Footer = () => {
                   <div className="elementor-element elementor-element-54f833c elementor-widget elementor-widget-edublink-mailchimp" data-id="54f833c" data-element_type="widget" data-widget_type="edublink-mailchimp.default">
                     <div className="elementor-widget-container">
                       <div className="edublink-mailchimp-wrapper edublink-mailchimp-horizontal-type edublink-mailchimp-mobile-yes">
-                        <form id="edublink-mailchimp-form-54f833c" method="POST">
+                        <form onSubmit={(e) => e.preventDefault()}>
                           <div className="edublink-mailchimp-form-container">
                             <div className="edublink-mailchimp-item edublink-mailchimp-email">
-                              <input type="email" name="edublink_mailchimp_email" className="edublink-mailchimp-input-field" placeholder="Your email" required />
+                              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" className="edublink-mailchimp-input-field" placeholder="Your email" required />
                             </div>
                             <div className="edublink-mailchimp-submit-btn">
-                              <button className="edublink-mailchimp-subscribe-btn edublink-button-item edublink-button-type-fill style-1 b-default">
+                              <button onClick={handleSubscribeBtn} className="edublink-mailchimp-subscribe-btn edublink-button-item edublink-button-type-fill style-1 b-default">
                                 <span className="edublink-mailchimp-subscribe-btn-text">Subscribe</span>
                                 <span className="edublink-mailchimp-subscribe-btn-icon">
                                   <i aria-hidden="true" className="edublink icon-4" />
@@ -152,7 +175,7 @@ const Footer = () => {
               </div>
             </div>
           </section>
-          <section className="elementor-section elementor-top-section elementor-element elementor-element-8f6bdcb elementor-section-boxed elementor-section-height-default elementor-section-height-default" >
+          <section className="elementor-section elementor-top-section elementor-element elementor-element-8f6bdcb elementor-section-boxed elementor-section-height-default elementor-section-height-default">
             <div className="elementor-container elementor-column-gap-extended">
               <div className="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-732c287" data-id="732c287" data-element_type="column">
                 <div className="elementor-widget-wrap elementor-element-populated">
@@ -160,7 +183,7 @@ const Footer = () => {
                     <div className="elementor-widget-container">
                       <div className="edublink-copyright-wrapper">
                         <span>
-                          © 2025 HK Digiskill. All Rights Reserved. Designed & maintained by
+                          © 2025 HK edublink. All Rights Reserved. Designed & maintained by
                           <Link to={HK_DigiVerse_Link}> HK DigiVerse LLP</Link>
                         </span>
                       </div>{" "}

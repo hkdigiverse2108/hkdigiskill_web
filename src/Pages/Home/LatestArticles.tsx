@@ -16,7 +16,7 @@ const LatestArticles = () => {
               <div className="elementor-widget-container">
                 <div className="edublink-section-heading">
                   <span className="pre-heading">LATEST ARTICLES</span>
-                  <h3 className="heading">Get News with EduBlink</h3>
+                  <h3 className="heading">Get News with edublink</h3>
                   <div className="title-shape">
                     <i className="icon-19" />
                   </div>

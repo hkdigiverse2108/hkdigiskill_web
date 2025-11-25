@@ -3,6 +3,8 @@ import { Router } from "./Routers/indx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import Aos from "aos";
+import { Provider } from "react-redux";
+import { Store } from "./Store/Store";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -13,7 +15,9 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={Router} />;
+      <Provider store={Store}>
+        <RouterProvider router={Router} />
+      </Provider>
     </QueryClientProvider>
   );
 };

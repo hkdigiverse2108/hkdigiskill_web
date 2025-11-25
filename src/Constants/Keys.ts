@@ -3,5 +3,6 @@ export const KEYS = {
   SEND_PASSWORD_EMAIL: "forgot-password-request",
   VERIFY_OTP: "verify-otp",
   RESET_PASSWORD: "reset-password",
-  ChANGE_PASSWORD: "change-password",
+  CHANGE_PASSWORD: "change-password",
+  NEWSLETTER: "newsletter",
 } as const;

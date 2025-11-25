@@ -12,7 +12,7 @@ const Header = () => {
   const fix = StickyBar(200);
 
   const handleSubMenuToggle = (menu: string) => setActiveSubMenu((prev) => (prev === menu ? null : menu));
-
+  console.log("fix : ", fix);
   useEffect(() => {
     const menuItems = GetHeaderMenuItems() || [];
     setMenuItems(menuItems);
@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <>
-      <header id="masthead" className={`site-header theme-header-1 header-get-sticky ${fix ? "edublink-header-sticky" : ""}`}>
+      <header className={`site-header theme-header-1 header-get-sticky ${fix === true ? "edublink-header-sticky" : ""}`}>
         <div className="edublink-header-area edublink-navbar edublink-navbar-expand-lg">
           <div className="edublink-container-fluid">
             <div className="eb-header-navbar edublink-align-items-center">
@@ -74,9 +74,9 @@ const Header = () => {
                 </a>
                 <div className="quote-icon edublink-theme-nav-responsive hamburger-icon">
                   <div className="edublink-mobile-hamburger-menu" onClick={() => setMobileMenu(!isMobileMenu)}>
-                    <a href="">
+                    <span>
                       <i className="icon-54" />
-                    </a>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -91,14 +91,14 @@ const Header = () => {
             <div className="responsive-header-logo">
               <div className="logo-wrapper">
                 <a href="" className="navbar-brand site-main-logo" rel="home">
-                  <img width={158} height={50} src={`${ImagePath}/logo/logo-dark.png`} className="site-logo" alt="EduBlink" decoding="async" />
+                  <img width={158} height={50} src={`${ImagePath}/logo/logo-dark.png`} className="site-logo" alt="edublink" decoding="async" />
                 </a>
               </div>
             </div>
             <div className="edublink-mobile-menu-close" onClick={() => setMobileMenu(!isMobileMenu)}>
-              <a href="">
+              <span>
                 <i className="icon-73" />
-              </a>
+              </span>
             </div>
           </div>
           <ul id="edublink-mobile-menu-item" className="edublink-mobile-menu-item metismenu">
