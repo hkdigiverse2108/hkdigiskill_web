@@ -1,4 +1,4 @@
-const Counter = () => {
+const CounterSection = () => {
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-ceab01c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ceab01c" data-element_type="section">
       <div className="elementor-container elementor-column-gap-extended">
@@ -75,4 +75,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+export default CounterSection;

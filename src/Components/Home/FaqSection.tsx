@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { MouseParallax } from "../../CoreComponents";
 import { ImagePath } from "../../Constants";
+import FaqCard from "../../Components/Faq/FaqCard";
 
-const Faq = () => {
+const FaqSection = () => {
   const [activeFaqId, setActiveFaqId] = useState<number | null>(null);
 
   const handleChange = (id: number) => setActiveFaqId((prev) => (prev === id ? null : id));
@@ -130,30 +131,34 @@ const Faq = () => {
             <div className="elementor-element elementor-element-7407d48 elementor-widget elementor-widget-edublink-accordion" data-aos="fade-up" data-aos-duration={1200}>
               <div className="elementor-widget-container">
                 <div className="eb-accordion header-default border-default style-default">
-                  <div className="eb-accordion-item default-active elementor-repeater-item-002d4af" onClick={() => handleChange(1)}>
+                  <FaqCard question="How can I contact a school directly?" answer="Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam." />
+                  <FaqCard question="How do I find a school where I want to study? " answer="Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam." />
+                  <FaqCard question="Where should I study abroad? " answer="Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam." />
+
+                  {/* <div className="eb-accordion-item default-active elementor-repeater-item-002d4af" onClick={() => handleChange(1)}>
                     <h5 className={`eb-accordion-header default-active ${activeFaqId === 1 && "active"}`}>How can I contact a school directly? </h5>
                     <div className="eb-accordion-content" style={{ display: activeFaqId === 1 ? "block" : "none" }}>
                       <div className="eb-accordion-body default-active">
                         <p>Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam.</p>
                       </div>
                     </div>
-                  </div>
-                  <div className="eb-accordion-item elementor-repeater-item-bbb14fe">
+                  </div> */}
+                  {/* <div className="eb-accordion-item elementor-repeater-item-bbb14fe">
                     <h5 className="eb-accordion-header">How do I find a school where I want to study? </h5>
                     <div className="eb-accordion-content">
                       <div className="eb-accordion-body">
                         <p>Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam.</p>
                       </div>
                     </div>
-                  </div>
-                  <div className="eb-accordion-item elementor-repeater-item-449c49f">
+                  </div> */}
+                  {/* <div className="eb-accordion-item elementor-repeater-item-449c49f">
                     <h5 className="eb-accordion-header">Where should I study abroad? </h5>
                     <div className="eb-accordion-content">
                       <div className="eb-accordion-body">
                         <p>Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam.</p>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -164,4 +169,4 @@ const Faq = () => {
   );
 };
 
-export default Faq;
+export default FaqSection;

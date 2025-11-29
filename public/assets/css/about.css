@@ -1,0 +1,274 @@
+#about #content-section {
+  /* padding: 100px 0; */
+  display: flex;
+  justify-content: center;
+}
+
+/* ================ AboutBrandLogoSection Section Start  ================ */
+
+.AboutBrandLogoSection {
+  margin: 100px 0px;
+}
+
+
+/* ================ AboutBrandLogoSection Section End  ================ */
+
+/* ================ Stats Overview Section Start  ================ */
+.stats-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 0;
+  background: #fff;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  width: 260px;
+  height: 260px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.08);
+  padding: 40px 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+}
+
+.stat-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-icon-wrapper i ::after {
+  width: 40px;
+  height: 40px;
+  background-color: #f8b81f;
+}
+
+.stat-value {
+  font-family: var(--edublink-font-secondary);
+  font-size: 40px;
+  line-height: 56px;
+  margin-bottom: 0;
+  color: var(--edublink-color-heading);
+}
+
+.stat-label {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #555;
+}
+
+/* ================ Stats Overview Section End  ================ */
+
+/* ================ Why Choose Us Section Start  ================ */
+
+/* SECTION BACKGROUND */
+#whyChooseUs.choose-container {
+  background: #f7f4f2;
+  padding: 100px 0 160px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+   clip-path: polygon(0 40%, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* TITLE AREA */
+#whyChooseUs .sub-title {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #8b8b8b;
+}
+
+#whyChooseUs .main-title {
+  line-height: 1.4;
+  word-break: break-word;
+  font-family: var(--edublink-font-secondary);
+  color: var(--edublink-color-heading);
+}
+
+#whyChooseUs .main-title span {
+  color: #ff4f6a;
+}
+
+/* UNDERLINE CURVED SHAPE */
+#whyChooseUs .underline {
+  width: 80px;
+  height: 6px;
+  background: #2eb9a3;
+  border-radius: 50px;
+  margin: 14px auto 0;
+}
+
+/* GRID SECTION */
+#whyChooseUs .choose-grid {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+#whyChooseUs .choose-card {
+  width: 330px;
+  padding: 40px 30px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+#whyChooseUs .choose-card:hover {
+  transform: translateY(-6px);
+}
+
+/* ICON WRAPPER CIRCLE */
+#whyChooseUs .choose-icon-wrapper {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#whyChooseUs .choose-icon-wrapper img {
+  width: 45px;
+}
+
+/* CARD TEXT */
+#whyChooseUs .choose-card-title {
+  font-size: var(--edublink-h4);
+  line-height: var(--edublink-h4-lineHeight);
+  margin-bottom: 15px;
+  word-break: break-word;
+}
+
+#whyChooseUs .choose-card-desc {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* DECORATIVE DOT - LEFT */
+#whyChooseUs .shape-left-1 {
+  position: absolute;
+  top: 140px;
+  left: 140px;
+  width: 180px;
+  height: 180px;
+}
+
+/* DECORATIVE DOT - RIGHT */
+#whyChooseUs .shape-right-1 {
+  position: absolute;
+  top: 120px;
+  right: 120px;
+  width: 210px;
+  height: 210px;
+}
+
+/* ================ Why Choose Us Section End  ================ */
+
+.elementor-10265 .elementor-element.elementor-element-4c5d631 > .elementor-widget-container {
+  padding: 80px 0px 0px 10px;
+}
+.elementor-element .elementor-widget-container {
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s, transform var(--e-transform-transition-duration, 0.4s);
+}
+.elementor *,
+.elementor :after,
+.elementor :before {
+  box-sizing: border-box;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+user agent stylesheet div {
+  display: block;
+  unicode-bidi: isolate;
+}
+.elementor-widget-image {
+  text-align: center;
+}
+.elementor-element {
+  --widgets-spacing: 20px 20px;
+  --widgets-spacing-row: 20px;
+  --widgets-spacing-column: 20px;
+}
+.elementor-element,
+.elementor-lightbox {
+  --swiper-theme-color: #000;
+  --swiper-navigation-size: 44px;
+  --swiper-pagination-bullet-size: 6px;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+}
+.elementor-element {
+  --flex-direction: initial;
+  --flex-wrap: initial;
+  --justify-content: initial;
+  --align-items: initial;
+  --align-content: initial;
+  --gap: initial;
+  --flex-basis: initial;
+  --flex-grow: initial;
+  --flex-shrink: initial;
+  --order: initial;
+  --align-self: initial;
+  flex-basis: var(--flex-basis);
+  flex-grow: var(--flex-grow);
+  flex-shrink: var(--flex-shrink);
+  order: var(--order);
+  align-self: var(--align-self);
+}
+
+.elementor-10265 .elementor-element.elementor-element-03d5240 .elementor-icon-list-icon i {
+  color: #f8b81f;
+  transition: color 0.3s;
+}
+
+.elementor-10265 .elementor-element.elementor-element-03d5240 .elementor-icon-list-item > .elementor-icon-list-text,
+.elementor-10265 .elementor-element.elementor-element-03d5240 .elementor-icon-list-item > a {
+  font-weight: 600;
+  line-height: 1.73;
+}
+.elementor-10265 .elementor-element.elementor-element-03d5240 .elementor-icon-list-text {
+  color: #181818;
+  transition: color 0.3s;
+}
+.elementor-widget .elementor-icon-list-icon + .elementor-icon-list-text {
+  align-self: center;
+  padding-inline-start: 5px;
+}
+
+.elementor-10265 .elementor-element.elementor-element-03d5240 .elementor-icon-list-items:not(.elementor-inline-items) .elementor-icon-list-item:not(:last-child) {
+  padding-bottom: calc(15px / 2);
+}
+.elementor-widget .elementor-icon-list-item,
+.elementor-widget .elementor-icon-list-item a {
+  align-items: var(--icon-vertical-align, center);
+  display: flex;
+  font-size: inherit;
+}

@@ -1,5 +1,5 @@
 import { RouterProvider } from "react-router-dom";
-import { Router } from "./Routers/indx";
+import { Router } from "./Routers";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import Aos from "aos";

@@ -1,5 +1,5 @@
 export const ROUTES = {
-  HOME: "/",
+  HOME: "",
   CONTACT: "/contact",
   ABOUT: "/about",
   GALLERY: "/gallery",
@@ -7,9 +7,6 @@ export const ROUTES = {
   RETURN_POLICY: "/return-cancellation-policy",
   TERMS_CONDITION: "/terms-condition-policy",
   PRIVACY_POLICY: "/privacy-policy",
-
-
-  // FAQ: "/faq",
 
   AUTH: {
     LOGIN: "/login",

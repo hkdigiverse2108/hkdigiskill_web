@@ -14,7 +14,7 @@ export const GetHeaderMenuItems = (): MenuItem[] => {
   // }
 
   return [
-    { Title: "Home", link: ROUTES.WORKSHOP.BASE },
+    { Title: "Home", link: ROUTES.HOME },
     { Title: "Workshop", link: ROUTES.WORKSHOP.BASE },
     {
       Title: "Course",

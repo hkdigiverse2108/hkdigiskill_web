@@ -1,4 +1,6 @@
-const Categories = () => {
+import { Link } from "react-router-dom";
+
+const CategoriesSection = () => {
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-a2bf539 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="a2bf539" data-element_type="section">
       <div className="elementor-container elementor-column-gap-extended">
@@ -29,7 +31,7 @@ const Categories = () => {
                         </div>
                         <div className="content">
                           <h5 className="title">
-                            <a href="https://demo.edublink.co/course-category/business/">Online Degree Programs</a>
+                            <Link to="">Online Degree Programs</Link>
                           </h5>
                           <p className="description">Lorem ipsum dolor consec tur elit adicing sed umod tempor.</p>
                           <span className="course-count">15 Courses</span>
@@ -43,7 +45,7 @@ const Categories = () => {
                         </div>
                         <div className="content">
                           <h5 className="title">
-                            <a href="https://demo.edublink.co/course-category/cooking/">Non-Degree Programs</a>
+                            <Link to="">Non-Degree Programs</Link>
                           </h5>
                           <p className="description">Lorem ipsum dolor consec tur elit adicing sed umod tempor.</p>
                           <span className="course-count">8 Courses</span>
@@ -57,7 +59,7 @@ const Categories = () => {
                         </div>
                         <div className="content">
                           <h5 className="title">
-                            <a href="https://demo.edublink.co/course-category/digital-marketing/">Off-Campus Programs</a>
+                            <Link to="">Off-Campus Programs</Link>
                           </h5>
                           <p className="description">Lorem ipsum dolor consec tur elit adicing sed umod tempor.</p>
                           <span className="course-count">9 Courses</span>
@@ -71,7 +73,7 @@ const Categories = () => {
                         </div>
                         <div className="content">
                           <h5 className="title">
-                            <a href="https://demo.edublink.co/course-category/programming/">Hybrid Distance Programs</a>
+                            <Link to="">Hybrid Distance Programs</Link>
                           </h5>
                           <p className="description">Lorem ipsum dolor consec tur elit adicing sed umod tempor.</p>
                           <span className="course-count">8 Courses</span>
@@ -89,4 +91,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default CategoriesSection;

@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import { ImagePath } from "../../Constants";
 
-const LatestArticles = () => {
+const LatestArticlesSection = () => {
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-178ad6d elementor-section-boxed elementor-section-height-default elementor-section-height-default">
       <div className="elementor-background-overlay" />
@@ -31,21 +32,21 @@ const LatestArticles = () => {
                       <div className="edu-blog blog-style-2">
                         <div className="inner">
                           <div className="thumbnail">
-                            <a href="https://demo.edublink.co/crafting-effective-learning-paths-at-curriculum-corner/">
+                            <Link to={""} >
                               <img decoding="async" src={`${ImagePath}blog/blog-01.jpg`} alt="course-79" />
-                            </a>
+                            </Link>
                           </div>
                           <div className="content position-top">
                             <div className="read-more-btn">
-                              <a className="btn-icon-round" href="https://demo.edublink.co/crafting-effective-learning-paths-at-curriculum-corner/">
+                              <Link to={""} className="btn-icon-round" >
                                 <i className="icon-4" />
-                              </a>
+                              </Link>
                             </div>
                             <div className="category-wrap">
-                              <a href="https://demo.edublink.co/category/science/">Science</a>
+                              <Link to={""}>Science</Link>
                             </div>
                             <h5 className="title">
-                              <a href="https://demo.edublink.co/crafting-effective-learning-paths-at-curriculum-corner/">Crafting Effective Learning Guide Line</a>
+                              <Link to={""} >Crafting Effective Learning Guide Line</Link>
                             </h5>
                             <ul className="blog-meta">
                               <li>
@@ -65,21 +66,21 @@ const LatestArticles = () => {
                       <div className="edu-blog blog-style-2">
                         <div className="inner">
                           <div className="thumbnail">
-                            <a href="https://demo.edublink.co/exploring-learning-landscapes-in-academic-alcove/">
+                            <Link to={""} >
                               <img decoding="async" src={`${ImagePath}blog/blog-02.jpg`} alt="course-09" />
-                            </a>
+                            </Link>
                           </div>
                           <div className="content position-top">
                             <div className="read-more-btn">
-                              <a className="btn-icon-round" href="https://demo.edublink.co/exploring-learning-landscapes-in-academic-alcove/">
+                              <Link to={""} className="btn-icon-round" >
                                 <i className="icon-4" />
-                              </a>
+                              </Link>
                             </div>
                             <div className="category-wrap">
-                              <a href="https://demo.edublink.co/category/technology/">Technology</a>
+                              <Link to={""} >Technology</Link>
                             </div>
                             <h5 className="title">
-                              <a href="https://demo.edublink.co/exploring-learning-landscapes-in-academic-alcove/">Exploring Learning Landscapes in Academic</a>
+                              <Link to={""} >Exploring Learning Landscapes in Academic</Link>
                             </h5>
                             <ul className="blog-meta">
                               <li>
@@ -99,21 +100,21 @@ const LatestArticles = () => {
                       <div className="edu-blog blog-style-2">
                         <div className="inner">
                           <div className="thumbnail">
-                            <a href="https://demo.edublink.co/voices-from-the-learning-education-hub/">
+                            <Link to={""} >
                               <img decoding="async" src={`${ImagePath}blog/blog-03.jpg`} alt="course-07" />
-                            </a>
+                            </Link>
                           </div>
                           <div className="content position-top">
                             <div className="read-more-btn">
-                              <a className="btn-icon-round" href="https://demo.edublink.co/voices-from-the-learning-education-hub/">
+                              <Link to={""} className="btn-icon-round" >
                                 <i className="icon-4" />
-                              </a>
+                              </Link>
                             </div>
                             <div className="category-wrap">
-                              <a href="https://demo.edublink.co/category/learning/">Learning</a>
+                              <Link to={""} >Learning</Link>
                             </div>
                             <h5 className="title">
-                              <a href="https://demo.edublink.co/voices-from-the-learning-education-hub/">Voices from the Learning Education Hub</a>
+                              <Link to={""} >Voices from the Learning Education Hub</Link>
                             </h5>
                             <ul className="blog-meta">
                               <li>
@@ -140,4 +141,4 @@ const LatestArticles = () => {
   );
 };
 
-export default LatestArticles;
+export default LatestArticlesSection;

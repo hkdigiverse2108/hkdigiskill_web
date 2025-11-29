@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 
@@ -19,13 +20,16 @@ const HeroBanner = () => {
             <div className="elementor-element elementor-element-b2b88e7 animated elementor-widget elementor-widget-text-editor" data-aos="fade-up" data-aos-duration={1200}>
               <div className="elementor-widget-container"></div>
             </div>
+            <div className="elementor-element elementor-element-b2b88e7 elementor-widget elementor-widget-text-editor animated edublink--slide-up" data-id="b2b88e7" data-element_type="widget" data-settings='{"_animation":"edublink--slide-up","_animation_delay":200}' data-widget_type="text-editor.default">
+              <div className="elementor-widget-container">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit. </div>
+            </div>
             <div className="elementor-element elementor-element-a16b2b3 animated elementor-widget elementor-widget-edublink-button" data-aos="fade-up" data-aos-duration={1200}>
               <div className="elementor-widget-container">
                 <div className="edublink-button-widget-wrapper">
-                  <a className="edublink-button-item edublink-button-style-default edublink-button-size-custom edublink-button-icon-position-after default-style" href="https://demo.edublink.co/courses/">
+                  <Link to={""} className="edublink-button-item edublink-button-style-default edublink-button-size-custom edublink-button-icon-position-after default-style" >
                     Find courses
                     <i className="icon-4" />
-                  </a>
+                  </Link>
                 </div>{" "}
               </div>
             </div>
@@ -56,7 +60,7 @@ const HeroBanner = () => {
                             <div className="content">
                               <span className="subtitle edublink-p-bold">Online Support</span>
                               <h4 className="title edublink-p-medium edublink-color-secondary">
-                                <a href="tel:+0123456789">+012 (345) 6789</a>
+                                <Link to={""}>+012 (345) 6789</Link>
                               </h4>
                             </div>
                           </div>

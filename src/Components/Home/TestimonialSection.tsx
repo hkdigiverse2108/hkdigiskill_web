@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TestimonialSettings } from "../../Data";
 import { ImagePath } from "../../Constants";
+import { Link } from "react-router-dom";
 
-const Testimonial = () => {
+const TestimonialSection = () => {
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-e9f9bf8 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e9f9bf8" data-element_type="section">
       <div className="elementor-container elementor-column-gap-extended">
@@ -23,10 +24,10 @@ const Testimonial = () => {
             <div className="elementor-element elementor-element-93d6383 elementor-widget elementor-widget-edublink-button" data-aos="fade-up" data-aos-duration={1200}>
               <div className="elementor-widget-container">
                 <div className="edublink-button-widget-wrapper">
-                  <a className="edublink-button-item edublink-button-style-default edublink-button-size-large edublink-button-icon-position-after default-style" href="#">
+                  <Link to={""} className="edublink-button-item edublink-button-style-default edublink-button-size-large edublink-button-icon-position-after default-style" >
                     View All
                     <i className="icon-4" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -148,4 +149,4 @@ const Testimonial = () => {
   );
 };
 
-export default Testimonial;
+export default TestimonialSection;

@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import { ImagePath } from "../../Constants";
 
-const Course = () => {
+const CourseSection = () => {
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-e0cd102 elementor-section-boxed elementor-section-height-default elementor-section-height-default">
       <div className="elementor-background-overlay" />
@@ -26,9 +27,9 @@ const Course = () => {
                       <div className="edublink-single-course course-style-1">
                         <div className="inner">
                           <div className="thumbnail">
-                            <a className="course-thumb" href="https://demo.edublink.co/courses/starting-seo-as-your-home-based-business/">
+                            <Link className="course-thumb" to={""}>
                               <img decoding="async" className="w-100" src={`${ImagePath}course/course-02/course-01.jpg`} alt="course-04" />
-                            </a>
+                            </Link>
                             <div className="time-top">
                               <span className="duration">
                                 <i className="icon-61" />
@@ -39,7 +40,7 @@ const Course = () => {
                           <div className="content">
                             <span className="course-level">Beginner</span>
                             <h6 className="title">
-                              <a href="https://demo.edublink.co/courses/starting-seo-as-your-home-based-business/">Starting SEO as your Home Based Business</a>
+                              <Link to={""}>Starting SEO as your Home Based Business</Link>
                             </h6>
                             <div className="course-rating">
                               <div className="edublink-course-review-wrapper">
@@ -175,7 +176,7 @@ const Course = () => {
                           <div className="content">
                             <span className="course-level">Beginner</span>
                             <h6 className="title">
-                              <a href="https://demo.edublink.co/courses/starting-seo-as-your-home-based-business/">Starting SEO as your Home Based Business</a>
+                              <Link to={""}>Starting SEO as your Home Based Business</Link>
                             </h6>
                             <div className="course-rating">
                               <div className="edublink-course-review-wrapper">
@@ -301,10 +302,10 @@ const Course = () => {
                                 227 Students
                               </li>
                             </ul>
-                            <a className="edu-btn btn-secondary btn-small" href="https://demo.edublink.co/courses/starting-seo-as-your-home-based-business/">
+                            <Link className="edu-btn btn-secondary btn-small" to={""}>
                               Enroll Now
                               <i className="icon-4" />
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -313,9 +314,9 @@ const Course = () => {
                       <div className="edublink-single-course course-style-1">
                         <div className="inner">
                           <div className="thumbnail">
-                            <a className="course-thumb" href="https://demo.edublink.co/courses/grow-personal-financial-security-thinking-principles/">
+                            <Link className="course-thumb" to={""}>
                               <img decoding="async" className="w-100" src={`${ImagePath}course/course-02/course-02.jpg`} alt="course-08" />
-                            </a>
+                            </Link>
                             <div className="time-top">
                               <span className="duration">
                                 <i className="icon-61" />
@@ -326,7 +327,7 @@ const Course = () => {
                           <div className="content">
                             <span className="course-level">Expert</span>
                             <h6 className="title">
-                              <a href="https://demo.edublink.co/courses/grow-personal-financial-security-thinking-principles/">Grow Personal Financial Security Thinking &amp; Principles</a>
+                              <Link to={""}>Grow Personal Financial Security Thinking &amp; Principles</Link>
                             </h6>
                             <div className="course-rating">
                               <div className="edublink-course-review-wrapper">
@@ -461,7 +462,7 @@ const Course = () => {
                           <div className="content">
                             <span className="course-level">Expert</span>
                             <h6 className="title">
-                              <a href="https://demo.edublink.co/courses/grow-personal-financial-security-thinking-principles/">Grow Personal Financial Security Thinking &amp; Principles</a>
+                              <Link to={""}>Grow Personal Financial Security Thinking &amp; Principles</Link>
                             </h6>
                             <div className="course-rating">
                               <div className="edublink-course-review-wrapper">
@@ -586,10 +587,10 @@ const Course = () => {
                                 72 Students
                               </li>
                             </ul>
-                            <a className="edu-btn btn-secondary btn-small" href="https://demo.edublink.co/courses/grow-personal-financial-security-thinking-principles/">
+                            <Link className="edu-btn btn-secondary btn-small" to={""}>
                               Enroll Now
                               <i className="icon-4" />
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -598,9 +599,9 @@ const Course = () => {
                       <div className="edublink-single-course course-style-1">
                         <div className="inner">
                           <div className="thumbnail">
-                            <a className="course-thumb" href="https://demo.edublink.co/courses/the-complete-guide-to-build-restful-api-application/">
+                            <Link className="course-thumb" to={""}>
                               <img decoding="async" className="w-100" src={`${ImagePath}course/course-02/course-03.jpg`} alt="course-12" />
-                            </a>
+                            </Link>
                             <div className="time-top">
                               <span className="duration">
                                 <i className="icon-61" />
@@ -611,7 +612,7 @@ const Course = () => {
                           <div className="content">
                             <span className="course-level">All Levels</span>
                             <h6 className="title">
-                              <a href="https://demo.edublink.co/courses/the-complete-guide-to-build-restful-api-application/">The Complete Guide to Build RESTful API Application</a>
+                              <Link to={""}>The Complete Guide to Build RESTful API Application</Link>
                             </h6>
                             <div className="course-rating">
                               <div className="edublink-course-review-wrapper">
@@ -745,7 +746,7 @@ const Course = () => {
                           <div className="content">
                             <span className="course-level">All Levels</span>
                             <h6 className="title">
-                              <a href="https://demo.edublink.co/courses/the-complete-guide-to-build-restful-api-application/">The Complete Guide to Build RESTful API Application</a>
+                              <Link to={""}>The Complete Guide to Build RESTful API Application</Link>
                             </h6>
                             <div className="course-rating">
                               <div className="edublink-course-review-wrapper">
@@ -869,10 +870,10 @@ const Course = () => {
                                 41 Students
                               </li>
                             </ul>
-                            <a className="edu-btn btn-secondary btn-small" href="https://demo.edublink.co/courses/the-complete-guide-to-build-restful-api-application/">
+                            <Link className="edu-btn btn-secondary btn-small" to={""}>
                               Enroll Now
                               <i className="icon-4" />
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -884,10 +885,10 @@ const Course = () => {
             <div className="elementor-element elementor-element-555c286 elementor-widget elementor-widget-edublink-button" data-id="555c286" data-element_type="widget" data-widget_type="edublink-button.default">
               <div className="elementor-widget-container">
                 <div className="edublink-button-widget-wrapper">
-                  <a className="edublink-button-item edublink-button-style-default edublink-button-size-custom edublink-button-icon-position-after default-style" href="https://demo.edublink.co/courses/">
+                  <Link className="edublink-button-item edublink-button-style-default edublink-button-size-custom edublink-button-icon-position-after default-style" to={""}>
                     Browse more courses
                     <i className="icon-4" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -898,4 +899,4 @@ const Course = () => {
   );
 };
 
-export default Course;
+export default CourseSection;

@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 
-
-const VideoArea = () => {
+const VideoAreaSection = () => {
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-26111f2 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="26111f2" data-element_type="section">
       <div className="elementor-container elementor-column-gap-extended">
@@ -39,9 +39,9 @@ const VideoArea = () => {
               <div className="elementor-widget-container">
                 <div className="edublink-video-popup-wrapper edublink-video-popup-animation-continious edublink-video-popup-continious-type-custom-ripple-color edublink-video-popup-bg-enable" style={{ backgroundImage: "url(https://demo.edublink.co/wp-content/uploads/2023/05/video-01.webp)" }}>
                   <div className="edublink-video-popup-content">
-                    <a className="edublink-video-popup-icon" href="https://www.youtube.com/watch?v=m2m5Xx5T4No">
+                    <Link to={""} className="edublink-video-popup-icon">
                       <i aria-hidden="true" className="icon-18" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -53,4 +53,4 @@ const VideoArea = () => {
   );
 };
 
-export default VideoArea;
+export default VideoAreaSection;

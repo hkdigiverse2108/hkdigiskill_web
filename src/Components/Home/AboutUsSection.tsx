@@ -2,7 +2,7 @@ import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 
 
-const AboutUs = () => {
+const AboutUsSection = () => {
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-ec98f4b elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ec98f4b" data-element_type="section">
       <MouseParallax className="elementor-container elementor-column-gap-extended">
@@ -132,4 +132,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default AboutUsSection;

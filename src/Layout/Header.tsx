@@ -3,7 +3,7 @@ import StickyBar from "../Utils/StickyBar";
 import { ImagePath } from "../Constants";
 import { GetHeaderMenuItems } from "../Utils/GetHeaderMenuItems";
 import type { MenuItem } from "../Types";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const [isMobileMenu, setMobileMenu] = useState(false);
@@ -26,9 +26,9 @@ const Header = () => {
             <div className="eb-header-navbar edublink-align-items-center">
               <div className="site-branding site-logo-info">
                 <div className="logo-wrapper">
-                  <a href="" className="navbar-brand site-main-logo" rel="home">
+                  <Link to="" className="navbar-brand site-main-logo" rel="home">
                     <img width={158} height={50} src={`${ImagePath}/logo/logo-dark.png`} className="site-logo" alt="logo" decoding="async" />
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="header-category">
@@ -41,10 +41,10 @@ const Header = () => {
                       </a>
                       <ul className="edublink-dropdown-menu">
                         <li className="cat-item">
-                          <a href="">Business</a>
+                          <Link to="/Bussiness">Business</Link>
                         </li>
                         <li className="cat-item">
-                          <a href="">Cooking</a>
+                          <Link to="/Bussiness">Cooking</Link>
                         </li>
                       </ul>
                     </li>
@@ -69,9 +69,9 @@ const Header = () => {
                 </nav>
               </div>
               <div className="edublink-header-right-side">
-                <a href="" target="_self" className="main-header-btn edu-btn btn-medium">
+                <Link to="" target="_self" className="main-header-btn edu-btn btn-medium">
                   Login <i className="icon-4" />
-                </a>
+                </Link>
                 <div className="quote-icon edublink-theme-nav-responsive hamburger-icon">
                   <div className="edublink-mobile-hamburger-menu" onClick={() => setMobileMenu(!isMobileMenu)}>
                     <span>
@@ -90,9 +90,9 @@ const Header = () => {
           <div className="responsive-header-top">
             <div className="responsive-header-logo">
               <div className="logo-wrapper">
-                <a href="" className="navbar-brand site-main-logo" rel="home">
+                <Link to="" className="navbar-brand site-main-logo" rel="home">
                   <img width={158} height={50} src={`${ImagePath}/logo/logo-dark.png`} className="site-logo" alt="edublink" decoding="async" />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="edublink-mobile-menu-close" onClick={() => setMobileMenu(!isMobileMenu)}>
@@ -103,15 +103,15 @@ const Header = () => {
           </div>
           <ul id="edublink-mobile-menu-item" className="edublink-mobile-menu-item metismenu">
             <li className={`menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${activeSubMenu === "pages" ? "mm-active" : ""}`} onClick={() => handleSubMenuToggle("pages")}>
-              <a className="nav-link" href="">
+              <Link className="nav-link" to="">
                 Category
-              </a>
+              </Link>
               <ul className="edublink-dropdown-menu">
                 <li className="cat-item">
-                  <a href="">Business</a>
+                  <Link to="">Business</Link>
                 </li>
                 <li className="cat-item">
-                  <a href="">Cooking</a>
+                  <Link to="">Cooking</Link>
                 </li>
               </ul>
             </li>
