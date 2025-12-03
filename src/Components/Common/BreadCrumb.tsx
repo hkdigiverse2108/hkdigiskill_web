@@ -39,14 +39,11 @@ const BreadCrumb: FC<BreadCrumbProp> = ({ title }) => {
             <span>
               <img src={`${ImagePath}about/shape-45.png`} alt="About Shape 5" />
             </span>
-            {/* <span>
-              <img src="https://demo.edublink.co/wp-content/themes/edublink/assets/images/shapes/breadcrumb-shape-1.png" alt="Breadcrumb Abstract Shape" />
-            </span> */}
+           
           </div>
           <div data-depth={-2} className="shape-image eb-mouse-animation shape-4">
             <span>
               <img decoding="async" src={`${ImagePath}about/shape-15.png`} alt="shape-03" />
-              {/* <img src="https://demo.edublink.co/wp-content/themes/edublink/assets/images/shapes/breadcrumb-shape-2.png" alt="Breadcrumb Abstract Shape" /> */}
             </span>
           </div>
           <div data-depth={2} className="shape-image eb-mouse-animation shape-5">

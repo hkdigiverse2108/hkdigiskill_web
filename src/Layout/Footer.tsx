@@ -98,7 +98,7 @@ const Footer = () => {
                 <div className="elementor-widget-wrap elementor-element-populated">
                   <div className="elementor-element elementor-element-9cafb16 elementor-widget elementor-widget-heading" data-id="9cafb16" data-element_type="widget" data-widget_type="heading.default">
                     <div className="elementor-widget-container">
-                      <h4 className="elementor-heading-title elementor-size-default">Support & Policy</h4>{" "}
+                      <h4 className="elementor-heading-title elementor-size-default">Support</h4>{" "}
                     </div>
                   </div>
                   <div className="elementor-element elementor-element-5cc6a14 elementor-widget elementor-widget-edublink-footer-menu" data-id="5cc6a14" data-element_type="widget" data-widget_type="edublink-footer-menu.default">
