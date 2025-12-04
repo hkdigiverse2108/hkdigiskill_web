@@ -4,7 +4,7 @@ import { MouseParallax } from "../../CoreComponents";
 
 const HeroBanner = () => {
   return (
-    <section className="hero-banner hero-style-2 elementor-section elementor-top-section elementor-element elementor-element-843e85a elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="843e85a" data-element_type="section">
+    <section className="hero-banner hero-style-2 elementor-section elementor-top-section elementor-element elementor-element-843e85a elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" >
       <div className="elementor-background-overlay" />
       <div className="elementor-container elementor-column-gap-extended">
         <div className="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4e1c3b2" data-id="4e1c3b2" data-element_type="column">
