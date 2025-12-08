@@ -58,7 +58,7 @@ const About = () => {
         <div>
           <BreadCrumb title="About" />
         </div>
-        <main id="main" className="site-main space-y-34! my-34! ">
+        <main id="main" className="site-main space-y-34! mt-34! ">
           <section className=" elementor-widget-wrap">
             <section>
               <div className=" shape-section  ">
@@ -529,33 +529,23 @@ const About = () => {
               </div>
             </div>
           </section> */}
-          <section className=" elementor-element-178ad6d elementor-section elementor-top-section elementor-element  ">
-            <div className="elementor-container elementor-column-gap-extended">
-              <div>
-                {/* <div className="">
-                  <div className="" >
-                    <div className=""> */}
-                <div className="edublink-section-heading">
-                  <span className="pre-heading">FUN FACTS</span>
-                  <h3 className="heading">
-                    The Learge <mark>Number</mark> of Counting
-                  </h3>
-                  <div className="title-shape">
-                    <i className="icon-19"></i>
-                  </div>
-                  <div className="sub-heading">Lorem ipsum dolor sit amet consectur adipiscing elit sed eiusmod tempor incididunt labore dolore magna aliquaenim ad minim.</div>
-                </div>{" "}
-                {/* </div>
-                  </div>
-                </div> */}
-              </div>
-
-              <div className="relative w-full bg-white rounded-md p-30! ">
-                {/* top-left shapes */}
+          <section className=" elementor-element-178ad6d elementor-section elementor-top-section elementor-element overflow-hidden!  ">
+            <div className="elementor-container elementor-column-gap-extended ">
+              <div className="edublink-section-heading ">
+                <span className="pre-heading">FUN FACTS</span>
+                <h3 className="heading">
+                  The Learge <mark>Number</mark> <br /> of Counting
+                </h3>
+                <div className="title-shape">
+                  <i className="icon-19"></i>
+                </div>
+                <div className="sub-heading  ">Lorem ipsum dolor sit amet consectur adipiscing elit sed eiusmod tempor incididunt labore dolore magna aliquaenim ad minim.</div>
+              </div>{" "}
+              <div className="relative w-full">
                 <section className="absolute flex! left-0 right-0 w-full! h-full!  ">
-                  <div className="absolute -top-52! -left-22 ">
-                    <div className="absolute left-0!">
-                      <div data-depth={2} className="">
+                  <div className="absolute -top-45! -left-30 ">
+                    <div className="absolute z-50 top-20 left-0!">
+                      <div className=" ">
                         <img decoding="async" src={`${ImagePath}counterup/shape-02.png`} alt="shape-02" />
                       </div>
                     </div>
@@ -566,260 +556,219 @@ const About = () => {
                     </div>
                   </div>
 
-                  {/* bottom-right / extra shapes */}
-                  <div className="absolute bottom-0 right-0">
+                  <div className="absolute -bottom-30 -right-30">
                     <div className="absolute ">
-                      <div data-depth={2} className="">
+                      <div data-depth={-3} className="">
                         <img decoding="async" src={`${ImagePath}counterup/shape-04.png`} alt="shape-04" />
                       </div>
                     </div>
                     <div className="">
-                      <div data-depth={2} className="">
+                      <div data-depth={4} className="">
                         <img decoding="async" src={`${ImagePath}counterup/shape-05.png`} alt="shape-05" />
                       </div>
                     </div>
                   </div>
                 </section>
+                <div className="relative w-full bg-white rounded-2xl p-30! shadow-xl">
+                  <div className="z-50! grid grid-cols-2 ">
+                    {stats.map((item, index) => (
+                      <div key={item.label} className={`flex flex-col items-center justify-center p-6! text-center border-[#ececec] ${index === 0 ? "border-r border-b" : ""} ${index === 1 ? " border-b" : ""}  ${index === 2 ? "border-r " : ""}  `}>
+                        <div className="edublink-counter-item">
+                          <span className="odometer odometer-auto-theme  font-extrabold" style={{ color: item.color }}>
+                            {item.value}
+                          </span>
+                          <span className="edublink-counter-suffix font-extrabold" style={{ color: item.color }}>
+                            {item.suffix}
+                          </span>
+                        </div>
 
-                {/* 2x2 stats grid */}
-                <div className="z-50! grid grid-cols-2 divide-x divide-y divide-[#ececec] ">
-                  {stats.map((item, index) => (
-                    <div key={item.label} className="flex flex-col items-center justify-center p-6! text-center">
-                      <div className="edublink-counter-item">
-                        {/* if you're using Odometer.js, it will pick this up */}
-                        <span className="odometer odometer-auto-theme text-4xl md:text-5xl font-extrabold" style={{ color: item.color }}>
-                          {item.value}
-                        </span>
-                        <span className="edublink-counter-suffix text-2xl font-extrabold" style={{ color: item.color }}>
-                          {item.suffix}
-                        </span>
+                        <h6 className="mt-3 uppercase  text-[13px]! font-normal!">{item.label}</h6>
                       </div>
-
-                      <h6 className="mt-3 text-[11px] tracking-[0.25em] uppercase text-[#8F8F8F]">{item.label}</h6>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </section>
-          <section className="elementor-section elementor-top-section elementor-element elementor-element-85bee21 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="85bee21" data-element_type="section" data-settings='{"background_background":"classic"}'>
-            <div className="elementor-container elementor-column-gap-no">
-              <div className="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-87596bc" data-id="87596bc" data-element_type="column">
-                <div className="elementor-widget-wrap elementor-element-populated">
-                  <section className="elementor-section elementor-inner-section elementor-element elementor-element-cdeb679 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="cdeb679" data-element_type="section">
-                    <div className="elementor-container elementor-column-gap-no">
-                      <div className="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-a93f05c" data-id="a93f05c" data-element_type="column">
-                        <div className="elementor-widget-wrap elementor-element-populated">
-                          <div className="elementor-element elementor-element-d5799d1 elementor-widget__width-auto elementor-absolute elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-image" data-id="d5799d1" data-element_type="widget" data-settings='{"_position":"absolute"}' data-widget_type="image.default">
-                            <div className="elementor-widget-container">
-                              <img loading="lazy" decoding="async" width="698" height="659" src="https://demo.edublink.co/wp-content/uploads/2023/06/map-shape-3.png" className="attachment-full size-full wp-image-4159" alt="" sizes="(max-width: 698px) 100vw, 698px" />{" "}
-                            </div>
+          <section className=" ">
+            <section className="">
+              <div className="absolute -mt-42! grid grid-cols-2  w-full justify-between! -z-10">
+                <img src="https://demo.edublink.co/wp-content/uploads/2023/06/map-shape-3.png" className="rotate-180" alt="" />
+                <img src="https://demo.edublink.co/wp-content/uploads/2023/06/map-shape-3.png" className="rotate-180" alt="" />
+                <img src="https://demo.edublink.co/wp-content/uploads/2023/06/map-shape-3.png" className="" alt="" />
+              </div>
+            </section>
+            <section className="elementor-section elementor-inner-section elementor-element elementor-element-b0a24a6 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b0a24a6" data-element_type="section">
+              <div className="elementor-container elementor-column-gap-extended">
+                <div className="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-99ceb68" data-id="99ceb68" data-element_type="column">
+                  <div className="elementor-widget-wrap elementor-element-populated">
+                    <div className="elementor-element elementor-element-f0750db elementor-widget elementor-widget-edublink-heading animated edublink--slide-up" data-id="f0750db" data-element_type="widget" data-settings='{"_animation":"edublink--slide-up","_animation_delay":150}' data-widget_type="edublink-heading.default">
+                      <div className="elementor-widget-container">
+                        <div className="edublink-section-heading">
+                          <span className="pre-heading">INSTRUCTORS</span>
+                          <h3 className="heading">Course Instructors</h3>
+                          <div className="title-shape">
+                            <i className="icon-19"></i>
                           </div>
-                          <div className="elementor-element elementor-element-b5797c7 elementor-widget__width-auto elementor-absolute elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-image" data-id="b5797c7" data-element_type="widget" data-settings='{"_position":"absolute"}' data-widget_type="image.default">
-                            <div className="elementor-widget-container">
-                              <img loading="lazy" decoding="async" width="698" height="659" src="https://demo.edublink.co/wp-content/uploads/2023/06/map-shape-3.png" className="attachment-full size-full wp-image-4159" alt="" sizes="(max-width: 698px) 100vw, 698px" />{" "}
-                            </div>
-                          </div>
-                          <div className="elementor-element elementor-element-4014cd9 elementor-widget__width-auto elementor-absolute elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-image" data-id="4014cd9" data-element_type="widget" data-settings='{"_position":"absolute"}' data-widget_type="image.default">
-                            <div className="elementor-widget-container">
-                              <img loading="lazy" decoding="async" width="698" height="659" src="https://demo.edublink.co/wp-content/uploads/2023/06/map-shape-3.png" className="attachment-full size-full wp-image-4159" alt="" sizes="(max-width: 698px) 100vw, 698px" />{" "}
-                            </div>
-                          </div>
-                        </div>
+                        </div>{" "}
                       </div>
                     </div>
-                  </section>
-                  <section className="elementor-section elementor-inner-section elementor-element elementor-element-b0a24a6 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b0a24a6" data-element_type="section">
-                    <div className="elementor-container elementor-column-gap-extended">
-                      <div className="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-99ceb68" data-id="99ceb68" data-element_type="column">
-                        <div className="elementor-widget-wrap elementor-element-populated">
-                          <div className="elementor-element elementor-element-f0750db elementor-widget elementor-widget-edublink-heading animated edublink--slide-up" data-id="f0750db" data-element_type="widget" data-settings='{"_animation":"edublink--slide-up","_animation_delay":150}' data-widget_type="edublink-heading.default">
-                            <div className="elementor-widget-container">
-                              <div className="edublink-section-heading">
-                                <span className="pre-heading">INSTRUCTORS</span>
-                                <h3 className="heading">Course Instructors</h3>
-                                <div className="title-shape">
-                                  <i className="icon-19"></i>
-                                </div>
-                              </div>{" "}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-                  <section className="elementor-section elementor-inner-section elementor-element elementor-element-ff4fb92 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ff4fb92" data-element_type="section">
-                    <div className="elementor-container elementor-column-gap-extended">
-                      <div className="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-37a9587" data-id="37a9587" data-element_type="column">
-                        <div className="elementor-widget-wrap elementor-element-populated">
-                          <div className="elementor-element elementor-element-96a69af elementor-widget elementor-widget-edublink-team animated edublink--slide-up" data-id="96a69af" data-element_type="widget" data-settings='{"_animation":"edublink--slide-up","_animation_delay":250}' data-widget_type="edublink-team.default">
-                            <div className="elementor-widget-container">
-                              <div className="eb-team-wrapper">
-                                <div className="eb-team-container eb-team-grid edublink-row">
-                                  <div className="edublink-team-8-widget edublink-col-lg-4 edublink-col-md-6 edublink-col-sm-6 sal-animate" data-sal="">
-                                    <div className="edublink-team-item">
-                                      <div className="thumbnail-wrap">
-                                        <div className="thumbnail">
-                                          <a>
-                                            <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/07/team-05.jpg" alt="Team-17" />
-                                          </a>
-                                        </div>
-                                        <ul className="team-share-info">
-                                          <li>
-                                            <a href="#" target="_blank">
-                                              <i className="icon-facebook"></i>
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a href="#" target="_blank">
-                                              <i className="icon-twitter"></i>
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a href="#" target="_blank">
-                                              <i className="icon-linkedin2"></i>
-                                            </a>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                      <div className="content">
-                                        <h4 className="title">
-                                          <a>Jane Seymour</a>
-                                        </h4>
-                                        <span className="designation">UI Designer</span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="edublink-team-8-widget edublink-col-lg-4 edublink-col-md-6 edublink-col-sm-6 sal-animate" data-sal="">
-                                    <div className="edublink-team-item">
-                                      <div className="thumbnail-wrap">
-                                        <div className="thumbnail">
-                                          <a>
-                                            <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/07/team-06.webp" alt="Team-18" />
-                                          </a>
-                                        </div>
-                                        <ul className="team-share-info">
-                                          <li>
-                                            <a href="#" target="_blank">
-                                              <i className="icon-facebook"></i>
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a href="#" target="_blank">
-                                              <i className="icon-twitter"></i>
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a href="#" target="_blank">
-                                              <i className="icon-linkedin2"></i>
-                                            </a>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                      <div className="content">
-                                        <h4 className="title">
-                                          <a>Edward Norton</a>
-                                        </h4>
-                                        <span className="designation">UI Designer</span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="edublink-team-8-widget edublink-col-lg-4 edublink-col-md-6 edublink-col-sm-6 sal-animate" data-sal="">
-                                    <div className="edublink-team-item">
-                                      <div className="thumbnail-wrap">
-                                        <div className="thumbnail">
-                                          <a>
-                                            <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/07/team-08.webp" alt="Team-19" />
-                                          </a>
-                                        </div>
-                                        <ul className="team-share-info">
-                                          <li>
-                                            <a href="#" target="_blank">
-                                              <i className="icon-facebook"></i>
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a href="#" target="_blank">
-                                              <i className="icon-twitter"></i>
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a href="#" target="_blank">
-                                              <i className="icon-linkedin2"></i>
-                                            </a>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                      <div className="content">
-                                        <h4 className="title">
-                                          <a>Penelope Cruz</a>
-                                        </h4>
-                                        <span className="designation">UI Designer</span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>{" "}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
+            <section className="elementor-section elementor-inner-section elementor-element elementor-element-ff4fb92 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ff4fb92" data-element_type="section">
+              <div className="elementor-container elementor-column-gap-extended">
+                <div className="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-37a9587" data-id="37a9587" data-element_type="column">
+                  <div className="elementor-widget-wrap elementor-element-populated">
+                    <div className="elementor-element elementor-element-96a69af elementor-widget elementor-widget-edublink-team animated edublink--slide-up" data-id="96a69af" data-element_type="widget" data-settings='{"_animation":"edublink--slide-up","_animation_delay":250}' data-widget_type="edublink-team.default">
+                      <div className="elementor-widget-container">
+                        <div className="eb-team-wrapper">
+                          <div className="eb-team-container eb-team-grid edublink-row">
+                            <div className="edublink-team-8-widget edublink-col-lg-4 edublink-col-md-6 edublink-col-sm-6 sal-animate" data-sal="">
+                              <div className="edublink-team-item">
+                                <div className="thumbnail-wrap">
+                                  <div className="thumbnail">
+                                    <a>
+                                      <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/07/team-05.jpg" alt="Team-17" />
+                                    </a>
+                                  </div>
+                                  <ul className="team-share-info">
+                                    <li>
+                                      <a href="#" target="_blank">
+                                        <i className="icon-facebook"></i>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" target="_blank">
+                                        <i className="icon-twitter"></i>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" target="_blank">
+                                        <i className="icon-linkedin2"></i>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="content">
+                                  <h4 className="title">
+                                    <a>Jane Seymour</a>
+                                  </h4>
+                                  <span className="designation">UI Designer</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="edublink-team-8-widget edublink-col-lg-4 edublink-col-md-6 edublink-col-sm-6 sal-animate" data-sal="">
+                              <div className="edublink-team-item">
+                                <div className="thumbnail-wrap">
+                                  <div className="thumbnail">
+                                    <a>
+                                      <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/07/team-06.webp" alt="Team-18" />
+                                    </a>
+                                  </div>
+                                  <ul className="team-share-info">
+                                    <li>
+                                      <a href="#" target="_blank">
+                                        <i className="icon-facebook"></i>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" target="_blank">
+                                        <i className="icon-twitter"></i>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" target="_blank">
+                                        <i className="icon-linkedin2"></i>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="content">
+                                  <h4 className="title">
+                                    <a>Edward Norton</a>
+                                  </h4>
+                                  <span className="designation">UI Designer</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="edublink-team-8-widget edublink-col-lg-4 edublink-col-md-6 edublink-col-sm-6 sal-animate" data-sal="">
+                              <div className="edublink-team-item">
+                                <div className="thumbnail-wrap">
+                                  <div className="thumbnail">
+                                    <a>
+                                      <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/07/team-08.webp" alt="Team-19" />
+                                    </a>
+                                  </div>
+                                  <ul className="team-share-info">
+                                    <li>
+                                      <a href="#" target="_blank">
+                                        <i className="icon-facebook"></i>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" target="_blank">
+                                        <i className="icon-twitter"></i>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#" target="_blank">
+                                        <i className="icon-linkedin2"></i>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="content">
+                                  <h4 className="title">
+                                    <a>Penelope Cruz</a>
+                                  </h4>
+                                  <span className="designation">UI Designer</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>{" "}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </section>
-          <section className="elementor-section elementor-top-section elementor-element elementor-element-c34ae9f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c34ae9f" data-element_type="section" data-settings='{"background_background":"classic"}'>
-            <div className="elementor-background-overlay"></div>
-            <div className="elementor-container elementor-column-gap-extended">
-              <div className="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-af421f9 animated edublink--slide-up" data-id="af421f9" data-element_type="column" data-settings='{"animation":"edublink--slide-up","animation_delay":150}'>
-                <div className="elementor-widget-wrap elementor-element-populated">
-                  <div className="elementor-element elementor-element-0eec5cc elementor-widget__width-auto elementor-absolute elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-edublink-animation" data-id="0eec5cc" data-element_type="widget" data-settings='{"_position":"absolute"}' data-widget_type="edublink-animation.default">
+
+          <section className="relative overflow-hidden">
+            <div className=" z-50 w-full h-full! flex justify-between absolute!">
+
+              <div className="relative  flex items-end justify-end w-[20%]">
+                <div data-depth={2} className="w-60">
+                    <img src={`${ImagePath}about/shape-25.png`} alt="About Shape 5" />
+                </div>
+                <div data-depth={-2} className="absolute bottom-50 right-0">
+                    <img decoding="async" src={`${ImagePath}about/shape-15.png`} alt="shape-03" />
+                </div>
+              </div>
+              <div data-depth={2} className="">
+                <span>
+                  <img decoding="async" src={`${ImagePath}about/shape-45.png`} alt="shape-03" />
+                </span>
+                <span>
+                  <img decoding="async" src={`${ImagePath}counterup/shape-02.png`} alt="shape-02" />
+                </span>
+              </div>
+            </div>
+            <div className="elementor-element-178ad6d elementor-section  elementor-element overflow-hidden! " style={{ backgroundImage: `url(${ImagePath}/about/about-us-footer.png)` }}>
+              <div className="elementor-container elementor-column-gap-extended   ">
+                <div className="elementor-widget-wrap elementor-element-populated  flex! flex-col! justify-center! items-center!">
+                  <div className="elementor-element elementor-element-cbd1f4c edublink-br-tl-none elementor-widget elementor-widget-heading flex! flex-col! justify-center! items-center! text-center" data-id="cbd1f4c" data-element_type="widget" data-widget_type="heading.default">
                     <div className="elementor-widget-container">
-                      <div className="edublink-animation-widget edublink-animation-display-type-mouse-track edublink-animation-content-type-image edublink-mouse-track-item">
-                        <span data-depth="-2.5">
-                          <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/05/shape-15.png" alt="Hero-Shape-3" />
-                        </span>
-                      </div>{" "}
-                    </div>
-                  </div>
-                  <div className="elementor-element elementor-element-eb9dee9 elementor-widget__width-auto elementor-absolute elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-edublink-animation animated fadeIn" data-id="eb9dee9" data-element_type="widget" data-settings='{"_position":"absolute","_animation":"fadeIn"}' data-widget_type="edublink-animation.default">
-                    <div className="elementor-widget-container">
-                      <div className="edublink-animation-widget edublink-animation-display-type-mouse-track edublink-animation-content-type-image edublink-mouse-track-item">
-                        <span data-depth="2.5">
-                          <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/05/shape-10.png" alt="shape-10" />
-                        </span>
-                      </div>{" "}
-                    </div>
-                  </div>
-                  <div className="elementor-element elementor-element-d9c5287 elementor-widget__width-auto elementor-absolute elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-edublink-animation" data-id="d9c5287" data-element_type="widget" data-settings='{"_position":"absolute"}' data-widget_type="edublink-animation.default">
-                    <div className="elementor-widget-container">
-                      <div className="edublink-animation-widget edublink-animation-display-type-mouse-track edublink-animation-content-type-image edublink-mouse-track-item">
-                        <span data-depth="-2">
-                          <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/05/shape-02.png" alt="Hero-Shape-18" />
-                        </span>
-                      </div>{" "}
-                    </div>
-                  </div>
-                  <div className="elementor-element elementor-element-75ee128 elementor-widget__width-auto elementor-absolute elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-edublink-animation" data-id="75ee128" data-element_type="widget" data-settings='{"_position":"absolute"}' data-widget_type="edublink-animation.default">
-                    <div className="elementor-widget-container">
-                      <div className="edublink-animation-widget edublink-animation-display-type-mouse-track edublink-animation-content-type-image edublink-mouse-track-item">
-                        <span data-depth="2">
-                          <img decoding="async" src="https://demo.edublink.co/wp-content/uploads/2023/05/shape-13.png" alt="Hero-Shape-1" />
-                        </span>
-                      </div>{" "}
-                    </div>
-                  </div>
-                  <div className="elementor-element elementor-element-cbd1f4c edublink-br-tl-none elementor-widget elementor-widget-heading" data-id="cbd1f4c" data-element_type="widget" data-widget_type="heading.default">
-                    <div className="elementor-widget-container">
-                      <h2 className="elementor-heading-title elementor-size-default">
+                      <h2 className="elementor-heading-title elementor-size-default leading-[36px]!">
                         Get Your Quality Skills <span className="edublink-color-primary">Certificate</span> <br />
                         Through EduBlink
                       </h2>{" "}
                     </div>
                   </div>
-                  <div className="elementor-element elementor-element-56b409d elementor-widget elementor-widget-edublink-button" data-id="56b409d" data-element_type="widget" data-widget_type="edublink-button.default">
+                  <div className="elementor-element elementor-element-56b409d elementor-widget elementor-widget-edublink-button flex! flex-col! justify-center! items-center!" data-id="56b409d" data-element_type="widget" data-widget_type="edublink-button.default">
                     <div className="elementor-widget-container">
                       <div className="edublink-button-widget-wrapper">
                         <a className="edublink-button-item edublink-button-style-two edublink-button-size-custom edublink-button-icon-position-after default-style" href="https://demo.edublink.co/contact-us/">
