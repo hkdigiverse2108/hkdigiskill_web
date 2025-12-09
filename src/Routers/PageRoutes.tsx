@@ -1,5 +1,7 @@
 import { ROUTES } from "../Constants";
 import About from "../Pages/About";
+import Blog from "../Pages/Blog";
+import BlogDetails from "../Pages/Blog/BlogDetails";
 import Contact from "../Pages/Contact";
 import Faq from "../Pages/Faq";
 import Gallery from "../Pages/Gallery";
@@ -15,6 +17,9 @@ export const PageRoutes = [
   { path: ROUTES.ABOUT, element: <About /> },
   { path: ROUTES.GALLERY, element: <Gallery /> },
   { path: ROUTES.CONTACT, element: <Contact /> },
+  { path: ROUTES.BLOG.BASE, element: <Blog /> },
+  { path: ROUTES.BLOG.DETAILS, element: <BlogDetails /> },
+
   // ======= Support & Policy =======
   { path: ROUTES.FAQ, element: <Faq /> },
   { path: ROUTES.PRIVACY_POLICY, element: <PrivacyPolicy /> },
