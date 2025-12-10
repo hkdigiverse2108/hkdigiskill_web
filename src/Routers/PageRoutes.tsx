@@ -3,6 +3,8 @@ import About from "../Pages/About";
 import Blog from "../Pages/Blog";
 import BlogDetails from "../Pages/Blog/BlogDetails";
 import Contact from "../Pages/Contact";
+import Course from "../Pages/Course";
+import CourseDetails from "../Pages/Course/CourseDetails";
 import Faq from "../Pages/Faq";
 import Gallery from "../Pages/Gallery";
 import Home from "../Pages/Home";
@@ -12,6 +14,8 @@ import TermsCondition from "../Pages/TermsCondition";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, element: <Home /> },
+  { path: ROUTES.COURSE.BASE, element: <Course /> },
+  { path: ROUTES.COURSE.DETAILS, element: <CourseDetails /> },
 
   // ======= Quick Links =======
   { path: ROUTES.ABOUT, element: <About /> },
