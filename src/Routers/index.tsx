@@ -21,5 +21,5 @@ export const Router = createBrowserRouter([
   //   element: <PublicRoutes />,
   //   children: AuthRoutes,
   // },
-  { path: "*", element: <PageNotFound /> },
+  
 ]);

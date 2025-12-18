@@ -1,3 +1,3 @@
 export * from "./Slider";
 export * from "./Footer"
-export * from "./common"
+export * from "./Common"

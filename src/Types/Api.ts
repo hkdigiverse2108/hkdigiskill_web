@@ -1,3 +1,5 @@
+import type { UseQueryOptions } from "@tanstack/react-query";
+
 export type ResponseParserWrapper<T> = {
   data: T;
   status: number;
@@ -15,6 +17,4 @@ export type FormErrorResponse = ResponseParserWrapper<Record<string, { code: str
 
 export type CombinedErrorResponse = DefaultErrorResponse | FormErrorResponse;
 
-export interface Params {
-  [key: string]: any;
-}
+export type AppQueryOptions<T> = Omit<UseQueryOptions<T, CombinedErrorResponse, T, any[]>, "queryKey" | "queryFn">;

@@ -51,9 +51,9 @@ const Header = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="edublink-theme-header-nav edublink-d-none edublink-d-xl-block">
-                <nav id="site-navigation" className="main-navigation edublink-theme-nav edublink-navbar-collapse">
-                  <div className="edublink-navbar-primary-menu">
+              <div className="  edublink-theme-header-nav edublink-d-none edublink-d-xl-block">
+                <nav id="site-navigation" className=" flex! justify-center! main-navigation edublink-theme-nav edublink-navbar-collapse">
+                  <div className="edublink-navbar-primary-menu ">
                     <div id="primary-menu-container-id" className="primary-menu-container-class">
                       <ul id="primary-menu-custom-id" className="edublink-default-header-navbar edublink-navbar-nav edublink-navbar-right">
                         {menuItems.map((item, index) => (
@@ -84,6 +84,7 @@ const Header = () => {
           </div>
         </div>
       </header>
+      
       <div className="edublink-mobile-menu">
         <div className="edublink-mobile-menu-overlay" />
         <div className={`edublink-mobile-menu-nav-wrapper ${isMobileMenu ? "edublink-mobile-menu-visible" : ""}`}>

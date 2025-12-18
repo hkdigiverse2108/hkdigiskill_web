@@ -3077,7 +3077,7 @@ body.admin-bar.edublink-header-transparent-enable .edublink-header-container {
     margin: 0 10px;
   }
 }
-@-webkit-keyframes eduBlinkFadeInDown {
+@-webkit-keyframes edublinkFadeInDown {
   0% {
     -webkit-transform: translate3d(0, -100%, 0);
     opacity: 0;
@@ -3089,7 +3089,7 @@ body.admin-bar.edublink-header-transparent-enable .edublink-header-container {
     transform: translateZ(0);
   }
 }
-@keyframes eduBlinkFadeInDown {
+@keyframes edublinkFadeInDown {
   0% {
     -webkit-transform: translate3d(0, -100%, 0);
     opacity: 0;
@@ -3121,11 +3121,11 @@ body.admin-bar.edublink-header-transparent-enable .edublink-header-container {
     transform: translateY(0);
   }
 }
-.eduBlinkFadeInDown {
-  -webkit-animation-name: eduBlinkFadeInDown;
-  animation-name: eduBlinkFadeInDown;
+.edublinkFadeInDown {
+  -webkit-animation-name: edublinkFadeInDown;
+  animation-name: edublinkFadeInDown;
 }
-@-webkit-keyframes eduBlinkFadeInRight {
+@-webkit-keyframes edublinkFadeInRight {
   from {
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0);
@@ -3137,7 +3137,7 @@ body.admin-bar.edublink-header-transparent-enable .edublink-header-container {
     transform: none;
   }
 }
-@keyframes eduBlinkFadeInRight {
+@keyframes edublinkFadeInRight {
   from {
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0);
@@ -3149,11 +3149,11 @@ body.admin-bar.edublink-header-transparent-enable .edublink-header-container {
     transform: none;
   }
 }
-.eduBlinkFadeInRight {
-  -webkit-animation-name: eduBlinkFadeInRight;
-  animation-name: eduBlinkFadeInRight;
+.edublinkFadeInRight {
+  -webkit-animation-name: edublinkFadeInRight;
+  animation-name: edublinkFadeInRight;
 }
-@-webkit-keyframes eduBlinkFadeOutRight {
+@-webkit-keyframes edublinkFadeOutRight {
   from {
     opacity: 1;
   }
@@ -3163,7 +3163,7 @@ body.admin-bar.edublink-header-transparent-enable .edublink-header-container {
     transform: translate3d(100%, 0, 0);
   }
 }
-@keyframes eduBlinkFadeOutRight {
+@keyframes edublinkFadeOutRight {
   from {
     opacity: 1;
   }
@@ -3173,9 +3173,9 @@ body.admin-bar.edublink-header-transparent-enable .edublink-header-container {
     transform: translate3d(100%, 0, 0);
   }
 }
-.eduBlinkFadeOutRight {
-  -webkit-animation-name: eduBlinkFadeOutRight;
-  animation-name: eduBlinkFadeOutRight;
+.edublinkFadeOutRight {
+  -webkit-animation-name: edublinkFadeOutRight;
+  animation-name: edublinkFadeOutRight;
 }
 .eb-menu-hot-badge {
   display: inline-block;
@@ -7503,7 +7503,7 @@ body.learnpress-checkout.learnpress-page .site-content,
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-#edublink-login-notification.eduBlinkFadeOutRight {
+#edublink-login-notification.edublinkFadeOutRight {
   -webkit-animation-delay: 2s;
   animation-delay: 2s;
 }

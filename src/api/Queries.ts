@@ -1,3 +1,3 @@
-const Queries = {};
-
-export default Queries;
+export const Queries = {
+    
+}

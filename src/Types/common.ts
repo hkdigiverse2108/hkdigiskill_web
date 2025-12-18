@@ -3,3 +3,11 @@ export interface MenuItem {
   link?: string;
   child?: MenuItem[];
 }
+
+export interface Params {
+  [key: string]: any;
+}
+
+export type AddNewsletterPayload = {
+  email: string;
+};

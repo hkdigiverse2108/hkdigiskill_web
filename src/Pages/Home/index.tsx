@@ -8,9 +8,7 @@ const Home = () => {
       <CategoriesSection />
       <AboutUsSection />
       <CourseSection />
-      {/* <div className="-mt-[290px]!"> */}
         <VideoAreaSection />
-      {/* </div> */}
       <CounterSection />
       <TestimonialSection />
       <BrandLogo />

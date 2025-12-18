@@ -8,7 +8,7 @@ const GetCeritficateSection = () => {
         <div className="hero-content">
           <h1 className="hero-title">
             Get Your Quality Skills <span>Certificate</span>
-            <br /> Through EduBlink
+            <br /> Through edublink
           </h1>
 
           <div className="button-container">

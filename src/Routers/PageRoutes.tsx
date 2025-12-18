@@ -8,6 +8,7 @@ import CourseDetails from "../Pages/Course/CourseDetails";
 import Faq from "../Pages/Faq";
 import Gallery from "../Pages/Gallery";
 import Home from "../Pages/Home";
+import PageNotFound from "../Pages/PageNotFound";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import ReturnPolicy from "../Pages/ReturnPolicy";
 import TermsCondition from "../Pages/TermsCondition";
@@ -29,6 +30,7 @@ export const PageRoutes = [
   { path: ROUTES.PRIVACY_POLICY, element: <PrivacyPolicy /> },
   { path: ROUTES.TERMS_CONDITION, element: <TermsCondition /> },
   { path: ROUTES.RETURN_POLICY, element: <ReturnPolicy /> },
+  { path: "*", element: <PageNotFound /> },
 ];
 
 // export const AuthRoutes = [];

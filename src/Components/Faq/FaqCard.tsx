@@ -7,7 +7,7 @@ const FaqCard: FC<FaqCardType> = (faq) => {
   const handleChange = (id: number) => setActiveFaqId((prev) => (prev === id ? null : id));
 
   return (
-    <div className="eb-accordion-item default-active elementor-repeater-item-2add476" onClick={() => handleChange(1)}>
+    <div className=" eb-accordion-item default-active elementor-repeater-item-2add476" onClick={() => handleChange(1)}>
       <h5 className={`eb-accordion-header default-active ${activeFaqId === 1 && "active"}`}>
         {" "}
         {faq?.question}
