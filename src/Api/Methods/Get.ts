@@ -9,7 +9,7 @@ let isRedirecting = false;
 
 export async function Get<T>(url: string, params?: Params, headers?: Record<string, string>): Promise<T> {
     const authToken = getToken();
-    const BASE_URL = import.meta.env.BASE_URL;
+    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
     const config: AxiosRequestConfig = {
         method: "GET",
         headers: {

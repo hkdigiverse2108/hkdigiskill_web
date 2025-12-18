@@ -11,4 +11,5 @@ export const URL_KEYS = {
   NEWSLETTER: {
     ADD: "newsletter/add",
   },
+  HERO_BANNER: { ALL: "hero-banner/all" }
 } as const;

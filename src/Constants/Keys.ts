@@ -5,4 +5,5 @@ export const KEYS = {
   RESET_PASSWORD: "reset-password",
   CHANGE_PASSWORD: "change-password",
   NEWSLETTER: "newsletter",
+  HERO_BANNER : "hero-banner"
 } as const;

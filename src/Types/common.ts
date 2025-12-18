@@ -8,6 +8,16 @@ export interface Params {
   [key: string]: any;
 }
 
+export interface MessageStatus {
+  status: number;
+  message: string;
+  error: Record<string, unknown>;
+}
+
 export type AddNewsletterPayload = {
   email: string;
 };
+
+export interface UploadResponse extends MessageStatus {
+  data: string[];
+}
