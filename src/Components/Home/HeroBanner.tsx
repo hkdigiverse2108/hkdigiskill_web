@@ -5,7 +5,8 @@ import { Queries } from "../../Api";
 
 const HeroBanner = () => {
   const { data } = Queries.useGetHeroBannerImage();
-  console.log("Data --> ", data);
+
+  const banner = data?.data?.hero_banner_data[0]; 
 
   return (
     <section className="hero-banner hero-style-2 elementor-section elementor-top-section elementor-element elementor-element-843e85a elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle">
@@ -142,7 +143,8 @@ const HeroBanner = () => {
                           decoding="async"
                           width={270}
                           height={300}
-                          src={`${ImagePath}banner/girl-2.webp`}
+                          src={banner?.images[0]}
+                          // src={`${ImagePath}banner/girl-2.webp`}
                           className="attachment-full size-full wp-image-1269"
                         />{" "}
                       </div>
@@ -188,7 +190,8 @@ const HeroBanner = () => {
                           decoding="async"
                           width={240}
                           height={370}
-                          src={`${ImagePath}banner/man-1.webp`}
+                          src={banner?.images[1]}
+                          // src={`${ImagePath}banner/man-1.webp`}
                           className="attachment-full size-full wp-image-1268"
                           alt=""
                         />

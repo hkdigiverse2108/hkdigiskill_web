@@ -11,5 +11,8 @@ export const URL_KEYS = {
   NEWSLETTER: {
     ADD: "newsletter/add",
   },
-  HERO_BANNER: { ALL: "hero-banner/all" }
+  HERO_BANNER: { ALL: "hero-banner/all?type=web" },
+  COURSE_CATEGORY: { ALL: "course-category/all" },
+  TESTIMONIALS: { ALL: "testimonial/all" },
+  FAQ: { ALL: "faq/all" },
 } as const;

@@ -1,5 +1,5 @@
 import type { AxiosError, AxiosRequestConfig } from "axios";
-import type { Params } from "../../Types/common";
+import type { Params } from "../../Types/Common";
 import axios from "axios";
 import { ROUTES } from "../../Constants";
 import { HTTP_STATUS } from "../../Constants/HttpStatus";

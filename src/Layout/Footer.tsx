@@ -257,6 +257,8 @@ const Footer = () => {
                                 className="edublink-mailchimp-input-field"
                                 placeholder="Your email"
                                 required
+                                autoComplete="off"
+                              
                               />
                             </div>
                             <div className="edublink-mailchimp-submit-btn">

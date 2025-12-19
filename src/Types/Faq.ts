@@ -1,3 +1,5 @@
+import type { MessageStatus } from "./Common";
+
 export interface FaqCardType {
   question: string;
   answer: string;
@@ -21,3 +23,20 @@ export type FaqCategory =
   | "terms";
 
 export type FaqData = Record<FaqCategory, FaqItem[]>;
+
+
+export interface FaqItem {
+  _id: string;
+  question: string;
+  answer: string;
+  type: "course" | "workshop"; // safe union
+  isFeatured: boolean;
+
+}
+
+
+export interface FaqResponse extends MessageStatus {
+  data: {
+    faq_data: FaqItem[];
+  };
+}
