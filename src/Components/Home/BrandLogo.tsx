@@ -1,3 +1,4 @@
+import { Queries } from "../../Api";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 
@@ -11,6 +12,10 @@ const brandImages = [
 ];
 
 const BrandLogo = () => {
+  const { data } = Queries.useGetTrutedPartner();
+  const brandImages = data?.data?.trusted_partner_data;
+  console.log("trusted By", data?.data?.trusted_partner_data);
+
   return (
     <section
       className="elementor-section elementor-top-section elementor-element elementor-element-94388e3 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -47,7 +52,7 @@ const BrandLogo = () => {
             </div>
 
             {/* Brand 01 */}
-            <div
+            {/* <div
               className="elementor-element elementor-element-5ecff55 elementor-widget elementor-widget-image"
               data-id="5ecff55"
               data-element_type="widget"
@@ -59,20 +64,20 @@ const BrandLogo = () => {
                   decoding="async"
                   width={120}
                   height={120}
-                  src={`${ImagePath}${brandImages[0].src}`}
-                  className={`attachment-full size-full ${brandImages[0].wp}`}
+                  // src={`${ImagePath}${brandImages[0].src}`}
+                  // className={`attachment-full size-full ${brandImages[0].wp}`}
                   alt=""
                   sizes="(max-width: 120px) 100vw, 120px"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
         {/* BRAND 02–05 */}
-        {brandImages.slice(1, 5).map((item, index) => (
+        {brandImages?.slice(1, 5).map((item, index: number) => (
           <div
-            key={item.id}
+            key={item?._id}
             className={`elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-${
               ["6595acb", "7ee571b", "22a2b53", "f16e415"][index]
             }`}
@@ -81,8 +86,8 @@ const BrandLogo = () => {
           >
             <div className="elementor-widget-wrap elementor-element-populated">
               <div
-                className={`elementor-element elementor-element-${item.id} elementor-widget elementor-widget-image`}
-                data-id={item.id}
+                className={`elementor-element elementor-element-${item._id} elementor-widget elementor-widget-image`}
+                data-id={item?._id}
                 data-element_type="widget"
                 data-widget_type="image.default"
               >
@@ -92,8 +97,8 @@ const BrandLogo = () => {
                     decoding="async"
                     width={120}
                     height={120}
-                    src={`${ImagePath}${item.src}`}
-                    className={`attachment-full size-full ${item.wp}`}
+                    src={item?.image}
+                    className={`attachment-full size-full `}
                     alt=""
                     sizes="(max-width: 120px) 100vw, 120px"
                   />
@@ -130,7 +135,7 @@ const BrandLogo = () => {
             </div>
 
             {/* Brand 06 */}
-            <div
+            {/* <div
               className="elementor-element elementor-element-ca318a7 elementor-widget elementor-widget-image"
               data-id="ca318a7"
             >
@@ -140,13 +145,13 @@ const BrandLogo = () => {
                   decoding="async"
                   width={120}
                   height={120}
-                  src={`${ImagePath}${brandImages?.[5].src}`}
-                  className={`attachment-full size-full ${brandImages[5].wp}`}
+                  // src={`${ImagePath}${brandImages?.[5].src}`}
+                  // className={`attachment-full size-full ${brandImages[5].wp}`}
                   alt=""
                   sizes="(max-width: 120px) 100vw, 120px"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </MouseParallax>

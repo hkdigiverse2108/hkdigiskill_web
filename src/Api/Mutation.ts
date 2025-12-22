@@ -7,5 +7,7 @@ import { useMutations } from "./ReactQuery";
 
 export const Mutation = {
     // ============= newsletter =============
-    useAddNewsLetter: () => useMutations<AddNewsletterPayload, any>([KEYS.NEWSLETTER], (input) => Post(URL_KEYS.NEWSLETTER.ADD, input))
+    useAddNewsLetter: () => useMutations<AddNewsletterPayload, any>([KEYS.NEWSLETTER], (input) => Post(URL_KEYS.NEWSLETTER.ADD, input)),
+    // ============= newsletter =============
+    useAddContact: () => useMutations<AddNewsletterPayload, any>([KEYS.CONTACT], (input) => Post(URL_KEYS.CONTACT.ADD, input))
 }

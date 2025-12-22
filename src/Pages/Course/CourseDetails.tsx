@@ -1,28 +1,6 @@
-import React from "react";
 import { BreadCrumb } from "../../Components/Common";
+import CourseCard3 from "../../Components/Course/CourseCard3";
 
-export interface Course {
-  level: string;
-  title: string;
-  image: string;
-  link: string;
-  duration: string;
-
-  rating: number;       // e.g., 4.5
-  ratingsCount: number; // e.g., 12 reviewers
-
-  price: number;        // current price
-  oldPrice?: number;    // optional old price / discount
-
-  lessons: number;
-  students: number;
-
-  description?: string; // optional description
-}
-
-export interface CourseCardProps {
-  course: Course;
-}
 
 const relatedCourses = [
   {
@@ -77,165 +55,6 @@ const relatedCourses = [
       "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
   },
 ];
-
-const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
-  const {
-    level,
-    title,
-    image,
-    link,
-    duration,
-    rating,
-    ratingsCount,
-    price,
-    oldPrice,
-    lessons,
-    students,
-    description,
-  } = course;
-
-  return (
-    <div className="swiper-slide" style={{ width: "384.667px" }}>
-      <div className="edublink-single-course course-style-1">
-        <div className="inner">
-          <div className="thumbnail">
-            <a className="course-thumb" href={link}>
-              <img className="w-100" src={image} alt={title} />
-            </a>
-
-            <div className="time-top">
-              <span className="duration">
-                <i className="icon-61"></i>
-                {duration}
-              </span>
-            </div>
-          </div>
-
-          <div className="content">
-            <span className="course-level">{level}</span>
-
-            <h6 className="title">
-              <a href={link}>{title}</a>
-            </h6>
-
-            {/* Rating */}
-            <div className="course-rating">
-              <div className="edublink-course-review-wrapper">
-                <div
-                  className="review-stars-rated"
-                  style={{ display: "flex", position: "relative" }}
-                >
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div className="review-star" key={i}>
-                      <span className="far">★</span>
-                      <span
-                        className="fas"
-                        style={{ width: i <= rating ? "100%" : "0%" }}
-                      >
-                        ★
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <span>
-                  ({rating}.0 / {ratingsCount} Ratings)
-                </span>
-              </div>
-            </div>
-
-            {/* Price */}
-            <div className="course-price">
-              <span className="course-item-price">
-                {oldPrice && <span className="origin-price">${oldPrice}</span>}
-                <span className="price">${price}</span>
-              </span>
-            </div>
-
-            {/* Meta */}
-            <ul className="course-meta">
-              <li>
-                <i className="icon-24"></i>
-                {lessons} Lessons
-              </li>
-              <li>
-                <i className="icon-25"></i>
-                {students} Students
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Hover */}
-        <div className="course-hover-content-wrapper">
-          <div className="wishlist-top-right">
-            <button className="edublink-wishlist-wrapper edublink-lp-non-logged-user"></button>
-          </div>
-        </div>
-
-        <div className="course-hover-content">
-          <div className="content">
-            <span className="course-level">{level}</span>
-
-            <h6 className="title">
-              <a href={link}>{title}</a>
-            </h6>
-
-            {/* Rating hover */}
-            <div className="course-rating">
-              <div className="edublink-course-review-wrapper">
-                <div
-                  className="review-stars-rated"
-                  style={{ display: "flex", position: "relative" }}
-                >
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div className="review-star" key={i + "hover"}>
-                      <span className="far">★</span>
-                      <span
-                        className="fas"
-                        style={{ width: i <= rating ? "100%" : "0%" }}
-                      >
-                        ★
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <span>
-                  ({rating}.0 / {ratingsCount} Ratings)
-                </span>
-              </div>
-            </div>
-
-            <div className="course-price">
-              <span className="course-item-price">
-                {oldPrice && <span className="origin-price">${oldPrice}</span>}
-                <span className="price">${price}</span>
-              </span>
-            </div>
-
-            <p>{description}</p>
-
-            <ul className="course-meta">
-              <li>
-                <i className="icon-24"></i>
-                {lessons} Lessons
-              </li>
-              <li>
-                <i className="icon-25"></i>
-                {students} Students
-              </li>
-            </ul>
-
-            <a className="edu-btn btn-secondary btn-small" href={link}>
-              Enroll Now <i className="icon-4"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const CourseDetails = () => {
   return (
@@ -1294,7 +1113,7 @@ const CourseDetails = () => {
             >
               <div className="swiper-wrapper">
                 {relatedCourses.map((course) => (
-                  <CourseCard key={course.id} course={course} />
+                  <CourseCard3 key={course.id} course={course} />
                 ))}
               </div>
             </div>

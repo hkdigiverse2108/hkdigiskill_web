@@ -3,6 +3,7 @@ import { MouseParallax } from "../../CoreComponents";
 import { ImagePath } from "../../Constants";
 import FaqCard from "../../Components/Faq/FaqCard";
 import { Queries } from "../../Api";
+import { useState } from "react";
 
 const FaqSection = () => {
   const { data } = Queries.useGetFaq();
@@ -10,10 +11,7 @@ const FaqSection = () => {
   const faq = data?.data?.faq_data;
   const featuedFaq = faq?.filter((item) => item?.isFeatured === true);
 
-  // const [activeFaqId, setActiveFaqId] = useState<number | null>(null);
-
-  // const handleChange = (id: number) =>
-  //   setActiveFaqId((prev) => (prev === id ? null : id));
+  const [activeIndex, setActiveIndex] = useState(0); // first open by default
 
   return (
     <section
@@ -274,46 +272,19 @@ const FaqSection = () => {
             >
               <div className="elementor-widget-container">
                 <div className="eb-accordion header-default border-default style-default">
-                  {featuedFaq?.map((item) => {
+                  {featuedFaq?.map((item, index) => {
                     return (
                       <FaqCard
+                        key={index}
                         question={item?.question}
                         answer={item?.answer}
+                        isOpen={activeIndex === index}
+                        onClick={() =>
+                          setActiveIndex(activeIndex === index ? -1 : index)
+                        }
                       />
                     );
                   })}
-                  {/* <FaqCard
-                    question="How do I find a school where I want to study? "
-                    answer="Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam."
-                  />
-                  <FaqCard
-                    question="Where should I study abroad? "
-                    answer="Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam."
-                  /> */}
-                  {/* <div className="eb-accordion-item default-active elementor-repeater-item-002d4af" onClick={() => handleChange(1)}>
-                    <h5 className={`eb-accordion-header default-active ${activeFaqId === 1 && "active"}`}>How can I contact a school directly? </h5>
-                    <div className="eb-accordion-content" style={{ display: activeFaqId === 1 ? "block" : "none" }}>
-                      <div className="eb-accordion-body default-active">
-                        <p>Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam.</p>
-                      </div>
-                    </div>
-                  </div> */}
-                  {/* <div className="eb-accordion-item elementor-repeater-item-bbb14fe">
-                    <h5 className="eb-accordion-header">How do I find a school where I want to study? </h5>
-                    <div className="eb-accordion-content">
-                      <div className="eb-accordion-body">
-                        <p>Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam.</p>
-                      </div>
-                    </div>
-                  </div> */}
-                  {/* <div className="eb-accordion-item elementor-repeater-item-449c49f">
-                    <h5 className="eb-accordion-header">Where should I study abroad? </h5>
-                    <div className="eb-accordion-content">
-                      <div className="eb-accordion-body">
-                        <p>Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam.</p>
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>

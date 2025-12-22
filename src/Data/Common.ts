@@ -10,3 +10,10 @@ export const ContactDetails = {
         "501-502, Silver Trade Center, Mota Varachhha, Surat, Gujarat, India-394101.",
 };
 
+
+export const SocialMediaLink = {
+    instagram: "https://www.instagram.com/bharatexamfest",
+    facebook: "",
+    linkedIn: "",
+    twitter: ""
+}

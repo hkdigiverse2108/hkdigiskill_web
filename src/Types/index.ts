@@ -6,3 +6,5 @@ export * from "./NewsLetter";
 export * from "./HeroBanner"
 export * from "./Course"
 export * from "./Testimonial"
+export * from "./legality"
+export * from "./Blog"

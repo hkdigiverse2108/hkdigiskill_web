@@ -1,25 +1,28 @@
-import { useState, type FC } from "react";
+import type { FC } from "react";
 import type { FaqCardType } from "../../Types/Faq";
 
-const FaqCard: FC<FaqCardType> = (faq) => {
-  const [activeFaqId, setActiveFaqId] = useState<number | null>(null);
-
-  const handleChange = (id: number) => setActiveFaqId((prev) => (prev === id ? null : id));
-
+const FaqCard: FC<FaqCardType> = ({ question, answer, isOpen, onClick }) => {
   return (
-    <div className=" eb-accordion-item default-active elementor-repeater-item-2add476" onClick={() => handleChange(1)}>
-      <h5 className={`eb-accordion-header default-active ${activeFaqId === 1 && "active"}`}>
-        {" "}
-        {faq?.question}
-        {/* How can I contact a school directly?  */}
+    <div
+      className={`eb-accordion-item elementor-repeater-item-2add476 ${
+        isOpen ? "active default-active" : ""
+      }`}
+      onClick={onClick}
+    >
+      <h5
+        className={`eb-accordion-header default-active ${
+          isOpen ? "active" : ""
+        }`}
+      >
+        {question}
       </h5>
-      <div className="eb-accordion-content" style={{ display: activeFaqId === 1 ? "block" : "none" }}>
+
+      <div
+        className="eb-accordion-content"
+        style={{ display: isOpen ? "block" : "none" }}
+      >
         <div className="eb-accordion-body default-active">
-          <p>
-            {" "}
-            {faq?.answer}
-            {/* Lorem ipsum dolor sit amet consectur adipiscing elit sed eius mod ex tempor incididunt labore dolore magna aliquaenim ad minim eniam. */}
-          </p>
+          <p>{answer}</p>
         </div>
       </div>
     </div>
@@ -27,4 +30,3 @@ const FaqCard: FC<FaqCardType> = (faq) => {
 };
 
 export default FaqCard;
-

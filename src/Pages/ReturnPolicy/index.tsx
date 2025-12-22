@@ -1,12 +1,20 @@
-import BreadCrumb from "../../Components/Common/BreadCrumb";
+import { Queries } from "../../Api";
+import { BreadCrumb } from "../../Components/Common";
+import { LEGALITY_TYPE } from "../../Constants";
 
 const ReturnPolicy = () => {
+  const { data } = Queries.useGetLegality(LEGALITY_TYPE.REFUND);
+
   return (
-    <div id="return-policy">
-      <section>
-        <BreadCrumb title="Return Policy" />
+    <div>
+      <BreadCrumb title="Return Policy" />
+      <section className="container">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: data?.data.content || "",
+          }}
+        />
       </section>
-      <section className="content-section">Content</section>
     </div>
   );
 };

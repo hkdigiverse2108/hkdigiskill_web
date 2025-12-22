@@ -1,12 +1,20 @@
-import BreadCrumb from "../../Components/Common/BreadCrumb";
+import { Queries } from "../../Api";
+import { BreadCrumb } from "../../Components/Common";
+import { LEGALITY_TYPE } from "../../Constants";
 
 const TermsCondition = () => {
+  const { data } = Queries.useGetLegality(LEGALITY_TYPE.TERMS);
+
   return (
-    <div id="termsCondition">
-      <section>
-        <BreadCrumb title="Terms & Condition" />
+    <div>
+      <BreadCrumb title="Terms & Conditions" />
+      <section className="container">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: data?.data.content || "",
+          }}
+        />
       </section>
-      <section className="content-section">Content</section>
     </div>
   );
 };

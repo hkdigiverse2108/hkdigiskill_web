@@ -9,4 +9,11 @@ export const KEYS = {
   COURSE_CATEGORY: "course-category",
   TESTIMONIALS: "testimonials",
   FAQ: "faq",
+  TRUSTED_PARTNER: "trusted-partner",
+  COURSE: "course",
+  LEGALITY: "ligality",
+  CONTACT : "contact",
+  BLOG: "blog",
+
+
 } as const;

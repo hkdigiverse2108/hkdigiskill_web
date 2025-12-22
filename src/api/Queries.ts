@@ -1,6 +1,6 @@
 import { KEYS } from "../Constants/Keys";
 import { URL_KEYS } from "../Constants/Url";
-import type { AppQueryOptions, CourseCategoryResponse, FaqResponse, HeroBannerResponse, TestimonialResponse } from "../Types";
+import type { AppQueryOptions, BlogListApiResponse, CourseApiResponse, CourseCategoryResponse, FaqResponse, HeroBannerResponse, LegalityApiResponse, TestimonialResponse } from "../Types";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
 
@@ -15,7 +15,17 @@ export const Queries = {
     useGetTestimonials: (options?: AppQueryOptions<TestimonialResponse>) => useQueries<TestimonialResponse>([KEYS.TESTIMONIALS], () => Get(URL_KEYS.TESTIMONIALS.ALL), options),
 
     // ******************* FAQ *******************
-    useGetFaq: (options?: AppQueryOptions<FaqResponse>) => useQueries<FaqResponse>([KEYS.FAQ], () => Get(URL_KEYS.FAQ.ALL), options)
+    useGetFaq: (options?: AppQueryOptions<FaqResponse>) => useQueries<FaqResponse>([KEYS.FAQ], () => Get(URL_KEYS.FAQ.ALL), options),
 
+    // ******************* Trusted Partner *******************
+    useGetTrutedPartner: (options?: AppQueryOptions<any>) => useQueries<any>([KEYS.TRUSTED_PARTNER], () => Get(URL_KEYS.TRUSTED_PARTNER.ALL), options),
 
+    // ******************* Courses *******************
+    useGetAllCourses: (options?: AppQueryOptions<CourseApiResponse>) => useQueries<CourseApiResponse>([KEYS.COURSE], () => Get(URL_KEYS.COURSE.ALL), options),
+
+    // ******************* Legality *******************
+    useGetLegality: (typeFilter: string, options?: AppQueryOptions<LegalityApiResponse>) => useQueries<LegalityApiResponse>([KEYS.LEGALITY, typeFilter], () => Get(`${URL_KEYS.LEGALITY}?typeFilter=${typeFilter}`), options),
+
+    // ******************* BLogs *******************
+    useGetAllBlogs: (options?: AppQueryOptions<BlogListApiResponse>) => useQueries<BlogListApiResponse>([KEYS.BLOG], () => Get(URL_KEYS.BLOG.ALL), options),
 }

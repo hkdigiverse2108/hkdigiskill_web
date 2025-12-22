@@ -1,111 +1,136 @@
-import React from "react";
 import { BreadCrumb } from "../../Components/Common";
+import { Queries } from "../../Api";
+import { BlogCard } from "../../Components/Blog";
 
-export const posts = [
-  {
-    id: "post-15429",
-    url: "",
-    image:
-      "https://demo.edublink.co/wp-content/uploads/2023/03/course-45-590x430.jpg",
-    alt: "course-45",
-    date: "08 Nov, 2023",
-    category: {
-      name: "Learning",
-      url: "",
-    },
-    title: "Connecting the Dots in Education with Learning Nexus",
-    excerpt:
-      "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
-    style: { left: "0px", top: "0px" },
-  },
+//  const posts = [
+//   {
+//     id: "post-15429",
+//     url: "",
+//     image:
+//       "https://demo.edublink.co/wp-content/uploads/2023/03/course-45-590x430.jpg",
+//     alt: "course-45",
+//     date: "08 Nov, 2023",
+//     category: {
+//       name: "Learning",
+//       url: "",
+//     },
+//     title: "Connecting the Dots in Education with Learning Nexus",
+//     excerpt:
+//       "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
+//     style: { left: "0px", top: "0px" },
+//   },
 
-  {
-    id: "post-19306",
-    url: "",
-    image:
-      "https://demo.edublink.co/wp-content/uploads/2023/03/course-18-590x430.jpg",
-    alt: "course-18",
-    date: "07 Nov, 2023",
-    category: {
-      name: "Nutrition",
-      url: "",
-    },
-    title: "Essential Kitchen Skills for Aspiring Chefs",
-    excerpt:
-      "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
-    style: { left: "400px", top: "0px" },
-  },
+//   {
+//     id: "post-19306",
+//     url: "",
+//     image:
+//       "https://demo.edublink.co/wp-content/uploads/2023/03/course-18-590x430.jpg",
+//     alt: "course-18",
+//     date: "07 Nov, 2023",
+//     category: {
+//       name: "Nutrition",
+//       url: "",
+//     },
+//     title: "Essential Kitchen Skills for Aspiring Chefs",
+//     excerpt:
+//       "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
+//     style: { left: "400px", top: "0px" },
+//   },
 
-  {
-    id: "post-19305",
-    url: "",
-    image:
-      "https://demo.edublink.co/wp-content/uploads/2023/03/course-19-590x430.jpg",
-    alt: "course-19",
-    date: "07 Nov, 2023",
-    category: {
-      name: "Nutrition",
-      url: "",
-    },
-    title: "Your Passport to Home Cooking Mastery",
-    excerpt:
-      "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
-    style: { left: "0px", top: "509.7px" },
-  },
+//   {
+//     id: "post-19305",
+//     url: "",
+//     image:
+//       "https://demo.edublink.co/wp-content/uploads/2023/03/course-19-590x430.jpg",
+//     alt: "course-19",
+//     date: "07 Nov, 2023",
+//     category: {
+//       name: "Nutrition",
+//       url: "",
+//     },
+//     title: "Your Passport to Home Cooking Mastery",
+//     excerpt:
+//       "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
+//     style: { left: "0px", top: "509.7px" },
+//   },
 
-  {
-    id: "post-19304",
-    url: "",
-    image:
-      "https://demo.edublink.co/wp-content/uploads/2023/03/course-17-590x430.jpg",
-    alt: "course-17",
-    date: "07 Nov, 2023",
-    category: {
-      name: "Nutrition",
-      url: "",
-    },
-    title: "A Kitchen Training Blog for Home Cooks",
-    excerpt:
-      "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
-    style: { left: "400px", top: "509.7px" },
-  },
+//   {
+//     id: "post-19304",
+//     url: "",
+//     image:
+//       "https://demo.edublink.co/wp-content/uploads/2023/03/course-17-590x430.jpg",
+//     alt: "course-17",
+//     date: "07 Nov, 2023",
+//     category: {
+//       name: "Nutrition",
+//       url: "",
+//     },
+//     title: "A Kitchen Training Blog for Home Cooks",
+//     excerpt:
+//       "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
+//     style: { left: "400px", top: "509.7px" },
+//   },
 
-  {
-    id: "post-15583",
-    url: "",
-    image:
-      "https://demo.edublink.co/wp-content/uploads/2023/11/course-91-590x430.jpg",
-    alt: "course-91",
-    date: "07 Nov, 2023",
-    category: {
-      name: "Nutrition",
-      url: "",
-    },
-    title: "Discover the Power of Nutrient-Rich Foods",
-    excerpt:
-      "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
-    style: { left: "0px", top: "1019.4px" },
-  },
+//   {
+//     id: "post-15583",
+//     url: "",
+//     image:
+//       "https://demo.edublink.co/wp-content/uploads/2023/11/course-91-590x430.jpg",
+//     alt: "course-91",
+//     date: "07 Nov, 2023",
+//     category: {
+//       name: "Nutrition",
+//       url: "",
+//     },
+//     title: "Discover the Power of Nutrient-Rich Foods",
+//     excerpt:
+//       "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
+//     style: { left: "0px", top: "1019.4px" },
+//   },
 
-  {
-    id: "post-15577",
-    url: "x",
-    image:
-      "https://demo.edublink.co/wp-content/uploads/2023/11/course-93-590x430.jpg",
-    alt: "course-93",
-    date: "07 Nov, 2023",
-    category: {
-      name: "Nutrition",
-      url: "",
-    },
-    title: "Boost Your Well-being Through Smart Food Choices",
-    excerpt:
-      "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
-    style: { left: "400px", top: "1019.4px" },
-  },
-];
+//   {
+//     id: "post-15577",
+//     url: "x",
+//     image:
+//       "https://demo.edublink.co/wp-content/uploads/2023/11/course-93-590x430.jpg",
+//     alt: "course-93",
+//     date: "07 Nov, 2023",
+//     category: {
+//       name: "Nutrition",
+//       url: "",
+//     },
+//     title: "Boost Your Well-being Through Smart Food Choices",
+//     excerpt:
+//       "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt...",
+//     style: { left: "400px", top: "1019.4px" },
+//   },
+// ];
 
 const Blog = () => {
+  const { data } = Queries.useGetAllBlogs();
+
+  const Blogs = data?.data?.blog_data;
+
+  // let {
+  //   title,
+  //   subTitle,
+  //   content,
+  //   author,
+  //   category,
+  //   coverImage,
+  //   mainImage,
+  //   quote,
+  //   isFeatured,
+  // } = Blogs;
+
+  // mainImage =
+  //   "https://demo.edublink.co/wp-content/uploads/2023/03/course-45-590x430.jpg";
+  // coverImage =
+  //   "https://demo.edublink.co/wp-content/uploads/2023/11/course-93-590x430.jpg";
+
+  const latestBlogs = Blogs?.slice(0, 3);
+  console.log("blogs", Blogs);
+
   return (
     <div>
       <section>
@@ -122,47 +147,17 @@ const Blog = () => {
                 </header>
                 <div
                   className="edublink-row edublink-blog-post-archive-style-3 eb-masonry-grid-wrapper"
-                  style={{ position: "relative", height: "1529.1px" }}
+                  style={{ position: "relative" }}
                 >
-                  {posts.map((post) => (
-                    <div
-                      key={post.id}
-                      id={post.id}
-                      className="edublink-post-one-single-grid edublink-col-lg-6 eb-masonry-item edublink-col-md-6 edublink-col-sm-12 post type-post status-publish format-standard has-post-thumbnail hentry category-nutrition category-science tag-child-education tag-elearning sal-animate"
-                      data-sal=""
-                      style={{ position: "absolute", ...post.style }}
-                    >
-                      <div className="edu-blog blog-style-6">
-                        <div className="inner">
-                          <div className="thumbnail">
-                            <a href={post.url}>
-                              <img src={post.image} alt={post.alt} />
-                            </a>
-                            <span className="date">{post.date}</span>
-                          </div>
-
-                          <div className="content position-top">
-                            <div className="read-more-btn">
-                              <a className="btn-icon-round" href={post.url}>
-                                <i className="icon-4" />
-                              </a>
-                            </div>
-
-                            <div className="category-wrap">
-                              <a href={post.category.url}>
-                                {post.category.name}
-                              </a>
-                            </div>
-
-                            <h5 className="title">
-                              <a href={post.url}>{post.title}</a>
-                            </h5>
-
-                            <p>{post.excerpt}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  {Blogs?.map((blog, index) => (
+                    <BlogCard
+                      key={blog._id}
+                      blog={blog}
+                      style={{
+                        left: index % 2 === 0 ? "0px" : "400px",
+                        top: `${Math.floor(index / 2) * 510}px`,
+                      }}
+                    />
                   ))}
                 </div>
 
@@ -249,14 +244,13 @@ const Blog = () => {
                 </section>
 
                 {/* LATEST POSTS */}
-                <section
+                {/* <section
                   id="edublinkcore_recent_posts_widget-3"
                   className="widget widget_edublinkcore_recent_posts_widget"
                 >
                   <h2 className="widget-title">Latest Post</h2>
 
                   <div className="widget-posts recent-post-widget edublink-recent-post-widget">
-                    {/* 1 */}
                     <div className="edublink-recent-post-each-item">
                       <div className="edublink-post-widget-thumb">
                         <a href="https://demo.edublink.co/crafting-effective-learning-paths-at-curriculum-corner/">
@@ -282,7 +276,6 @@ const Blog = () => {
                       </div>
                     </div>
 
-                    {/* 2 */}
                     <div className="edublink-recent-post-each-item">
                       <div className="edublink-post-widget-thumb">
                         <a href="https://demo.edublink.co/exploring-learning-landscapes-in-academic-alcove/">
@@ -308,7 +301,6 @@ const Blog = () => {
                       </div>
                     </div>
 
-                    {/* 3 */}
                     <div className="edublink-recent-post-each-item">
                       <div className="edublink-post-widget-thumb">
                         <a href="https://demo.edublink.co/voices-from-the-learning-education-hub/">
@@ -333,6 +325,54 @@ const Blog = () => {
                         </div>
                       </div>
                     </div>
+                  </div>
+                </section> */}
+                <section
+                  id="edublinkcore_recent_posts_widget-3"
+                  className="widget widget_edublinkcore_recent_posts_widget"
+                >
+                  <h2 className="widget-title">Latest Post</h2>
+
+                  <div className="widget-posts recent-post-widget edublink-recent-post-widget">
+                    {latestBlogs?.map((blog) => (
+                      <div
+                        key={blog._id}
+                        className="edublink-recent-post-each-item"
+                      >
+                        <div className="edublink-post-widget-thumb">
+                          <a href="">
+                            <img
+                              src={
+                                "https://demo.edublink.co/wp-content/uploads/2023/03/course-45-590x430.jpg"
+                              }
+                              alt={blog.title}
+                            />
+                          </a>
+                        </div>
+
+                        <div className="media-body">
+                          <h5 className="entry-title">
+                            <a href="">{blog.title}</a>
+                          </h5>
+
+                          <div className="post-meta">
+                            <span className="post-icon">
+                              <i className="icon-27" />
+                            </span>
+                            <span className="post-meta-date">
+                              {new Date(blog.createdAt).toLocaleDateString(
+                                "en-GB",
+                                {
+                                  day: "2-digit",
+                                  month: "short",
+                                  year: "numeric",
+                                }
+                              )}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </section>
 
@@ -360,10 +400,7 @@ const Blog = () => {
                       (11)
                     </li>
                     <li className="cat-item cat-item-80">
-                      <a href="">
-                        Nutrition
-                      </a>{" "}
-                      (11)
+                      <a href="">Nutrition</a> (11)
                     </li>
                     <li className="cat-item cat-item-66">
                       <a href="https://demo.edublink.co/category/science/">

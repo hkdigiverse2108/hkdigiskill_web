@@ -21,3 +21,12 @@ export type AddNewsletterPayload = {
 export interface UploadResponse extends MessageStatus {
   data: string[];
 }
+
+export interface BaseType {
+  isUnlocked: boolean;
+  isBlocked: boolean;
+  isDeleted: boolean;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+}

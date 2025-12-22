@@ -2,8 +2,29 @@ import React from "react";
 import { BreadCrumb } from "../../Components/Common";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
+import { ContactDetails, SocialMediaLink } from "../../Data";
+import { Link } from "react-router-dom";
+import { Mutation } from "../../Api";
 
 const Contact = () => {
+  const { mutate: addContact } = Mutation.useAddContact();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const payload = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phoneNumber: formData.get("phoneNumber") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
+    };
+
+    addContact(payload);
+  };
+
   return (
     <div>
       <section>
@@ -58,8 +79,9 @@ const Contact = () => {
                     </div>
 
                     <p>
-                      Studio 76d, Riley Ford, North Michael chester,
-                      <br /> CF99 6QQ
+                      {ContactDetails?.Address}
+                      {/* Studio 76d, Riley Ford, North Michael chester,
+                      <br /> CF99 6QQ */}
                     </p>
                   </div>
 
@@ -77,8 +99,9 @@ const Contact = () => {
                     </div>
 
                     <p>
-                      <a href="mailto:edublink@example.com">
-                        edublink@example.com
+                      <a href={`mailto:${ContactDetails?.EmailSales}`}>
+                        {/* edublink@example.com */}
+                        {ContactDetails?.EmailSales}
                       </a>
                     </p>
                   </div>
@@ -97,7 +120,10 @@ const Contact = () => {
                     </div>
 
                     <p>
-                      <a href="tel:(+091) 413 554 8598">(+091) 413 554 8598</a>
+                      <a href={`tel:${ContactDetails?.Number}`}>
+                        {/* (+091) 413 554 8598 */}
+                        {ContactDetails?.Number}
+                      </a>
                     </p>
                   </div>
 
@@ -110,30 +136,42 @@ const Contact = () => {
                   >
                     <div className="elementor-widget-container">
                       <div className="edublink-social-icons-wrapper">
-                        <a className="  elementor-repeater-item-cf6a47b edublink-social-icon-each-item elementor-animation-">
+                        <Link
+                          to={SocialMediaLink?.instagram}
+                          className="  elementor-repeater-item-cf6a47b edublink-social-icon-each-item elementor-animation-"
+                        >
                           <i
                             aria-hidden="true"
                             className="edublink icon-share-alt"
                           />
-                        </a>
-                        <a className="elementor-repeater-item-01aed80 edublink-social-icon-each-item elementor-animation-">
+                        </Link>
+                        <Link
+                          to={SocialMediaLink?.instagram}
+                          className="elementor-repeater-item-01aed80 edublink-social-icon-each-item elementor-animation-"
+                        >
                           <i
                             aria-hidden="true"
                             className="edublink icon-facebook"
                           />
-                        </a>
-                        <a className="elementor-repeater-item-9450a8b edublink-social-icon-each-item elementor-animation-">
+                        </Link>
+                        <Link
+                          to={SocialMediaLink?.instagram}
+                          className="elementor-repeater-item-9450a8b edublink-social-icon-each-item elementor-animation-"
+                        >
                           <i
                             aria-hidden="true"
                             className="edublink icon-twitter"
                           />
-                        </a>
-                        <a className="elementor-repeater-item-60bf3fe edublink-social-icon-each-item elementor-animation-">
+                        </Link>
+                        <Link
+                          to={SocialMediaLink?.instagram}
+                          className="elementor-repeater-item-60bf3fe edublink-social-icon-each-item elementor-animation-"
+                        >
                           <i
                             aria-hidden="true"
                             className="edublink icon-linkedin2"
                           />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -158,31 +196,21 @@ const Contact = () => {
                       data-widget_type="edublink-animation.default"
                     >
                       <div className="elementor-widget-container ">
-                        <div
-                          className=" z-50! edublink-animation-widget edublink-animation-display-type-mouse-track edublink-animation-content-type-image edublink-mouse-track-item"
-                          style={{
-                            transform:
-                              "translate3d(0px,0px,0px) rotate(0.0001deg)",
-                            transformStyle: "preserve-3d",
-                            backfaceVisibility: "hidden",
-                            position: "relative",
-                            pointerEvents: "none",
-                          }}
-                        >
+                        <div className=" z-50! edublink-animation-widget edublink-animation-display-type-mouse-track edublink-animation-content-type-image edublink-mouse-track-item">
                           <div
                             className="absolute! z-50!  elementor-element elementor-element-aaaf6e9 elementor-widget__width-auto elementor-absolute elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-edublink-animation"
                             data-aos="zoom-in"
                             data-aos-duration={1200}
                           >
-                                <div className="edublink-animation-widget edublink-animation-display-type-mouse-track edublink-animation-content-type-image edublink-mouse-track-item">
-                                <span data-depth={  4}>
-                                  <img
-                                    decoding="async"
-                                    src={`${ImagePath}faq/shape-04.png`}
-                                    alt="Hero-Shape-18"
-                                  />
-                                </span>
-                              </div>
+                            <div className="edublink-animation-widget edublink-animation-display-type-mouse-track edublink-animation-content-type-image edublink-mouse-track-item">
+                              <span data-depth={4}>
+                                <img
+                                  decoding="async"
+                                  src={`${ImagePath}faq/shape-04.png`}
+                                  alt="Hero-Shape-18"
+                                />
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -258,7 +286,7 @@ const Contact = () => {
                         <div className="elementor-widget-container">
                           <div className="edublink-contact-form-wrapper">
                             {/* FORM START */}
-                            <form className="wpcf7-form">
+                            <form className="wpcf7-form" onSubmit={handleSubmit}>
                               <div className="edublink-contact-form-wrapper eb-contact-us-form">
                                 {/* Name */}
                                 <div className="edublink-contact-form-single-item">
@@ -288,6 +316,19 @@ const Contact = () => {
                                   </div>
                                 </div>
 
+                                {/* Subject */}
+                                <div className="edublink-contact-form-single-item">
+                                  <div className="edublink-contact-form-single-item-content">
+                                    <p>
+                                      <input
+                                        className="wpcf7-form-control wpcf7-text edublink-contact-form-field"
+                                        placeholder="Phone Number"
+                                        type="text"
+                                        name="phoneNumber"
+                                      />
+                                    </p>
+                                  </div>
+                                </div>
                                 {/* Subject */}
                                 <div className="edublink-contact-form-single-item">
                                   <div className="edublink-contact-form-single-item-content">
