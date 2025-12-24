@@ -1,12 +1,9 @@
 import React from "react";
-import type { Blog } from "../../Types";
+import type { Blog, BlogCardProps } from "../../Types";
 
-interface BlogCardProps {
-  blog: Blog;
-  style?: React.CSSProperties;
-}
 
-const BlogCard: React.FC<BlogCardProps> = ({ blog, style }) => {
+
+const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   blog.mainImage =
     "https://demo.edublink.co/wp-content/uploads/2023/03/course-45-590x430.jpg";
   blog.coverImage =

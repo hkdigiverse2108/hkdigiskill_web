@@ -1,3 +1,4 @@
+import { Queries } from "../../Api";
 import { BreadCrumb } from "../../Components/Common";
 import GetCeritficateSection from "../../Components/Common/GetCeritficateSection";
 import { TestimonialSection, VideoAreaSection } from "../../Components/Home";
@@ -56,6 +57,9 @@ const stats = [
 ];
 
 const About = () => {
+  const { data } = Queries.useGetTrutedPartner();
+  const brandImages = data?.data?.trusted_partner_data;
+
   return (
     <MouseParallax>
       <div id="about">
@@ -65,7 +69,7 @@ const About = () => {
         <main id="main" className="site-main space-y-34! mt-34! ">
           <section className=" elementor-widget-wrap">
             <section>
-              <div className=" shape-section  ">
+              <div className="max-sm:hidden! shape-section  ">
                 <div data-depth={2} className="shape-image left ">
                   <img
                     decoding="async"
@@ -82,12 +86,12 @@ const About = () => {
                 </div>
               </div>
             </section>
-            <section className="container !flex gap-16! items-center justify-center!  ">
+            <section className="container flex! max-sm:flex-col gap-16! items-center justify-center!  ">
               <div className="elementor-widget-wrap   ">
                 <div className="elementor-element ">
                   <div className="edublink-section-heading  ">
-                    <h3 className="heading text-end     ">
-                      We Providing The <br />
+                    <h3 className="heading sm:text-end     ">
+                      We Providing The <br className="max-sm:hidden" />
                       Best <mark>Quality Online</mark> Courses
                     </h3>
                     <div className="title-shape text-end">
@@ -97,7 +101,7 @@ const About = () => {
                 </div>
               </div>
 
-              <span className=" border-r !boder-0.5 h-[50%] border-gray-200 "></span>
+              <span className="max-sm:hidden border-r !boder-0.5 h-[50%] border-gray-200 "></span>
               <div className="elementor-widget-wrap ">
                 <span>
                   Lorem ipsum dolor sit amet cons etur adipisicing elit sed do
@@ -135,48 +139,17 @@ const About = () => {
           <section className="mt-[290px]!  elementor-section elementor-top-section elementor-element elementor-element-178ad6d  ">
             <div className="elementor-background-overlay" />
             <VideoAreaSection />
-            <section
-              className="mt-28! elementor-section elementor-top-section elementor-element elementor-element-982fec8 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
-              data-id="982fec8"
-              data-element_type="section"
-            >
-              <div className="elementor-background-overlay"></div>
-              <div className="elementor-container elementor-column-gap-extended">
+            <div className="mt-12! grid grid-cols-2  sm:grid-cols-4  xl:grid-cols-8 gap-2  w-full! justify-center items-center divide-x divide-gray-200 ">
+              {brandImages?.map((item) => (
                 <div
-                  className="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-c81f19f"
-                  data-id="c81f19f"
+                  key={item?._id}
+                  className={`elementor-column elementor-col-16 elementor-top-column elementor-element   w-full! flex! justify-center!`}
                   data-element_type="column"
                 >
                   <div className="elementor-widget-wrap elementor-element-populated">
                     <div
-                      className="elementor-element elementor-element-64ef781 elementor-widget elementor-widget-image"
-                      data-id="64ef781"
-                      data-element_type="widget"
-                      data-widget_type="image.default"
-                    >
-                      <div className="elementor-widget-container">
-                        <img
-                          decoding="async"
-                          width="120"
-                          height="120"
-                          src="https://demo.edublink.co/wp-content/uploads/2023/05/brand-01.png"
-                          className="attachment-full size-full wp-image-1211"
-                          alt=""
-                          sizes="(max-width: 120px) 100vw, 120px"
-                        />{" "}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-e6076c9"
-                  data-id="e6076c9"
-                  data-element_type="column"
-                >
-                  <div className="elementor-widget-wrap elementor-element-populated">
-                    <div
-                      className="elementor-element elementor-element-565d97a elementor-widget elementor-widget-image"
-                      data-id="565d97a"
+                      className={`elementor-element elementor-element-${item._id} elementor-widget elementor-widget-image`}
+                      data-id={item?._id}
                       data-element_type="widget"
                       data-widget_type="image.default"
                     >
@@ -184,132 +157,23 @@ const About = () => {
                         <img
                           loading="lazy"
                           decoding="async"
-                          width="120"
-                          height="120"
-                          src="https://demo.edublink.co/wp-content/uploads/2023/05/brand-02.png"
-                          className="attachment-full size-full wp-image-1212"
-                          alt=""
-                          sizes="(max-width: 120px) 100vw, 120px"
-                        />{" "}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-7828c99"
-                  data-id="7828c99"
-                  data-element_type="column"
-                >
-                  <div className="elementor-widget-wrap elementor-element-populated">
-                    <div
-                      className="elementor-element elementor-element-e4afff9 elementor-widget elementor-widget-image"
-                      data-id="e4afff9"
-                      data-element_type="widget"
-                      data-widget_type="image.default"
-                    >
-                      <div className="elementor-widget-container">
-                        <img
-                          loading="lazy"
-                          decoding="async"
-                          width="120"
-                          height="120"
-                          src="https://demo.edublink.co/wp-content/uploads/2023/05/brand-03.png"
-                          className="attachment-full size-full wp-image-1213"
+                          width={120}
+                          height={120}
+                          src={item?.image}
+                          className={`attachment-full size-full max-w-40! `}
                           alt=""
                         />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div
-                  className="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-ace9c46"
-                  data-id="ace9c46"
-                  data-element_type="column"
-                  data-settings='{"background_background":"classic"}'
-                >
-                  <div className="elementor-widget-wrap elementor-element-populated">
-                    <div
-                      className="elementor-element elementor-element-109192b elementor-widget elementor-widget-image"
-                      data-id="109192b"
-                      data-element_type="widget"
-                      data-widget_type="image.default"
-                    >
-                      <div className="elementor-widget-container">
-                        <img
-                          loading="lazy"
-                          decoding="async"
-                          width="120"
-                          height="120"
-                          src="https://demo.edublink.co/wp-content/uploads/2023/05/brand-04.png"
-                          className="attachment-full size-full wp-image-1214"
-                          alt=""
-                          sizes="(max-width: 120px) 100vw, 120px"
-                        />{" "}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-607171b"
-                  data-id="607171b"
-                  data-element_type="column"
-                >
-                  <div className="elementor-widget-wrap elementor-element-populated">
-                    <div
-                      className="elementor-element elementor-element-ecde593 elementor-widget elementor-widget-image"
-                      data-id="ecde593"
-                      data-element_type="widget"
-                      data-widget_type="image.default"
-                    >
-                      <div className="elementor-widget-container">
-                        <img
-                          loading="lazy"
-                          decoding="async"
-                          width="120"
-                          height="120"
-                          src="https://demo.edublink.co/wp-content/uploads/2023/05/brand-05.png"
-                          className="attachment-full size-full wp-image-1215"
-                          alt=""
-                          sizes="(max-width: 120px) 100vw, 120px"
-                        />{" "}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-70c525f"
-                  data-id="70c525f"
-                  data-element_type="column"
-                >
-                  <div className="elementor-widget-wrap elementor-element-populated">
-                    <div
-                      className="elementor-element elementor-element-2de5ab6 elementor-widget elementor-widget-image"
-                      data-id="2de5ab6"
-                      data-element_type="widget"
-                      data-widget_type="image.default"
-                    >
-                      <div className="elementor-widget-container">
-                        <img
-                          loading="lazy"
-                          decoding="async"
-                          width="120"
-                          height="120"
-                          src="https://demo.edublink.co/wp-content/uploads/2023/05/brand-06.png"
-                          className="attachment-full size-full wp-image-1216"
-                          alt=""
-                          sizes="(max-width: 120px) 100vw, 120px"
-                        />{" "}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+              ))}
+            </div>
+          
           </section>
 
           <TestimonialSection />
 
-  
           <section className=" elementor-element-178ad6d elementor-section elementor-top-section elementor-element overflow-hidden!  ">
             <div className="elementor-container elementor-column-gap-extended ">
               <div className="edublink-section-heading ">

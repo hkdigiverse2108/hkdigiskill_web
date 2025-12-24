@@ -51,7 +51,7 @@ const CourseCard3: React.FC<CourseCardProps> = ({ course }) => {
   image = `${ImagePath}/course/course-01/course-01.jpg`;
 
   return (
-    <div className="swiper-slide" style={{ width: "384.667px" }}>
+    <div className="swiper-slide">
       <div className="edublink-single-course course-style-1">
         <div className="inner">
           <div className="thumbnail">

@@ -5,8 +5,8 @@ import CounterSection from "./CounterSection";
 import CourseSection from "./CourseSection";
 import FaqSection from "./FaqSection";
 import HeroBanner from "./HeroBanner";
-import LatestArticlesSection from "./LatestArticlesSection";
+import LatestBlogsSection from "./LatestBlogsSection";
 import TestimonialSection from "./TestimonialSection";
 import VideoAreaSection from "./VideoArea";
 
-export { AboutUsSection, BrandLogo, CategoriesSection, CounterSection, CourseSection, FaqSection, HeroBanner, LatestArticlesSection, TestimonialSection, VideoAreaSection };
+export { AboutUsSection, BrandLogo, CategoriesSection, CounterSection, CourseSection, FaqSection, HeroBanner, LatestBlogsSection, TestimonialSection, VideoAreaSection };

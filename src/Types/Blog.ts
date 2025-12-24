@@ -23,3 +23,9 @@ export interface BlogListApiResponse {
         blog_data: Blog[];
     };
 }
+
+
+export interface BlogCardProps {
+  blog: Blog;
+  style?: React.CSSProperties;
+}

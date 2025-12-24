@@ -4,59 +4,59 @@ import { Queries } from "../../Api";
 import { ROUTES } from "../../Constants";
 
 const CourseSection = () => {
-  const relatedCourses = [
-    {
-      id: 1,
-      level: "All Levels",
-      title: "Competitive Strategy Law for Management Consultants",
-      link: "https://demo.edublink.co/courses/competitive-strategy-law-for-management-consultants/",
-      image:
-        "https://demo.edublink.co/wp-content/uploads/2023/03/course-03-590x430.jpg",
-      duration: "25 hours",
-      rating: 3,
-      ratingsCount: 2,
-      price: 75,
-      lessons: 7,
-      students: 362,
-      description:
-        "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
-    },
+  // const relatedCourses = [
+  //   {
+  //     id: 1,
+  //     level: "All Levels",
+  //     title: "Competitive Strategy Law for Management Consultants",
+  //     link: "https://demo.edublink.co/courses/competitive-strategy-law-for-management-consultants/",
+  //     image:
+  //       "https://demo.edublink.co/wp-content/uploads/2023/03/course-03-590x430.jpg",
+  //     duration: "25 hours",
+  //     rating: 3,
+  //     ratingsCount: 2,
+  //     price: 75,
+  //     lessons: 7,
+  //     students: 362,
+  //     description:
+  //       "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
+  //   },
 
-    {
-      id: 2,
-      level: "Beginner",
-      title: "Learning How To Write As A Professional Author",
-      link: "https://demo.edublink.co/courses/learning-how-to-write-as-a-professional-author/",
-      image:
-        "https://demo.edublink.co/wp-content/uploads/2023/03/course-01-590x430.jpg",
-      duration: "15 hours",
-      rating: 5,
-      ratingsCount: 3,
-      price: 29,
-      oldPrice: 39,
-      lessons: 7,
-      students: 423,
-      description:
-        "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
-    },
+  //   {
+  //     id: 2,
+  //     level: "Beginner",
+  //     title: "Learning How To Write As A Professional Author",
+  //     link: "https://demo.edublink.co/courses/learning-how-to-write-as-a-professional-author/",
+  //     image:
+  //       "https://demo.edublink.co/wp-content/uploads/2023/03/course-01-590x430.jpg",
+  //     duration: "15 hours",
+  //     rating: 5,
+  //     ratingsCount: 3,
+  //     price: 29,
+  //     oldPrice: 39,
+  //     lessons: 7,
+  //     students: 423,
+  //     description:
+  //       "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
+  //   },
 
-    {
-      id: 3,
-      level: "All Levels",
-      title: "The Complete Python Bootcamp From Zero to Hero",
-      link: "https://demo.edublink.co/courses/the-complete-python-bootcamp-from-zero-to-hero/",
-      image:
-        "https://demo.edublink.co/wp-content/uploads/2023/11/course-83-590x430.jpg",
-      duration: "30 hours",
-      rating: 4,
-      ratingsCount: 2,
-      price: 35,
-      lessons: 7,
-      students: 674,
-      description:
-        "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
-    },
-  ];
+  //   {
+  //     id: 3,
+  //     level: "All Levels",
+  //     title: "The Complete Python Bootcamp From Zero to Hero",
+  //     link: "https://demo.edublink.co/courses/the-complete-python-bootcamp-from-zero-to-hero/",
+  //     image:
+  //       "https://demo.edublink.co/wp-content/uploads/2023/11/course-83-590x430.jpg",
+  //     duration: "30 hours",
+  //     rating: 4,
+  //     ratingsCount: 2,
+  //     price: 35,
+  //     lessons: 7,
+  //     students: 674,
+  //     description:
+  //       "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
+  //   },
+  // ];
 
   const { data } = Queries.useGetAllCourses();
   const Courses = data?.data?.course_data || [];
@@ -90,8 +90,8 @@ const CourseSection = () => {
             </div>
             <div className="elementor-element elementor-element-6bce914 distant-learning-course elementor-widget elementor-widget-edublink-lp-courses">
               <div className="elementor-widget-container">
-                <div className="edublink-course-widget-wrapper">
-                  <div className="edublink-archive-lp-courses space-x-9! edublink-course-archive edublink-lms-courses-grid active-white-bg edublink-row eb-masonry-grid-wrapper">
+                <div className="edublink-course-widget-wrapper flex justify-center">
+                  <div className="edublink-archive-lp-courses grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! px-6! w-full edublink-course-archive edublink-lms-courses-grid active-white-bg edublink-row eb-masonry-grid-wrapper">
                     {Courses?.splice(0, 3)?.map((course) => (
                       <CourseCard3 key={course._id} course={course} />
                     ))}

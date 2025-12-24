@@ -149,14 +149,14 @@ const Blog = () => {
                   className="edublink-row edublink-blog-post-archive-style-3 eb-masonry-grid-wrapper"
                   style={{ position: "relative" }}
                 >
-                  {Blogs?.map((blog, index) => (
+                  {Blogs?.map((blog) => (
                     <BlogCard
                       key={blog._id}
                       blog={blog}
-                      style={{
-                        left: index % 2 === 0 ? "0px" : "400px",
-                        top: `${Math.floor(index / 2) * 510}px`,
-                      }}
+                      // style={{
+                      //   left: index % 2 === 0 ? "0px" : "400px",
+                      //   top: `${Math.floor(index / 2) * 510}px`,
+                      // }}
                     />
                   ))}
                 </div>

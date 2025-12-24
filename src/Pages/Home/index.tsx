@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { AboutUsSection, BrandLogo, CategoriesSection, CounterSection, CourseSection, FaqSection, HeroBanner, LatestArticlesSection, TestimonialSection, VideoAreaSection } from "../../Components/Home";
+import { AboutUsSection, BrandLogo, CategoriesSection, CounterSection, CourseSection, FaqSection, HeroBanner, LatestBlogsSection, TestimonialSection, VideoAreaSection } from "../../Components/Home";
 
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
       <TestimonialSection />
       <BrandLogo />
       <FaqSection />
-      <LatestArticlesSection />
+      <LatestBlogsSection />
     </Fragment>
   );
 };

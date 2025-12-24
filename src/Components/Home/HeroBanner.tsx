@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ImagePath } from "../../Constants";
+import { ImagePath, ROUTES } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 import { Queries } from "../../Api";
 
@@ -59,7 +59,7 @@ const HeroBanner = () => {
               <div className="elementor-widget-container">
                 <div className="edublink-button-widget-wrapper">
                   <Link
-                    to={""}
+                    to={ROUTES.COURSE.BASE}
                     className="edublink-button-item edublink-button-style-default edublink-button-size-custom edublink-button-icon-position-after default-style"
                   >
                     Find courses

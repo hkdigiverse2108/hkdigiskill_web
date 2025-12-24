@@ -1,15 +1,5 @@
 import type { MessageStatus } from "./Common";
 
-export interface FaqCardType {
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onClick: () => void;
-}
-export interface FaqCardProp {
-  faq: FaqCardType;
-}
-
 export interface FaqItem {
   q: string;
   a: string;
