@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import VideoModalSlice from "./Slices/VideoModalSlice"
 
 export const Store = configureStore({
-  reducer: {},
+  reducer: {
+    videoModal: VideoModalSlice
+  },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
 

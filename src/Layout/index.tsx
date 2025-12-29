@@ -1,6 +1,8 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
+import VideoModal from "../Components/Common/VideoModal";
+import ImageModal from "../Components/Gallary/ImageModal";
 
 const Layout = () => {
   return (
@@ -11,9 +13,16 @@ const Layout = () => {
           <div className="edublink-main-content-inner edublink-row">
             <div id="primary" className="content-area edublink-col-lg-12">
               <main id="main" className="site-main">
-                <article id="post-1233" className="edublink-single-page post-1233 page type-page status-publish hentry">
+                <article
+                  id="post-1233"
+                  className="edublink-single-page post-1233 page type-page status-publish hentry"
+                >
                   <div className="entry-content">
-                    <div data-elementor-type="wp-page" data-elementor-id={1233} className="elementor elementor-1233">
+                    <div
+                      data-elementor-type="wp-page"
+                      data-elementor-id={1233}
+                      className="elementor elementor-1233"
+                    >
                       <Outlet />
                     </div>
                   </div>
@@ -24,6 +33,8 @@ const Layout = () => {
         </div>
       </div>
       <Footer />
+      <VideoModal />
+      <ImageModal />
     </div>
   );
 };

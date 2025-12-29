@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { ImagePath } from "../../Constants";
+import { ImagePath, ROUTES } from "../../Constants";
 import type { CourseCardProps } from "../../Types";
 
 const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   let {
-    // title,
+    _id,
     // alt,
     // href,
     // category,
@@ -96,7 +96,10 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             </div>
 
             <div className="read-more-btn">
-              <Link to={""} className="edu-btn btn-small btn-secondary">
+              <Link
+                to={`${ROUTES.COURSE.DETAILS.replace(":id", _id)}`}
+                className="edu-btn btn-small btn-secondary"
+              >
                 Enroll Now<i className="icon-4"></i>
               </Link>
             </div>

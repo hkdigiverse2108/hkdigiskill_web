@@ -99,10 +99,10 @@ const Contact = () => {
                     </div>
 
                     <p>
-                      <a href={`mailto:${ContactDetails?.EmailSales}`}>
+                      <Link to={`mailto:${ContactDetails?.EmailSales}`}>
                         {/* edublink@example.com */}
                         {ContactDetails?.EmailSales}
-                      </a>
+                      </Link>
                     </p>
                   </div>
 
@@ -120,10 +120,10 @@ const Contact = () => {
                     </div>
 
                     <p>
-                      <a href={`tel:${ContactDetails?.Number}`}>
+                      <Link to={`tel:${ContactDetails?.Number}`}>
                         {/* (+091) 413 554 8598 */}
                         {ContactDetails?.Number}
-                      </a>
+                      </Link>
                     </p>
                   </div>
 

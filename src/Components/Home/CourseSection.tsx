@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CourseCard3 } from "../Course";
+import { CourseCard2 } from "../Course";
 import { Queries } from "../../Api";
 import { ROUTES } from "../../Constants";
 
@@ -93,7 +93,7 @@ const CourseSection = () => {
                 <div className="edublink-course-widget-wrapper flex justify-center">
                   <div className="edublink-archive-lp-courses grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! px-6! w-full edublink-course-archive edublink-lms-courses-grid active-white-bg edublink-row eb-masonry-grid-wrapper">
                     {Courses?.splice(0, 3)?.map((course) => (
-                      <CourseCard3 key={course._id} course={course} />
+                      <CourseCard2 key={course._id} course={course} />
                     ))}
                   </div>
                 </div>

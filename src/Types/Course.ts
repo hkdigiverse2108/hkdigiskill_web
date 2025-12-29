@@ -55,9 +55,14 @@ export interface CourseApiData {
 }
 
 
-export interface CourseApiResponse {
+export interface AllCourseApiResponse {
   data: { course_data: Course[] }
 }
+
+export interface CourseApiResponse {
+  data: Course
+}
+
 
 export interface CourseCardProps {
   course: Course;

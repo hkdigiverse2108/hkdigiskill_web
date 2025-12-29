@@ -117,7 +117,7 @@ const Header = () => {
               </ul>
             </li>
             {menuItems.map((item, index) => (
-              <li key={index} className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13617 dropdown menu-align-left">
+              <li key={index} className="menu-item menu-item-type-custom menu-item-object-custom  nav-item menu-item-13617 dropdown menu-align-left">
                 <NavLink to={item?.link || ""} className="nav-link">
                   {item?.Title}
                 </NavLink>

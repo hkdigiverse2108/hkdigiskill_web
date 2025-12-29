@@ -169,7 +169,6 @@ const Course = () => {
                 <li>
                   <a
                     className="page-numbers"
-                    href="https://demo.edublink.co/courses/page/2/?course_preset=2&excerpt_length=12"
                   >
                     2
                   </a>
@@ -178,7 +177,6 @@ const Course = () => {
                 <li>
                   <a
                     className="page-numbers"
-                    href="https://demo.edublink.co/courses/page/3/?course_preset=2&excerpt_length=12"
                   >
                     3
                   </a>
@@ -187,7 +185,6 @@ const Course = () => {
                 <li>
                   <a
                     className="page-numbers"
-                    href="https://demo.edublink.co/courses/page/4/?course_preset=2&excerpt_length=12"
                   >
                     4
                   </a>
@@ -196,7 +193,6 @@ const Course = () => {
                 <li>
                   <a
                     className="page-numbers"
-                    href="https://demo.edublink.co/courses/page/2/?course_preset=2&excerpt_length=12"
                     title="next"
                   >
                     <span className="edublink-pagination-icon icon-east"></span>

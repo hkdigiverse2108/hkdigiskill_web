@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
         <BreadCrumb title="Privacy Policy" />
       </section>
 
-      <section className="container">
+      <section className="container my-50!">
         <div
           dangerouslySetInnerHTML={{
             __html: data?.data.content || "",

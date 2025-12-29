@@ -9,10 +9,15 @@ import {
   SupportPolicy,
 } from "../Data";
 import { useState } from "react";
-import { Mutation } from "../Api";
+import { Mutation, Queries } from "../Api";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+
+  const { data: settings } = Queries.useGetAllSettings();
+  const AllSettings = settings?.data;
+  const { facebook, instagram, linkedin, twitter } =
+    AllSettings?.socialMediaLinks || {};
 
   const { mutate: useAddNewsLetterMutate } = Mutation.useAddNewsLetter();
 
@@ -32,6 +37,44 @@ const Footer = () => {
       });
     } catch (error) {}
   };
+
+  const socialIcons = [
+    {
+      name: "facebook",
+      link: facebook,
+      iconClass: "icon-facebook",
+      wrapperClass:
+        "elementor-social-icon-icon-facebook elementor-repeater-item-14da801",
+    },
+    {
+      name: "linkedin2",
+      link: linkedin,
+      iconClass: "icon-linkedin2",
+      wrapperClass:
+        "elementor-social-icon-icon-linkedin2 elementor-repeater-item-50f33d0",
+    },
+    {
+      name: "instagram",
+      link: instagram,
+      iconClass: "icon-instagram",
+      wrapperClass:
+        "elementor-social-icon-icon-instagram elementor-repeater-item-ed7a4ad",
+    },
+    {
+      name: "twitter",
+      link: twitter,
+      iconClass: "icon-twitter",
+      wrapperClass:
+        "elementor-social-icon-icon-twitter elementor-repeater-item-83e3472",
+    },
+    // {
+    //   name: "youtube",
+    //   link : ,
+    //   iconClass: "icon-youtube",
+    //   wrapperClass:
+    //     "elementor-social-icon-icon-youtube elementor-repeater-item-5779254",
+    // },
+  ];
 
   return (
     <footer
@@ -258,7 +301,6 @@ const Footer = () => {
                                 placeholder="Your email"
                                 required
                                 autoComplete="off"
-                              
                               />
                             </div>
                             <div className="edublink-mailchimp-submit-btn">
@@ -296,66 +338,20 @@ const Footer = () => {
                         }}
                       />
                       <div className="elementor-social-icons-wrapper elementor-grid">
-                        <span className="elementor-grid-item">
-                          <Link
-                            to={""}
-                            className="elementor-icon elementor-social-icon elementor-social-icon-icon-facebook elementor-repeater-item-14da801"
-                            target="_blank"
-                          >
-                            <span className="elementor-screen-only">
-                              Icon-facebook
-                            </span>
-                            <i className="edublink icon-facebook" />
-                          </Link>
-                        </span>
-                        <span className="elementor-grid-item">
-                          <Link
-                            to={""}
-                            className="elementor-icon elementor-social-icon elementor-social-icon-icon-linkedin2 elementor-repeater-item-50f33d0"
-                            target="_blank"
-                          >
-                            <span className="elementor-screen-only">
-                              Icon-linkedin2
-                            </span>
-                            <i className="edublink icon-linkedin2" />
-                          </Link>
-                        </span>
-                        <span className="elementor-grid-item">
-                          <Link
-                            to={""}
-                            className="elementor-icon elementor-social-icon elementor-social-icon-icon-instagram elementor-repeater-item-ed7a4ad"
-                            target="_blank"
-                          >
-                            <span className="elementor-screen-only">
-                              Icon-instagram
-                            </span>
-                            <i className="edublink icon-instagram" />
-                          </Link>
-                        </span>
-                        <span className="elementor-grid-item">
-                          <Link
-                            to={""}
-                            className="elementor-icon elementor-social-icon elementor-social-icon-icon-twitter elementor-repeater-item-83e3472"
-                            target="_blank"
-                          >
-                            <span className="elementor-screen-only">
-                              Icon-twitter
-                            </span>
-                            <i className="edublink icon-twitter" />
-                          </Link>
-                        </span>
-                        <span className="elementor-grid-item">
-                          <Link
-                            to={""}
-                            className="elementor-icon elementor-social-icon elementor-social-icon-icon-youtube elementor-repeater-item-5779254"
-                            target="_blank"
-                          >
-                            <span className="elementor-screen-only">
-                              Icon-youtube
-                            </span>
-                            <i className="edublink icon-youtube" />
-                          </Link>
-                        </span>
+                        {socialIcons.map((item, index) => (
+                          <span className="elementor-grid-item" key={index}>
+                            <Link
+                              to={item?.link}
+                              className={`elementor-icon elementor-social-icon ${item.wrapperClass}`}
+                              target="_blank"
+                            >
+                              <span className="elementor-screen-only">
+                                Icon-{item.name}
+                              </span>
+                              <i className={`edublink ${item.iconClass}`} />
+                            </Link>
+                          </span>
+                        ))}
                       </div>
                     </div>
                     {/* <div className="elementor-widget-container">

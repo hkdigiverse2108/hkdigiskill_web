@@ -6,12 +6,12 @@ import { Queries } from "../../Api";
 import { useState } from "react";
 
 const FaqSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0); // first open by default
   const { data } = Queries.useGetFaq();
 
   const faq = data?.data?.faq_data;
-  const featuedFaq = faq?.filter((item) => item?.isFeatured === true);
+  const featuedFaq = faq?.filter((item) => item?.isFeatured === true)?.splice(0,5);
 
-  const [activeIndex, setActiveIndex] = useState(0); // first open by default
 
   return (
     <section

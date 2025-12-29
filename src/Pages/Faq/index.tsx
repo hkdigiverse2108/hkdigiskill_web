@@ -2,40 +2,47 @@ import { useState } from "react";
 import BreadCrumb from "../../Components/Common/BreadCrumb";
 import FaqCard from "../../Components/Faq/FaqCard";
 import GetCeritficateSection from "../../Components/Common/GetCeritficateSection";
-import type { FaqCategory, FaqData } from "../../Types";
-
-interface Category {
-  id: FaqCategory;
-  label: string;
-}
-
-
-const categories: Category[] = [
-  { id: "general", label: "General Questions" },
-  { id: "regular", label: "Regular Questions" },
-  { id: "advanced", label: "Advanced Questions" },
-  { id: "policies", label: "Company Policies" },
-  { id: "payment", label: "Payment Options" },
-  { id: "terms", label: "Terms & Conditions" },
-];
-
-const faqData: FaqData = {
-  general: [
-    { q: "How can I contact a school directly?", a: "Lorem ipsum dolor sit amet..." },
-    { q: "How long is my personal free trial?", a: "Lorem ipsum dolor sit amet..." },
-  ],
-  regular: [
-    { q: "What kind of support does edublink provide?", a: "Lorem ipsum dolor sit amet..." },
-    { q: "How long do I get support & updates?", a: "Lorem ipsum dolor sit amet..." },
-  ],
-  advanced: [{ q: "Advanced question example?", a: "Lorem ipsum dolor..." }],
-  policies: [{ q: "What are your company policies?", a: "Lorem ipsum dolor..." }],
-  payment: [{ q: "What payment methods do you accept?", a: "Lorem ipsum dolor..." }],
-  terms: [{ q: "What are the terms & conditions?", a: "Lorem ipsum dolor..." }],
-};
+import type { FaqCategory } from "../../Types";
+import { Queries } from "../../Api";
 
 const Faq = () => {
-  const [activeTab, setActiveTab] = useState("regular");
+  const [activeIndex, setActiveIndex] = useState(0); // first open by default
+
+  const { data } = Queries.useGetFaq();
+
+  const faq = data?.data?.faq_data || [];
+
+  // Group FAQs by type
+  const mappedFaqData: Record<string, { q: string; a: string }[]> = faq.reduce(
+    (acc: any, item: any) => {
+      const type = item.type;
+
+      if (!acc[type]) {
+        acc[type] = [];
+      }
+
+      acc[type].push({
+        q: item.question,
+        a: item.answer,
+      });
+
+      return acc;
+    },
+    {}
+  );
+
+  // Build tabs from API types
+  const categories = Object.keys(mappedFaqData).map((type) => ({
+    id: type as FaqCategory,
+    label: type, // 👈 SHOW TYPE AS TAB NAME
+  }));
+
+  const [activeTab, setActiveTab] = useState<FaqCategory | null>(null);
+
+  // ✅ Set first tab AFTER data loads
+  if (!activeTab && categories.length > 0) {
+    setActiveTab(categories[0].id);
+  }
 
   return (
     <div id="faq">
@@ -49,24 +56,17 @@ const Faq = () => {
             <div className="elementor-container elementor-column-gap-extended">
               <div className="elementor-column elementor-col-100">
                 <div className="elementor-widget-wrap elementor-element-populated">
-
                   <div className="elementor-widget elementor-widget-edublink-faq">
                     <div className="elementor-widget-container">
                       <div className="eb-faq-wrapper eb-faq-style-2">
                         <div className="edublink-row">
-
                           {/* LEFT SIDE */}
                           <div className="edublink-col-lg-4">
                             <div className="eb-faq-left-side">
                               <div className="edublink-section-heading">
-                                <h3 className="heading">Questions By This Category</h3>
-                                <div className="sub-heading">
-                                  <p>
-                                    Lorem ipsum dolor sit amet consectur
-                                    adipiscing elit sed eius mod ex tempor
-                                    incididunt labore.
-                                  </p>
-                                </div>
+                                <h3 className="heading">
+                                  Questions By This Category
+                                </h3>
                               </div>
 
                               <ul className="eb-faq-heading-wrapper">
@@ -90,7 +90,6 @@ const Faq = () => {
                           {/* RIGHT SIDE */}
                           <div className="edublink-col-lg-8">
                             <div className="eb-faqs-content-wrapper">
-
                               {categories.map((cat) => (
                                 <div
                                   key={cat.id}
@@ -102,15 +101,25 @@ const Faq = () => {
                                     <div className="elementor-container">
                                       <div className="elementor-column elementor-col-100">
                                         <div className="elementor-widget-wrap elementor-element-populated">
-                                          <div className="elementor-widget elementor-widget-edublink-accordion  w-full!">
-                                            <div className="elementor-widget-container  ">
+                                          <div className="elementor-widget elementor-widget-edublink-accordion w-full!">
+                                            <div className="elementor-widget-container">
                                               <div className="eb-accordion header-default border-default style-default">
-                                                {faqData[cat.id]?.map(
+                                                {mappedFaqData[cat.id]?.map(
                                                   (item, index) => (
                                                     <FaqCard
                                                       key={index}
                                                       question={item.q}
                                                       answer={item.a}
+                                                      isOpen={
+                                                        activeIndex === index
+                                                      }
+                                                      onClick={() =>
+                                                        setActiveIndex(
+                                                          activeIndex === index
+                                                            ? -1
+                                                            : index
+                                                        )
+                                                      }
                                                     />
                                                   )
                                                 )}
@@ -123,15 +132,12 @@ const Faq = () => {
                                   </section>
                                 </div>
                               ))}
-
                             </div>
                           </div>
-
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>

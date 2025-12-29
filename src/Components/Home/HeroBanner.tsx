@@ -5,8 +5,10 @@ import { Queries } from "../../Api";
 
 const HeroBanner = () => {
   const { data } = Queries.useGetHeroBannerImage();
+  const banner = data?.data?.hero_banner_data[0];
 
-  const banner = data?.data?.hero_banner_data[0]; 
+  const { data: settings } = Queries.useGetAllSettings();
+  const AllSettings = settings?.data;
 
   return (
     <section className="hero-banner hero-style-2 elementor-section elementor-top-section elementor-element elementor-element-843e85a elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle">
@@ -113,7 +115,9 @@ const HeroBanner = () => {
                                 Online Support
                               </span>
                               <h4 className="title edublink-p-medium edublink-color-secondary">
-                                <Link to={""}>+012 (345) 6789</Link>
+                                <Link to={`tel:${AllSettings?.phoneNumber}`}>
+                                  {AllSettings?.phoneNumber}
+                                </Link>
                               </h4>
                             </div>
                           </div>

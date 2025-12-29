@@ -2,8 +2,17 @@ import { Link } from "react-router-dom";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 import VideoModal from "../Common/VideoModal";
+import { useAppDispatch } from "../../Store/Hook";
+import { setModalVideoLink } from "../../Store/Slices/VideoModalSlice";
 
 const VideoAreaSection = () => {
+  const dispatch = useAppDispatch();
+
+  const videoLink =
+    "https://www.youtube.com/embed/0Trxb5WfBKc?autoplay=1&rel=0&modestbranding=1";
+
+  const handleOpenVideo = () => dispatch(setModalVideoLink(videoLink));
+
   return (
     <section
       className="elementor-section elementor-top-section elementor-element elementor-element-26111f2 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -76,6 +85,7 @@ const VideoAreaSection = () => {
             >
               <div className="elementor-widget-container">
                 <div
+                  onClick={handleOpenVideo}
                   className="edublink-video-popup-wrapper edublink-video-popup-animation-continious edublink-video-popup-continious-type-custom-ripple-color edublink-video-popup-bg-enable"
                   style={{
                     backgroundImage:
@@ -93,7 +103,6 @@ const VideoAreaSection = () => {
           </MouseParallax>
         </div>
       </div>
-      <VideoModal />
     </section>
   );
 };

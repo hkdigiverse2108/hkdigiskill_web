@@ -1,7 +1,7 @@
 import React from "react";
-import type { Blog, BlogCardProps } from "../../Types";
-
-
+import type { BlogCardProps } from "../../Types";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../Constants";
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   blog.mainImage =
@@ -17,11 +17,14 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       <div className="edu-blog blog-style-6">
         <div className="inner">
           <div className="thumbnail">
-            <a href="">
-              <img src={blog.mainImage || blog.coverImage} alt={blog.title} />
+            <a>
+              <img
+                src={blog?.mainImage || blog?.coverImage}
+                alt={blog?.title}
+              />
             </a>
             <span className="date">
-              {new Date(blog.createdAt).toLocaleDateString("en-GB", {
+              {new Date(blog?.createdAt).toLocaleDateString("en-GB", {
                 day: "2-digit",
                 month: "short",
                 year: "numeric",
@@ -31,20 +34,23 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
 
           <div className="content position-top">
             <div className="read-more-btn">
-              <a className="btn-icon-round" href="">
+              <Link
+                className="btn-icon-round"
+                to={`${ROUTES.BLOG.DETAILS.replace(":id", blog?._id)}`}
+              >
                 <i className="icon-4" />
-              </a>
+              </Link>
             </div>
 
             <div className="category-wrap">
-              <a href="">{blog.category}</a>
+              <a>{blog?.category}</a>
             </div>
 
             <h5 className="title">
-              <a href="">{blog.title}</a>
+              <a>{blog?.title}</a>
             </h5>
 
-            <p>{blog.subTitle || blog.content.slice(0, 80).concat("...")}</p>
+            <p>{blog?.subTitle || "alter static Text"}</p>
           </div>
         </div>
       </div>

@@ -11,9 +11,13 @@ export const KEYS = {
   FAQ: "faq",
   TRUSTED_PARTNER: "trusted-partner",
   COURSE: "course",
+  COURSE_ONE: "course-one",
+  COURSE_CURRICULUM: "course-curriculum",
   LEGALITY: "ligality",
-  CONTACT : "contact",
+  CONTACT: "contact",
   BLOG: "blog",
+  SETTINGS: "settings",
+  GALLARY: "gallary",
 
 
 } as const;

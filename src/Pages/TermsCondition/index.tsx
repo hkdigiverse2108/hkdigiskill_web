@@ -8,7 +8,7 @@ const TermsCondition = () => {
   return (
     <div>
       <BreadCrumb title="Terms & Conditions" />
-      <section className="container">
+      <section className="container my-50!">
         <div
           dangerouslySetInnerHTML={{
             __html: data?.data.content || "",

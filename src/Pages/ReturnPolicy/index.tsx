@@ -8,7 +8,7 @@ const ReturnPolicy = () => {
   return (
     <div>
       <BreadCrumb title="Return Policy" />
-      <section className="container">
+      <section className="container my-50!">
         <div
           dangerouslySetInnerHTML={{
             __html: data?.data.content || "",

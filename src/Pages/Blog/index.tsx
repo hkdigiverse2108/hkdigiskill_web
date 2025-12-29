@@ -111,25 +111,7 @@ const Blog = () => {
 
   const Blogs = data?.data?.blog_data;
 
-  // let {
-  //   title,
-  //   subTitle,
-  //   content,
-  //   author,
-  //   category,
-  //   coverImage,
-  //   mainImage,
-  //   quote,
-  //   isFeatured,
-  // } = Blogs;
-
-  // mainImage =
-  //   "https://demo.edublink.co/wp-content/uploads/2023/03/course-45-590x430.jpg";
-  // coverImage =
-  //   "https://demo.edublink.co/wp-content/uploads/2023/11/course-93-590x430.jpg";
-
   const latestBlogs = Blogs?.slice(0, 3);
-  console.log("blogs", Blogs);
 
   return (
     <div>
@@ -165,47 +147,24 @@ const Blog = () => {
                 <nav className="edublink-pagination-wrapper">
                   <ul className="page-number">
                     <li>
-                      <a
-                        className="page-numbers"
-                        href="https://demo.edublink.co/blog/?excerpt_length=10&post_preset=3"
-                        title="previous"
-                      >
+                      <a className="page-numbers" title="previous">
                         <span className="edublink-pagination-icon icon-west" />
                       </a>
                     </li>
                     <li>
-                      <a
-                        className="page-numbers"
-                        href="https://demo.edublink.co/blog/?excerpt_length=10&post_preset=3"
-                      >
-                        1
-                      </a>
+                      <a className="page-numbers">1</a>
                     </li>
                     <li className="active">
                       <span className="page-numbers current">2</span>
                     </li>
                     <li>
-                      <a
-                        className="page-numbers"
-                        href="https://demo.edublink.co/blog/page/3/?excerpt_length=10&post_preset=3"
-                      >
-                        3
-                      </a>
+                      <a className="page-numbers">3</a>
                     </li>
                     <li>
-                      <a
-                        className="page-numbers"
-                        href="https://demo.edublink.co/blog/page/4/?excerpt_length=10&post_preset=3"
-                      >
-                        4
-                      </a>
+                      <a className="page-numbers">4</a>
                     </li>
                     <li>
-                      <a
-                        className="page-numbers"
-                        href="https://demo.edublink.co/blog/page/3/?excerpt_length=10&post_preset=3"
-                        title="next"
-                      >
+                      <a className="page-numbers" title="next">
                         <span className="edublink-pagination-icon icon-east" />
                       </a>
                     </li>
@@ -253,7 +212,7 @@ const Blog = () => {
                   <div className="widget-posts recent-post-widget edublink-recent-post-widget">
                     <div className="edublink-recent-post-each-item">
                       <div className="edublink-post-widget-thumb">
-                        <a href="https://demo.edublink.co/crafting-effective-learning-paths-at-curriculum-corner/">
+                        <a >
                           <img
                             src="https://demo.edublink.co/wp-content/uploads/2023/11/course-79-300x200.jpg"
                             alt="Thumb"
@@ -263,7 +222,7 @@ const Blog = () => {
 
                       <div className="media-body">
                         <h5 className="entry-title">
-                          <a href="https://demo.edublink.co/crafting-effective-learning-paths-at-curriculum-corner/">
+                          <a>
                             Crafting Effective Learning Guide Line
                           </a>
                         </h5>
@@ -278,7 +237,7 @@ const Blog = () => {
 
                     <div className="edublink-recent-post-each-item">
                       <div className="edublink-post-widget-thumb">
-                        <a href="https://demo.edublink.co/exploring-learning-landscapes-in-academic-alcove/">
+                        <a >
                           <img
                             src="https://demo.edublink.co/wp-content/uploads/2023/03/course-09-300x200.jpg"
                             alt="Thumb"
@@ -288,7 +247,7 @@ const Blog = () => {
 
                       <div className="media-body">
                         <h5 className="entry-title">
-                          <a href="https://demo.edublink.co/exploring-learning-landscapes-in-academic-alcove/">
+                          <a >
                             Exploring Learning Landscapes in Academic
                           </a>
                         </h5>
@@ -303,7 +262,7 @@ const Blog = () => {
 
                     <div className="edublink-recent-post-each-item">
                       <div className="edublink-post-widget-thumb">
-                        <a href="https://demo.edublink.co/voices-from-the-learning-education-hub/">
+                        <a >
                           <img
                             src="https://demo.edublink.co/wp-content/uploads/2023/03/course-07-300x200.jpg"
                             alt="Thumb"
@@ -313,7 +272,7 @@ const Blog = () => {
 
                       <div className="media-body">
                         <h5 className="entry-title">
-                          <a href="https://demo.edublink.co/voices-from-the-learning-education-hub/">
+                          <a >
                             Voices from the Learning Education Hub
                           </a>
                         </h5>
@@ -340,7 +299,7 @@ const Blog = () => {
                         className="edublink-recent-post-each-item"
                       >
                         <div className="edublink-post-widget-thumb">
-                          <a href="">
+                          <a>
                             <img
                               src={
                                 "https://demo.edublink.co/wp-content/uploads/2023/03/course-45-590x430.jpg"
@@ -352,7 +311,7 @@ const Blog = () => {
 
                         <div className="media-body">
                           <h5 className="entry-title">
-                            <a href="">{blog.title}</a>
+                            <a>{blog.title}</a>
                           </h5>
 
                           <div className="post-meta">
@@ -382,43 +341,25 @@ const Blog = () => {
 
                   <ul>
                     <li className="cat-item cat-item-72">
-                      <a href="https://demo.edublink.co/category/child-development/">
-                        Child Development
-                      </a>{" "}
-                      (2)
+                      <a>Child Development</a> (2)
                     </li>
                     <li className="cat-item cat-item-77">
-                      <a href="https://demo.edublink.co/category/computer-engineering/">
-                        Computer Engineering
-                      </a>{" "}
-                      (3)
+                      <a>Computer Engineering</a> (3)
                     </li>
                     <li className="cat-item cat-item-70">
-                      <a href="https://demo.edublink.co/category/learning/">
-                        Learning
-                      </a>{" "}
-                      (11)
+                      <a>Learning</a> (11)
                     </li>
                     <li className="cat-item cat-item-80">
-                      <a href="">Nutrition</a> (11)
+                      <a>Nutrition</a> (11)
                     </li>
                     <li className="cat-item cat-item-66">
-                      <a href="https://demo.edublink.co/category/science/">
-                        Science
-                      </a>{" "}
-                      (15)
+                      <a>Science</a> (15)
                     </li>
                     <li className="cat-item cat-item-67">
-                      <a href="https://demo.edublink.co/category/technology/">
-                        Technology
-                      </a>{" "}
-                      (6)
+                      <a>Technology</a> (6)
                     </li>
                     <li className="cat-item cat-item-76">
-                      <a href="https://demo.edublink.co/category/web-development/">
-                        Web Development
-                      </a>{" "}
-                      (4)
+                      <a>Web Development</a> (4)
                     </li>
                   </ul>
                 </section>
@@ -450,7 +391,6 @@ const Blog = () => {
 
                   <div className="tagcloud">
                     <a
-                      href="https://demo.edublink.co/tag/child-education/"
                       className="tag-cloud-link tag-link-74 tag-link-position-1"
                       style={{ fontSize: "17.333333333333pt" }}
                       aria-label="Child Education (9 items)"
@@ -459,7 +399,6 @@ const Blog = () => {
                     </a>
 
                     <a
-                      href="https://demo.edublink.co/tag/classroom/"
                       className="tag-cloud-link tag-link-75 tag-link-position-2"
                       style={{ fontSize: "8pt" }}
                       aria-label="Classroom (3 items)"
@@ -468,7 +407,6 @@ const Blog = () => {
                     </a>
 
                     <a
-                      href="https://demo.edublink.co/tag/design/"
                       className="tag-cloud-link tag-link-68 tag-link-position-3"
                       style={{ fontSize: "18.266666666667pt" }}
                       aria-label="Design (10 items)"
@@ -477,7 +415,6 @@ const Blog = () => {
                     </a>
 
                     <a
-                      href="https://demo.edublink.co/tag/development/"
                       className="tag-cloud-link tag-link-69 tag-link-position-4"
                       style={{ fontSize: "17.333333333333pt" }}
                       aria-label="Development (9 items)"
@@ -486,7 +423,6 @@ const Blog = () => {
                     </a>
 
                     <a
-                      href="https://demo.edublink.co/tag/elearning/"
                       className="tag-cloud-link tag-link-78 tag-link-position-5"
                       style={{ fontSize: "22pt" }}
                       aria-label="eLearning (15 items)"
@@ -495,7 +431,6 @@ const Blog = () => {
                     </a>
 
                     <a
-                      href="https://demo.edublink.co/tag/future/"
                       className="tag-cloud-link tag-link-73 tag-link-position-6"
                       style={{ fontSize: "13.833333333333pt" }}
                       aria-label="Future (6 items)"
@@ -504,7 +439,6 @@ const Blog = () => {
                     </a>
 
                     <a
-                      href="https://demo.edublink.co/tag/higher-study/"
                       className="tag-cloud-link tag-link-71 tag-link-position-7"
                       style={{ fontSize: "15pt" }}
                       aria-label="Higher Study (7 items)"
@@ -513,7 +447,6 @@ const Blog = () => {
                     </a>
 
                     <a
-                      href="https://demo.edublink.co/tag/software/"
                       className="tag-cloud-link tag-link-79 tag-link-position-8"
                       style={{ fontSize: "12.2pt" }}
                       aria-label="Software (5 items)"

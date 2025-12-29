@@ -61,6 +61,8 @@ const CategoriesSection = () => {
                         className={`edublink-col-lg-3 edublink-col-md-6 edublink-col-sm-6 
     edublink-course-single-cat edublink-course-cat-single-grid 
     ${colorClasses[index % colorClasses.length]}`}
+                        data-aos="fade-up"
+                        data-aos-duration={1200}
                       >
                         <div className="edublink-category-2">
                           <div className="icon">

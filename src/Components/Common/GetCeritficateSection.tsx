@@ -15,7 +15,6 @@ const GetCeritficateSection = () => {
             <div className="edublink-button-widget-wrapper">
               <a
                 className="edublink-button-item edublink-button-style-default edublink-button-size-custom edublink-button-icon-position-after default-style"
-                href="#"
               >
                 Get started now<i className="icon-4"></i>
               </a>

@@ -22,6 +22,13 @@ export const URL_KEYS = {
   TESTIMONIALS: { ALL: "testimonial/all" },
   FAQ: { ALL: "faq/all" },
   TRUSTED_PARTNER: { ALL: "trusted-partner/all" },
-  COURSE: { ALL: "course/all" },
-  LEGALITY: "legality"
+  COURSE: {
+    ALL: "course/all",
+    ONE: "course/",
+    CURRICULUM: "course-curriculum/all?courseId="
+  },
+  LEGALITY: "legality",
+  SETTINGS: "settings/all",
+  GALLARY: "gallery/all"
+
 } as const;

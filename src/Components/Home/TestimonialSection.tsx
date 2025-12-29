@@ -60,7 +60,8 @@ const TestimonialSection = () => {
               <div className="elementor-widget-container">
                 <div className="edublink-button-widget-wrapper">
                   <Link
-                    to="/testimonials"
+                    // to="/testimonials"
+                    to=""
                     className="edublink-button-item edublink-button-style-default edublink-button-size-large edublink-button-icon-position-after default-style"
                   >
                     View All
