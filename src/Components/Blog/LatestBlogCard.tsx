@@ -1,6 +1,7 @@
 import React from "react";
 import type { BlogCardProps } from "../../Types";
 import { Link } from "react-router-dom";
+import { ROUTES } from "../../Constants";
 
 const LatestBlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   blog.mainImage =
@@ -28,7 +29,10 @@ const LatestBlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           </div>
           <div className="content position-top">
             <div className="read-more-btn">
-              <Link to={""} className="btn-icon-round">
+              <Link
+                to={`${ROUTES.BLOG.DETAILS.replace(":id", blog?._id)}`}
+                className="btn-icon-round"
+              >
                 <i className="icon-4" />
               </Link>
             </div>

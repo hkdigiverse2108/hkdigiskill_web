@@ -27,7 +27,7 @@ export interface Settings extends BaseType {
 }
 
 export interface SettingsApiResponse {
-    data: {
-        settings: Settings;
-    };
+    data:
+    Settings;
+
 }
