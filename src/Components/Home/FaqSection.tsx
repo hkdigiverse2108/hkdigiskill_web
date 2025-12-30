@@ -10,8 +10,9 @@ const FaqSection = () => {
   const { data } = Queries.useGetFaq();
 
   const faq = data?.data?.faq_data;
-  const featuedFaq = faq?.filter((item) => item?.isFeatured === true)?.splice(0,5);
-
+  const featuedFaq = faq
+    ?.filter((item) => item?.isFeatured === true)
+    ?.splice(0, 5);
 
   return (
     <section
@@ -73,7 +74,7 @@ const FaqSection = () => {
                           <span data-depth={-2}>
                             <img
                               decoding="async"
-                              src={`${ImagePath}faq/shape-03.png`}
+                              src={`${ImagePath}shapes/shape-3.png`}
                               alt="shape-03"
                             />
                           </span>
@@ -90,7 +91,7 @@ const FaqSection = () => {
                           <span data-depth={2}>
                             <img
                               decoding="async"
-                              src={`${ImagePath}faq/shape-02.png`}
+                              src={`${ImagePath}shapes/shape-10.png`}
                               alt="shape-02"
                             />
                           </span>
@@ -140,7 +141,7 @@ const FaqSection = () => {
                           <span data-depth={2}>
                             <img
                               decoding="async"
-                              src={`${ImagePath}faq/shape-04.png`}
+                              src={`${ImagePath}shapes/shape-5.png`}
                               alt="Hero-Shape-18"
                             />
                           </span>
@@ -157,7 +158,7 @@ const FaqSection = () => {
                           <span data-depth={-2}>
                             <img
                               decoding="async"
-                              src={`${ImagePath}faq/shape-05.png`}
+                              src={`${ImagePath}shapes/shape-11.png`}
                               alt="shape-05"
                             />
                           </span>
@@ -228,7 +229,7 @@ const FaqSection = () => {
                   <span data-depth="1.5">
                     <img
                       decoding="async"
-                      src={`${ImagePath}about/shape-02.png`}
+                      src={`${ImagePath}shapes/shape-12.png`}
                       alt="About-Shape-3"
                     />
                   </span>

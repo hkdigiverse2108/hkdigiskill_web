@@ -56,7 +56,7 @@ export interface CourseApiData {
 
 
 export interface AllCourseApiResponse {
-  data: { course_data: Course[] }
+  data: { course_data: Course[], totalData: number }
 }
 
 export interface CourseApiResponse {

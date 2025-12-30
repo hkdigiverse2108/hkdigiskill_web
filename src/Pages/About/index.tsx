@@ -197,7 +197,7 @@ const About = () => {
                       <div className=" ">
                         <img
                           decoding="async"
-                          src={`${ImagePath}counterup/shape-02.png`}
+                          src={`${ImagePath}shapes/shape-5.png`}
                           alt="shape-02"
                         />
                       </div>
@@ -206,7 +206,7 @@ const About = () => {
                       <div data-depth={2} className="">
                         <img
                           decoding="async"
-                          src={`${ImagePath}about/shape-45.png`}
+                          src={`${ImagePath}shapes/shape-1.png`}
                           alt="shape-45"
                         />
                       </div>

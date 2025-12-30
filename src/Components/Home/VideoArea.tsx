@@ -36,7 +36,7 @@ const VideoAreaSection = () => {
                   <span data-depth={2}>
                     <img
                       decoding="async"
-                      src={`${ImagePath}about/shape-37.png`}
+                      src={`${ImagePath}shapes/shape-7.png`}
                       alt="About-Shape-2"
                     />
                   </span>
@@ -53,7 +53,7 @@ const VideoAreaSection = () => {
                   <span data-depth={-2}>
                     <img
                       decoding="async"
-                      src={`${ImagePath}faq/shape-04.png`}
+                      src={`${ImagePath}shapes/shape-5.png`}
                       alt="Hero-Shape-18"
                     />
                   </span>

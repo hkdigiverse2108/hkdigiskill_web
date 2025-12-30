@@ -11,8 +11,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
     <div
       id={blog._id}
-      className="edublink-post-one-single-grid edublink-col-lg-6 eb-masonry-item edublink-col-md-6 edublink-col-sm-12 post type-post status-publish format-standard has-post-thumbnail hentry category-nutrition category-science tag-child-education tag-elearning sal-animate"
-      data-sal=""
+      className=" p-0!  h-full! w-full! edublink-post-one-single-grid edublink-col-lg-12 eb-masonry-item edublink-col-md-12 edublink-col-sm-12 post type-post status-publish format-standard has-post-thumbnail hentry category-nutrition category-science tag-child-education tag-elearning sal-animate"
+      data-aos="fade-up"
+      data-aos-duration={1200}
     >
       <div className="edu-blog blog-style-6">
         <div className="inner">

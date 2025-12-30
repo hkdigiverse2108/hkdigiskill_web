@@ -37,18 +37,18 @@ const BreadCrumb: FC<BreadCrumbProp> = ({ title }) => {
           </div>
           <div data-depth={-2} className="shape-image eb-mouse-animation shape-3">
             <span>
-              <img src={`${ImagePath}about/shape-45.png`} alt="About Shape 5" />
+              <img src={`${ImagePath}shapes/shape-1.png`} alt="About Shape 5" />
             </span>
            
           </div>
           <div data-depth={-2} className="shape-image eb-mouse-animation shape-4">
             <span>
-              <img decoding="async" src={`${ImagePath}about/shape-15.png`} alt="shape-03" />
+              <img decoding="async" src={`${ImagePath}shapes/shape-2.png`} alt="shape-03" />
             </span>
           </div>
           <div data-depth={2} className="shape-image eb-mouse-animation shape-5">
             <span>
-              <img decoding="async" src={`${ImagePath}faq/shape-03.png`} alt="shape-03" />
+              <img decoding="async" src={`${ImagePath}shapes/shape-3.png`} alt="shape-03" />
             </span>
           </div>
         </div>

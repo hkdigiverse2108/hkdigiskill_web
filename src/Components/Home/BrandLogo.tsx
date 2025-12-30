@@ -38,7 +38,7 @@ const BrandLogo = () => {
               <span data-depth={-2}>
                 <img
                   decoding="async"
-                  src={`${ImagePath}about/shape-37.png`}
+                  src={`${ImagePath}shapes/shape-7.png`}
                   alt="About-Shape-2"
                 />
               </span>

@@ -11,6 +11,10 @@ body {
   color: var(--edublink-color-primary) !important;
 } */
 
+.container-p {
+  @apply px-6 sm:px-9;
+}
+
 /* ============== Contact Start ============== */
 
 .elementor-17213
@@ -188,4 +192,3 @@ body {
   justify-content: center;
 }
 /* ============== FAQ Section End  ============== */
-

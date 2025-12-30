@@ -25,14 +25,14 @@ const GetCeritficateSection = () => {
         {/* Decorative elements */}
         <div data-depth={2} className="shape shape-left-1">
           <span>
-            <img src={`${ImagePath}about/shape-25.png`} alt="About Shape 5" />
+            <img src={`${ImagePath}shapes/shape-4.png`} alt="About Shape 5" />
           </span>
         </div>
         <div data-depth={-2} className="shape shape-left-2">
           <span className="">
             <img
               decoding="async"
-              src={`${ImagePath}about/shape-15.png`}
+              src={`${ImagePath}shapes/shape-2.png`}
               alt="shape-03"
             />
           </span>
@@ -41,7 +41,7 @@ const GetCeritficateSection = () => {
           <span>
             <img
               decoding="async"
-              src={`${ImagePath}about/shape-45.png`}
+              src={`${ImagePath}shapes/shape-1.png`}
               alt="shape-02"
             />
           </span>
@@ -50,7 +50,7 @@ const GetCeritficateSection = () => {
           <span className="">
             <img
               decoding="async"
-              src={`${ImagePath}counterup/shape-02.png`}
+              src={`${ImagePath}shapes/shape-5.png`}
               alt="shape-02"
             />
           </span>

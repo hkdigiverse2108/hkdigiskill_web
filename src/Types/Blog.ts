@@ -21,11 +21,12 @@ export interface Blog extends BaseType {
 export interface BlogListApiResponse {
     data: {
         blog_data: Blog[];
+        totalData: number;
     };
 }
 
 
 export interface BlogCardProps {
-  blog: Blog;
-  style?: React.CSSProperties;
+    blog: Blog;
+    style?: React.CSSProperties;
 }

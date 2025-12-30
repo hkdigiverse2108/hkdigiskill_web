@@ -1,6 +1,13 @@
+import { Queries } from "../../Api";
+import { LatestBlogCard } from "../../Components/Blog";
 import { BreadCrumb } from "../../Components/Common";
 
 const BlogDetails = () => {
+  const { data } = Queries.useGetAllBlogs();
+
+  const Blogs = data?.data?.blog_data;
+  const latestBlogs = Blogs?.slice(0, 3);
+
   return (
     <div>
       <div>
@@ -271,18 +278,8 @@ const BlogDetails = () => {
                   {/* Tags, Social Share */}
                   <div className="edublink-tag-social-share-wrapper">
                     <div className="edublink-tag-social-share edublink-row">
-                      <div className="edublink-col-md-7">
-                        <div className="edublink-post-tag-wrapper">
-                          <span className="post-tags">Tags: </span>
-                          <div className="edublink-post-tag">
-                            <a>Design</a>
-                            <a>Development</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="edublink-col-md-5">
-                        <div className="edublink-single-post-social-share">
+                      <div className="edublink-col-md-12 flex! items-start! text-start!">
+                        <div className="edublink-single-post-social-share  w-fit!">
                           <span className="post-share-text">Share on: </span>
                           <ul className="edublink-social-share-icons-wrapper">
                             <li className="edublink-social-share-each-icon facebook">
@@ -341,24 +338,6 @@ const BlogDetails = () => {
 
           <aside id="secondary" className="widget-area ">
             <div className="widget-area-wrapper">
-              {/* Search Widget */}
-              <section id="search-2" className="widget widget_search">
-                <h2 className="widget-title">Search</h2>
-                <div className="edublink-search-box">
-                  <form className="search-form">
-                    <input
-                      type="search"
-                      name="s"
-                      required
-                      placeholder="Search"
-                    />
-                    <button type="submit" className="search-button">
-                      <i className="icon-2"></i>
-                    </button>
-                  </form>
-                </div>
-              </section>
-
               {/* Latest Posts */}
               <section
                 id="edublinkcore_recent_posts_widget-3"
@@ -367,74 +346,9 @@ const BlogDetails = () => {
                 <h2 className="widget-title">Latest Post</h2>
 
                 <div className="widget-posts recent-post-widget edublink-recent-post-widget">
-                  {/* Post 1 */}
-                  <div className="edublink-recent-post-each-item">
-                    <div className="edublink-post-widget-thumb">
-                      <a>
-                        <img
-                          src="https://demo.edublink.co/wp-content/uploads/2023/11/course-79-300x200.jpg"
-                          alt="Thumb"
-                        />
-                      </a>
-                    </div>
-                    <div className="media-body">
-                      <h5 className="entry-title">
-                        <a>Crafting Effective Learning Guide Line</a>
-                      </h5>
-                      <div className="post-meta">
-                        <span className="post-icon">
-                          <i className="icon-27"></i>
-                        </span>
-                        <span className="post-meta-date"> 15 Nov, 2023</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Post 2 */}
-                  <div className="edublink-recent-post-each-item">
-                    <div className="edublink-post-widget-thumb">
-                      <a>
-                        <img
-                          src="https://demo.edublink.co/wp-content/uploads/2023/03/course-09-300x200.jpg"
-                          alt="Thumb"
-                        />
-                      </a>
-                    </div>
-                    <div className="media-body">
-                      <h5 className="entry-title">
-                        <a>Exploring Learning Landscapes in Academic</a>
-                      </h5>
-                      <div className="post-meta">
-                        <span className="post-icon">
-                          <i className="icon-27"></i>
-                        </span>
-                        <span className="post-meta-date"> 14 Nov, 2023</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Post 3 */}
-                  <div className="edublink-recent-post-each-item">
-                    <div className="edublink-post-widget-thumb">
-                      <a>
-                        <img
-                          src="https://demo.edublink.co/wp-content/uploads/2023/03/course-07-300x200.jpg"
-                          alt="Thumb"
-                        />
-                      </a>
-                    </div>
-                    <div className="media-body">
-                      <h5 className="entry-title">
-                        <a>Voices from the Learning Education Hub</a>
-                      </h5>
-                      <div className="post-meta">
-                        <span className="post-icon">
-                          <i className="icon-27"></i>
-                        </span>
-                        <span className="post-meta-date"> 13 Nov, 2023</span>
-                      </div>
-                    </div>
-                  </div>
+                  {latestBlogs?.map((blog) => (
+                    <LatestBlogCard key={blog?._id} blog={blog} />
+                  ))}
                 </div>
               </section>
 
@@ -464,80 +378,6 @@ const BlogDetails = () => {
                     <a>Web Development</a> (4)
                   </li>
                 </ul>
-              </section>
-
-              {/* Sidebar Image */}
-              <section id="media_image-4" className="widget widget_media_image">
-                <img
-                  width="290"
-                  height="370"
-                  src="https://demo.edublink.co/wp-content/uploads/2023/11/sidebar-ad.png"
-                  className="image wp-image-17506 attachment-full size-full w-20! h-20!"
-                  alt=""
-                  style={{ maxWidth: "100%", height: "auto" }}
-                />
-              </section>
-
-              {/* Tag Cloud */}
-              <section id="tag_cloud-2" className="widget widget_tag_cloud">
-                <h2 className="widget-title">Tags</h2>
-                <div className="tagcloud">
-                  <a
-                    className="tag-cloud-link tag-link-74 tag-link-position-1"
-                    style={{ fontSize: "17.333333333333pt" }}
-                  >
-                    Child Education
-                  </a>
-
-                  <a
-                    className="tag-cloud-link tag-link-75 tag-link-position-2"
-                    style={{ fontSize: "8pt" }}
-                  >
-                    Classroom
-                  </a>
-
-                  <a
-                    className="tag-cloud-link tag-link-68 tag-link-position-3"
-                    style={{ fontSize: "18.266666666667pt" }}
-                  >
-                    Design
-                  </a>
-
-                  <a
-                    className="tag-cloud-link tag-link-69 tag-link-position-4"
-                    style={{ fontSize: "17.333333333333pt" }}
-                  >
-                    Development
-                  </a>
-
-                  <a
-                    className="tag-cloud-link tag-link-78 tag-link-position-5"
-                    style={{ fontSize: "22pt" }}
-                  >
-                    eLearning
-                  </a>
-
-                  <a
-                    className="tag-cloud-link tag-link-73 tag-link-position-6"
-                    style={{ fontSize: "13.833333333333pt" }}
-                  >
-                    Future
-                  </a>
-
-                  <a
-                    className="tag-cloud-link tag-link-71 tag-link-position-7"
-                    style={{ fontSize: "15pt" }}
-                  >
-                    Higher Study
-                  </a>
-
-                  <a
-                    className="tag-cloud-link tag-link-79 tag-link-position-8"
-                    style={{ fontSize: "12.2pt" }}
-                  >
-                    Software
-                  </a>
-                </div>
               </section>
             </div>
           </aside>

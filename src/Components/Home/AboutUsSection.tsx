@@ -25,7 +25,7 @@ const AboutUsSection = () => {
                   <span data-depth={2}>
                     <img
                       decoding="async"
-                      src={`${ImagePath}about/shape-38.png`}
+                      src={`${ImagePath}shapes/shape-6.png`}
                       alt="About Shape 4"
                     />
                   </span>
@@ -42,7 +42,7 @@ const AboutUsSection = () => {
                   <span data-depth={-2}>
                     <img
                       decoding="async"
-                      src={`${ImagePath}about/shape-37.png`}
+                      src={`${ImagePath}shapes/shape-7.png`}
                       alt="About-Shape-2"
                     />
                   </span>
@@ -59,7 +59,7 @@ const AboutUsSection = () => {
                   <span data-depth="1">
                     <img
                       decoding="async"
-                      src={`${ImagePath}about/shape-04.png`}
+                      src={`${ImagePath}shapes/shape-8.png`}
                       alt="About Shape 5"
                     />
                   </span>
@@ -95,7 +95,7 @@ const AboutUsSection = () => {
                   <div className="edublink-icon-box-icon edublink-icon-box-disable">
                     <img
                       decoding="async"
-                      src={`${ImagePath}about/shape-03.png`}
+                      src={`${ImagePath}shapes/shape-9.png`}
                       alt="shape-03"
                     />
                   </div>

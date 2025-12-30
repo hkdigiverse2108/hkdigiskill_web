@@ -92,7 +92,7 @@ const HeroBanner = () => {
                           <span data-depth={2}>
                             <img
                               decoding="async"
-                              src={`${ImagePath}faq/shape-13.png`}
+                              src={`${ImagePath}shapes/shape-13.png`}
                               alt="Hero Shape 5"
                             />
                           </span>

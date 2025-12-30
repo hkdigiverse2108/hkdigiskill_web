@@ -34,9 +34,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   // const { name, description } = courseCategoryId;
 
   return (
-    <div className="" data-sal="">
-      <div className="edublink-single-course course-style-2">
-        <div className="inner">
+    <div className="h-full! mb-0!" data-aos="fade-up" data-aos-duration={1200}>
+      <div className="edublink-single-course course-style-2 h-full!">
+        <div className="inner h-full! bg-white!">
           <div className="thumbnail">
             <a className="course-thumb">
               <img className="w-100" src={image} alt={image} />
@@ -50,7 +50,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             </div>
           </div>
 
-          <div className="content">
+          <div className="content ">
             <span className="course-level">{duration}</span>
 
             <h6 className="title">

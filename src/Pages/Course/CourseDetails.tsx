@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { BreadCrumb } from "../../Components/Common";
-import CourseCard2 from "../../Components/Course/CourseCard2";
 import { Queries } from "../../Api";
 import {
   CourseOverviewSection,
@@ -8,6 +7,7 @@ import {
   CourseInstructorSection,
   CourseSidebarSection,
   CourseReviewSection,
+  CourseCard,
 } from "../../Components/Course";
 
 const relatedCourses = [
@@ -340,7 +340,7 @@ const CourseDetails = () => {
               <div className="edublink-course-widget-wrapper flex justify-center">
                 <div className="edublink-archive-lp-courses grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! px-6! w-full edublink-course-archive edublink-lms-courses-grid active-white-bg edublink-row eb-masonry-grid-wrapper">
                   {AllCourses?.splice(0, 3)?.map((course) => (
-                    <CourseCard2 key={course._id} course={course} />
+                    <CourseCard key={course._id} course={course} />
                   ))}
                 </div>
               </div>

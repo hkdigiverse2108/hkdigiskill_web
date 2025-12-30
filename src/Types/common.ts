@@ -30,3 +30,9 @@ export interface BaseType {
   createdAt: string;
   updatedAt: string;
 }
+
+export type QueryParams = {
+  page?: number;
+  limit?: number;
+  search?: string;
+};

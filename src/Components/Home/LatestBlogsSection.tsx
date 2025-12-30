@@ -1,7 +1,9 @@
-import { ImagePath } from "../../Constants";
+import { ImagePath, ROUTES } from "../../Constants";
 import { Queries } from "../../Api";
 import LatestBlogCard from "../Blog/LatestBlogCard";
 import type { Blog } from "../../Types";
+import { BlogCard } from "../Blog";
+import { Link } from "react-router-dom";
 
 // const articles = [
 //   {
@@ -40,6 +42,8 @@ const LatestBlogsSection = () => {
 
   const Blogs = data?.data?.blog_data;
 
+  const featuredBlog = Blogs?.filter((item) => item?.isFeatured == true);
+
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-178ad6d elementor-section-boxed elementor-section-height-default elementor-section-height-default">
       <div className="elementor-background-overlay" />
@@ -61,7 +65,7 @@ const LatestBlogsSection = () => {
                   decoding="async"
                   width={186}
                   height={186}
-                  src={`${ImagePath}about/shape-25.png`}
+                  src={`${ImagePath}shapes/shape-4.png`}
                   className="attachment-full size-full wp-image-2632"
                   alt=""
                   sizes="(max-width: 186px) 100vw, 186px"
@@ -88,11 +92,31 @@ const LatestBlogsSection = () => {
             <div className="elementor-element elementor-element-fe4ca5a elementor-widget elementor-widget-edublink-post">
               <div className="elementor-widget-container">
                 <div>
-                  <div className="eb-blog-post-wrapper eb-post-style-2 eb-post-grid edublink-row eb-masonry-grid-wrapper">
-                    {Blogs?.slice(0,3)?.map((item: Blog) => (
-                      <LatestBlogCard key={item._id} blog={item} />
+                  <div className="grid grid-cols-1! sm:grid-cols-2! md:grid-cols-3! gap-9! ">
+                    {/* eb-blog-post-wrapper  eb-post-grid edublink-row eb-masonry-grid-wrapper */}
+                    {featuredBlog?.slice(0, 3)?.map((blog: Blog) => (
+                      <BlogCard key={blog._id} blog={blog} />
                     ))}
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="elementor-element elementor-element-555c286 elementor-widget elementor-widget-edublink-button"
+              data-id="555c286"
+              data-element_type="widget"
+              data-widget_type="edublink-button.default"
+            >
+              <div className="elementor-widget-container">
+                <div className="edublink-button-widget-wrapper">
+                  <Link
+                    className="edublink-button-item edublink-button-style-default edublink-button-size-custom edublink-button-icon-position-after default-style"
+                    to={ROUTES.BLOG.BASE}
+                  >
+                    Browse more Blogs
+                    <i className="icon-4" />
+                  </Link>
                 </div>
               </div>
             </div>

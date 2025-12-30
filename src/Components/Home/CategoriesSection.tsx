@@ -7,7 +7,7 @@ const CategoriesSection = () => {
 
   const featuredCategory = category?.filter(
     (item) => item?.isFeatured === true
-  );
+  ).slice(0,4);
 
   const colorClasses = [
     "elementor-repeater-item-71e2b22",

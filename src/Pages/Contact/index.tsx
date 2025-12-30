@@ -206,7 +206,7 @@ const Contact = () => {
                               <span data-depth={4}>
                                 <img
                                   decoding="async"
-                                  src={`${ImagePath}faq/shape-04.png`}
+                                  src={`${ImagePath}shapes/shape-5.png`}
                                   alt="Hero-Shape-18"
                                 />
                               </span>
@@ -234,7 +234,7 @@ const Contact = () => {
                           <span data-depth={-4}>
                             <img
                               decoding="async"
-                              src={`${ImagePath}about/shape-45.png`}
+                              src={`${ImagePath}shapes/shape-1.png`}
                               alt="About-Shape-2"
                             />
                           </span>
