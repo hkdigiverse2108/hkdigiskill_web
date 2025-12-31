@@ -113,7 +113,7 @@ const CourseDetails = () => {
 
                             <li className="category">
                               <i className="icon-59"></i>
-                              <a>Business</a>
+                              <a>{singleCourse?.courseCategoryId?.name}</a>
                             </li>
 
                             <li className="rating">

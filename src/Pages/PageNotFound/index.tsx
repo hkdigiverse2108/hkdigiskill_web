@@ -12,7 +12,7 @@ const PageNotFound = () => {
           <div className="edublink-container">
             <div className="edu-error">
               <div className="thumbnail">
-                <img src={`${ImagePath}/404.png`} alt="404 Error" />
+                <img src={`${ImagePath}404.png`} alt="404 Error" />
 
                 <ul className="shape-group">
                   <li
@@ -36,10 +36,7 @@ const PageNotFound = () => {
                         top: "0px",
                       }}
                     >
-                      <img
-                        src={`${ImagePath}/about/shape-37.png`}
-                        alt="Shape"
-                      />
+                      <img src={`${ImagePath}shapes/shape-7.png`} alt="Shape" />
                     </span>
                   </li>
 
@@ -64,10 +61,7 @@ const PageNotFound = () => {
                         top: "0px",
                       }}
                     >
-                      <img
-                        src={`${ImagePath}/about/shape-15.png`}
-                        alt="Shape"
-                      />
+                      <img src={`${ImagePath}shapes/shape-2.png`} alt="Shape" />
                     </span>
                   </li>
 
@@ -93,7 +87,7 @@ const PageNotFound = () => {
                       }}
                     >
                       <img
-                        src={`${ImagePath}/about/shape-45.png`}
+                        src={`${ImagePath}shapes/shape-1.png`}
                         alt="Shape"
                       />
                     </span>
@@ -120,10 +114,7 @@ const PageNotFound = () => {
                         top: "0px",
                       }}
                     >
-                      <img
-                        src={`${ImagePath}/counterup/shape-02.png`}
-                        alt="Shape"
-                      />
+                      <img src={`${ImagePath}shapes/shape-5.png`} alt="Shape" />
                     </span>
                   </li>
                 </ul>
@@ -144,7 +135,7 @@ const PageNotFound = () => {
 
           <ul className="shape-group">
             <li className="shape-1">
-              <img src={`${ImagePath}/about/map-shape-2.png`} alt="Shape" />
+              <img src={`${ImagePath}shapes/shape-19.png`} alt="Shape" />
             </li>
           </ul>
         </section>

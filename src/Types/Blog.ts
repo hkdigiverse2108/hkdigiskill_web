@@ -26,7 +26,11 @@ export interface BlogListApiResponse {
 }
 
 
+export interface BlogApiResponse {
+    data: Blog
+}
+
+
 export interface BlogCardProps {
     blog: Blog;
-    style?: React.CSSProperties;
 }

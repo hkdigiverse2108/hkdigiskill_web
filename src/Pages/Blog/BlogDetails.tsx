@@ -1,39 +1,51 @@
+import { Link, useParams } from "react-router-dom";
 import { Queries } from "../../Api";
-import { LatestBlogCard } from "../../Components/Blog";
+import { BlogCard, LatestBlogCard } from "../../Components/Blog";
 import { BreadCrumb } from "../../Components/Common";
+import { formatDateTime } from "../../Utils";
+import { ROUTES } from "../../Constants";
 
 const BlogDetails = () => {
-  const { data } = Queries.useGetAllBlogs();
+  const { id } = useParams();
 
-  const Blogs = data?.data?.blog_data;
+  const { data: blogApi } = Queries.useGetSingleBlog(id);
+  const { data: allBlogApi } = Queries.useGetAllBlogs();
+
+  const SingleBlog = blogApi?.data;
+  const Blogs = allBlogApi?.data?.blog_data;
+
   const latestBlogs = Blogs?.slice(0, 3);
+
+  const paginationBlog = Blogs?.filter((blog) => blog?._id !== id).slice(0, 2);
+
+  console.log("SingleBlog-->", SingleBlog, Blogs, paginationBlog);
 
   return (
     <div>
       <div>
         <BreadCrumb title="Blog Details" />
       </div>
-      <div id="content" className="site-content container my-50! ">
+      <div id="content" className="site-content container my-50! w-full!  ">
         <div className="">
-          <div id="primary" className="content-area ">
-            <main id="main" className="site-main eb-post-details-page">
-              <article
-                id="post-15416"
-                className="edublink-single-post edu-blog post-15416 post type-post status-publish format-standard has-post-thumbnail hentry category-technology tag-design tag-development"
-              >
+          <div id="primary" className="content-area  w-full!">
+            <main id="main" className="site-main eb-post-details-page ">
+              <article className="edublink-single-post edu-blog post-15416 post type-post status-publish format-standard has-post-thumbnail hentry category-technology tag-design tag-development">
                 <div className="blog-details-top">
                   <span className="edublink-post-cat">
-                    <a>Technology</a>
+                    <a>{SingleBlog?.category}</a>
                   </span>
                   <h3 className="post-main-title">
-                    Exploring Learning Landscapes in Academic
+                    {/* Exploring Learning Landscapes in Academic */}
+                    {SingleBlog?.title}
                   </h3>
                   <ul className="blog-meta">
                     <li>
-                      <i className="icon-27"></i>14 Nov, 2023
+                      <i className="icon-27"></i>{" "}
+                      {formatDateTime(SingleBlog?.updatedAt)}
                     </li>
                     <li>
-                      <i className="icon-28"></i>Com 3
+                      <i className="icon-58"></i>
+                      {SingleBlog?.author}
                     </li>
                   </ul>
                 </div>
@@ -42,7 +54,8 @@ const BlogDetails = () => {
                   <img
                     width="1200"
                     height="800"
-                    src="https://demo.edublink.co/wp-content/uploads/2023/03/course-09.jpg"
+                    src={SingleBlog?.mainImage}
+                    // src="https://demo.edublink.co/wp-content/uploads/2023/03/course-09.jpg"
                     className="attachment-full size-full wp-post-image"
                     alt=""
                   />
@@ -68,8 +81,31 @@ const BlogDetails = () => {
                               className="elementor-element elementor-element-9a53172 elementor-widget elementor-widget-text-editor"
                               data-id="9a53172"
                             >
-                              <div className="elementor-widget-container">
-                                <p>
+                              {SingleBlog?.quote && (
+                                <blockquote>
+                                  <p>
+                                    {/* Lorem ipsum dolor amet con sectur
+                                    elitadicing elit sed do usmod tempor
+                                    uincididunt enim minim veniam nostrud. */}
+                                    {SingleBlog?.quote}
+                                  </p>
+                                  <p>
+                                    <cite>
+                                      {/* Simon Baker */}
+                                      {SingleBlog?.author}
+                                      <br />
+                                    </cite>
+                                  </p>
+                                </blockquote>
+                              )}
+
+                              <div
+                                className="elementor-widget-container"
+                                dangerouslySetInnerHTML={{
+                                  __html: SingleBlog?.content || "",
+                                }}
+                              >
+                                {/* <p>
                                   Consectetur adipisicing elit, sed do eiusmod
                                   tempor inc idid unt ut labore et dolore magna
                                   aliqua enim ad minim veniam, quis nostrud
@@ -87,11 +123,11 @@ const BlogDetails = () => {
                                   id est laborum. Sed ut perspiciatis unde omnis
                                   iste natus error sit voluptatem accusantium
                                   doloremque laudantium totam rem aperiam.
-                                </p>
+                                </p> */}
                               </div>
                             </div>
 
-                            <div
+                            {/* <div
                               className="elementor-element elementor-element-5ae5956 elementor-widget elementor-widget-text-editor"
                               data-id="5ae5956"
                             >
@@ -119,9 +155,9 @@ const BlogDetails = () => {
                                   </p>
                                 </blockquote>
                               </div>
-                            </div>
+                            </div> */}
 
-                            <div
+                            {/* <div
                               className="elementor-element elementor-element-ee265a5 elementor-widget elementor-widget-heading"
                               data-id="ee265a5"
                             >
@@ -145,10 +181,10 @@ const BlogDetails = () => {
                                   doloremque laudantium totam rem aperiam.
                                 </p>
                               </div>
-                            </div>
+                            </div> */}
 
                             {/* Image 2 Column Section */}
-                            <section
+                            {/* <section
                               className="elementor-section elementor-inner-section elementor-element elementor-element-ecb5ece elementor-section-boxed elementor-section-height-default elementor-section-height-default"
                               data-id="ecb5ece"
                             >
@@ -195,9 +231,9 @@ const BlogDetails = () => {
                                   </div>
                                 </div>
                               </div>
-                            </section>
+                            </section> */}
 
-                            <div
+                            {/* <div
                               className="elementor-element elementor-element-9e3ebb8 elementor-widget elementor-widget-text-editor"
                               data-id="9e3ebb8"
                             >
@@ -233,8 +269,8 @@ const BlogDetails = () => {
                                   Intrinsic Motivation
                                 </h3>
                               </div>
-                            </div>
-
+                            </div> */}
+                            {/* 
                             <div
                               className="elementor-element elementor-element-cbad01c elementor-widget elementor-widget-text-editor"
                               data-id="cbad01c"
@@ -252,8 +288,8 @@ const BlogDetails = () => {
                                   <br />
                                 </p>
                               </div>
-                            </div>
-
+                            </div> */}
+                            {/* 
                             <div
                               className="elementor-element elementor-element-771ef81 elementor-widget elementor-widget-text-editor"
                               data-id="771ef81"
@@ -268,7 +304,7 @@ const BlogDetails = () => {
                                   <li>Pariatur enim ipsam.</li>
                                 </ul>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>
@@ -307,18 +343,36 @@ const BlogDetails = () => {
 
                   {/* Post Navigation */}
                   <div className="edublink-post-nav-prev-next edublink-row">
-                    <div className="edublink-col-md-6">
-                      <div className="edublink-single-post-nav edublink-prev-post">
-                        <a>
-                          <i className="icon-west"></i>
-                          <span className="post-title">
-                            Voices from the Learning Education Hub
-                          </span>
-                        </a>
-                      </div>
-                    </div>
+                    {paginationBlog?.map((blog, index) => {
+                      return (
+                        <Link
+                          to={`${ROUTES.BLOG.DETAILS.replace(
+                            ":id",
+                            blog?._id
+                          )}`}
+                          className="edublink-col-md-6"
+                        >
+                          <div
+                            className={`edublink-single-post-nav ${
+                              index === 0
+                                ? " edublink-prev-post"
+                                : "edublink-next-post"
+                            }`}
+                          >
+                            <a>
+                              {index === 0 && <i className="icon-west"></i>}
+                              <span className="post-title">
+                                {blog?.title}
+                                {/* Voices from the Learning Education Hub */}
+                              </span>
+                              {index === 1 && <i className="icon-east"></i>}
+                            </a>
+                          </div>
+                        </Link>
+                      );
+                    })}
 
-                    <div className="edublink-col-md-6">
+                    {/* <div className="edublink-col-md-6">
                       <div className="edublink-single-post-nav edublink-next-post">
                         <a>
                           <span className="post-title">
@@ -327,7 +381,7 @@ const BlogDetails = () => {
                           <i className="icon-east"></i>
                         </a>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
@@ -336,8 +390,8 @@ const BlogDetails = () => {
             </main>
           </div>
 
-          <aside id="secondary" className="widget-area ">
-            <div className="widget-area-wrapper">
+          <aside id="secondary" className="widget-area  ">
+            <div className="widget-area-wrapper ">
               {/* Latest Posts */}
               <section
                 id="edublinkcore_recent_posts_widget-3"
@@ -345,9 +399,18 @@ const BlogDetails = () => {
               >
                 <h2 className="widget-title">Latest Post</h2>
 
-                <div className="widget-posts recent-post-widget edublink-recent-post-widget">
+                {/* <div className="widget-posts recent-post-widget edublink-recent-post-widget">
                   {latestBlogs?.map((blog) => (
                     <LatestBlogCard key={blog?._id} blog={blog} />
+                  ))}
+                </div> */}
+                <div
+                  className="grid grid-cols-1! sm:grid-cols-2! md:grid-cols-3! gap-9!  "
+                  style={{ position: "relative" }}
+                >
+                  {/* edublink-row edublink-blog-post-archive-style-3 eb-masonry-grid-wrapper */}
+                  {latestBlogs?.map((blog) => (
+                    <BlogCard key={blog._id} blog={blog} />
                   ))}
                 </div>
               </section>

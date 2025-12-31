@@ -10,7 +10,10 @@ const LatestBlogCard: React.FC<BlogCardProps> = ({ blog }) => {
     "https://demo.edublink.co/wp-content/uploads/2023/11/course-93-590x430.jpg";
 
   return (
-    <div key={blog._id} className="edublink-recent-post-each-item">
+    <Link
+      to={`${ROUTES.BLOG.DETAILS.replace(":id", blog?._id)}`}
+      className="edublink-recent-post-each-item"
+    >
       <div className="edublink-post-widget-thumb">
         <a>
           <img
@@ -40,7 +43,7 @@ const LatestBlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

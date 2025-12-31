@@ -1,6 +1,6 @@
 import { KEYS } from "../Constants/Keys";
 import { URL_KEYS } from "../Constants/Url";
-import type { AllCourseApiResponse, AppQueryOptions, BlogListApiResponse, CourseApiResponse, CourseCategoryResponse, FaqResponse, GalleryListApiResponse, HeroBannerResponse, LegalityApiResponse, QueryParams, SettingsApiResponse, TestimonialResponse, TrustedPartnerResponse } from "../Types";
+import type { AllCourseApiResponse, AppQueryOptions, BlogApiResponse, BlogListApiResponse, CourseApiResponse, CourseCategoryResponse, FaqResponse, GalleryListApiResponse, HeroBannerResponse, InstructorListApiResponse, LegalityApiResponse, QueryParams, SettingsApiResponse, TestimonialResponse, TrustedPartnerResponse } from "../Types";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
 
@@ -22,10 +22,13 @@ export const Queries = {
 
     // ******************* Courses *******************
     useGetAllCourses: (params?: QueryParams, options?: AppQueryOptions<AllCourseApiResponse>) => useQueries<AllCourseApiResponse>([KEYS.COURSE, params], () => Get(URL_KEYS.COURSE.ALL, params), options),
-    useGetSingleCourse: (id?: string) => useQueries<CourseApiResponse>([KEYS.COURSE_ONE], () => Get(`${URL_KEYS.COURSE.ONE}${id}`)),
+    useGetSingleCourse: (id?: string) => useQueries<CourseApiResponse>([KEYS.COURSE_ONE, id], () => Get(`${URL_KEYS.COURSE.ONE}${id}`)),
 
-    // ******************* Courses *******************
+    // ******************* Courses Curriculum *******************
     useGetCourseCurriculum: (id?: string) => useQueries<any>([KEYS.COURSE_CURRICULUM], () => Get(`${URL_KEYS.COURSE.CURRICULUM}${id}`)),
+
+    // ******************* Instructor *******************
+    useGetAllInstructor: (params?: QueryParams, options?: AppQueryOptions<InstructorListApiResponse>) => useQueries<InstructorListApiResponse>([KEYS.INSTRUCTOR, params], () => Get(URL_KEYS.INSTRUCTOR.ALL), options),
 
 
     // ******************* Legality *******************
@@ -33,6 +36,7 @@ export const Queries = {
 
     // ******************* BLogs *******************
     useGetAllBlogs: (params?: QueryParams, options?: AppQueryOptions<BlogListApiResponse>) => useQueries<BlogListApiResponse>([KEYS.BLOG, params], () => Get(URL_KEYS.BLOG.ALL, params), options),
+    useGetSingleBlog: (id?: string) => useQueries<BlogApiResponse>([KEYS.BLOG_ONE, id], () => Get(`${URL_KEYS.BLOG.ONE}${id}`)),
 
     // ******************* Settings *******************
     useGetAllSettings: (options?: AppQueryOptions<SettingsApiResponse>) => useQueries<SettingsApiResponse>([KEYS.SETTINGS], () => Get(URL_KEYS.SETTINGS), options),

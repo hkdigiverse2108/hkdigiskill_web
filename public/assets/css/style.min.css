@@ -372,9 +372,9 @@
   }
 }
 @media only screen and (min-width: 767px) {
-  .join-via-browser-body #vczapi-zoom-browser-meeting .container {
+  /* .join-via-browser-body #vczapi-zoom-browser-meeting .container {
     width: 500px;
-  }
+  } */
   .join-via-browser-body #vczapi-zoom-browser-meeting .vczapi-zoom-browser-meeting--meeting-form input[type="text"],
   .join-via-browser-body #vczapi-zoom-browser-meeting .vczapi-zoom-browser-meeting--meeting-form input[type="password"],
   .join-via-browser-body #vczapi-zoom-browser-meeting .vczapi-zoom-browser-meeting--meeting-form button[type="submit"],

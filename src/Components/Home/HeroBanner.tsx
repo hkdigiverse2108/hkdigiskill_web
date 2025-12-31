@@ -130,8 +130,8 @@ const HeroBanner = () => {
                           <span data-depth={-2}>
                             <img
                               decoding="async"
-                              src={`${ImagePath}cta/shape-04.png`}
-                              alt="Hero Shape 7"
+                              src={`${ImagePath}shapes/shape-15.png`}
+                              alt="Shape-15"
                             />
                           </span>
                         </div>{" "}
@@ -163,7 +163,7 @@ const HeroBanner = () => {
                           <span data-depth={-2}>
                             <img
                               decoding="async"
-                              src={`${ImagePath}faq/shape-12.png`}
+                              src={`${ImagePath}shapes/shape-16.png`}
                               alt="Hero Shape 6"
                             />
                           </span>
@@ -176,7 +176,7 @@ const HeroBanner = () => {
                           <span data-depth={2}>
                             <img
                               decoding="async"
-                              src={`${ImagePath}faq/shape-09.png`}
+                              src={`${ImagePath}shapes/shape-17.png`}
                               alt="Hero Shape 10"
                             />
                           </span>

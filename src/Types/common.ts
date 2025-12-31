@@ -28,7 +28,7 @@ export interface BaseType {
   isDeleted: boolean;
   _id: string;
   createdAt: string;
-  updatedAt: string;
+  updatedAt: string | Date;
 }
 
 export type QueryParams = {

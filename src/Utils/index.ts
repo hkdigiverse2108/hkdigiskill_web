@@ -2,6 +2,7 @@ import { STORAGE_KEYS } from "../Constants/StorageKeys";
 
 export * from "./GetHeaderMenuItems"
 export * from "./StickyBar"
+export * from "./FormatDate"
 
 export const Stringify = (value: object): string => {
     try {

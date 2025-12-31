@@ -98,32 +98,6 @@ const Blog = () => {
                     </li>
                   </ul>
                 </nav>
-                {/* <nav className="edublink-pagination-wrapper">
-                  <ul className="page-number">
-                    <li>
-                      <a className="page-numbers" title="previous">
-                        <span className="edublink-pagination-icon icon-west" />
-                      </a>
-                    </li>
-                    <li>
-                      <a className="page-numbers">1</a>
-                    </li>
-                    <li className="active">
-                      <span className="page-numbers current">2</span>
-                    </li>
-                    <li>
-                      <a className="page-numbers">3</a>
-                    </li>
-                    <li>
-                      <a className="page-numbers">4</a>
-                    </li>
-                    <li>
-                      <a className="page-numbers" title="next">
-                        <span className="edublink-pagination-icon icon-east" />
-                      </a>
-                    </li>
-                  </ul>
-                </nav> */}
               </main>
             </div>
 

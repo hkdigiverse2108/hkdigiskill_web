@@ -15,7 +15,8 @@ export const URL_KEYS = {
     ADD: "get-in-touch/add"
   },
   BLOG: {
-    ALL: "blog/all"
+    ALL: "blog/all",
+    ONE: "blog/"
   },
   HERO_BANNER: { ALL: "hero-banner/all?type=web" },
   COURSE_CATEGORY: { ALL: "course-category/all" },
@@ -27,6 +28,7 @@ export const URL_KEYS = {
     ONE: "course/",
     CURRICULUM: "course-curriculum/all?courseId="
   },
+  INSTRUCTOR: { ALL: "instructor/all" },
   LEGALITY: "legality",
   SETTINGS: "settings/all",
   GALLARY: "gallery/all"

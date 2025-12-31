@@ -9,8 +9,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   blog.coverImage =
     "https://demo.edublink.co/wp-content/uploads/2023/11/course-93-590x430.jpg";
   return (
-    <div
-      id={blog._id}
+    <Link
+      to={`${ROUTES.BLOG.DETAILS.replace(":id", blog?._id)}`}
       className=" p-0!  h-full! w-full! edublink-post-one-single-grid edublink-col-lg-12 eb-masonry-item edublink-col-md-12 edublink-col-sm-12 post type-post status-publish format-standard has-post-thumbnail hentry category-nutrition category-science tag-child-education tag-elearning sal-animate"
       data-aos="fade-up"
       data-aos-duration={1200}
@@ -36,8 +36,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           <div className="content position-top">
             <div className="read-more-btn">
               <Link
-                className="btn-icon-round"
                 to={`${ROUTES.BLOG.DETAILS.replace(":id", blog?._id)}`}
+                className="btn-icon-round"
               >
                 <i className="icon-4" />
               </Link>
@@ -55,7 +55,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

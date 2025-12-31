@@ -1,4 +1,5 @@
 import { Queries } from "../../Api";
+import { InstructorCard } from "../../Components/About";
 import { BreadCrumb } from "../../Components/Common";
 import GetCeritficateSection from "../../Components/Common/GetCeritficateSection";
 import { TestimonialSection, VideoAreaSection } from "../../Components/Home";
@@ -57,8 +58,11 @@ const stats = [
 ];
 
 const About = () => {
-  const { data } = Queries.useGetTrutedPartner();
-  const brandImages = data?.data?.trusted_partner_data;
+  const { data: brandApi } = Queries.useGetTrutedPartner();
+  const brandImages = brandApi?.data?.trusted_partner_data;
+
+  const { data: InstructorsApi } = Queries.useGetAllInstructor();
+  const AllInstroctor = InstructorsApi?.data?.instructor_data;
 
   return (
     <MouseParallax>
@@ -73,15 +77,15 @@ const About = () => {
                 <div data-depth={2} className="shape-image left ">
                   <img
                     decoding="async"
-                    src={`${ImagePath}about/shape-13.png`}
-                    alt="shape-03"
+                    src={`${ImagePath}shapes/shape-1.png`}
+                    alt="shape-1"
                   />
                 </div>
                 <div data-depth={-4} className="shape-image right">
                   <img
                     decoding="async"
-                    src={`${ImagePath}about/shape-12-1.png`}
-                    alt="shape-03"
+                    src={`${ImagePath}shapes/shape-16.png`}
+                    alt="shape-16"
                   />
                 </div>
               </div>
@@ -169,7 +173,6 @@ const About = () => {
                 </div>
               ))}
             </div>
-          
           </section>
 
           <TestimonialSection />
@@ -218,7 +221,7 @@ const About = () => {
                       <div data-depth={-3} className="">
                         <img
                           decoding="async"
-                          src={`${ImagePath}counterup/shape-04.png`}
+                          src={`${ImagePath}shapes/shape-18.png`}
                           alt="shape-04"
                         />
                       </div>
@@ -227,7 +230,7 @@ const About = () => {
                       <div data-depth={4} className="">
                         <img
                           decoding="async"
-                          src={`${ImagePath}counterup/shape-05.png`}
+                          src={`${ImagePath}shapes/shape-7.png`}
                           alt="shape-05"
                         />
                       </div>
@@ -332,6 +335,16 @@ const About = () => {
                     <div className="elementor-element elementor-element-96a69af elementor-widget elementor-widget-edublink-team animated edublink--slide-up">
                       <div className="elementor-widget-container">
                         <div className="eb-team-wrapper">
+                          <div className="eb-team-container eb-team-grid edublink-row">
+                            {AllInstroctor?.map((instructor) => (
+                              <InstructorCard
+                                key={instructor._id}
+                                instructor={instructor}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        {/* <div className="eb-team-wrapper">
                           <div className="eb-team-container eb-team-grid edublink-row">
                             <div className="edublink-team-8-widget edublink-col-lg-4 edublink-col-md-6 edublink-col-sm-6 sal-animate">
                               <div className="edublink-team-item">
@@ -460,7 +473,7 @@ const About = () => {
                               </div>
                             </div>
                           </div>
-                        </div>{" "}
+                        </div>{" "} */}
                       </div>
                     </div>
                   </div>
