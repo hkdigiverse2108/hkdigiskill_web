@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { Queries } from "../../Api";
+import { ROUTES } from "../../Constants";
 
 const CategoriesSection = () => {
   const { data } = Queries.useGetCourseCategory();
   const category = data?.data?.course_category_data;
 
-  const featuredCategory = category?.filter(
-    (item) => item?.isFeatured === true
-  ).slice(0,4);
+  const featuredCategory = category
+    ?.filter((item) => item?.isFeatured === true)
+    .slice(0, 4);
 
   const colorClasses = [
     "elementor-repeater-item-71e2b22",
@@ -56,8 +57,10 @@ const CategoriesSection = () => {
                 <div className="eb-course-cat-wrapper">
                   <div className="eb-course-cat-container-grid eb-course-cat-grid edublink-row">
                     {featuredCategory?.map((item, index) => (
-                      <div
-                        key={item._id}
+                      <Link
+                        to={ROUTES.COURSE.BASE}
+                        state={item?._id}
+                        key={item?._id}
                         className={`edublink-col-lg-3 edublink-col-md-6 edublink-col-sm-6 
     edublink-course-single-cat edublink-course-cat-single-grid 
     ${colorClasses[index % colorClasses.length]}`}
@@ -74,9 +77,9 @@ const CategoriesSection = () => {
 
                           <div className="content">
                             <h5 className="title">
-                              <Link to={`/courses?category=${item._id}`}>
+                              {/* <Link to={`/courses?category=${item._id}`}> */}
                                 {item.name}
-                              </Link>
+                              {/* </Link> */}
                             </h5>
 
                             <p className="description">{item.description}</p>
@@ -85,7 +88,7 @@ const CategoriesSection = () => {
                             <span className="course-count">09 Courses</span>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>

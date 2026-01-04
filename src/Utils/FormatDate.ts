@@ -1,5 +1,5 @@
 export const formatDateTime = (
-    date: string | Date,
+    date?: string | Date,
     options?: Intl.DateTimeFormatOptions
 ): string => {
     if (!date) return "-";

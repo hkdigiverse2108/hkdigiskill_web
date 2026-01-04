@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TestimonialSettings } from "../../Data";
-import { ImagePath } from "../../Constants";
+import { ImagePath, ROUTES } from "../../Constants";
 import { Link } from "react-router-dom";
 import { Queries } from "../../Api";
 
@@ -60,8 +60,7 @@ const TestimonialSection = () => {
               <div className="elementor-widget-container">
                 <div className="edublink-button-widget-wrapper">
                   <Link
-                    // to="/testimonials"
-                    to=""
+                    to={ROUTES.TESTIMONIAL}
                     className="edublink-button-item edublink-button-style-default edublink-button-size-large edublink-button-icon-position-after default-style"
                   >
                     View All

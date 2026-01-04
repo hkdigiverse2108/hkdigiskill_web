@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 // import StickyBar from "../Utils/StickyBar";
-import { ImagePath } from "../Constants";
+import { ImagePath, ROUTES } from "../Constants";
 import { GetHeaderMenuItems } from "../Utils/GetHeaderMenuItems";
 import type { MenuItem } from "../Types";
 import { Link, NavLink } from "react-router-dom";
+import { Queries } from "../Api";
 
 const Header = () => {
   const [isMobileMenu, setMobileMenu] = useState(false);
-  const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
+  const [activeSubMenu, setActiveSubMenu] = useState<boolean | null>(false);
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-
   const [fix, setFix] = useState(false);
-  const scroll = 300;
 
+  const { data } = Queries.useGetCourseCategory();
+  const allCategory = data?.data?.course_category_data;
+
+  const scroll = 300;
   useEffect(() => {
     const handleScroll = () => {
       setFix(window.scrollY > scroll);
@@ -25,9 +28,6 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [scroll]);
-
-  const handleSubMenuToggle = (menu: string) =>
-    setActiveSubMenu((prev) => (prev === menu ? null : menu));
 
   useEffect(() => {
     const menuItems = GetHeaderMenuItems() || [];
@@ -71,12 +71,19 @@ const Header = () => {
                         Category
                       </a>
                       <ul className="edublink-dropdown-menu">
-                        <li className="cat-item">
-                          <Link to="/Bussiness">Business</Link>
-                        </li>
-                        <li className="cat-item">
+                        {allCategory?.map((item, index) => {
+                          return (
+                            <li key={index} className="cat-item">
+                              <Link to={ROUTES.COURSE.BASE} state={item?._id}>
+                                {item?.name}
+                              </Link>
+                            </li>
+                          );
+                        })}
+
+                        {/* <li className="cat-item">
                           <Link to="/Bussiness">Cooking</Link>
-                        </li>
+                        </li> */}
                       </ul>
                     </li>
                   </ul>
@@ -172,21 +179,31 @@ const Header = () => {
             className="edublink-mobile-menu-item metismenu"
           >
             <li
-              className={`menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${
-                activeSubMenu === "pages" ? "mm-active" : ""
+              className={`menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${
+                activeSubMenu ? "mm-active" : ""
               }`}
-              onClick={() => handleSubMenuToggle("pages")}
+              onClick={() => setActiveSubMenu(!activeSubMenu)}
             >
-              <Link className="nav-link" to="">
+              <a
+                className="nav-link"
+                aria-expanded={activeSubMenu ? "true" : "false"}
+              >
                 Category
-              </Link>
-              <ul className="edublink-dropdown-menu">
-                <li className="cat-item">
-                  <Link to="">Business</Link>
-                </li>
-                <li className="cat-item">
-                  <Link to="">Cooking</Link>
-                </li>
+              </a>
+              <ul
+                className={`edublink-dropdown-menu ${
+                  activeSubMenu ? "block" : "hidden"
+                }`}
+              >
+                {allCategory?.map((item, index) => {
+                  return (
+                    <li key={index} className="cat-item">
+                      <Link to={ROUTES.COURSE.BASE} state={item?._id}>
+                        {item?.name}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </li>
             {menuItems.map((item, index) => (

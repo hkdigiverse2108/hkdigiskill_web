@@ -6,7 +6,8 @@ import type { FaqCategory } from "../../Types";
 import { Queries } from "../../Api";
 
 const Faq = () => {
-  const [activeIndex, setActiveIndex] = useState(0); // first open by default
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState<FaqCategory | null>(null);
 
   const { data } = Queries.useGetFaq();
 
@@ -37,9 +38,6 @@ const Faq = () => {
     label: type, // 👈 SHOW TYPE AS TAB NAME
   }));
 
-  const [activeTab, setActiveTab] = useState<FaqCategory | null>(null);
-
-  // ✅ Set first tab AFTER data loads
   if (!activeTab && categories.length > 0) {
     setActiveTab(categories[0].id);
   }

@@ -12,6 +12,7 @@ import PageNotFound from "../Pages/PageNotFound";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import ReturnPolicy from "../Pages/ReturnPolicy";
 import TermsCondition from "../Pages/TermsCondition";
+import Testimonial from "../Pages/Testimonial/Testimonial";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, element: <Home /> },
@@ -27,6 +28,7 @@ export const PageRoutes = [
 
   // ======= Support & Policy =======
   { path: ROUTES.FAQ, element: <Faq /> },
+  { path: ROUTES.TESTIMONIAL, element: <Testimonial /> },
   { path: ROUTES.PRIVACY_POLICY, element: <PrivacyPolicy /> },
   { path: ROUTES.TERMS_CONDITION, element: <TermsCondition /> },
   { path: ROUTES.RETURN_POLICY, element: <ReturnPolicy /> },

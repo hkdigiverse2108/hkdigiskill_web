@@ -11,7 +11,7 @@ const CounterSection = () => {
       data-id="ceab01c"
       data-element_type="section"
     >
-      <div className="elementor-container elementor-column-gap-extended">
+      <div className="elementor-container elementor-column-gap-extended flex justify-center">
         <div
           className="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-f52833f"
           data-aos="fade-up"
@@ -127,7 +127,7 @@ const CounterSection = () => {
             </div>
           </div>
         </div>
-        <div
+        {/* <div
           className="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-6f966a8"
           data-aos="fade-up"
           data-aos-duration={1600}
@@ -162,7 +162,7 @@ const CounterSection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

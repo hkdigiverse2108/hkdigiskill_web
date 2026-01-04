@@ -2,14 +2,19 @@ import { BreadCrumb } from "../../Components/Common";
 import { Queries } from "../../Api";
 import { CourseCard } from "../../Components/Course";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const Course = () => {
   const LIMIT = 3;
-
   const [page, setPage] = useState(1);
 
+  const location = useLocation();
+  const id = location.state;
+
+  console.log("ids", id);
+
   const { data } = Queries.useGetAllCourses(
-    { page, limit: LIMIT }
+    { page, limit: LIMIT, courseCategoryId: id }
     // { keepPreviousData: true }
   );
 

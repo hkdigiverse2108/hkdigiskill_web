@@ -3757,6 +3757,8 @@ body:not(.edublink-header-transparent-enable) .site-header.theme-header-3:not(.e
 .edublink-mobile-menu-nav-wrapper ul li.menu-item-has-children > a[aria-expanded="true"]::after {
   content: "\f1af";
 }
+
+
 .edublink-elementor-mobile-menu-close {
   display: flex;
   justify-content: flex-end;

@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import  { type FC } from "react";
 
 const CourseOverviewSection:FC<{desc?:string}>= ({ desc = ""}) => {
   return (
@@ -13,7 +13,7 @@ const CourseOverviewSection:FC<{desc?:string}>= ({ desc = ""}) => {
             __html: desc || "",
           }}
         ></div>
-        <p>
+        {/* <p>
           Lorem ipsum dolor sit amet consectur adipisicing elit, sed do eiusmod
           tempor inc idid unt ut labore et dolore magna aliqua enim ad minim
           veniam, quis nostrud exerec tation ullamco laboris nis aliquip commodo
@@ -50,7 +50,7 @@ const CourseOverviewSection:FC<{desc?:string}>= ({ desc = ""}) => {
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
           suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
           lacus vel facilisis.
-        </div>
+        </div> */}
       </div>
     </div>
   );
