@@ -1,0 +1,53 @@
+import type { UseQueryOptions } from "@tanstack/react-query";
+
+export type ResponseParserWrapper<T> = {
+  data: T;
+  status: number;
+};
+
+export interface Message {
+  code: string;
+  message: string;
+  values: string[];
+}
+
+export type DefaultErrorResponse = ResponseParserWrapper<Message[]>;
+
+export type FormErrorResponse = ResponseParserWrapper<Record<string, { code: string; values: string[] }[]>>;
+
+export type CombinedErrorResponse = DefaultErrorResponse | FormErrorResponse;
+
+export type AppQueryOptions<T> = Omit<UseQueryOptions<T, CombinedErrorResponse, T, any[]>, "queryKey" | "queryFn">;
+
+// Auth Types
+export interface LoginPayload {
+  email: string;
+  password: string;
+}
+
+export interface RegisterPayload {
+  fullName: string;
+  email: string;
+  password: string;
+  phone: string;
+  designation: string;
+  agreeTerms: boolean;
+}
+
+export interface AuthResponse {
+  token: string;
+  user: User;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  fullName: string;
+  phone?: string;
+  designation?: string;
+}
+
+
+export interface UserResponse {
+  data: User;
+}
