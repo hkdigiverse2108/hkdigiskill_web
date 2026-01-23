@@ -18,12 +18,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       <div className="edu-blog blog-style-6">
         <div className="inner">
           <div className="thumbnail">
-            <a>
+            <div className="thumbnail-link">
               <img
                 src={blog?.mainImage || blog?.coverImage}
                 alt={blog?.title}
               />
-            </a>
+            </div>
             <span className="date">
               {new Date(blog?.createdAt).toLocaleDateString("en-GB", {
                 day: "2-digit",
@@ -35,20 +35,17 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
 
           <div className="content position-top">
             <div className="read-more-btn">
-              <Link
-                to={`${ROUTES.BLOG.DETAILS.replace(":id", blog?._id)}`}
-                className="btn-icon-round"
-              >
+              <p className="btn-icon-round">
                 <i className="icon-4" />
-              </Link>
+              </p>
             </div>
 
-            <div className="category-wrap">
-              <a>{blog?.category}</a>
+            <div className="category-wrap ">
+              <span>{blog?.category}</span>
             </div>
 
-            <h5 className="title">
-              <a>{blog?.title}</a>
+            <h5 className="title mt-6!">
+              <span>{blog?.title}</span>
             </h5>
 
             <p>{blog?.subTitle || "alter static Text"}</p>

@@ -125,7 +125,6 @@ const BlogDetails = () => {
                         <ShareButtons
                           url={window.location.href}
                           title={SingleBlog?.title}
-                          
                         />
                       </div>
                     </div>
@@ -136,6 +135,7 @@ const BlogDetails = () => {
                     {paginationBlog?.map((blog, index) => {
                       return (
                         <Link
+                          key={blog._id}
                           to={`${ROUTES.BLOG.DETAILS.replace(
                             ":id",
                             blog?._id,
@@ -149,14 +149,12 @@ const BlogDetails = () => {
                                 : "edublink-next-post"
                             }`}
                           >
-                            <a>
-                              {index === 0 && <i className="icon-west"></i>}
-                              <span className="post-title">
-                                {blog?.title}
-                                {/* Voices from the Learning Education Hub */}
-                              </span>
-                              {index === 1 && <i className="icon-east"></i>}
-                            </a>
+                            {index === 0 && <i className="icon-west"></i>}
+                            <span className="post-title">
+                              {blog?.title}
+                              {/* Voices from the Learning Education Hub */}
+                            </span>
+                            {index === 1 && <i className="icon-east"></i>}
                           </div>
                         </Link>
                       );
@@ -187,7 +185,10 @@ const BlogDetails = () => {
               </section>
 
               {/* Categories */}
-              <section id="categories-2" className="widget widget_categories px-0!">
+              <section
+                id="categories-2"
+                className="widget widget_categories px-0!"
+              >
                 <h2 className="widget-title">Categories</h2>
                 <ul>
                   {allCategories?.map((item, index) => (
