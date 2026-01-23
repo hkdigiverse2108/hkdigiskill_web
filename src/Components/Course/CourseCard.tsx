@@ -40,7 +40,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
       data-aos="fade-up"
       data-aos-duration={1200}
     >
-      <div className="edublink-single-course course-style-2 h-full!">
+      <div className="edublink-single-course course-style-2 ">
         <div className="inner h-full! bg-white!">
           <div className="thumbnail">
             <a className="course-thumb">

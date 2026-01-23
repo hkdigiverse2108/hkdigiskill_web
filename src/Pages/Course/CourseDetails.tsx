@@ -10,60 +10,6 @@ import {
   CourseCard,
 } from "../../Components/Course";
 
-const relatedCourses = [
-  {
-    id: 1,
-    level: "All Levels",
-    title: "Competitive Strategy Law for Management Consultants",
-    link: "https://demo.edublink.co/courses/competitive-strategy-law-for-management-consultants/",
-    image:
-      "https://demo.edublink.co/wp-content/uploads/2023/03/course-03-590x430.jpg",
-    duration: "25 hours",
-    rating: 3,
-    ratingsCount: 2,
-    price: 75,
-    lessons: 7,
-    students: 362,
-    description:
-      "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
-  },
-
-  {
-    id: 2,
-    level: "Beginner",
-    title: "Learning How To Write As A Professional Author",
-    link: "https://demo.edublink.co/courses/learning-how-to-write-as-a-professional-author/",
-    image:
-      "https://demo.edublink.co/wp-content/uploads/2023/03/course-01-590x430.jpg",
-    duration: "15 hours",
-    rating: 5,
-    ratingsCount: 3,
-    price: 29,
-    oldPrice: 39,
-    lessons: 7,
-    students: 423,
-    description:
-      "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
-  },
-
-  {
-    id: 3,
-    level: "All Levels",
-    title: "The Complete Python Bootcamp From Zero to Hero",
-    link: "https://demo.edublink.co/courses/the-complete-python-bootcamp-from-zero-to-hero/",
-    image:
-      "https://demo.edublink.co/wp-content/uploads/2023/11/course-83-590x430.jpg",
-    duration: "30 hours",
-    rating: 4,
-    ratingsCount: 2,
-    price: 35,
-    lessons: 7,
-    students: 674,
-    description:
-      "Lorem ipsum dolor sit amet consectur adipiscing elit, sed do eiusmod tempor...",
-  },
-];
-
 const CourseDetails = () => {
   const { id } = useParams();
   console.log("Ids : ", id);
@@ -127,49 +73,37 @@ const CourseDetails = () => {
                                   }}
                                 >
                                   {/* --- STAR 1 --- */}
-                                  <div className="review-star">
-                                    <span className="far">
-                                      <svg
-                                        width="17px"
-                                        height="16px"
-                                        viewBox="0 0 17 16"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                      >
-                                        <g
-                                          stroke="none"
-                                          fill="none"
-                                          fillRule="evenodd"
+
+                                  {[1, 2, 3, 4, 5].map((i) => (
+                                    <div className="review-star" key={i}>
+                                      <span className="far">
+                                        <svg
+                                          width="17"
+                                          height="16"
+                                          viewBox="0 0 17 16"
                                         >
                                           <g fill="#FFB606" fillRule="nonzero">
-                                            <path d="M8.5,0 L10.9285714,6.15384615..." />
+                                            <path d="M8.5 0l2.43 6.15H17l-5.46 3.69L13.96 16 8.5 12.31 3.03 16l2.43-6.15L0 6.15h6.07z" />
                                           </g>
-                                        </g>
-                                      </svg>
-                                    </span>
+                                        </svg>
+                                      </span>
 
-                                    <span
-                                      className="fas"
-                                      style={{ width: "100%" }}
-                                    >
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="17px"
-                                        height="16px"
-                                        viewBox="0 0 17 16"
+                                      <span
+                                        className="fas"
+                                        style={{ width: "100%" }}
                                       >
-                                        <g
-                                          stroke="none"
-                                          fill="none"
-                                          fillRule="evenodd"
+                                        <svg
+                                          width="17"
+                                          height="16"
+                                          viewBox="0 0 17 16"
                                         >
                                           <g fill="#FFB606" fillRule="nonzero">
-                                            <polygon points="8.5 12.3076923 3.0357 16 ..." />
+                                            <polygon points="8.5 12.31 3.03 16 5.46 9.85 0 6.15 6.07 6.15 8.5 0 10.93 6.15 17 6.15 11.54 9.85 13.96 16" />
                                           </g>
-                                        </g>
-                                      </svg>
-                                    </span>
-                                  </div>
-
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  ))}
                                   {/* Repeat same structure for other stars */}
                                 </div>
 
@@ -256,61 +190,6 @@ const CourseDetails = () => {
                     <div className="course-tab-panels">
                       {/* ======================= Overview ========================== */}
                       <CourseOverviewSection desc={singleCourse?.description} />
-                      {/* <div
-                        className="course-tab-panel-overview course-tab-panel"
-                        id="tab-overview"
-                      >
-                        <div
-                          className="course-description"
-                          id="learn-press-course-description"
-                        >
-                          <h3>Course Description</h3>
-                          <p>
-                            Lorem ipsum dolor sit amet consectur adipisicing
-                            elit, sed do eiusmod tempor inc idid unt ut labore
-                            et dolore magna aliqua enim ad minim veniam, quis
-                            nostrud exerec tation ullamco laboris nis aliquip
-                            commodo consequat duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore
-                            eu fugiat nulla pariatur enim ipsam.
-                          </p>
-                          <p className="mb--60">
-                            Excepteur sint occaecat cupidatat non proident sunt
-                            in culpa qui officia deserunt mollit anim id est
-                            laborum. Sed ut perspiciatis unde omnis iste natus
-                            error sit voluptatem accusantium doloremque
-                            laudantium totam rem aperiam.
-                          </p>
-                          <h5>What You’ll Learn?</h5>
-
-                          <ul className="edublink-ul-style-check">
-                            <li>
-                              Neque sodales ut etiam sit amet nisl purus non
-                              tellus orci ac auctor
-                            </li>
-                            <li>
-                              Tristique nulla aliquet enim tortor at auctor
-                              urna. Sit amet aliquam id diam maer
-                            </li>
-                            <li>
-                              Nam libero justo laoreet sit amet. Lacus sed
-                              viverra tellus in hac
-                            </li>
-                            <li>
-                              Tempus imperdiet nulla malesuada pellentesque elit
-                              eget gravida cum sociis
-                            </li>
-                          </ul>
-
-                          <div className="edublink-mt--40">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Quis ipsum suspendisse ultrices
-                            gravida. Risus commodo viverra maecenas accumsan
-                            lacus vel facilisis.
-                          </div>
-                        </div>
-                      </div> */}
 
                       {/* ======================= CURRICULUM ========================== */}
                       <CourseCurriculumSection />
@@ -339,7 +218,7 @@ const CourseDetails = () => {
             <div className="elementor-widget-container">
               <div className="edublink-course-widget-wrapper flex justify-center">
                 <div className="edublink-archive-lp-courses grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! px-6! w-full edublink-course-archive edublink-lms-courses-grid active-white-bg edublink-row eb-masonry-grid-wrapper">
-                  {AllCourses?.splice(0, 3)?.map((course) => (
+                  {AllCourses?.slice(0, 3)?.map((course) => (
                     <CourseCard key={course._id} course={course} />
                   ))}
                 </div>

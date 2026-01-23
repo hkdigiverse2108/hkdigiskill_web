@@ -341,7 +341,7 @@ const Footer = () => {
                         {socialIcons.map((item, index) => (
                           <span className="elementor-grid-item" key={index}>
                             <Link
-                              to={item?.link}
+                              to={item?.link || ""}
                               className={`elementor-icon elementor-social-icon ${item.wrapperClass}`}
                               target="_blank"
                             >

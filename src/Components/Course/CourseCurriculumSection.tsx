@@ -1,6 +1,16 @@
-import React from "react";
+import { useState } from "react";
 
 const CourseCurriculumSection = () => {
+  const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({
+    "basic-introduction-3": true, // Default first section open
+  });
+
+  const toggleSection = (sectionId: string) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [sectionId]: !prev[sectionId]
+    }));
+  };
   return (
     <div
       className="course-tab-panel-curriculum course-tab-panel"
@@ -11,17 +21,20 @@ const CourseCurriculumSection = () => {
           <ul className="curriculum-sections">
             {/* SECTION 1 */}
             <li
-              className="section"
+              className={`section ${!openSections["basic-introduction-3"] ? "closed" : ""}`}
               id="section-basic-introduction-3"
               data-id="basic-introduction-3"
               data-section-id="3"
             >
-              <div className="section-header">
+              <div 
+                className="section-header"
+                onClick={() => toggleSection("basic-introduction-3")}
+                style={{ cursor: "pointer" }}
+              >
                 <div className="section-left">
                   <h5 className="section-title">Basic Introduction</h5>
                   <span className="section-toggle">
-                    <i className="fas fa-caret-down"></i>
-                    <i className="fas fa-caret-up"></i>
+                    <i className={`fas fa-caret-${openSections["basic-introduction-3"] ? "up" : "down"}`}></i>
                   </span>
                 </div>
               </div>
@@ -114,17 +127,20 @@ const CourseCurriculumSection = () => {
 
             {/* SECTION 2 */}
             <li
-              className="section"
+              className={`section ${!openSections["fundamental-concept-of-html-4"] ? "closed" : ""}`}
               id="section-fundamental-concept-of-html-4"
               data-id="fundamental-concept-of-html-4"
               data-section-id="4"
             >
-              <div className="section-header">
+              <div 
+                className="section-header"
+                onClick={() => toggleSection("fundamental-concept-of-html-4")}
+                style={{ cursor: "pointer" }}
+              >
                 <div className="section-left">
                   <h5 className="section-title">Fundamental Concept of HTML</h5>
                   <span className="section-toggle">
-                    <i className="fas fa-caret-down"></i>
-                    <i className="fas fa-caret-up"></i>
+                    <i className={`fas fa-caret-${openSections["fundamental-concept-of-html-4"] ? "up" : "down"}`}></i>
                   </span>
                 </div>
               </div>
@@ -198,17 +214,20 @@ const CourseCurriculumSection = () => {
 
             {/* SECTION 3 */}
             <li
-              className="section"
+              className={`section ${!openSections["programming-core-concept-5"] ? "closed" : ""}`}
               id="section-programming-core-concept-5"
               data-id="programming-core-concept-5"
               data-section-id="5"
             >
-              <div className="section-header">
+              <div 
+                className="section-header"
+                onClick={() => toggleSection("programming-core-concept-5")}
+                style={{ cursor: "pointer" }}
+              >
                 <div className="section-left">
                   <h5 className="section-title">Programming Core Concept</h5>
                   <span className="section-toggle">
-                    <i className="fas fa-caret-down"></i>
-                    <i className="fas fa-caret-up"></i>
+                    <i className={`fas fa-caret-${openSections["programming-core-concept-5"] ? "up" : "down"}`}></i>
                   </span>
                 </div>
               </div>

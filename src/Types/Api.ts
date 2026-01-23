@@ -18,3 +18,36 @@ export type FormErrorResponse = ResponseParserWrapper<Record<string, { code: str
 export type CombinedErrorResponse = DefaultErrorResponse | FormErrorResponse;
 
 export type AppQueryOptions<T> = Omit<UseQueryOptions<T, CombinedErrorResponse, T, any[]>, "queryKey" | "queryFn">;
+
+// Auth Types
+export interface LoginPayload {
+  email: string;
+  password: string;
+}
+
+export interface RegisterPayload {
+  fullName: string;
+  email: string;
+  password: string;
+  phone: string;
+  designation: string;
+  agreeTerms: boolean;
+}
+
+export interface AuthResponse {
+  token: string;
+  user: User;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  fullName: string;
+  phone?: string;
+  designation?: string;
+}
+
+
+export interface UserResponse {
+  data: User;
+}

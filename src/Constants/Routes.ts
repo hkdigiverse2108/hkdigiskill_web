@@ -10,7 +10,7 @@ export const ROUTES = {
   PRIVACY_POLICY: "/privacy-policy",
 
   AUTH: {
-    LOGIN: "/login",
+    BASE: "/my-account",
     FORGOT_PASSWORD: "/forgot-password",
     VERIFY_OTP: "/verify-otp",
     Reset_PASSWORD: "/reset-password",

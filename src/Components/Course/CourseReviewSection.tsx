@@ -1,10 +1,8 @@
-import React from "react";
-
 const CourseReviewSection = () => {
   return (
     <div className="course-tab-panel-reviews course-tab-panel" id="tab-reviews">
       <div className="learnpress-course-review" data-id="12817">
-        <div className="lp-rating-reviews">
+        <div className="lp-rating-reviews flex! gap-6!">
           <div className="course-rate">
             <div className="course-rate__summary">
               <div className="course-rate__summary-value">5</div>
@@ -48,10 +46,10 @@ const CourseReviewSection = () => {
 
           {/* ================= RATING BREAKDOWN ================= */}
 
-          <div className="course-rate__details">
+          <div className="course-rate__details bg-amber-200!f flex! flex-col! gap-3! ">
             {[5, 4, 3, 2, 1].map((star) => (
-              <div className="course-rate__details-row" key={star}>
-                <span className="course-rate__details-row-star">
+              <div className="course-rate__details-row flex! gap-3!" key={star}>
+                <span className="course-rate__details-row-star flex gap-4! ">
                   {star}
                   <i className="fas" style={{ color: "#ffb60a" }}>
                     <svg

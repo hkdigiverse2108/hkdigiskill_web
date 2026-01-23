@@ -20,10 +20,10 @@ export default defineConfig(({ mode }) => {
     server: {
       port: PORT,
       proxy: {
-        "/api": {
+        "/Api": {
           target: API_BASE_URL,
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
+          rewrite: (path) => path.replace(/^\/Api/, ""),
         },
       },
     },

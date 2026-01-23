@@ -1,5 +1,6 @@
 import { ROUTES } from "../Constants";
 import About from "../Pages/About";
+import MyAccount from "../Pages/Auth";
 import Blog from "../Pages/Blog";
 import BlogDetails from "../Pages/Blog/BlogDetails";
 import Contact from "../Pages/Contact";
@@ -18,6 +19,9 @@ export const PageRoutes = [
   { path: ROUTES.HOME, element: <Home /> },
   { path: ROUTES.COURSE.BASE, element: <Course /> },
   { path: ROUTES.COURSE.DETAILS, element: <CourseDetails /> },
+  
+  // ======= Auth =======
+  { path: ROUTES.AUTH.BASE, element: <MyAccount /> },
 
   // ======= Quick Links =======
   { path: ROUTES.ABOUT, element: <About /> },

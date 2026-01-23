@@ -127,42 +127,7 @@ const CounterSection = () => {
             </div>
           </div>
         </div>
-        {/* <div
-          className="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-6f966a8"
-          data-aos="fade-up"
-          data-aos-duration={1600}
-        >
-          <div className="elementor-widget-wrap elementor-element-populated">
-            <div
-              className="elementor-element elementor-element-cc693cb elementor-widget elementor-widget-edublink-counterup"
-              data-id="cc693cb"
-              data-element_type="widget"
-              data-widget_type="edublink-counterup.default"
-            >
-              <div className="elementor-widget-container">
-                <div
-                  className="edublink-counter-item"
-                  id="edublink-counter-id-cc693cb"
-                >
-                  <span className="odometer" data-odometer-final={354} />
-                  <span className="edublink-counter-suffix">0</span>
-                </div>{" "}
-              </div>
-            </div>
-            <div
-              className="elementor-element elementor-element-ae576fa elementor-widget elementor-widget-heading"
-              data-id="ae576fa"
-              data-element_type="widget"
-              data-widget_type="heading.default"
-            >
-              <div className="elementor-widget-container">
-                <h6 className="elementor-heading-title elementor-size-default">
-                  TOP INSTRUCTORS
-                </h6>{" "}
-              </div>
-            </div>
-          </div>
-        </div> */}
+     
       </div>
     </section>
   );

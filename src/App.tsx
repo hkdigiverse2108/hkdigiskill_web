@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Aos from "aos";
 import { Provider } from "react-redux";
 import { Store } from "./Store/Store";
+import AuthInitializer from "./Components/Common/AuthInitializer";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -16,6 +17,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={Store}>
+        <AuthInitializer />
         <RouterProvider router={Router} />
       </Provider>
     </QueryClientProvider>

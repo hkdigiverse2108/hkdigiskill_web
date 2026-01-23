@@ -1,6 +1,6 @@
 import { KEYS } from "../Constants/Keys";
 import { URL_KEYS } from "../Constants/Url";
-import type { AllCourseApiResponse, AppQueryOptions, BlogApiResponse, BlogListApiResponse, CourseApiResponse, CourseCategoryResponse, FaqResponse, GalleryListApiResponse, HeroBannerResponse, InstructorListApiResponse, LegalityApiResponse, QueryParams, SettingsApiResponse, TestimonialResponse, TrustedPartnerResponse } from "../Types";
+import type { AllCourseApiResponse, AppQueryOptions, BlogApiResponse, BlogListApiResponse, CourseApiResponse, CourseCategoryResponse, FaqResponse, GalleryListApiResponse, HeroBannerResponse, InstructorListApiResponse, LegalityApiResponse, QueryParams, SettingsApiResponse, TestimonialResponse, TrustedPartnerResponse, UserResponse } from "../Types";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
 
@@ -43,4 +43,7 @@ export const Queries = {
 
     // ******************* Gallary *******************
     useGetAllGallary: (options?: AppQueryOptions<GalleryListApiResponse>) => useQueries<GalleryListApiResponse>([KEYS.GALLARY], () => Get(URL_KEYS.GALLARY), options),
+
+    // ******************* User *******************
+    useGetUser: (id: string, options?: AppQueryOptions<UserResponse>) => useQueries<UserResponse>([KEYS.USER, id], () => Get(`${URL_KEYS.USER.ONE}${id}`), options),
 }

@@ -3,6 +3,7 @@ export const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const URL_KEYS = {
   AUTH: {
     LOGIN: "auth/login",
+    REGISTER: "auth/signup",
     FORGOT_PASSWORD: "auth/forgot_password",
     VERIFY_OTP: "auth/verify_otp",
     RESET_PASSWORD: "auth/reset_password",
@@ -31,6 +32,9 @@ export const URL_KEYS = {
   INSTRUCTOR: { ALL: "instructor/all" },
   LEGALITY: "legality",
   SETTINGS: "settings/all",
-  GALLARY: "gallery/all"
+  GALLARY: "gallery/all",
+  USER: {
+    ONE: "user/"
+  }
 
 } as const;

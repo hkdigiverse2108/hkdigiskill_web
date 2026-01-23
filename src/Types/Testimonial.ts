@@ -1,4 +1,4 @@
-import type { MessageStatus } from "./Common";
+import type { MessageStatus } from "./common";
 
 export interface Testimonial {
     _id: string;

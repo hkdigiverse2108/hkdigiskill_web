@@ -3,10 +3,13 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import VideoModal from "../Components/Common/VideoModal";
 import ImageModal from "../Components/Gallary/ImageModal";
+import LogoutModal from "../Components/Common/LogoutModal";
+import ScrollToTop from "../Components/Common/ScrollToTop";
 
 const Layout = () => {
   return (
     <div id="page" className="site">
+      <ScrollToTop />
       <Header />
       <div id="content" className="site-content">
         <div className="site-content-inner edublink-page-container edublink-container">
@@ -35,6 +38,7 @@ const Layout = () => {
       <Footer />
       <VideoModal />
       <ImageModal />
+      <LogoutModal />
     </div>
   );
 };

@@ -1,14 +1,10 @@
-import { useMutation, useQueryClient, type InvalidateOptions, type InvalidateQueryFilters, type QueryKey, type UseMutationOptions } from "@tanstack/react-query";
+import { useMutation, useQueryClient, type InvalidateQueryFilters, type QueryKey, type UseMutationOptions } from "@tanstack/react-query";
 import type { CombinedErrorResponse } from "../../Types";
-import { useAppDispatch } from "../../Store/Hook";
-import { useNavigate } from "react-router-dom";
 import { HTTP_STATUS } from "../../Constants/HttpStatus";
 
 export function useMutations<TInput, TResponse>(mutationKey: QueryKey, callBack: (input: TInput) => Promise<TResponse>, options?: UseMutationOptions<TResponse, CombinedErrorResponse, TInput>) {
 
     const q = useQueryClient();
-    const dispatch = useAppDispatch()
-    const navigate = useNavigate()
 
     return useMutation<TResponse, CombinedErrorResponse, TInput>({
         mutationKey,

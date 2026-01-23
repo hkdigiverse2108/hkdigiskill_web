@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppDispatch, useAppSelector } from "../../Store/Hook";
 import { setModalPhotoLink } from "../../Store/Slices/VideoModalSlice";
 

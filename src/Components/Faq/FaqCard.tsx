@@ -1,7 +1,11 @@
 import type { FC } from "react";
-import type { FaqCardType } from "../../Types/Faq";
 
-const FaqCard: FC<FaqCardType> = ({ question, answer, isOpen, onClick }) => {
+const FaqCard: FC<{
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onClick: () => void;
+}> = ({ question, answer, isOpen, onClick }) => {
   return (
     <div
       className={`eb-accordion-item elementor-repeater-item-2add476 ${

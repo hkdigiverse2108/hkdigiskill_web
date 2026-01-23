@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
-import VideoModal from "../Common/VideoModal";
 import { useAppDispatch } from "../../Store/Hook";
 import { setModalVideoLink } from "../../Store/Slices/VideoModalSlice";
 

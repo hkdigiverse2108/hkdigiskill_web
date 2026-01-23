@@ -3,14 +3,20 @@ import { useEffect, useState } from "react";
 import { ImagePath, ROUTES } from "../Constants";
 import { GetHeaderMenuItems } from "../Utils/GetHeaderMenuItems";
 import type { MenuItem } from "../Types";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Queries } from "../Api";
+import { useAppDispatch, useAppSelector } from "../Store/Hook";
+import { setLogoutModalOpen } from "../Store/Slices/ModalSlice";
 
 const Header = () => {
   const [isMobileMenu, setMobileMenu] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState<boolean | null>(false);
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [fix, setFix] = useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { isAuthenticated } = useAppSelector((state) => state.user);
 
   const { data } = Queries.useGetCourseCategory();
   const allCategory = data?.data?.course_category_data;
@@ -120,13 +126,21 @@ const Header = () => {
                 </nav>
               </div>
               <div className="edublink-header-right-side">
-                <Link
-                  to=""
-                  target="_self"
-                  className="main-header-btn edu-btn btn-medium"
-                >
-                  Login <i className="icon-4" />
-                </Link>
+                {isAuthenticated ? (
+                  <button
+                    onClick={() => dispatch(setLogoutModalOpen(true))}
+                    className="main-header-btn edu-btn btn-medium"
+                  >
+                    Logout <i className="icon-4" />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => navigate(ROUTES.AUTH.BASE)}
+                    className="main-header-btn edu-btn btn-medium"
+                  >
+                    Login <i className="icon-4" />
+                  </button>
+                )}
                 <div className="quote-icon edublink-theme-nav-responsive hamburger-icon">
                   <div
                     className="edublink-mobile-hamburger-menu"

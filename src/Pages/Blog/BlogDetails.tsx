@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { Queries } from "../../Api";
 import { BlogCard } from "../../Components/Blog";
-import { BreadCrumb } from "../../Components/Common";
+import { BreadCrumb, ShareButtons } from "../../Components/Common";
 import { formatDateTime } from "../../Utils";
 import { ROUTES } from "../../Constants";
 
@@ -14,13 +14,9 @@ const BlogDetails = () => {
   const SingleBlog = blogApi?.data;
   const Blogs = allBlogApi?.data?.blog_data;
 
-  const latestBlogs = Blogs?.slice(0, 3);
+  const latestBlogs = Blogs?.filter((blog) => blog?._id !== id).slice(0, 3);
 
   const paginationBlog = Blogs?.filter((blog) => blog?._id !== id).slice(0, 2);
-
-  const calculate = () => {
-    const temp = [];
-  };
 
   const allCategories = Blogs?.reduce((acc: any[], blog: any) => {
     const category = blog?.category;
@@ -42,10 +38,13 @@ const BlogDetails = () => {
       <div>
         <BreadCrumb title="Blog Details" />
       </div>
-      <div id="content" className="site-content container my-50! w-full!  ">
-        <div className="">
+      <div
+        id="content"
+        className="site-content edublink-container my-50! w-full!  "
+      >
+        <div className=" ">
           <div id="primary" className="content-area  w-full!">
-            <main id="main" className="site-main eb-post-details-page ">
+            <main id="main" className="site-main eb-post-details-page mx-0! ">
               <article className="edublink-single-post edu-blog post-15416 post type-post status-publish format-standard has-post-thumbnail hentry category-technology tag-design tag-development">
                 <div className="blog-details-top">
                   <span className="edublink-post-cat">
@@ -55,7 +54,7 @@ const BlogDetails = () => {
                   <ul className="blog-meta">
                     <li>
                       <i className="icon-27"></i>{" "}
-                      {formatDateTime(SingleBlog?.updatedAt)}
+                      {formatDateTime(SingleBlog?.createdAt)}
                     </li>
                     <li>
                       <i className="icon-58"></i>
@@ -123,28 +122,11 @@ const BlogDetails = () => {
                   <div className="edublink-tag-social-share-wrapper">
                     <div className="edublink-tag-social-share edublink-row">
                       <div className="edublink-col-md-12 flex! items-start! text-start!">
-                        <div className="edublink-single-post-social-share  w-fit!">
-                          <span className="post-share-text">Share on: </span>
-                          <ul className="edublink-social-share-icons-wrapper">
-                            <li className="edublink-social-share-each-icon facebook">
-                              <a className="edublink-social-share-link">
-                                <i className="icon-facebook"></i>
-                              </a>
-                            </li>
-
-                            <li className="edublink-social-share-each-icon twitter">
-                              <a className="edublink-social-share-link">
-                                <i className="icon-twitter"></i>
-                              </a>
-                            </li>
-
-                            <li className="edublink-social-share-each-icon linkedin">
-                              <a className="edublink-social-share-link">
-                                <i className="icon-linkedin2"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
+                        <ShareButtons
+                          url={window.location.href}
+                          title={SingleBlog?.title}
+                          
+                        />
                       </div>
                     </div>
                   </div>
@@ -156,7 +138,7 @@ const BlogDetails = () => {
                         <Link
                           to={`${ROUTES.BLOG.DETAILS.replace(
                             ":id",
-                            blog?._id
+                            blog?._id,
                           )}`}
                           className="edublink-col-md-6"
                         >
@@ -185,12 +167,12 @@ const BlogDetails = () => {
             </main>
           </div>
 
-          <aside id="secondary" className="widget-area  ">
+          <aside id="secondary" className="widget-area w-full!">
             <div className="widget-area-wrapper ">
               {/* Latest Posts */}
               <section
                 id="edublinkcore_recent_posts_widget-3"
-                className="widget widget_edublinkcore_recent_posts_widget"
+                className="widget widget_edublinkcore_recent_posts_widget px-0!"
               >
                 <h2 className="widget-title">Latest Post</h2>
 
@@ -205,7 +187,7 @@ const BlogDetails = () => {
               </section>
 
               {/* Categories */}
-              <section id="categories-2" className="widget widget_categories">
+              <section id="categories-2" className="widget widget_categories px-0!">
                 <h2 className="widget-title">Categories</h2>
                 <ul>
                   {allCategories?.map((item, index) => (

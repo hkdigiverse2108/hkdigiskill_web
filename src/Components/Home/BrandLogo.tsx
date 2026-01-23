@@ -2,14 +2,6 @@ import { Queries } from "../../Api";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 
-// const brandImages = [
-//   { id: "5ecff55", src: "brand/brand-01.png", wp: "wp-image-1211" },
-//   { id: "c0b6e3f", src: "brand/brand-02.png", wp: "wp-image-1212" },
-//   { id: "4ce3041", src: "brand/brand-03.png", wp: "wp-image-1213" },
-//   { id: "10bcc3a", src: "brand/brand-04.png", wp: "wp-image-1214" },
-//   { id: "70baba7", src: "brand/brand-05.png", wp: "wp-image-1215" },
-//   { id: "ca318a7", src: "brand/brand-06.png", wp: "wp-image-1216" },
-// ];
 
 const BrandLogo = () => {
   const { data } = Queries.useGetTrutedPartner();

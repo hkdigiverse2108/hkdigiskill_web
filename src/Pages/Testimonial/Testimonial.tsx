@@ -1,5 +1,5 @@
-import { BreadCrumb, GetCeritficateSection } from "../../Components/Common";
 import { Queries } from "../../Api";
+import { BreadCrumb, GetCeritficateSection } from "../../Components/Common";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 

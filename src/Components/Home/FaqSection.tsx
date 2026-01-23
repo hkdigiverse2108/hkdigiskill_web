@@ -12,7 +12,7 @@ const FaqSection = () => {
   const faq = data?.data?.faq_data;
   const featuedFaq = faq
     ?.filter((item) => item?.isFeatured === true)
-    ?.splice(0, 5);
+    ?.slice(0, 5);
 
   return (
     <section

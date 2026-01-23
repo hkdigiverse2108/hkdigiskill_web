@@ -1,5 +1,6 @@
 import { type FC } from "react";
 import type { Course } from "../../Types";
+import { ShareButtons } from "../Common";
 
 const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   return (
@@ -98,38 +99,11 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
               </div>
             </div>
 
-            <div className="edublink-single-event-social-share">
-              <h4 className="share-title">Share On:</h4>
-
-              <ul className="edublink-social-share-icons-wrapper">
-                <li className="edublink-social-share-each-icon facebook">
-                  <a
-                    className="edublink-social-share-link"
-                    title="Share on facebook"
-                  >
-                    <i className="icon-facebook"></i>
-                  </a>
-                </li>
-
-                <li className="edublink-social-share-each-icon twitter">
-                  <a
-                    className="edublink-social-share-link"
-                    title="Share on Twitter"
-                  >
-                    <i className="icon-twitter"></i>
-                  </a>
-                </li>
-
-                <li className="edublink-social-share-each-icon linkedin">
-                  <a
-                    className="edublink-social-share-link"
-                    title="Share on LinkedIn"
-                  >
-                    <i className="icon-linkedin2"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <ShareButtons
+              url={window.location.href}
+              title={course?.name || ""}
+              variant="circle"
+            />
           </div>
         </div>
       </div>

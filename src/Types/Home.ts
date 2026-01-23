@@ -1,4 +1,4 @@
-import type { BaseType, MessageStatus } from "./Common";
+import type { BaseType, MessageStatus } from "./common";
 
 export interface TrustedPartner extends BaseType {
   name: string;

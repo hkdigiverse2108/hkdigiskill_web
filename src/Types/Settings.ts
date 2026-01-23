@@ -1,5 +1,6 @@
 // Types/Settings.ts
-import type { BaseType } from "./Common";
+
+import type { BaseType } from "./common";
 
 export interface SocialMediaLinks {
     facebook: string;

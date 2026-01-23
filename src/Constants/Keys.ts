@@ -1,5 +1,6 @@
 export const KEYS = {
-  LOGIN: "admin-login",
+  LOGIN: "login",
+  REGISTER: "register",
   SEND_PASSWORD_EMAIL: "forgot-password-request",
   VERIFY_OTP: "verify-otp",
   RESET_PASSWORD: "reset-password",
@@ -20,6 +21,6 @@ export const KEYS = {
   BLOG_ONE: "blog-one",
   SETTINGS: "settings",
   GALLARY: "gallary",
-
+  USER: "user",
 
 } as const;

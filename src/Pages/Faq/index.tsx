@@ -2,12 +2,11 @@ import { useState } from "react";
 import BreadCrumb from "../../Components/Common/BreadCrumb";
 import FaqCard from "../../Components/Faq/FaqCard";
 import GetCeritficateSection from "../../Components/Common/GetCeritficateSection";
-import type { FaqCategory } from "../../Types";
 import { Queries } from "../../Api";
 
 const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState<FaqCategory | null>(null);
+  const [activeTab, setActiveTab] = useState<any | null>(null);
 
   const { data } = Queries.useGetFaq();
 
@@ -29,12 +28,12 @@ const Faq = () => {
 
       return acc;
     },
-    {}
+    {},
   );
 
   // Build tabs from API types
   const categories = Object.keys(mappedFaqData).map((type) => ({
-    id: type as FaqCategory,
+    id: type as string,
     label: type, // 👈 SHOW TYPE AS TAB NAME
   }));
 
@@ -115,11 +114,11 @@ const Faq = () => {
                                                         setActiveIndex(
                                                           activeIndex === index
                                                             ? -1
-                                                            : index
+                                                            : index,
                                                         )
                                                       }
                                                     />
-                                                  )
+                                                  ),
                                                 )}
                                               </div>
                                             </div>

@@ -1,4 +1,4 @@
-import type { BaseType, MessageStatus } from "./Common";
+import type { BaseType, MessageStatus } from "./common";
 
 export interface CourseCategory {
   name: string;
@@ -44,7 +44,7 @@ export interface Course extends BaseType {
   image: string; // URL
   mrpPrice: number;
   price: number;
-  name: string;
+  name?: string;
   purchasedCoursesShow: boolean;
   satisfactionRate: number; // e.g. percentage or rating
 

@@ -1,5 +1,5 @@
 // export * from "./CoreComponents";
-export * from "./Common";
+export * from "./common";
 export * from "./Api";
 export * from "./Faq";
 export * from "./NewsLetter";
@@ -12,3 +12,4 @@ export * from "./Home"
 export * from "./Gallary"
 export * from "./Settings"
 export * from "./Instructor"
+export * from "./CoreComponents"

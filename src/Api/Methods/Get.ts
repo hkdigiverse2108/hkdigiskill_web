@@ -1,9 +1,9 @@
 import type { AxiosError, AxiosRequestConfig } from "axios";
-import type { Params } from "../../Types/Common";
 import axios from "axios";
 import { ROUTES } from "../../Constants";
 import { HTTP_STATUS } from "../../Constants/HttpStatus";
-import { getToken } from "../../Utils";
+import { getToken, Storage } from "../../Utils";
+import type { Params } from "../../Types";
 
 let isRedirecting = false;
 
@@ -29,7 +29,7 @@ export async function Get<T>(url: string, params?: Params, headers?: Record<stri
         const axiosError = error as AxiosError<{ status?: string }>;
 
         if (axiosError?.response?.status === HTTP_STATUS.TOKEN_EXPIRED && !isRedirecting) {
-            // Storage.clear();
+            Storage.clear();
             isRedirecting = true;
             window.location.href = ROUTES.HOME;
             setTimeout(() => (isRedirecting = false), 1000);

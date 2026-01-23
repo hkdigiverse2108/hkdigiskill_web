@@ -2473,7 +2473,7 @@ a.edublink-social-icon-each-item:not(:last-child) {
   overflow: hidden;
 }
 .eb-testimonial-grid:after {
-  content: url("../images/shape-1.3c0e4c2c.png");
+  content: url("../images/shapes/shape-testimonial.png");
   position: absolute;
   top: -6px;
   right: -9px;

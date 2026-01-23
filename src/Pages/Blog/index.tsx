@@ -101,54 +101,7 @@ const Blog = () => {
               </main>
             </div>
 
-            {/* === SIDEBAR === */}
-            {/* <aside
-              id="secondary"
-              className="widget-area eb-sidebar-widget edublink-col-lg-4"
-            >
-              <div className="widget-area-wrapper">
-                <section
-                  id="edublinkcore_recent_posts_widget-3"
-                  className="widget widget_edublinkcore_recent_posts_widget"
-                >
-                  <h2 className="widget-title">Latest Post</h2>
-
-                  <div className="widget-posts recent-post-widget edublink-recent-post-widget">
-                    {latestBlogs?.map((blog) => (
-                      <LatestBlogCard key={blog?._id} blog={blog} />
-                    ))}
-                  </div>
-                </section>
-
-                <section id="categories-2" className="widget widget_categories">
-                  <h2 className="widget-title">Categories</h2>
-
-                  <ul>
-                    <li className="cat-item cat-item-72">
-                      <a>Child Development</a> (2)
-                    </li>
-                    <li className="cat-item cat-item-77">
-                      <a>Computer Engineering</a> (3)
-                    </li>
-                    <li className="cat-item cat-item-70">
-                      <a>Learning</a> (11)
-                    </li>
-                    <li className="cat-item cat-item-80">
-                      <a>Nutrition</a> (11)
-                    </li>
-                    <li className="cat-item cat-item-66">
-                      <a>Science</a> (15)
-                    </li>
-                    <li className="cat-item cat-item-67">
-                      <a>Technology</a> (6)
-                    </li>
-                    <li className="cat-item cat-item-76">
-                      <a>Web Development</a> (4)
-                    </li>
-                  </ul>
-                </section>
-              </div> 
-            </aside>*/}
+        
           </div>
         </div>
       </section>

@@ -1,41 +1,9 @@
 import { ImagePath, ROUTES } from "../../Constants";
 import { Queries } from "../../Api";
-import LatestBlogCard from "../Blog/LatestBlogCard";
 import type { Blog } from "../../Types";
 import { BlogCard } from "../Blog";
 import { Link } from "react-router-dom";
 
-// const articles = [
-//   {
-//     image: "blog/blog-01.jpg",
-//     category: "Science",
-//     title: "Crafting Effective Learning Guide Line",
-//     date: "15 Nov, 2023",
-//     comments: "Com 0",
-//     description: "aConsectetur adipisicing elit, sed do eiusmod tempor inc...",
-//     aosDelay: 0,
-//   },
-//   {
-//     image: "blog/blog-02.jpg",
-//     category: "Technology",
-//     title: "Exploring Learning Landscapes in Academic",
-//     date: "14 Nov, 2023",
-//     comments: "Com 3",
-//     description:
-//       "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt ut labore et dolore magna aliqua enim ad...",
-//     aosDelay: 100,
-//   },
-//   {
-//     image: "blog/blog-03.jpg",
-//     category: "Learning",
-//     title: "Voices from the Learning Education Hub",
-//     date: "13 Nov, 2023",
-//     comments: "Com 0",
-//     description:
-//       "Consectetur adipisicing elit, sed do eiusmod tempor inc idid unt ut labore...",
-//     aosDelay: 200,
-//   },
-// ];
 
 const LatestBlogsSection = () => {
   const { data } = Queries.useGetAllBlogs();
