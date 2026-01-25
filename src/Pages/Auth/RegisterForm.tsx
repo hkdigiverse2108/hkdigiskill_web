@@ -22,7 +22,7 @@ const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
   const handleRegisterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     registerMutation.mutate(registerData, {
-      onSuccess: (data) => {
+      onSuccess: () => {
         // console.log("Register successful", data);
         // Handle register success, e.g., switch to login or auto login
         onSwitchToLogin();
