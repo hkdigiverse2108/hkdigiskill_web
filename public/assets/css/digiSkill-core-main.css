@@ -999,7 +999,7 @@ div.wpcf7 .edublink-contact-form-single-item .ajax-loader {
   height: 15px;
   left: 25px;
   bottom: -20px;
-  background-image: url(../../../../../../../../plugins/edublink-core/assets/images/animate-text-2-bg-1.html);
+  /* background-image: url(../../../../../../../../plugins/edublink-core/assets/images/animate-text-2-bg-1.html); */
 }
 @media only screen and (max-width: 991px) {
   .edublink-animated-text-2-wrapper .edublink-animated-text:after {
@@ -2149,8 +2149,8 @@ a.edublink-social-icon-each-item:not(:last-child) {
   margin-bottom: 50px;
 }
 .edublink-feature-2-widget .edublink-feature-item .icon {
-  -webkit-mask-image: url(../../../../../../../../plugins/edublink-core/assets/images/feature-2-mask-bg-2.png);
-  mask-image: url(../../../../../../../../plugins/edublink-core/assets/images/feature-2-mask-bg-2.png);
+  /* -webkit-mask-image: url(../../../../../../../../plugins/edublink-core/assets/images/feature-2-mask-bg-2.png); */
+  /* mask-image: url(../../../../../../../../plugins/edublink-core/assets/images/feature-2-mask-bg-2.png); */
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: cover;
   -webkit-mask-position: center;
@@ -2164,8 +2164,8 @@ a.edublink-social-icon-each-item:not(:last-child) {
 }
 .edublink-feature-2-widget .edublink-feature-item .icon:after {
   content: "";
-  -webkit-mask-image: url(../../../../../../../../plugins/edublink-core/assets/images/feature-2-mask-bg-1.png);
-  mask-image: url(../../../../../../../../plugins/edublink-core/assets/images/feature-2-mask-bg-1.png);
+  /* -webkit-mask-image: url(../../../../../../../../plugins/edublink-core/assets/images/feature-2-mask-bg-1.png); */
+  /* mask-image: url(../../../../../../../../plugins/edublink-core/assets/images/feature-2-mask-bg-1.png); */
   background: var(--edublink-color-primary);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;

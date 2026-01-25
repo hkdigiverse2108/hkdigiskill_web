@@ -1,8 +1,9 @@
 export const KEYS = {
   LOGIN: "login",
   REGISTER: "register",
-  SEND_PASSWORD_EMAIL: "forgot-password-request",
+  FORGOT_PASSWORD: "forgot-password",
   VERIFY_OTP: "verify-otp",
+  RESEND_OTP: "resend-otp",
   RESET_PASSWORD: "reset-password",
   CHANGE_PASSWORD: "change-password",
   NEWSLETTER: "newsletter",

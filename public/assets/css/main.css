@@ -3314,11 +3314,11 @@ body:not(.edublink-header-transparent-enable) .site-header.theme-header-3:not(.e
   top: 0;
 }
 .theme-header-4-alt-2:before {
-  content: url(../../../../../../../../themes/edublink/assets/images/shapes/header-4-shape-1.png);
+  /* content: url(../../../../../../../../themes/edublink/assets/images/shapes/header-4-shape-1.png); */
   left: 0;
 }
 .theme-header-4-alt-2:after {
-  content: url(../../../../../../../../themes/edublink/assets/images/shapes/header-4-shape-2.png);
+  /* content: url(../../../../../../../../themes/edublink/assets/images/shapes/header-4-shape-2.png); */
   z-index: -1;
   right: 0;
 }
@@ -8334,8 +8334,8 @@ body.learnpress-checkout.learnpress-page .site-content,
 .edublink-single-course.course-style-11 .content {
   background-color: var(--edublink-color-primary);
   position: relative;
-  -webkit-mask-image: url(../../../../../../../../themes/edublink/assets/images/course-kindergarten-mask.png);
-  mask-image: url(../../../../../../../../themes/edublink/assets/images/course-kindergarten-mask.png);
+  /* -webkit-mask-image: url(../../../../../../../../themes/edublink/assets/images/course-kindergarten-mask.png); */
+  /* mask-image: url(../../../../../../../../themes/edublink/assets/images/course-kindergarten-mask.png); */
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: cover;
   -webkit-mask-position: center;
@@ -9990,8 +9990,8 @@ body .tpd-size-medium .tpd-content {
 .eb-event-item.eb-event-style-3 .thumb a {
   overflow: hidden;
   display: block;
-  -webkit-mask-image: url(../../../../../../../../themes/edublink/assets/images/event-kindergarten-mask.png);
-  mask-image: url(../../../../../../../../themes/edublink/assets/images/event-kindergarten-mask.png);
+  /* -webkit-mask-image: url(../../../../../../../../themes/edublink/assets/images/event-kindergarten-mask.png); */
+  /* mask-image: url(../../../../../../../../themes/edublink/assets/images/event-kindergarten-mask.png); */
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: cover;
   -webkit-mask-position: center;
@@ -10788,7 +10788,7 @@ body .tpd-size-medium .tpd-content {
   border-radius: 0 0 10px 10px;
 }
 .edu-blog.blog-style-7 .content:before {
-  content: url(../../../../../../../../themes/edublink/assets/images/blog-kindergarten-mask.png);
+  /* content: url(../../../../../../../../themes/edublink/assets/images/blog-kindergarten-mask.png); */
   position: absolute;
   top: -36px;
   left: 0;
@@ -12696,7 +12696,7 @@ body .course-tab-panel-reviews .course-reviews-list li + li {
   font-family: var(--edublink-font-secondary);
   font-size: 15px;
   font-weight: 600;
-  background: url(../../../../../../../../themes/edublink/assets/images/icons/arrow-down.png) 88% center no-repeat transparent;
+  /* background: url(../../../../../../../../themes/edublink/assets/images/icons/arrow-down.png) 88% center no-repeat transparent; */
   background-color: var(--edublink-color-lighten01);
   cursor: pointer;
 }

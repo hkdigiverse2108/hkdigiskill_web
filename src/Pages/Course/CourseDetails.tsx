@@ -12,7 +12,7 @@ import {
 
 const CourseDetails = () => {
   const { id } = useParams();
-  console.log("Ids : ", id);
+  // console.log("Ids : ", id);
 
   const { data: allCourseData } = Queries.useGetAllCourses();
   const { data: Course } = Queries.useGetSingleCourse(id);
@@ -24,8 +24,8 @@ const CourseDetails = () => {
   const AllCourseCurriculum =
     courseCurriculum?.data?.course_curriculum_data || [];
 
-  console.log("singleCourse -->", singleCourse);
-  console.log("AllCourses", AllCourses);
+  // console.log("singleCourse -->", singleCourse);
+  // console.log("AllCourses", AllCourses);
   console.log("AllCourseCurriculum", AllCourseCurriculum);
 
   return (

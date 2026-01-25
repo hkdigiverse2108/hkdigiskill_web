@@ -21,8 +21,16 @@
 @font-face {
   font-display: swap;
   font-family: "icomoon";
-  src: url(https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.eot?c3wvz6);
-  src: url("https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.eot?c3wvz6#iefix") format("embedded-opentype"), url(https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.ttf?c3wvz6) format("truetype"), url(https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.woff?c3wvz6) format("woff"), url("https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.svg?c3wvz6#icomoon") format("svg");
+  /* src: url(https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.eot?c3wvz6); */
+  src:
+    /* url("https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.eot?c3wvz6#iefix") */
+      /* format("embedded-opentype"), */
+    /* url(https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.ttf?c3wvz6)
+      format("truetype"), */
+    /* url(https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.woff?c3wvz6)
+      format("woff"), */
+    url("https://demo.edublink.co/wp-content/plugins/wp-events-manager/assets/css/fonts/icomoon.svg?c3wvz6#icomoon")
+      format("svg");
   font-weight: 400;
   font-style: normal;
 }

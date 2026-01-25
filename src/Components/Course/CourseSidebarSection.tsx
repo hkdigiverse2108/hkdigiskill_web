@@ -4,8 +4,8 @@ import { ShareButtons } from "../Common";
 
 const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   return (
-    <div className="ed-course-sidebar edublink-col-lg-4">
-      <div className="edublink-course-details-sidebar eb-course-single-4 sidebar-enable">
+    <div className="ed-course-sidebar edublink-col-lg-4 ">
+      <div className="edublink-course-details-sidebar eb-course-single-4 sidebar-enable max-w-full!">
         <div className="edublink-course-details-sidebar-inner">
           <div className="edublink-course-details-sidebar-content">
             <h4 className="widget-title">Course Includes:</h4>

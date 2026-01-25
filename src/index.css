@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
 
-
 @import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
@@ -35,6 +34,7 @@
 @import "../public/assets/css/owl.carousel.css";
 @import "../public/assets/css/post-one.css";
 @import "../public/assets/css/post-two.css";
+@import "../public/assets/css/post-one.css.css";
 @import "../public/assets/css/post-three.css";
 @import "../public/assets/css/post-four.css";
 @import "../public/assets/css/remixicon.css";
@@ -48,13 +48,6 @@
 @import "../public/assets/css/widgets.min.css";
 @import "../public/assets/css/wishlist.min.css";
 @import "../public/assets/css/woocommerce-layout.css";
-@import "../public/assets/css/woocommerce-smallscreen.css";
-@import "../public/assets/css/woocommerce.css";
-@import "../public/assets/css/yith-quick-view.css";
-
-
-
-
-
-
-
+/* @import "../public/assets/css/woocommerce-smallscreen.css"; */
+/* @import "../public/assets/css/woocommerce.css"; */
+/* @import "../public/assets/css/yith-quick-view.css"; */

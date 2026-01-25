@@ -34,6 +34,24 @@ export interface RegisterPayload {
   agreeTerms: boolean;
 }
 
+export interface ForgotPasswordPayload {
+  email: string;
+}
+
+export interface VerifyOtpPayload {
+  email: string;
+  otp: string;
+}
+
+export interface ResendOtpPayload {
+  email: string;
+}
+
+export interface ResetPasswordPayload {
+  email: string;
+  newPassword: string;
+}
+
 export interface AuthResponse {
   token: string;
   user: User;

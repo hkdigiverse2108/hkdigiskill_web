@@ -17,7 +17,6 @@ const AuthInitializer = () => {
 
   useEffect(() => {
     if (data) {
-      console.log("Fetched user data", data?.data);
       localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(data?.data));
       // Update Redux store
       dispatch(setUser(data));

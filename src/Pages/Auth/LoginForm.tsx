@@ -8,9 +8,10 @@ import { STORAGE_KEYS } from "../../Constants/StorageKeys";
 
 interface LoginFormProps {
   onSwitchToRegister: () => void;
+  onSwitchToForgot: () => void;
 }
 
-const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
+const LoginForm = ({ onSwitchToRegister, onSwitchToForgot }: LoginFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loginData, setLoginData] = useState<LoginPayload>({
     email: "",
@@ -26,7 +27,7 @@ const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
     e.preventDefault();
     loginMutation.mutate(loginData, {
       onSuccess: (data) => {
-        console.log("Login successful", data);
+        // console.log("Login successful", data);
         // Store token and user in localStorage
         localStorage.setItem(STORAGE_KEYS.TOKEN, data?.data?.token);
         localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(data?.data));
@@ -46,11 +47,11 @@ const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
   };
 
   return (
-    <div className="u-column1 col-1">
+    <div className="  w-full! ">
       <h2>Login</h2>
 
       <form
-        className="woocommerce-form woocommerce-form-login login"
+        className="woocommerce-form woocommerce-form-login login auth-form"
         onSubmit={handleLoginSubmit}
       >
         <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
@@ -60,7 +61,7 @@ const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
           </label>
           <input
             type="text"
-            className="woocommerce-Input woocommerce-Input--text input-text"
+            className="woocommerce-Input woocommerce-Input--text input-text form "
             name="email"
             id="username"
             autoComplete="username"
@@ -96,8 +97,8 @@ const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
           </span>
         </p>
 
-        <p className="form-row flex flex-col">
-          <label className="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+        <p className="woocommerce-form-row form-row">
+          <label className="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme ">
             <input
               type="checkbox"
               className="woocommerce-form__input woocommerce-form__input-checkbox"
@@ -106,14 +107,17 @@ const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
             />
             <span> Remember me</span>
           </label>
+        </p>
 
-          <button type="submit" className="main-header-btn edu-btn btn-medium">
+        <p className="woocommerce-form-row form-row">
+          <button type="submit" className="main-header-btn edu-btn btn-medium w-full!">
             Log in
           </button>
         </p>
-        <div className="flex justify-between gap-6! px-2! pb-0!">
+
+        <div className="flex max-sm:flex-col! justify-between gap-6! px-2! pb-0!">
           <span className="woocommerce-LostPassword lost_password">
-            <a href="">Lost your password?</a>
+            <a onClick={onSwitchToForgot}>Lost your password?</a>
           </span>
           <span>
             Don't have an account?{" "}

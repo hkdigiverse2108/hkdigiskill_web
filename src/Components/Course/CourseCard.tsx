@@ -43,9 +43,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
       <div className="edublink-single-course course-style-2 ">
         <div className="inner h-full! bg-white!">
           <div className="thumbnail">
-            <a className="course-thumb">
+            <div className="course-thumb">
               <img className="w-100" src={image} alt={image} />
-            </a>
+            </div>
 
             <div className="time-top">
               <span className="duration">
@@ -101,12 +101,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             </div>
 
             <div className="read-more-btn">
-              <Link
-                to={`${ROUTES.COURSE.DETAILS.replace(":id", _id)}`}
-                className="edu-btn btn-small btn-secondary"
-              >
+              <button className="edu-btn btn-small btn-secondary">
                 Enroll Now<i className="icon-4"></i>
-              </Link>
+              </button>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
     e.preventDefault();
     registerMutation.mutate(registerData, {
       onSuccess: (data) => {
-        console.log("Register successful", data);
+        // console.log("Register successful", data);
         // Handle register success, e.g., switch to login or auto login
         onSwitchToLogin();
       },
@@ -42,11 +42,11 @@ const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
   };
 
   return (
-    <div className="u-column2 col-2">
+    <div className="  w-full! ">
       <h2>Register</h2>
 
       <form
-        className="woocommerce-form woocommerce-form-register register"
+        className="woocommerce-form woocommerce-form-register register auth-form"
         onSubmit={handleRegisterSubmit}
       >
         <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
@@ -141,28 +141,28 @@ const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
           </span>
         </p>
 
-        <p className="woocommerce-form-row form-row">
-          <label className="woocommerce-form__label woocommerce-form__label-for-checkbox">
-            <input
-              type="checkbox"
-              className="woocommerce-form__input woocommerce-form__input-checkbox"
-              name="agreeTerms"
-              checked={registerData.agreeTerms}
-              onChange={handleRegisterChange}
-              required
-            />
-            <span> I agree to the terms and conditions</span>
-          </label>
-        </p>
+          <p className="woocommerce-form-row form-row">
+            <label className="woocommerce-form__label woocommerce-form__label-for-checkbox">
+              <input
+                type="checkbox"
+                className="woocommerce-form__input woocommerce-form__input-checkbox"
+                name="agreeTerms"
+                checked={registerData.agreeTerms}
+                onChange={handleRegisterChange}
+                required
+              />
+              <span> I agree to the terms and conditions</span>
+            </label>
+          </p>
 
-        <p className="woocommerce-form-row form-row">
-          <button
-            type="submit"
-            className="main-header-btn edu-btn btn-medium w-full!"
-          >
-            Register
-          </button>
-        </p>
+          <p className="woocommerce-form-row form-row">
+            <button
+              type="submit"
+              className="main-header-btn edu-btn btn-medium w-full!"
+            >
+              Register
+            </button>
+          </p>
         <p className="my-0!">
           Already have an account?{" "}
           <a onClick={onSwitchToLogin}>Login here</a>

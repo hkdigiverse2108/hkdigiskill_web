@@ -27,8 +27,16 @@
   --edublink-color-extra09: #525151;
   --edublink-color-extra10: #404040;
   --edublink-color-extra11: #22272e;
-  --edublink-gradient-primary: linear-gradient(-90deg, var(--edublink-color-primary-alt) 0%, var(--edublink-color-primary) 100%);
-  --edublink-gradient-primary-alt: linear-gradient(-90deg, var(--edublink-color-primary) 0%, var(--edublink-color-primary-alt) 100%);
+  --edublink-gradient-primary: linear-gradient(
+    -90deg,
+    var(--edublink-color-primary-alt) 0%,
+    var(--edublink-color-primary) 100%
+  );
+  --edublink-gradient-primary-alt: linear-gradient(
+    -90deg,
+    var(--edublink-color-primary) 0%,
+    var(--edublink-color-primary-alt) 100%
+  );
   --edublink-radius-small: 5px;
   --edublink-radius: 10px;
   --edublink-radius-big: 16px;
@@ -47,7 +55,8 @@
   --edublink-shadow-darker4: 0px 20px 70px 0px rgba(15, 107, 92, 0.2);
   --edublink-transition: 0.3s;
   --edublink-transition-2: 0.5s;
-  --edublink-transition-transform: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+  --edublink-transition-transform: transform 0.65s
+    cubic-bezier(0.23, 1, 0.32, 1);
   --edublink-font-primary: "Poppins", sans-serif;
   --edublink-font-secondary: "Spartan", sans-serif;
   --edublink-font-size-b1: 15px;
@@ -70,4 +79,8 @@
   --edublink-h4-lineHeight: 1.4;
   --edublink-h5-lineHeight: 1.45;
   --edublink-h6-lineHeight: 1.62;
+}
+
+@theme {
+  --color-primary: var(--edublink-color-primary);
 }

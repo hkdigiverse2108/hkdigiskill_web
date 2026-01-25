@@ -30,7 +30,7 @@ const LogoutModal = () => {
   return (
     <div
       onClick={handleCancel}
-      className="modal-overlay fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
+      className="modal-overlay fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-9999!"
     >
       <div
         onClick={(e) => e.stopPropagation()}

@@ -4,9 +4,10 @@ export const URL_KEYS = {
   AUTH: {
     LOGIN: "auth/login",
     REGISTER: "auth/signup",
-    FORGOT_PASSWORD: "auth/forgot_password",
-    VERIFY_OTP: "auth/verify_otp",
-    RESET_PASSWORD: "auth/reset_password",
+    FORGOT_PASSWORD: "auth/forgot-password",
+    VERIFY_OTP: "auth/otp/verify",
+    RESEND_OTP: "auth/resend-otp",
+    RESET_PASSWORD: "auth/reset-password",
     CHANGE_PASSWORD: "auth/change-password",
   },
   NEWSLETTER: {

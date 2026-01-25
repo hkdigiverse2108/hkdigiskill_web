@@ -9,7 +9,7 @@ const CourseSection = () => {
   const { data } = Queries.useGetAllCourses();
   const Courses = data?.data?.course_data || [];
 
-  console.log("Courses", Courses);
+  // console.log("Courses", Courses);
 
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-e0cd102 elementor-section-boxed elementor-section-height-default elementor-section-height-default">

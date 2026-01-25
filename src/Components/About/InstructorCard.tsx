@@ -9,9 +9,9 @@ const InstructorCard: React.FC<InstructorCardProps> = ({ instructor }) => {
       <div className="edublink-team-item">
         <div className="thumbnail-wrap">
           <div className="thumbnail">
-            <a>
+            <div className="thumbnail-link">
               <img decoding="async" src={image} alt={name} />
-            </a>
+            </div>
           </div>
 
           <ul className="team-share-info">

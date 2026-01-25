@@ -88,49 +88,9 @@ const About = () => {
                   data-element_type="column"
                 >
                   <div className="elementor-widget-wrap elementor-element-populated">
-                    <section
-                      className="elementor-section elementor-inner-section elementor-element elementor-element-dd96b31 elementor-section-full_width elementor-section-height-default elementor-section-height-default"
-                      data-id="dd96b31"
-                      data-element_type="section"
-                    >
-                      <div className="elementor-container elementor-column-gap-default">
-                        <div
-                          className="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-f35a614"
-                          data-id="f35a614"
-                          data-element_type="column"
-                        >
-                          <div className="elementor-widget-wrap elementor-element-populated">
-                            <div
-                              className="elementor-element elementor-element-00cef37 elementor-widget__width-auto elementor-absolute elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile elementor-invisible elementor-widget elementor-widget-edublink-animation"
-                              data-id="00cef37"
-                              data-element_type="widget"
-                              data-settings='{"_position":"absolute","_animation":"fadeIn","_animation_delay":500}'
-                            >
-                              <div className="elementor-widget-container">
-                                <div
-                                  className="edublink-animation-widget edublink-animation-display-type-parallax edublink-animation-content-type-image edublink-parallax-item"
-                                  data-parallax='{"x":0,"y":100,"rotateX":0,"rotateY":0,"rotateZ":0,"scale":1}'
-                                  style={{
-                                    transform:
-                                      "translate3d(0px, 100px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1)",
-                                  }}
-                                >
-                                  <img
-                                    decoding="async"
-                                    src="https://demo.edublink.co/wp-content/uploads/2023/05/shape-12-1.png"
-                                    alt="Hero Shape 6"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-
                     {/* Main Content */}
                     <section
-                      className="elementor-section elementor-inner-section elementor-element elementor-element-585a9d2 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                      className="mt-12! elementor-section elementor-inner-section elementor-element elementor-element-585a9d2 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
                       data-id="585a9d2"
                       data-element_type="section"
                     >
@@ -317,7 +277,8 @@ const About = () => {
                           <img
                             decoding="async"
                             src={`${ImagePath}shapes/shape-5.png`}
-                            alt="shape-02"
+                            alt="shape-02 "
+                            className="rotate-slow"
                           />
                         </div>
                       </div>
@@ -394,12 +355,12 @@ const About = () => {
               <section className="">
                 <div className="absolute -mt-42! grid grid-cols-2  w-full justify-between! -z-10">
                   <img
-                    src="https://demo.edublink.co/wp-content/uploads/2023/06/map-shape-3.png"
+                    src={`${ImagePath}shapes/map-shape-3.png`}
                     className="rotate-180"
                     alt=""
                   />
                   <img
-                    src="https://demo.edublink.co/wp-content/uploads/2023/06/map-shape-3.png"
+                    src={`${ImagePath}shapes/map-shape-3.png`}
                     className="rotate-180"
                     alt=""
                   />
@@ -469,8 +430,6 @@ const About = () => {
       </MouseParallax>
     </>
   );
-
 };
 
 export default About;
-

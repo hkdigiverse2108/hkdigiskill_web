@@ -71,27 +71,29 @@ const Header = () => {
               <div className="header-category">
                 <nav className="main-navigation">
                   <ul className="category-menu edublink-navbar-nav">
-                    <li className="cat-menu-item dropdown">
-                      <a className="cat-menu-anchor-item">
-                        <i className="icon-1" />
-                        Category
-                      </a>
-                      <ul className="edublink-dropdown-menu">
-                        {allCategory?.map((item, index) => {
-                          return (
-                            <li key={index} className="cat-item">
-                              <Link to={ROUTES.COURSE.BASE} state={item?._id}>
-                                {item?.name}
-                              </Link>
-                            </li>
-                          );
-                        })}
+                    {allCategory?.length && (
+                      <li className="cat-menu-item dropdown">
+                        <a className="cat-menu-anchor-item">
+                          <i className="icon-1" />
+                          Category
+                        </a>
+                        <ul className="edublink-dropdown-menu">
+                          {allCategory?.map((item, index) => {
+                            return (
+                              <li key={index} className="cat-item">
+                                <Link to={ROUTES.COURSE.BASE} state={item?._id}>
+                                  {item?.name}
+                                </Link>
+                              </li>
+                            );
+                          })}
 
-                        {/* <li className="cat-item">
+                          {/* <li className="cat-item">
                           <Link to="/Bussiness">Cooking</Link>
                         </li> */}
-                      </ul>
-                    </li>
+                        </ul>
+                      </li>
+                    )}
                   </ul>
                 </nav>
               </div>
@@ -192,40 +194,51 @@ const Header = () => {
             id="edublink-mobile-menu-item"
             className="edublink-mobile-menu-item metismenu"
           >
-            <li
-              className={`menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${
-                activeSubMenu ? "mm-active" : ""
-              }`}
-              onClick={() => setActiveSubMenu(!activeSubMenu)}
-            >
-              <a
-                className="nav-link"
-                aria-expanded={activeSubMenu ? "true" : "false"}
-              >
-                Category
-              </a>
-              <ul
-                className={`edublink-dropdown-menu ${
-                  activeSubMenu ? "block" : "hidden"
+            {allCategory?.length && (
+              <li
+                className={`menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${
+                  activeSubMenu ? "mm-active" : ""
                 }`}
+                onClick={() => setActiveSubMenu(!activeSubMenu)}
               >
-                {allCategory?.map((item, index) => {
-                  return (
-                    <li key={index} className="cat-item">
-                      <Link to={ROUTES.COURSE.BASE} state={item?._id}>
-                        {item?.name}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </li>
+                <a
+                  className="nav-link"
+                  aria-expanded={activeSubMenu ? "true" : "false"}
+                >
+                  Category
+                </a>
+                <ul
+                  className={`edublink-dropdown-menu ${
+                    activeSubMenu ? "block" : "hidden"
+                  }`}
+                >
+                  {allCategory?.map((item, index) => {
+                    return (
+                      <li key={index} className="cat-item">
+                        <Link
+                          onClick={() => setMobileMenu(!isMobileMenu)}
+                          to={ROUTES.COURSE.BASE}
+                          state={item?._id}
+                        >
+                          {item?.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
+            )}
+
             {menuItems.map((item, index) => (
               <li
                 key={index}
                 className="menu-item menu-item-type-custom menu-item-object-custom  nav-item menu-item-13617 dropdown menu-align-left"
               >
-                <NavLink to={item?.link || ""} className="nav-link">
+                <NavLink
+                  onClick={() => setMobileMenu(!isMobileMenu)}
+                  to={item?.link || ""}
+                  className="nav-link"
+                >
                   {item?.Title}
                 </NavLink>
               </li>
