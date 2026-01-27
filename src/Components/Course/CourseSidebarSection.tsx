@@ -14,26 +14,56 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
               <li className="edublink-course-details-features-item course-price">
                 <span className="edublink-course-feature-item-label">
                   <i className="icon-60"></i>
-                  Price:
+                  Mrp Price:
                 </span>
                 <span className="edublink-course-feature-item-value">
                   <div className="course-price">
                     <span className="course-item-price">
-                      <span className="origin-price">{course?.price}</span>
+                      {/* <span className="origin-price">{course?.price}</span> */}
+                      <span className="price text-success!">{course?.mrpPrice}</span>
+                    </span>
+                  </div>
+                </span>
+              </li>
+
+              <li className="edublink-course-details-features-item course-price">
+                <span className="edublink-course-feature-item-label">
+                  <i className="icon-60"></i>
+                  Discount Price:
+                </span>
+                <span className="edublink-course-feature-item-value">
+                  <div className="course-price">
+                    <span className="course-item-price">
+                      {/* <span className="origin-price">{course?.price}</span> */}
                       <span className="price">{course?.price}</span>
                     </span>
                   </div>
                 </span>
               </li>
 
-              <li className="edublink-course-details-features-item course-instructor">
+              <li className="edublink-course-details-features-item course-price">
+                <span className="edublink-course-feature-item-label">
+                  <i className="icon-60"></i>
+                  Latest Price:
+                </span>
+                <span className="edublink-course-feature-item-value">
+                  <div className="course-price">
+                    <span className="course-item-price">
+                      {/* <span className="origin-price">{course?.price}</span> */}
+                      <span className="price  text-success!">{course?.price}</span>
+                    </span>
+                  </div>
+                </span>
+              </li>
+
+              {/* <li className="edublink-course-details-features-item course-instructor">
                 <span className="edublink-course-feature-item-label">
                   <i className="icon-62"></i>Instructor:
                 </span>
                 <span className="edublink-course-feature-item-value">
                   Edward Norton
                 </span>
-              </li>
+              </li> */}
 
               <li className="edublink-course-details-features-item course-duration">
                 <span className="edublink-course-feature-item-label">

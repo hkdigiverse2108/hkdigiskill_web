@@ -328,7 +328,7 @@
 }
 .learnpress-course-review .course-reviews-list li {
   overflow: hidden;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   padding: 20px;
   border: 1px solid #ddd;
   background-color: #fafafa;

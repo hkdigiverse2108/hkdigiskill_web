@@ -22,7 +22,10 @@ export const URL_KEYS = {
   },
   HERO_BANNER: { ALL: "hero-banner/all?type=web" },
   COURSE_CATEGORY: { ALL: "course-category/all" },
-  TESTIMONIALS: { ALL: "testimonial/all" },
+  TESTIMONIALS: { 
+    ALL: "testimonial/all",
+    RATINGS_SUMMARY: "testimonial/ratings/summary"
+  },
   FAQ: { ALL: "faq/all" },
   TRUSTED_PARTNER: { ALL: "trusted-partner/all" },
   COURSE: {

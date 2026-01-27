@@ -1,6 +1,6 @@
 import { KEYS } from "../Constants/Keys";
 import { URL_KEYS } from "../Constants/Url";
-import type { AllCourseApiResponse, AppQueryOptions, BlogApiResponse, BlogListApiResponse, CourseApiResponse, CourseCategoryResponse, FaqResponse, GalleryListApiResponse, HeroBannerResponse, InstructorListApiResponse, LegalityApiResponse, QueryParams, SettingsApiResponse, TestimonialResponse, TrustedPartnerResponse, UserResponse } from "../Types";
+import type { AllCourseApiResponse, AppQueryOptions, BlogApiResponse, BlogListApiResponse, CourseApiResponse, CourseCategoryResponse, FaqResponse, GalleryListApiResponse, HeroBannerResponse, InstructorListApiResponse, LegalityApiResponse, QueryParams, SettingsApiResponse, TestimonialRatingSummaryResponse, TestimonialResponse, TrustedPartnerResponse, UserResponse } from "../Types";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
 
@@ -13,9 +13,12 @@ export const Queries = {
 
     // ******************* Testimonial *******************
     useGetTestimonials: (options?: AppQueryOptions<TestimonialResponse>) => useQueries<TestimonialResponse>([KEYS.TESTIMONIALS], () => Get(URL_KEYS.TESTIMONIALS.ALL), options),
+    useGetTestimonialsByType: (type: string, options?: AppQueryOptions<TestimonialResponse>) => useQueries<TestimonialResponse>([KEYS.TESTIMONIALS, type], () => Get(`${URL_KEYS.TESTIMONIALS.ALL}?type=${type}`), options),
+    useGetTestimonialRatingSummary: (learningCatalogFilter: string, options?: AppQueryOptions<TestimonialRatingSummaryResponse>) => useQueries<TestimonialRatingSummaryResponse>([KEYS.TESTIMONIAL_RATINGS_SUMMARY, learningCatalogFilter], () => Get(`${URL_KEYS.TESTIMONIALS.RATINGS_SUMMARY}?learningCatalogFilter=${learningCatalogFilter}`), options),
 
     // ******************* FAQ *******************
     useGetFaq: (options?: AppQueryOptions<FaqResponse>) => useQueries<FaqResponse>([KEYS.FAQ], () => Get(URL_KEYS.FAQ.ALL), options),
+    useGetFaqByType: (params?: { page?: number; limit?: number; type?: string }, options?: AppQueryOptions<FaqResponse>) => useQueries<FaqResponse>([KEYS.FAQ, params], () => Get(URL_KEYS.FAQ.ALL, params), options),
 
     // ******************* Trusted Partner *******************
     useGetTrutedPartner: (options?: AppQueryOptions<TrustedPartnerResponse>) => useQueries<TrustedPartnerResponse>([KEYS.TRUSTED_PARTNER], () => Get(URL_KEYS.TRUSTED_PARTNER.ALL), options),

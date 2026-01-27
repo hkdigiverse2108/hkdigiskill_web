@@ -286,7 +286,10 @@ const Contact = () => {
                         <div className="elementor-widget-container">
                           <div className="edublink-contact-form-wrapper">
                             {/* FORM START */}
-                            <form className="wpcf7-form" onSubmit={handleSubmit}>
+                            <form
+                              className="wpcf7-form"
+                              onSubmit={handleSubmit}
+                            >
                               <div className="edublink-contact-form-wrapper eb-contact-us-form">
                                 {/* Name */}
                                 <div className="edublink-contact-form-single-item">
@@ -403,7 +406,7 @@ const Contact = () => {
                   >
                     <div className="elementor-widget-container">
                       <div className="elementor-custom-embed">
-                        <iframe
+                        {/* <iframe
                           loading="lazy"
                           src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&t=m&z=10&output=embed&iwloc=near"
                           title="London Eye, London, United Kingdom"
@@ -413,7 +416,16 @@ const Contact = () => {
                             width: "100%",
                             border: "0",
                           }}
-                        />
+                        /> */}
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.9378723872605!2d72.8687078753715!3d21.234312080466818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x23edd1e9a5188c01%3A0xf02c11f43f5a7caa!2sHK%20DigiVerse%20LLP!5e0!3m2!1sen!2sin!4v1769517970618!5m2!1sen!2sin"
+                          width="600"
+                          height="450"
+                          // style="border:0;"
+                          // allowfullscreen=""
+                          loading="lazy"
+                          // referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
                       </div>
                     </div>
                   </div>

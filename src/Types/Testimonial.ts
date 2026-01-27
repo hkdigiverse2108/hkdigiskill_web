@@ -17,3 +17,20 @@ export interface TestimonialResponse extends MessageStatus {
         testimonial_data: Testimonial[];
     };
 }
+
+export interface RatingDistribution {
+    rate: number;
+    count: number;
+}
+
+export interface TestimonialRatingSummary {
+    totalTestimonials: number;
+    totalRated: number;
+    unrated: number;
+    averageRating: number;
+    ratingDistribution: RatingDistribution[];
+}
+
+export interface TestimonialRatingSummaryResponse extends MessageStatus {
+    data: TestimonialRatingSummary;
+}

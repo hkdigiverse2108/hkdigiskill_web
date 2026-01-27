@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
 import { BreadCrumb } from "../../Components/Common";
 import { Queries } from "../../Api";
+import { Rate } from "antd";
 import {
   CourseOverviewSection,
   CourseCurriculumSection,
   CourseInstructorSection,
   CourseSidebarSection,
   CourseReviewSection,
+  CourseFaqSection,
   CourseCard,
 } from "../../Components/Course";
 
@@ -16,13 +18,15 @@ const CourseDetails = () => {
 
   const { data: allCourseData } = Queries.useGetAllCourses();
   const { data: Course } = Queries.useGetSingleCourse(id);
+  const singleCourse = Course?.data;
+  const { data: ratingSummary } = Queries.useGetTestimonialRatingSummary(singleCourse?._id || "69259b3b0eae08a2ef76d404");
 
   const { data: courseCurriculum } = Queries.useGetCourseCurriculum(id);
 
-  const singleCourse = Course?.data;
   const AllCourses = allCourseData?.data?.course_data || [];
   const AllCourseCurriculum =
     courseCurriculum?.data?.course_curriculum_data || [];
+  const ratingData = ratingSummary?.data;
 
   // console.log("singleCourse -->", singleCourse);
   // console.log("AllCourses", AllCourses);
@@ -53,9 +57,9 @@ const CourseDetails = () => {
 
                         <div className="edublink-course-header-meta">
                           <ul className="eb-course-header-meta-items">
-                            <li className="instructor">
+                            {/* <li className="instructor">
                               <i className="icon-58"></i>By Edward Norton
-                            </li>
+                            </li> */}
 
                             <li className="category">
                               <i className="icon-59"></i>
@@ -64,50 +68,13 @@ const CourseDetails = () => {
 
                             <li className="rating">
                               <div className="edublink-course-review-wrapper">
-                                <div
-                                  className="review-stars-rated"
-                                  title="5 out of 5 stars"
-                                  style={{
-                                    display: "flex",
-                                    position: "relative",
-                                  }}
-                                >
-                                  {/* --- STAR 1 --- */}
-
-                                  {[1, 2, 3, 4, 5].map((i) => (
-                                    <div className="review-star" key={i}>
-                                      <span className="far">
-                                        <svg
-                                          width="17"
-                                          height="16"
-                                          viewBox="0 0 17 16"
-                                        >
-                                          <g fill="#FFB606" fillRule="nonzero">
-                                            <path d="M8.5 0l2.43 6.15H17l-5.46 3.69L13.96 16 8.5 12.31 3.03 16l2.43-6.15L0 6.15h6.07z" />
-                                          </g>
-                                        </svg>
-                                      </span>
-
-                                      <span
-                                        className="fas"
-                                        style={{ width: "100%" }}
-                                      >
-                                        <svg
-                                          width="17"
-                                          height="16"
-                                          viewBox="0 0 17 16"
-                                        >
-                                          <g fill="#FFB606" fillRule="nonzero">
-                                            <polygon points="8.5 12.31 3.03 16 5.46 9.85 0 6.15 6.07 6.15 8.5 0 10.93 6.15 17 6.15 11.54 9.85 13.96 16" />
-                                          </g>
-                                        </svg>
-                                      </span>
-                                    </div>
-                                  ))}
-                                  {/* Repeat same structure for other stars */}
-                                </div>
-
-                                <span>(3 Reviews)</span>
+                                <Rate
+                                  allowHalf
+                                  defaultValue={ratingData?.averageRating || 0}
+                                  disabled
+                                  style={{ fontSize: '14px', color: '#FFB606' }}
+                                />
+                                <span>({ratingData?.totalRated || 0} Reviews)</span>
                               </div>
                             </li>
                           </ul>
@@ -120,10 +87,6 @@ const CourseDetails = () => {
                 <div className="eb-course-single-4-preview">
                   <div
                     className="edublink-course-details-card-preview"
-                    // style={{
-                    //   backgroundImage:
-                    //     "url('https://demo.edublink.co/wp-content/themes/edublink/assets/images/course-preview.jpg')",
-                    // }}
                     style={{
                       backgroundImage: `url(${singleCourse?.image})`,
                     }}
@@ -132,6 +95,19 @@ const CourseDetails = () => {
                       <a className="edublink-course-video-popup">
                         <i className="icon-18"></i>
                       </a>
+                    </div>
+
+                    {/* Rating Overlay */}
+                    <div className="course-rating-overlay absolute top-4 left-4 bg-black bg-opacity-70 text-white px-3 py-2 rounded-lg flex items-center gap-2">
+                      <Rate
+                        allowHalf
+                        defaultValue={ratingData?.averageRating || 0}
+                        disabled
+                        style={{ fontSize: '14px', color: '#FFB606' }}
+                      />
+                      <span className="text-sm font-medium">
+                        {ratingData?.averageRating?.toFixed(1) || "0"} ({ratingData?.totalRated || 0} reviews)
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -156,8 +132,8 @@ const CourseDetails = () => {
                     <input
                       type="radio"
                       name="learn-press-course-tab-radio"
-                      id="tab-instructor-input"
-                      value="instructor"
+                      id="tab-faq-input"
+                      value="faq"
                     />
                     <input
                       type="radio"
@@ -178,8 +154,8 @@ const CourseDetails = () => {
                         <label htmlFor="tab-curriculum-input">Curriculum</label>
                       </li>
 
-                      <li className="course-nav course-nav-tab-instructor">
-                        <label htmlFor="tab-instructor-input">Instructor</label>
+                      <li className="course-nav course-nav-tab-faq">
+                        <label htmlFor="tab-faq-input">FAQ</label>
                       </li>
 
                       <li className="course-nav course-nav-tab-reviews">
@@ -193,10 +169,10 @@ const CourseDetails = () => {
 
                       {/* ======================= CURRICULUM ========================== */}
                       <CourseCurriculumSection />
-                      {/* ======================= Instructor ========================== */}
-                      <CourseInstructorSection />
+                      {/* ======================= FAQ ========================== */}
+                      <CourseFaqSection />
                       {/* ==================== REVIEWS TAB ==================== */}
-                      <CourseReviewSection />
+                      <CourseReviewSection courseId={singleCourse?._id} />
                     </div>
                   </div>
                 </div>

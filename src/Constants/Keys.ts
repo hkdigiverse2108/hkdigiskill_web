@@ -10,6 +10,7 @@ export const KEYS = {
   HERO_BANNER: "hero-banner",
   COURSE_CATEGORY: "course-category",
   TESTIMONIALS: "testimonials",
+  TESTIMONIAL_RATINGS_SUMMARY: "testimonial-ratings-summary",
   FAQ: "faq",
   TRUSTED_PARTNER: "trusted-partner",
   COURSE: "course",

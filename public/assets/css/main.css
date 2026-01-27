@@ -11983,9 +11983,9 @@ body .course-reviews-list-shortcode li .review-text p:last-child {
   margin-bottom: 0;
 }
 body .course-tab-panel-reviews .course-reviews-list li + li {
-  border-top: 1px solid var(--edublink-color-border) !important;
-  padding-top: 30px !important;
-  margin-top: 20px !important;
+  /* border-top: 1px solid var(--edublink-color-border) !important; */
+  /* padding-top: 30px !important; */
+  /* margin-top: 20px !important; */
 }
 .learnpress-course-review .course-review-load-more {
   border-radius: 5px !important;
