@@ -5,7 +5,6 @@ import { Rate } from "antd";
 import {
   CourseOverviewSection,
   CourseCurriculumSection,
-  CourseInstructorSection,
   CourseSidebarSection,
   CourseReviewSection,
   CourseFaqSection,
