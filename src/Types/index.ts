@@ -13,3 +13,4 @@ export * from "./Gallary"
 export * from "./Settings"
 export * from "./Instructor"
 export * from "./CoreComponents"
+export * from "./Razorpay";

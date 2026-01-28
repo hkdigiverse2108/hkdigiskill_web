@@ -1,8 +1,20 @@
 import { type FC } from "react";
 import type { Course } from "../../Types";
 import { ShareButtons } from "../Common";
+import { ImagePath, ROUTES } from "../../Constants";
+import { useAppSelector } from "../../Store/Hook";
+import { useNavigate } from "react-router-dom";
 
 const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
+  const user = useAppSelector((state) => state.user.user);
+  const navigate = useNavigate();
+
+  const handleBuyNowBtn = () => {
+    if (!user) {
+      return navigate(ROUTES.AUTH.BASE);
+    }
+  };
+
   return (
     <div className="ed-course-sidebar edublink-col-lg-4 ">
       <div className="edublink-course-details-sidebar eb-course-single-4 sidebar-enable max-w-full!">
@@ -20,7 +32,9 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                   <div className="course-price">
                     <span className="course-item-price">
                       {/* <span className="origin-price">{course?.price}</span> */}
-                      <span className="price text-success!">{course?.mrpPrice}</span>
+                      <span className="price text-success!">
+                        {course?.mrpPrice}
+                      </span>
                     </span>
                   </div>
                 </span>
@@ -50,7 +64,9 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                   <div className="course-price">
                     <span className="course-item-price">
                       {/* <span className="origin-price">{course?.price}</span> */}
-                      <span className="price  text-success!">{course?.price}</span>
+                      <span className="price  text-success!">
+                        {course?.price}
+                      </span>
                     </span>
                   </div>
                 </span>
@@ -77,7 +93,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
               <li className="edublink-course-details-features-item course-lesson">
                 <span className="edublink-course-feature-item-label">
                   <img
-                    src="https://demo.edublink.co/wp-content/themes/edublink/assets/images/icons/books.svg"
+                    src={`${ImagePath}/icon/lesson-icon.svg`}
                     className="edublink-course-sidebar-img-icon"
                     alt=""
                   />
@@ -114,18 +130,21 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
 
             <div className="edublink-course-details-sidebar-buttons">
               <div className="lp-course-buttons">
-                <form
+                {/* <form
                   name="purchase-course"
                   className="purchase-course"
                   method="post"
                   encType="multipart/form-data"
-                >
-                  <input type="hidden" name="purchase-course" value="12817" />
+                > */}
+                {/* <input type="hidden" name="purchase-course" value="12817" /> */}
 
-                  <button className="lp-button button button-purchase-course">
-                    Buy Now
-                  </button>
-                </form>
+                <button
+                  onClick={handleBuyNowBtn}
+                  className="lp-button button button-purchase-course"
+                >
+                  Buy Now
+                </button>
+                {/* </form> */}
               </div>
             </div>
 
