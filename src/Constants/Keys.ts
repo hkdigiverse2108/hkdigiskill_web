@@ -24,5 +24,5 @@ export const KEYS = {
   SETTINGS: "settings",
   GALLARY: "gallary",
   USER: "user",
-
+  COURSE_LESSON: "course-lesson",
 } as const;

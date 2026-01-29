@@ -6,6 +6,7 @@ import type {
   RazorpayResponse,
 } from "../../Types";
 import { PAYMENT_STATUS } from "../../Constants";
+import { useAppSelector } from "../../Store/Hook";
 
 declare global {
   interface Window {
@@ -19,23 +20,28 @@ declare global {
   }
 }
 
-const PaymentModal: React.FC<PaymentModalProps> = ({
+interface ExtendedPaymentModalProps extends PaymentModalProps {
+  className?: string;
+  disabled?: boolean;
+}
+
+const PaymentModal: React.FC<ExtendedPaymentModalProps> = ({
   isLoading,
   btnText,
   amount = 0,
   userData = {},
   onPaymentComplete,
+  className,
+  disabled,
 }) => {
   const hasHandledPayment = useRef<string | null>(null);
 
-  //   const { data: settingData } = useGetApiQuery({ url: URL_KEYS.SETTINGS.ALL });
-  let settingData = "";
-  const RazorPayKey = settingData;
+  const settings = useAppSelector((state) => state.settings.settings);
+  const RazorPayKey = settings?.razorpayKey || "";
 
   const { name, email, contact } = userData || {};
 
   useEffect(() => {
-
     if (document.getElementById("razorpay-script")) return;
     const script = document.createElement("script");
     script.id = "razorpay-script";
@@ -58,6 +64,11 @@ const PaymentModal: React.FC<PaymentModalProps> = ({
       return;
     }
 
+    if (!RazorPayKey) {
+      console.error("Razorpay Key is missing");
+      return;
+    }
+
     const safeComplete = (status: PaymentStatusType, response: any) => {
       const currentPaymentId =
         response?.razorpay_payment_id || "FAILED_ATTEMPT";
@@ -71,7 +82,8 @@ const PaymentModal: React.FC<PaymentModalProps> = ({
       key: RazorPayKey,
       amount: amount * 100,
       currency: "INR",
-      name: "BHARAT EXAM FEST",
+      name: "HK DigiVerse",
+      description: "Course Purchase",
       handler: (res) => safeComplete(PAYMENT_STATUS.COMPLETED, res),
       prefill: {
         name,
@@ -95,12 +107,12 @@ const PaymentModal: React.FC<PaymentModalProps> = ({
 
     rzp.open();
   };
+
   return (
     <button
       onClick={startPayment}
-      disabled={!RazorPayKey || isLoading}
-      //   loading={isLoading}
-      className="btn primary_btn w-full !h-12 font-semibold mt-4"
+      disabled={!RazorPayKey || isLoading || disabled}
+      className={className || "btn primary_btn w-full !h-12 font-semibold mt-4"}
     >
       {btnText}
     </button>

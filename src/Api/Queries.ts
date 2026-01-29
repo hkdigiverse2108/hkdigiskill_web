@@ -1,6 +1,6 @@
 import { KEYS } from "../Constants/Keys";
 import { URL_KEYS } from "../Constants/Url";
-import type { AllCourseApiResponse, AppQueryOptions, BlogApiResponse, BlogListApiResponse, CourseApiResponse, CourseCategoryResponse, FaqResponse, GalleryListApiResponse, HeroBannerResponse, InstructorListApiResponse, LegalityApiResponse, QueryParams, SettingsApiResponse, TestimonialRatingSummaryResponse, TestimonialResponse, TrustedPartnerResponse, UserResponse } from "../Types";
+import type { AllCourseApiResponse, AppQueryOptions, BlogApiResponse, BlogListApiResponse, CourseApiResponse, CourseCategoryResponse, CourseCurriculumApiResponse, CourseLessonApiResponse, FaqResponse, GalleryListApiResponse, HeroBannerResponse, InstructorListApiResponse, LegalityApiResponse, QueryParams, SettingsApiResponse, TestimonialRatingSummaryResponse, TestimonialResponse, TrustedPartnerResponse, UserResponse } from "../Types";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
 
@@ -28,7 +28,10 @@ export const Queries = {
     useGetSingleCourse: (id?: string) => useQueries<CourseApiResponse>([KEYS.COURSE_ONE, id], () => Get(`${URL_KEYS.COURSE.ONE}${id}`)),
 
     // ******************* Courses Curriculum *******************
-    useGetCourseCurriculum: (id?: string) => useQueries<any>([KEYS.COURSE_CURRICULUM], () => Get(`${URL_KEYS.COURSE.CURRICULUM}${id}`)),
+    // ******************* Courses Curriculum *******************
+    useGetCourseCurriculum: (id?: string) => useQueries<CourseCurriculumApiResponse>([KEYS.COURSE_CURRICULUM, id], () => Get(`${URL_KEYS.COURSE.CURRICULUM}${id}`)),
+    useGetCourseLessons: (id?: string) => useQueries<CourseLessonApiResponse>([KEYS.COURSE_LESSON, id], () => Get(`${URL_KEYS.COURSE.LESSON}${id}`)),
+    useGetCurriculumByLesson: (lessonId?: string, options?: AppQueryOptions<CourseCurriculumApiResponse>) => useQueries<CourseCurriculumApiResponse>([KEYS.COURSE_CURRICULUM, lessonId], () => Get(`${URL_KEYS.COURSE.CURRICULUM_BY_LESSON}${lessonId}`), { enabled: !!lessonId, ...options }),
 
     // ******************* Instructor *******************
     useGetAllInstructor: (params?: QueryParams, options?: AppQueryOptions<InstructorListApiResponse>) => useQueries<InstructorListApiResponse>([KEYS.INSTRUCTOR, params], () => Get(URL_KEYS.INSTRUCTOR.ALL), options),

@@ -1,16 +1,171 @@
 import { useState } from "react";
+import { Queries } from "../../Api";
+import type { CourseLesson } from "../../Types";
 
-const CourseCurriculumSection = () => {
-  const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({
-    "basic-introduction-3": true, // Default first section open
-  });
+interface CourseCurriculumSectionProps {
+  lessons?: CourseLesson[];
+}
 
-  const toggleSection = (sectionId: string) => {
-    setOpenSections(prev => ({
-      ...prev,
-      [sectionId]: !prev[sectionId]
-    }));
+const CourseLessonItem = ({ lesson }: { lesson: CourseLesson }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Fetch curriculum only when the item is expanded
+  const { data: curriculumData, isLoading } = Queries.useGetCurriculumByLesson(
+    lesson._id,
+    { enabled: isOpen },
+  );
+
+  const curriculums = curriculumData?.data?.course_curriculum_data || [];
+
+  const toggleSection = () => {
+    setIsOpen(!isOpen);
   };
+
+  return (
+    <>
+      <li
+        className={`section ${!isOpen ? "closed" : ""}`}
+        id="section-basic-introduction-3"
+        data-id="basic-introduction-3"
+        data-section-id="3"
+      >
+        <div
+          className="section-header"
+          onClick={toggleSection}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="section-left">
+            <h5 className="section-title">{lesson?.title}</h5>
+            <span className="section-toggle">
+              <i className={`fas fa-caret-${isOpen ? "up" : "down"}`}></i>
+            </span>
+          </div>
+        </div>
+
+        <ul className="section-content">
+          {isLoading ? (
+            <li className="course-item" style={{ padding: "10px 20px" }}>
+              Loading curriculum...
+            </li>
+          ) : curriculums.length > 0 ? (
+            curriculums.map((curriculum) => (
+              <>
+                {/* <li
+                  key={curriculum._id}
+                  className="course-item"
+                  style={{
+                    padding: "15px 20px",
+                    borderBottom: "1px solid #f0f0f0",
+                  }}
+                >
+                  <div className="curriculum-info">
+                    <h6 style={{ marginBottom: "5px", fontSize: "15px" }}>
+                      {curriculum.title}
+                    </h6>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        color: "#666",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      {curriculum.description}
+                    </p>
+
+                    <div
+                      className="course-item-meta"
+                      style={{
+                        display: "flex",
+                        gap: "15px",
+                        alignItems: "center",
+                      }}
+                    >
+                      {curriculum.duration && (
+                        <span className="item-meta duration">
+                          <i
+                            className="icon-61"
+                            style={{ marginRight: "5px" }}
+                          ></i>
+                          {curriculum.duration}
+                        </span>
+                      )}
+
+                      {curriculum.videoLink && (
+                        <a
+                          href={curriculum.videoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="item-meta video-link"
+                          style={{ color: "#2B6BE9" }}
+                        >
+                          <i
+                            className="icon-62"
+                            style={{ marginRight: "5px" }}
+                          ></i>
+                          Watch Video
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </li> */}
+
+                <li
+                  className={`course-item course-item-lp_lesson course-item-12783 ${curriculum.curriculumLock ? "item-locked" : "item-preview has-status"}`}
+                  data-id="12783"
+                >
+                  <a className="section-item-link">
+                    <span className="item-name"> {curriculum.title}</span>
+                    <div className="course-item-meta">
+                      {curriculum.curriculumLock && (
+                        <>
+                          <span className="item-meta duration">
+                            {curriculum.duration}
+                          </span>
+                        </>
+                      )}
+
+                      <span
+                        className={
+                          curriculum.curriculumLock
+                            ? "item-meta course-item-status"
+                            : "item-meta course-item-preview"
+                        }
+                        data-preview={
+                          curriculum.curriculumLock ? "Unread" : "Preview"
+                        }
+                      ></span>
+                    </div>
+                  </a>
+                </li>
+              </>
+            ))
+          ) : (
+            <li className="course-item" style={{ padding: "10px 20px" }}>
+              No curriculum details found for this lesson.
+            </li>
+          )}
+        </ul>
+      </li>
+    </>
+  );
+};
+
+const CourseCurriculumSection = ({
+  lessons = [],
+}: CourseCurriculumSectionProps) => {
+  if (!lessons || lessons.length === 0) {
+    return (
+      <div
+        className="course-tab-panel-curriculum course-tab-panel"
+        id="tab-curriculum"
+      >
+        <div className="course-curriculum" id="learn-press-course-curriculum">
+          <p className="no-curriculum-msg">No lessons found for this course.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className="course-tab-panel-curriculum course-tab-panel"
@@ -19,311 +174,9 @@ const CourseCurriculumSection = () => {
       <div className="course-curriculum" id="learn-press-course-curriculum">
         <div className="curriculum-scrollable">
           <ul className="curriculum-sections">
-            {/* SECTION 1 */}
-            <li
-              className={`section ${!openSections["basic-introduction-3"] ? "closed" : ""}`}
-              id="section-basic-introduction-3"
-              data-id="basic-introduction-3"
-              data-section-id="3"
-            >
-              <div 
-                className="section-header"
-                onClick={() => toggleSection("basic-introduction-3")}
-                style={{ cursor: "pointer" }}
-              >
-                <div className="section-left">
-                  <h5 className="section-title">Basic Introduction</h5>
-                  <span className="section-toggle">
-                    <i className={`fas fa-caret-${openSections["basic-introduction-3"] ? "up" : "down"}`}></i>
-                  </span>
-                </div>
-              </div>
-
-              <ul className="section-content">
-                <li
-                  className="course-item course-item-lp_lesson course-item-12783 item-preview has-status"
-                  data-id="12783"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">Brush up on Java concepts</span>
-                    <div className="course-item-meta">
-                      <span
-                        className="item-meta course-item-preview"
-                        data-preview="Preview"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_lesson course-item-12803 item-locked"
-                  data-id="12803"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">
-                      A Quick Introduction to Excel’s Pivot Tables
-                    </span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">7 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_lesson course-item-12664 item-locked"
-                  data-id="12664"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">Amazon RDS Hands On</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">7 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_lesson course-item-12639 item-locked"
-                  data-id="12639"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">Associative Arrays</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">3 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_quiz course-item-13642 item-locked"
-                  data-id="13642"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">PHP fundamental</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta count-questions">
-                        2 questions
-                      </span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            {/* SECTION 2 */}
-            <li
-              className={`section ${!openSections["fundamental-concept-of-html-4"] ? "closed" : ""}`}
-              id="section-fundamental-concept-of-html-4"
-              data-id="fundamental-concept-of-html-4"
-              data-section-id="4"
-            >
-              <div 
-                className="section-header"
-                onClick={() => toggleSection("fundamental-concept-of-html-4")}
-                style={{ cursor: "pointer" }}
-              >
-                <div className="section-left">
-                  <h5 className="section-title">Fundamental Concept of HTML</h5>
-                  <span className="section-toggle">
-                    <i className={`fas fa-caret-${openSections["fundamental-concept-of-html-4"] ? "up" : "down"}`}></i>
-                  </span>
-                </div>
-              </div>
-
-              <ul className="section-content">
-                <li
-                  className="course-item course-item-lp_lesson course-item-12821 item-locked"
-                  data-id="12821"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">A Note on Semantic HTML</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">3 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_lesson course-item-12835 item-locked"
-                  data-id="12835"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">Centering our Page</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">3 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_lesson course-item-12832 item-locked"
-                  data-id="12832"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">Class and ID Selectors</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">3 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_lesson course-item-12788 item-locked"
-                  data-id="12788"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">Code download</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">3 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            {/* SECTION 3 */}
-            <li
-              className={`section ${!openSections["programming-core-concept-5"] ? "closed" : ""}`}
-              id="section-programming-core-concept-5"
-              data-id="programming-core-concept-5"
-              data-section-id="5"
-            >
-              <div 
-                className="section-header"
-                onClick={() => toggleSection("programming-core-concept-5")}
-                style={{ cursor: "pointer" }}
-              >
-                <div className="section-left">
-                  <h5 className="section-title">Programming Core Concept</h5>
-                  <span className="section-toggle">
-                    <i className={`fas fa-caret-${openSections["programming-core-concept-5"] ? "up" : "down"}`}></i>
-                  </span>
-                </div>
-              </div>
-
-              <ul className="section-content">
-                <li
-                  className="course-item course-item-lp_lesson course-item-12822 item-locked"
-                  data-id="12822"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">Combining Selectors</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">5 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_lesson course-item-12640 item-locked"
-                  data-id="12640"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">
-                      Comparison and Logical Operators
-                    </span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">7 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_lesson course-item-12786 item-locked"
-                  data-id="12786"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">
-                      Cookie Authentication API for Jira requests
-                    </span>
-                    <div className="course-item-meta">
-                      <span className="item-meta duration">7 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_quiz course-item-12823 item-locked"
-                  data-id="12823"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">Clearing Floats</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta count-questions">
-                        2 questions
-                      </span>
-                      <span className="item-meta duration">5 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-
-                <li
-                  className="course-item course-item-lp_quiz course-item-12824 item-locked"
-                  data-id="12824"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name">Pseudo-elements</span>
-                    <div className="course-item-meta">
-                      <span className="item-meta count-questions">
-                        2 questions
-                      </span>
-                      <span className="item-meta duration">5 minutes</span>
-                      <span
-                        className="item-meta course-item-status"
-                        title="Unread"
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
+            {lessons.map((lesson) => (
+              <CourseLessonItem key={lesson._id} lesson={lesson} />
+            ))}
           </ul>
         </div>
       </div>

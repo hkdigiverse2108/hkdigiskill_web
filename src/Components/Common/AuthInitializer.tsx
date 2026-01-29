@@ -19,7 +19,7 @@ const AuthInitializer = () => {
     if (data) {
       localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(data?.data));
       // Update Redux store
-      dispatch(setUser(data));
+      dispatch(setUser(data?.data));
     }
     if (error) {
       console.error("Failed to fetch user data", error);

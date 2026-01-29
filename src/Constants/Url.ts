@@ -31,7 +31,9 @@ export const URL_KEYS = {
   COURSE: {
     ALL: "course/all",
     ONE: "course/",
-    CURRICULUM: "course-curriculum/all?courseId="
+    CURRICULUM: "course-curriculum/all?courseId=",
+    LESSON: "course-lesson/all?courseId=",
+    CURRICULUM_BY_LESSON: "course-curriculum/all?courseLessonId="
   },
   INSTRUCTOR: { ALL: "instructor/all" },
   LEGALITY: "legality",

@@ -1,6 +1,6 @@
 import { type FC } from "react";
 import type { Course } from "../../Types";
-import { ShareButtons } from "../Common";
+import { ShareButtons, PaymentModal } from "../Common";
 import { ImagePath, ROUTES } from "../../Constants";
 import { useAppSelector } from "../../Store/Hook";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   const user = useAppSelector((state) => state.user.user);
   const navigate = useNavigate();
 
+  console.log(user, "user");
   const handleBuyNowBtn = () => {
     if (!user) {
       return navigate(ROUTES.AUTH.BASE);
@@ -138,13 +139,35 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                 > */}
                 {/* <input type="hidden" name="purchase-course" value="12817" /> */}
 
-                <button
-                  onClick={handleBuyNowBtn}
-                  className="lp-button button button-purchase-course"
-                >
-                  Buy Now
-                </button>
-                {/* </form> */}
+                {user ? (
+                  <PaymentModal
+                    btnText="Buy Now"
+                    amount={course?.price || 0}
+                    userData={{
+                      name: user.fullName,
+                      email: user.email,
+                      contact: user.phone,
+                    }}
+                    onPaymentComplete={(status: any, response: any) => {
+                      console.log("Payment completed", status, response);
+                      if (status === "COMPLETED") {
+                        // Handle success, maybe navigate or show success message
+                        // You might need an API call here to confirm purchase with backend
+                        alert("Payment Successful! Course Purchased.");
+                      } else {
+                        alert("Payment Failed. Please try again.");
+                      }
+                    }}
+                    className="lp-button button button-purchase-course"
+                  />
+                ) : (
+                  <button
+                    onClick={handleBuyNowBtn}
+                    className="lp-button button button-purchase-course"
+                  >
+                    Buy Now
+                  </button>
+                )}
               </div>
             </div>
 

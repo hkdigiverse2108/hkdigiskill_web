@@ -68,4 +68,49 @@ export interface CourseCardProps {
   course: Course;
 }
 
+export interface CourseLesson {
+  _id: string;
+  courseId: Course | string; 
+  title: string;
+  subtitle: string;
+  priority: number;
+  lessonLock: boolean;
+  isDeleted?: boolean;
+  isBlocked?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface CourseLessonApiResponse extends MessageStatus {
+  data: {
+    course_lesson_data: CourseLesson[];
+  };
+}
+
+export interface CourseCurriculum {
+  _id: string;
+  courseId: Course | string;
+  date?: string;
+  thumbnail?: string;
+  videoLink?: string;
+  title: string;
+  description: string;
+  duration: string;
+  attachment?: string;
+  courseLessonsAssigned: CourseLesson[]; 
+  courseLessonsPriority: number;
+  curriculumLock: boolean;
+  isDeleted?: boolean;
+  isBlocked?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface CourseCurriculumApiResponse extends MessageStatus {
+  data: {
+    course_curriculum_data: CourseCurriculum[];
+  };
+}
+
+
 

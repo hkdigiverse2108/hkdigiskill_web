@@ -21,16 +21,19 @@ const CourseDetails = () => {
   const { data: ratingSummary } = Queries.useGetTestimonialRatingSummary(singleCourse?._id || "69259b3b0eae08a2ef76d404");
 
   const { data: courseCurriculum } = Queries.useGetCourseCurriculum(id);
+  const { data: courseLessons } = Queries.useGetCourseLessons(id);
 
   const AllCourses = allCourseData?.data?.course_data || [];
   const AllCourseCurriculum =
     courseCurriculum?.data?.course_curriculum_data || [];
+  const AllCourseLessons = courseLessons?.data?.course_lesson_data || [];
   const ratingData = ratingSummary?.data;
 
   // console.log("singleCourse -->", singleCourse);
   // console.log("AllCourses", AllCourses);
   console.log("AllCourseCurriculum", AllCourseCurriculum);
-
+  console.log("AllCourseLessons", AllCourseLessons);
+  
   return (
     <div className="lp-archive-courses">
       <BreadCrumb title="Course Details" />
@@ -98,7 +101,7 @@ const CourseDetails = () => {
 
                     {/* Rating Overlay */}
                     <div className="course-rating-overlay absolute top-4 left-4 bg-black bg-opacity-70 text-white px-3 py-2 rounded-lg flex items-center gap-2">
-                      <Rate
+                            <Rate
                         allowHalf
                         defaultValue={ratingData?.averageRating || 0}
                         disabled
@@ -167,7 +170,8 @@ const CourseDetails = () => {
                       <CourseOverviewSection desc={singleCourse?.description} />
 
                       {/* ======================= CURRICULUM ========================== */}
-                      <CourseCurriculumSection />
+                      <CourseCurriculumSection lessons={AllCourseLessons} />
+
                       {/* ======================= FAQ ========================== */}
                       <CourseFaqSection />
                       {/* ==================== REVIEWS TAB ==================== */}
