@@ -5,7 +5,7 @@ import FaqCard from "../Faq/FaqCard";
 const CourseFaqSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const { data } = Queries.useGetFaqByType({ type: "Course" });
+  const { data } = Queries.useGetFaqByType({ type: "course" });
 
   const faqs = data?.data?.faq_data || [];
 

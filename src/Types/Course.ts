@@ -42,8 +42,8 @@ export interface Course extends BaseType {
   enrolledLearners: number;
   language: string;
   image: string; // URL
-  mrpPrice: number;
-  price: number;
+  mrpPrice?: number;
+  price?: number;
   name?: string;
   purchasedCoursesShow: boolean;
   satisfactionRate: number; // e.g. percentage or rating

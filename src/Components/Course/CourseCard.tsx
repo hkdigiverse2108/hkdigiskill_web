@@ -30,7 +30,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     satisfactionRate,
     // isUnlocked,
   } = course;
-  image = `${ImagePath}/course/course-01/course-01.jpg`;
+  // image = `${ImagePath}/course/course-01/course-01.jpg`;
   // const { name, description } = courseCategoryId;
 
   return (

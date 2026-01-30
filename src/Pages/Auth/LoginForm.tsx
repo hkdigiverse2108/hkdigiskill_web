@@ -32,7 +32,7 @@ const LoginForm = ({ onSwitchToRegister, onSwitchToForgot }: LoginFormProps) => 
         localStorage.setItem(STORAGE_KEYS.TOKEN, data?.data?.token);
         localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(data?.data));
         // Store user in Redux
-        dispatch(setUser(data.user));
+        dispatch(setUser(data?.data));
         // Handle login success, e.g., store token, redirect
         navigate("/");
       },

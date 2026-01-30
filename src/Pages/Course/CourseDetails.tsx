@@ -1,4 +1,8 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../Store/Store";
+import { clearCourseVideo } from "../../Store/Slices/CoursePlayerSlice";
 import { BreadCrumb } from "../../Components/Common";
 import { Queries } from "../../Api";
 import { Rate } from "antd";
@@ -13,12 +17,25 @@ import {
 
 const CourseDetails = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const { currentVideoLink, isPlaying } = useSelector(
+    (state: RootState) => state.coursePlayer,
+  );
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearCourseVideo());
+    };
+  }, [dispatch, id]);
+
   // console.log("Ids : ", id);
 
   const { data: allCourseData } = Queries.useGetAllCourses();
   const { data: Course } = Queries.useGetSingleCourse(id);
   const singleCourse = Course?.data;
-  const { data: ratingSummary } = Queries.useGetTestimonialRatingSummary(singleCourse?._id || "69259b3b0eae08a2ef76d404");
+  const { data: ratingSummary } = Queries.useGetTestimonialRatingSummary(
+    singleCourse?._id || "69259b3b0eae08a2ef76d404",
+  );
 
   const { data: courseCurriculum } = Queries.useGetCourseCurriculum(id);
   const { data: courseLessons } = Queries.useGetCourseLessons(id);
@@ -33,7 +50,7 @@ const CourseDetails = () => {
   // console.log("AllCourses", AllCourses);
   console.log("AllCourseCurriculum", AllCourseCurriculum);
   console.log("AllCourseLessons", AllCourseLessons);
-  
+
   return (
     <div className="lp-archive-courses">
       <BreadCrumb title="Course Details" />
@@ -74,9 +91,11 @@ const CourseDetails = () => {
                                   allowHalf
                                   defaultValue={ratingData?.averageRating || 0}
                                   disabled
-                                  style={{ fontSize: '14px', color: '#FFB606' }}
+                                  style={{ fontSize: "14px", color: "#FFB606" }}
                                 />
-                                <span>({ratingData?.totalRated || 0} Reviews)</span>
+                                <span>
+                                  ({ratingData?.totalRated || 0} Reviews)
+                                </span>
                               </div>
                             </li>
                           </ul>
@@ -88,19 +107,56 @@ const CourseDetails = () => {
 
                 <div className="eb-course-single-4-preview">
                   <div
-                    className="edublink-course-details-card-preview"
+                    className=" edublink-course-details-card-preview after:bg-transparent! after:pointer-events-none"
                     style={{
-                      backgroundImage: `url(${singleCourse?.image})`,
+                      backgroundImage:
+                        isPlaying && currentVideoLink
+                          ? "none"
+                          : `url(${singleCourse?.image})`,
+                      position: "relative", // Ensure positioning context for iframe
                     }}
                   >
-                    <div className="edublink-course-video-preview-area">
-                      <a className="edublink-course-video-popup">
-                        <i className="icon-18"></i>
-                      </a>
-                    </div>
+                    {isPlaying && currentVideoLink ? (
+                      <>
+                        <div className="video-container">
+                          <div
+                            className="overlay-top"
+                            title="Sharing disabled"
+                          ></div>
+                          <div
+                            className="overlay-bottom-right"
+                            title="Watch on YouTube disabled"
+                          ></div>
+                          <div id="player"></div>
+                        </div>
+                        <iframe
+                          src={currentVideoLink}
+                          width="100%"
+                          height="100%"
+                          title="Course Video"
+                          allow="autoplay; encrypted-media"
+                          allowFullScreen
+                          style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                          }}
+                        ></iframe>
+                      </>
+                    ) : (
+                      <>
+                        {/* <div className="edublink-course-video-preview-area">
+                          <a className="edublink-course-video-popup">
+                            <i className="icon-18"></i>
+                          </a>
+                        </div> */}
+                      </>
+                    )}
 
                     {/* Rating Overlay */}
-                    <div className="course-rating-overlay absolute top-4 left-4 bg-black bg-opacity-70 text-white px-3 py-2 rounded-lg flex items-center gap-2">
+                    {/* <div className="course-rating-overlay absolute top-4 left-4 bg-black bg-opacity-70 text-white px-3 py-2 rounded-lg flex items-center gap-2">
                             <Rate
                         allowHalf
                         defaultValue={ratingData?.averageRating || 0}
@@ -110,7 +166,7 @@ const CourseDetails = () => {
                       <span className="text-sm font-medium">
                         {ratingData?.averageRating?.toFixed(1) || "0"} ({ratingData?.totalRated || 0} reviews)
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 

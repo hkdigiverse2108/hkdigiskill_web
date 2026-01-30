@@ -1,13 +1,23 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCourseVideo } from "../../Store/Slices/CoursePlayerSlice";
 import { Queries } from "../../Api";
 import type { CourseLesson } from "../../Types";
 
 interface CourseCurriculumSectionProps {
   lessons?: CourseLesson[];
+  index?: number;
 }
 
-const CourseLessonItem = ({ lesson }: { lesson: CourseLesson }) => {
+const CourseLessonItem = ({
+  lesson,
+  index,
+}: {
+  lesson: CourseLesson;
+  index?: number;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   // Fetch curriculum only when the item is expanded
   const { data: curriculumData, isLoading } = Queries.useGetCurriculumByLesson(
@@ -24,13 +34,13 @@ const CourseLessonItem = ({ lesson }: { lesson: CourseLesson }) => {
   return (
     <>
       <li
-        className={`section ${!isOpen ? "closed" : ""}`}
+        className={`section ${!isOpen ? "closed" : ""} ${index !== 0 ? "mt-12!" : ""} ps-9! pe-12! pt-9! pb-6!  `}
         id="section-basic-introduction-3"
         data-id="basic-introduction-3"
         data-section-id="3"
       >
         <div
-          className="section-header"
+          className="section-header  "
           onClick={toggleSection}
           style={{ cursor: "pointer" }}
         >
@@ -49,95 +59,51 @@ const CourseLessonItem = ({ lesson }: { lesson: CourseLesson }) => {
             </li>
           ) : curriculums.length > 0 ? (
             curriculums.map((curriculum) => (
-              <>
-                {/* <li
-                  key={curriculum._id}
-                  className="course-item"
+              <li
+                className={`course-item course-item-lp_lesson course-item-12783 ${curriculum.curriculumLock ? "item-locked" : "item-preview has-status"}`}
+                data-id="12783"
+              >
+                <div
+                  className="section-item-link before:content-none!"
                   style={{
-                    padding: "15px 20px",
-                    borderBottom: "1px solid #f0f0f0",
+                    cursor: curriculum.curriculumLock
+                      ? "not-allowed"
+                      : "pointer",
+                  }}
+                  onClick={() => {
+                    if (!curriculum.curriculumLock) {
+                      dispatch(setCourseVideo(curriculum.videoLink));
+                    }
                   }}
                 >
-                  <div className="curriculum-info">
-                    <h6 style={{ marginBottom: "5px", fontSize: "15px" }}>
-                      {curriculum.title}
-                    </h6>
-                    <p
-                      style={{
-                        fontSize: "13px",
-                        color: "#666",
-                        marginBottom: "8px",
-                      }}
-                    >
-                      {curriculum.description}
-                    </p>
-
-                    <div
-                      className="course-item-meta"
-                      style={{
-                        display: "flex",
-                        gap: "15px",
-                        alignItems: "center",
-                      }}
-                    >
-                      {curriculum.duration && (
+                  <img
+                    src={curriculum.thumbnail}
+                    alt={curriculum.title}
+                    className="w-20 me-2! rounded-lg!"
+                  />
+                  <span className="item-name"> {curriculum.title}</span>
+                  <div className="course-item-meta">
+                    {curriculum.curriculumLock && (
+                      <>
                         <span className="item-meta duration">
-                          <i
-                            className="icon-61"
-                            style={{ marginRight: "5px" }}
-                          ></i>
                           {curriculum.duration}
                         </span>
-                      )}
+                      </>
+                    )}
 
-                      {curriculum.videoLink && (
-                        <a
-                          href={curriculum.videoLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="item-meta video-link"
-                          style={{ color: "#2B6BE9" }}
-                        >
-                          <i
-                            className="icon-62"
-                            style={{ marginRight: "5px" }}
-                          ></i>
-                          Watch Video
-                        </a>
-                      )}
-                    </div>
+                    <span
+                      className={
+                        curriculum.curriculumLock
+                          ? "item-meta course-item-status"
+                          : "item-meta course-item-preview"
+                      }
+                      data-preview={
+                        curriculum.curriculumLock ? "Unread" : "Preview"
+                      }
+                    ></span>
                   </div>
-                </li> */}
-
-                <li
-                  className={`course-item course-item-lp_lesson course-item-12783 ${curriculum.curriculumLock ? "item-locked" : "item-preview has-status"}`}
-                  data-id="12783"
-                >
-                  <a className="section-item-link">
-                    <span className="item-name"> {curriculum.title}</span>
-                    <div className="course-item-meta">
-                      {curriculum.curriculumLock && (
-                        <>
-                          <span className="item-meta duration">
-                            {curriculum.duration}
-                          </span>
-                        </>
-                      )}
-
-                      <span
-                        className={
-                          curriculum.curriculumLock
-                            ? "item-meta course-item-status"
-                            : "item-meta course-item-preview"
-                        }
-                        data-preview={
-                          curriculum.curriculumLock ? "Unread" : "Preview"
-                        }
-                      ></span>
-                    </div>
-                  </a>
-                </li>
-              </>
+                </div>
+              </li>
             ))
           ) : (
             <li className="course-item" style={{ padding: "10px 20px" }}>
@@ -174,8 +140,12 @@ const CourseCurriculumSection = ({
       <div className="course-curriculum" id="learn-press-course-curriculum">
         <div className="curriculum-scrollable">
           <ul className="curriculum-sections">
-            {lessons.map((lesson) => (
-              <CourseLessonItem key={lesson._id} lesson={lesson} />
+            {lessons.map((lesson, index) => (
+              <CourseLessonItem
+                key={lesson._id}
+                lesson={lesson}
+                index={index}
+              />
             ))}
           </ul>
         </div>

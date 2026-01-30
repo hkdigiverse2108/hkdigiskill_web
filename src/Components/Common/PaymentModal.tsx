@@ -29,7 +29,7 @@ const PaymentModal: React.FC<ExtendedPaymentModalProps> = ({
   isLoading,
   btnText,
   amount = 0,
-  userData = {},
+  // userData = {},
   onPaymentComplete,
   className,
   disabled,
@@ -39,7 +39,7 @@ const PaymentModal: React.FC<ExtendedPaymentModalProps> = ({
   const settings = useAppSelector((state) => state.settings.settings);
   const RazorPayKey = settings?.razorpayKey || "";
 
-  const { name, email, contact } = userData || {};
+  // const { name, email, contact } = userData || {};
 
   useEffect(() => {
     if (document.getElementById("razorpay-script")) return;
@@ -85,11 +85,11 @@ const PaymentModal: React.FC<ExtendedPaymentModalProps> = ({
       name: "HK DigiVerse",
       description: "Course Purchase",
       handler: (res) => safeComplete(PAYMENT_STATUS.COMPLETED, res),
-      prefill: {
-        name,
-        email,
-        contact,
-      },
+      // prefill: {
+      //   name,
+      //   email,
+      //   contact,
+      // },
       theme: { color: "#eb8844" },
     };
 

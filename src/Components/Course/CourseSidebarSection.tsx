@@ -16,6 +16,17 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
     }
   };
 
+  const handlePaymentComplete = (status: any, response: any) => {
+    console.log("Payment completed", status, response);
+    if (status === "COMPLETED") {
+      // Handle success, maybe navigate or show success message
+      // You might need an API call here to confirm purchase with backend
+      alert("Payment Successful! Course Purchased.");
+    } else {
+      alert("Payment Failed. Please try again.");
+    }
+  };
+
   return (
     <div className="ed-course-sidebar edublink-col-lg-4 ">
       <div className="edublink-course-details-sidebar eb-course-single-4 sidebar-enable max-w-full!">
@@ -146,18 +157,9 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                     userData={{
                       name: user.fullName,
                       email: user.email,
-                      contact: user.phone,
+                      contact: user.phoneNumber,
                     }}
-                    onPaymentComplete={(status: any, response: any) => {
-                      console.log("Payment completed", status, response);
-                      if (status === "COMPLETED") {
-                        // Handle success, maybe navigate or show success message
-                        // You might need an API call here to confirm purchase with backend
-                        alert("Payment Successful! Course Purchased.");
-                      } else {
-                        alert("Payment Failed. Please try again.");
-                      }
-                    }}
+                    onPaymentComplete={handlePaymentComplete}
                     className="lp-button button button-purchase-course"
                   />
                 ) : (

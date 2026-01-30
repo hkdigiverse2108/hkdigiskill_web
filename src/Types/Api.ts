@@ -13,11 +13,16 @@ export interface Message {
 
 export type DefaultErrorResponse = ResponseParserWrapper<Message[]>;
 
-export type FormErrorResponse = ResponseParserWrapper<Record<string, { code: string; values: string[] }[]>>;
+export type FormErrorResponse = ResponseParserWrapper<
+  Record<string, { code: string; values: string[] }[]>
+>;
 
 export type CombinedErrorResponse = DefaultErrorResponse | FormErrorResponse;
 
-export type AppQueryOptions<T> = Omit<UseQueryOptions<T, CombinedErrorResponse, T, any[]>, "queryKey" | "queryFn">;
+export type AppQueryOptions<T> = Omit<
+  UseQueryOptions<T, CombinedErrorResponse, T, any[]>,
+  "queryKey" | "queryFn"
+>;
 
 // Auth Types
 export interface LoginPayload {
@@ -63,8 +68,8 @@ export interface User {
   fullName: string;
   phone?: string;
   designation?: string;
+  phoneNumber?: string;
 }
-
 
 export interface UserResponse {
   data: User;

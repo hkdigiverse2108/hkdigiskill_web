@@ -220,3 +220,40 @@ body {
   @apply text-black!;
 }
 /* ============== Auth  End  ============== */
+
+
+.video-container {
+  /* position: relative; */
+  /* width: 800px/; */
+  /* height: 450px; */
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* The invisible shield over the top area */
+.overlay-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: transparent;
+  box-shadow: none !important;
+  /* Covers Title, Share, Watch Later */
+  background: transparent;
+  z-index: 10;  
+}
+
+/* Shield over the bottom right "Watch on YouTube" */
+.overlay-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 45px;
+  width: 80px;
+  /* Reduced to expose Settings/CC, covers Logo/Fullscreen */
+  height: 40px;
+  /* background-color: red; */
+  /* padding: 10px; */
+  background: transparent;
+  z-index: 10;
+}
