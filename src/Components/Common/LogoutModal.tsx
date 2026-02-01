@@ -34,9 +34,11 @@ const LogoutModal = () => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="modal-content bg-white p-6! rounded-lg shadow-lg max-w-2xl w-full mx-4!"
+        className="modal-content bg-white p-7! rounded-lg shadow-lg max-w-2xl w-full mx-4!"
       >
-        <h2 className="text-xl font-semibold mb-4">Confirm Logout</h2>
+        <h2 className="text-xl font-semibold mb-4 border-b border-gray-300 pb-2">
+          Confirm Logout
+        </h2>
         <p className="text-gray-600 mb-6">Are you sure you want to logout?</p>
         <div className="flex justify-end space-x-4!">
           <button

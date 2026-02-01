@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setCourseVideo } from "../../Store/Slices/CoursePlayerSlice";
+import { setModalVideoLink } from "../../Store/Slices/VideoModalSlice";
 import { Queries } from "../../Api";
 import type { CourseLesson } from "../../Types";
 
@@ -16,7 +16,7 @@ const CourseLessonItem = ({
   lesson: CourseLesson;
   index?: number;
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(index === 0);
   const dispatch = useDispatch();
 
   // Fetch curriculum only when the item is expanded
@@ -72,7 +72,7 @@ const CourseLessonItem = ({
                   }}
                   onClick={() => {
                     if (!curriculum.curriculumLock) {
-                      dispatch(setCourseVideo(curriculum.videoLink));
+                      dispatch(setModalVideoLink(curriculum.videoLink));
                     }
                   }}
                 >

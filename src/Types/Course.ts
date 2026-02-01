@@ -47,22 +47,19 @@ export interface Course extends BaseType {
   name?: string;
   purchasedCoursesShow: boolean;
   satisfactionRate: number; // e.g. percentage or rating
-
 }
 
 export interface CourseApiData {
-  course_data: Course
+  course_data: Course;
 }
 
-
 export interface AllCourseApiResponse {
-  data: { course_data: Course[], totalData: number }
+  data: { course_data: Course[]; totalData: number };
 }
 
 export interface CourseApiResponse {
-  data: Course
+  data: Course;
 }
-
 
 export interface CourseCardProps {
   course: Course;
@@ -70,7 +67,7 @@ export interface CourseCardProps {
 
 export interface CourseLesson {
   _id: string;
-  courseId: Course | string; 
+  courseId: Course | string;
   title: string;
   subtitle: string;
   priority: number;
@@ -97,7 +94,7 @@ export interface CourseCurriculum {
   description: string;
   duration: string;
   attachment?: string;
-  courseLessonsAssigned: CourseLesson[]; 
+  courseLessonsAssigned: CourseLesson[];
   courseLessonsPriority: number;
   curriculumLock: boolean;
   isDeleted?: boolean;
@@ -112,5 +109,8 @@ export interface CourseCurriculumApiResponse extends MessageStatus {
   };
 }
 
-
-
+export interface PurchaseCoursePayload {
+  courseId: string;
+  razorpayOrderId: string;
+  razorpayPaymentId: string;
+}

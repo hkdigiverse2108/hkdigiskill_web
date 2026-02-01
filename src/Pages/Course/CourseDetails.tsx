@@ -1,8 +1,4 @@
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../../Store/Store";
-import { clearCourseVideo } from "../../Store/Slices/CoursePlayerSlice";
 import { BreadCrumb } from "../../Components/Common";
 import { Queries } from "../../Api";
 import { Rate } from "antd";
@@ -17,18 +13,6 @@ import {
 
 const CourseDetails = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const { currentVideoLink, isPlaying } = useSelector(
-    (state: RootState) => state.coursePlayer,
-  );
-
-  useEffect(() => {
-    return () => {
-      dispatch(clearCourseVideo());
-    };
-  }, [dispatch, id]);
-
-  // console.log("Ids : ", id);
 
   const { data: allCourseData } = Queries.useGetAllCourses();
   const { data: Course } = Queries.useGetSingleCourse(id);
@@ -45,11 +29,6 @@ const CourseDetails = () => {
     courseCurriculum?.data?.course_curriculum_data || [];
   const AllCourseLessons = courseLessons?.data?.course_lesson_data || [];
   const ratingData = ratingSummary?.data;
-
-  // console.log("singleCourse -->", singleCourse);
-  // console.log("AllCourses", AllCourses);
-  console.log("AllCourseCurriculum", AllCourseCurriculum);
-  console.log("AllCourseLessons", AllCourseLessons);
 
   return (
     <div className="lp-archive-courses">
@@ -68,18 +47,11 @@ const CourseDetails = () => {
                     <div className="edublink-container">
                       <div className="edublink-course-breadcrumb-inner">
                         <div className="edublink-course-title">
-                          <h1 className="entry-title">
-                            {/* Starting SEO as your Home Based Business */}
-                            {singleCourse?.name}
-                          </h1>
+                          <h1 className="entry-title">{singleCourse?.name}</h1>
                         </div>
 
                         <div className="edublink-course-header-meta">
                           <ul className="eb-course-header-meta-items">
-                            {/* <li className="instructor">
-                              <i className="icon-58"></i>By Edward Norton
-                            </li> */}
-
                             <li className="category">
                               <i className="icon-59"></i>
                               <a>{singleCourse?.courseCategoryId?.name}</a>
@@ -109,65 +81,9 @@ const CourseDetails = () => {
                   <div
                     className=" edublink-course-details-card-preview after:bg-transparent! after:pointer-events-none"
                     style={{
-                      backgroundImage:
-                        isPlaying && currentVideoLink
-                          ? "none"
-                          : `url(${singleCourse?.image})`,
-                      position: "relative", // Ensure positioning context for iframe
+                      backgroundImage: `url(${singleCourse?.image})`,
                     }}
-                  >
-                    {isPlaying && currentVideoLink ? (
-                      <>
-                        <div className="video-container">
-                          <div
-                            className="overlay-top"
-                            title="Sharing disabled"
-                          ></div>
-                          <div
-                            className="overlay-bottom-right"
-                            title="Watch on YouTube disabled"
-                          ></div>
-                          <div id="player"></div>
-                        </div>
-                        <iframe
-                          src={currentVideoLink}
-                          width="100%"
-                          height="100%"
-                          title="Course Video"
-                          allow="autoplay; encrypted-media"
-                          allowFullScreen
-                          style={{
-                            position: "absolute",
-                            top: 0,
-                            left: 0,
-                            width: "100%",
-                            height: "100%",
-                          }}
-                        ></iframe>
-                      </>
-                    ) : (
-                      <>
-                        {/* <div className="edublink-course-video-preview-area">
-                          <a className="edublink-course-video-popup">
-                            <i className="icon-18"></i>
-                          </a>
-                        </div> */}
-                      </>
-                    )}
-
-                    {/* Rating Overlay */}
-                    {/* <div className="course-rating-overlay absolute top-4 left-4 bg-black bg-opacity-70 text-white px-3 py-2 rounded-lg flex items-center gap-2">
-                            <Rate
-                        allowHalf
-                        defaultValue={ratingData?.averageRating || 0}
-                        disabled
-                        style={{ fontSize: '14px', color: '#FFB606' }}
-                      />
-                      <span className="text-sm font-medium">
-                        {ratingData?.averageRating?.toFixed(1) || "0"} ({ratingData?.totalRated || 0} reviews)
-                      </span>
-                    </div> */}
-                  </div>
+                  ></div>
                 </div>
 
                 {/* ========================= Tabs Section ========================= */}
@@ -222,23 +138,15 @@ const CourseDetails = () => {
                     </ul>
 
                     <div className="course-tab-panels">
-                      {/* ======================= Overview ========================== */}
                       <CourseOverviewSection desc={singleCourse?.description} />
-
-                      {/* ======================= CURRICULUM ========================== */}
                       <CourseCurriculumSection lessons={AllCourseLessons} />
-
-                      {/* ======================= FAQ ========================== */}
                       <CourseFaqSection />
-                      {/* ==================== REVIEWS TAB ==================== */}
                       <CourseReviewSection courseId={singleCourse?._id} />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* RIGHT SIDEBAR IF NEEDED */}
 
             <CourseSidebarSection course={singleCourse} />
           </div>
@@ -253,7 +161,7 @@ const CourseDetails = () => {
             <div className="elementor-widget-container">
               <div className="edublink-course-widget-wrapper flex justify-center">
                 <div className="edublink-archive-lp-courses grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! px-6! w-full edublink-course-archive edublink-lms-courses-grid  edublink-row eb-masonry-grid-wrapper">
-                  {AllCourses?.slice(0, 3)?.map((course) => (
+                  {AllCourses?.slice(0, 3)?.map((course: any) => (
                     <CourseCard key={course._id} course={course} />
                   ))}
                 </div>

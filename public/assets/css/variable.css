@@ -84,4 +84,5 @@
 @theme {
   --color-primary: var(--edublink-color-primary);
   --color-success: var(--edublink-color-extra01);
+  --color-danger: var(--edublink-color-secondary);
 }

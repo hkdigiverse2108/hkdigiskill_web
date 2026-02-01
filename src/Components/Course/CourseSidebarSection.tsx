@@ -4,10 +4,14 @@ import { ShareButtons, PaymentModal } from "../Common";
 import { ImagePath, ROUTES } from "../../Constants";
 import { useAppSelector } from "../../Store/Hook";
 import { useNavigate } from "react-router-dom";
+import { Mutation } from "../../Api";
 
 const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   const user = useAppSelector((state) => state.user.user);
   const navigate = useNavigate();
+
+  const { mutate: purchaseCourse, isPending: isPurchasing } =
+    Mutation.usePurchaseCourse();
 
   console.log(user, "user");
   const handleBuyNowBtn = () => {
@@ -19,13 +23,31 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   const handlePaymentComplete = (status: any, response: any) => {
     console.log("Payment completed", status, response);
     if (status === "COMPLETED") {
-      // Handle success, maybe navigate or show success message
-      // You might need an API call here to confirm purchase with backend
-      alert("Payment Successful! Course Purchased.");
+      purchaseCourse(
+        {
+          courseId: course?._id || "",
+          razorpayOrderId: response?.razorpay_order_id || "",
+          razorpayPaymentId: response?.razorpay_payment_id || "",
+        },
+        {
+          onSuccess: () => {
+            alert("Payment Successful! Course Purchased.");
+          },
+          onError: (err: any) => {
+            console.error("Purchase error:", err);
+            alert(
+              err?.response?.data?.message ||
+                "Payment successful but course activation failed. Please contact support.",
+            );
+          },
+        },
+      );
     } else {
       alert("Payment Failed. Please try again.");
     }
   };
+
+  const discountPrice = (course?.mrpPrice || 0) - (course?.price || 0);
 
   return (
     <div className="ed-course-sidebar edublink-col-lg-4 ">
@@ -45,7 +67,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                     <span className="course-item-price">
                       {/* <span className="origin-price">{course?.price}</span> */}
                       <span className="price text-success!">
-                        {course?.mrpPrice}
+                        {course?.mrpPrice || 0}
                       </span>
                     </span>
                   </div>
@@ -61,7 +83,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                   <div className="course-price">
                     <span className="course-item-price">
                       {/* <span className="origin-price">{course?.price}</span> */}
-                      <span className="price">{course?.price}</span>
+                      <span className="price">{discountPrice}</span>
                     </span>
                   </div>
                 </span>
@@ -142,17 +164,12 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
 
             <div className="edublink-course-details-sidebar-buttons">
               <div className="lp-course-buttons">
-                {/* <form
-                  name="purchase-course"
-                  className="purchase-course"
-                  method="post"
-                  encType="multipart/form-data"
-                > */}
-                {/* <input type="hidden" name="purchase-course" value="12817" /> */}
+    
 
                 {user ? (
                   <PaymentModal
                     btnText="Buy Now"
+                    isLoading={isPurchasing}
                     amount={course?.price || 0}
                     userData={{
                       name: user.fullName,

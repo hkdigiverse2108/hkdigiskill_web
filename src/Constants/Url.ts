@@ -14,17 +14,17 @@ export const URL_KEYS = {
     ADD: "newsletter/add",
   },
   CONTACT: {
-    ADD: "get-in-touch/add"
+    ADD: "get-in-touch/add",
   },
   BLOG: {
     ALL: "blog/all",
-    ONE: "blog/"
+    ONE: "blog/",
   },
   HERO_BANNER: { ALL: "hero-banner/all?type=web" },
   COURSE_CATEGORY: { ALL: "course-category/all" },
-  TESTIMONIALS: { 
+  TESTIMONIALS: {
     ALL: "testimonial/all",
-    RATINGS_SUMMARY: "testimonial/ratings/summary"
+    RATINGS_SUMMARY: "testimonial/ratings/summary",
   },
   FAQ: { ALL: "faq/all" },
   TRUSTED_PARTNER: { ALL: "trusted-partner/all" },
@@ -33,14 +33,14 @@ export const URL_KEYS = {
     ONE: "course/",
     CURRICULUM: "course-curriculum/all?courseId=",
     LESSON: "course-lesson/all?courseId=",
-    CURRICULUM_BY_LESSON: "course-curriculum/all?courseLessonId="
+    CURRICULUM_BY_LESSON: "course-curriculum/all?courseLessonId=",
+    PURCHASE: "course/purchase",
   },
   INSTRUCTOR: { ALL: "instructor/all" },
   LEGALITY: "legality",
   SETTINGS: "settings/all",
   GALLARY: "gallery/all",
   USER: {
-    ONE: "user/"
-  }
-
+    ONE: "user/",
+  },
 } as const;

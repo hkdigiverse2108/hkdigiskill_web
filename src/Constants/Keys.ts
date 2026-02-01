@@ -25,4 +25,5 @@ export const KEYS = {
   GALLARY: "gallary",
   USER: "user",
   COURSE_LESSON: "course-lesson",
+  PURCHASE_COURSE: "purchase-course",
 } as const;
