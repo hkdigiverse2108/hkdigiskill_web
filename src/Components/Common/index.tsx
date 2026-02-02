@@ -3,6 +3,9 @@ import GetCeritficateSection from "./GetCeritficateSection";
 import ShareButtons from "./ShareButtons";
 import PaymentModal from "./PaymentModal";
 import SettingsInitializer from "./SettingsInitializer";
+import AuthModal from "./AuthModal";
+import LogoutModal from "./LogoutModal";
+import VideoModal from "./VideoModal";
 
 export {
   BreadCrumb,
@@ -10,4 +13,7 @@ export {
   ShareButtons,
   PaymentModal,
   SettingsInitializer,
+  AuthModal,
+  LogoutModal,
+  VideoModal,
 };

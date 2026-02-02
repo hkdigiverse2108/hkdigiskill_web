@@ -5,6 +5,7 @@ import VideoModal from "../Components/Common/VideoModal";
 import ImageModal from "../Components/Gallary/ImageModal";
 import LogoutModal from "../Components/Common/LogoutModal";
 import ScrollToTop from "../Components/Common/ScrollToTop";
+import AuthModal from "../Components/Common/AuthModal";
 
 const Layout = () => {
   return (
@@ -39,6 +40,7 @@ const Layout = () => {
       <VideoModal />
       <ImageModal />
       <LogoutModal />
+      <AuthModal />
     </div>
   );
 };

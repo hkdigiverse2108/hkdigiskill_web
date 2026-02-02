@@ -1,14 +1,14 @@
 import { type FC } from "react";
 import type { Course } from "../../Types";
 import { ShareButtons, PaymentModal } from "../Common";
-import { ImagePath, ROUTES } from "../../Constants";
-import { useAppSelector } from "../../Store/Hook";
-import { useNavigate } from "react-router-dom";
+import { ImagePath } from "../../Constants";
+import { useAppSelector, useAppDispatch } from "../../Store/Hook";
 import { Mutation } from "../../Api";
+import { setAuthModalOpen } from "../../Store/Slices/ModalSlice";
 
 const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   const user = useAppSelector((state) => state.user.user);
-  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const { mutate: purchaseCourse, isPending: isPurchasing } =
     Mutation.usePurchaseCourse();
@@ -16,7 +16,8 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   console.log(user, "user");
   const handleBuyNowBtn = () => {
     if (!user) {
-      return navigate(ROUTES.AUTH.BASE);
+      dispatch(setAuthModalOpen(true));
+      return;
     }
   };
 
@@ -164,8 +165,6 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
 
             <div className="edublink-course-details-sidebar-buttons">
               <div className="lp-course-buttons">
-    
-
                 {user ? (
                   <PaymentModal
                     btnText="Buy Now"
