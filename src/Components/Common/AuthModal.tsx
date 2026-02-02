@@ -40,6 +40,14 @@ const AuthModal = () => {
     localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(data));
     dispatch(setUser(data));
     dispatch(setAuthModalOpen(false));
+    setFormData({
+      fullName: "",
+      email: "",
+      password: "",
+      phone: "",
+      designation: "",
+      agreeTerms: false,
+    });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -49,9 +57,12 @@ const AuthModal = () => {
         handleLoginSuccess(response?.data);
       },
       onError: (error: any) => {
-        const errorMessage = error?.response?.data?.message || "";
-        if (errorMessage.toLowerCase().includes("already exist")) {
-          // If user already exists, try logging in
+        const errorMessage = error?.response?.data?.message || error?.message || "";
+
+        console.log("errorMessage", errorMessage, error);
+
+        if (typeof errorMessage === "string" && errorMessage.toLowerCase().includes("already registered")) {
+          // Auto-login flow
           loginMutation.mutate(
             {
               email: formData.email,
@@ -62,10 +73,7 @@ const AuthModal = () => {
                 handleLoginSuccess(loginResponse?.data);
               },
               onError: (loginError: any) => {
-                alert(
-                  loginError?.response?.data?.message ||
-                    "Login failed. Please check your credentials.",
-                );
+                alert(loginError?.response?.data?.message || "Login failed. Please check your credentials.");
               },
             },
           );
@@ -79,140 +87,77 @@ const AuthModal = () => {
   if (!isAuthModalOpen) return null;
 
   return (
-    <div
-      onClick={handleClose}
-      className="modal-overlay fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-9999!"
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="modal-content bg-white p-8! rounded-xl shadow-2xl max-w-lg w-full mx-4! relative overflow-hidden"
-      >
-        <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-        >
-          <i className="ri-close-line text-2xl"></i>
+    <div onClick={handleClose} className="modal-overlay fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-9999!">
+      <div onClick={(e) => e.stopPropagation()} className="modal-content bg-white p-8! rounded-xl shadow-2xl max-w-250 w-full mx-4! relative overflow-hidden">
+        <button onClick={handleClose} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors py-2! px-3!">
+          <i className="ri-close-line text-2xl!"></i>
         </button>
 
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Enter Your Details
-          </h2>
-          <p className="text-gray-500">
-            Please provide your information to continue
-          </p>
+        <div className="mb-9! ">
+          <p className="text-3xl sm:text-5xl font-bold text-gray-800  my-3! sm:my-6!">Fill The Form To Continue</p>
+          {/* <p className="text-gray-500 ">Please provide your information to continue</p> */}
         </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4!">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Full Name *
+        <form className="woocommerce-form woocommerce-form-register register auth-form" onSubmit={handleSubmit}>
+          <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-3!">
+            <label htmlFor="fullName">
+              Full Name <span className="required">*</span>
             </label>
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Full Name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
-              value={formData.fullName}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
+            <input type="text" className="woocommerce-Input woocommerce-Input--text input-text" name="fullName" id="fullName" autoComplete="name" value={formData.fullName} onChange={handleInputChange} required />
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4!">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email *
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Phone *
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
-                value={formData.phone}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Designation *
+          <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-3!">
+            <label htmlFor="reg_email">
+              Email address <span className="required">*</span>
             </label>
-            <input
-              type="text"
-              name="designation"
-              placeholder="Your Job Title / Designation"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
-              value={formData.designation}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
+            <input type="email" className="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autoComplete="email" value={formData.email} onChange={handleInputChange} required />
+          </p>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Password *
+          <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-3!">
+            <label htmlFor="phone">
+              Phone <span className="required">*</span>
             </label>
-            <div className="relative password-input">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Password"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-              />
+            <input type="tel" className="woocommerce-Input woocommerce-Input--text input-text" name="phone" id="phone" autoComplete="tel" value={formData.phone} onChange={handleInputChange} required />
+          </p>
+
+          <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-3!">
+            <label htmlFor="designation">
+              Designation <span className="required">*</span>
+            </label>
+            <input type="text" className="woocommerce-Input woocommerce-Input--text input-text" name="designation" id="designation" autoComplete="organization-title" value={formData.designation} onChange={handleInputChange} required />
+          </p>
+
+          <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-3!">
+            <label htmlFor="reg_password">
+              Password <span className="required">*</span>
+            </label>
+            <span className="password-input">
+              <input type={showPassword ? "text" : "password"} className="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autoComplete="new-password" value={formData.password} onChange={handleInputChange} required />
               <button
                 type="button"
-                className={`show-password-input ${showPassword ? "display-password" : ""} absolute right-3 top-1/2 -translate-y-1/2`}
+                className={`show-password-input
+                        ${showPassword ? "display-password" : ""}
+                      `}
+                aria-label={showPassword ? "Hide password" : "Show password"}
                 onClick={() => setShowPassword(!showPassword)}
               />
-            </div>
-          </div>
+            </span>
+          </p>
 
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              name="agreeTerms"
-              id="agreeTerms"
-              className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
-              checked={formData.agreeTerms}
-              onChange={handleInputChange}
-              required
-            />
-            <label htmlFor="agreeTerms" className="ml-2 text-sm text-gray-600">
-              I agree to the terms and conditions
+          <p className="woocommerce-form-row form-row mb-3!">
+            <label className="woocommerce-form__label woocommerce-form__label-for-checkbox">
+              <input type="checkbox" className="woocommerce-form__input woocommerce-form__input-checkbox" name="agreeTerms" checked={formData.agreeTerms} onChange={handleInputChange} required />
+              <span className="max-sm:text-[13px]"> I agree to the terms and conditions</span>
             </label>
-          </div>
+          </p>
 
-          <button
-            type="submit"
-            disabled={registerMutation.isPending || loginMutation.isPending}
-            className="main-header-btn edu-btn btn-medium w-full! disabled:opacity-70"
-          >
-            {registerMutation.isPending || loginMutation.isPending ? (
-              <span>Processing...</span>
-            ) : (
-              <span>Submit & Continue</span>
-            )}
-          </button>
+          <p className="woocommerce-form-row form-row mb-3!">
+            <button type="submit" disabled={registerMutation.isPending || loginMutation.isPending} className="main-header-btn edu-btn btn-medium w-full! disabled:opacity-70">
+              {registerMutation.isPending || loginMutation.isPending ? <span>Processing...</span> : <span>Submit & Continue</span>}
+            </button>
+          </p>
+          {/* <p className="my-0!">
+            Already have an account? <a onClick={onSwitchToLogin}>Login here</a>
+          </p> */}
         </form>
       </div>
     </div>

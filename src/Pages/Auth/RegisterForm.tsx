@@ -45,72 +45,33 @@ const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
     <div className="  w-full! ">
       <h2>Register</h2>
 
-      <form
-        className="woocommerce-form woocommerce-form-register register auth-form"
-        onSubmit={handleRegisterSubmit}
-      >
+      <form className="woocommerce-form woocommerce-form-register register auth-form" onSubmit={handleRegisterSubmit}>
         <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
           <label htmlFor="fullName">
             Full Name <span className="required">*</span>
           </label>
-          <input
-            type="text"
-            className="woocommerce-Input woocommerce-Input--text input-text"
-            name="fullName"
-            id="fullName"
-            autoComplete="name"
-            value={registerData.fullName}
-            onChange={handleRegisterChange}
-            required
-          />
+          <input type="text" className="woocommerce-Input woocommerce-Input--text input-text" name="fullName" id="fullName" autoComplete="name" value={registerData.fullName} onChange={handleRegisterChange} required />
         </p>
 
         <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
           <label htmlFor="reg_email">
             Email address <span className="required">*</span>
           </label>
-          <input
-            type="email"
-            className="woocommerce-Input woocommerce-Input--text input-text"
-            name="email"
-            id="reg_email"
-            autoComplete="email"
-            value={registerData.email}
-            onChange={handleRegisterChange}
-            required
-          />
+          <input type="email" className="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autoComplete="email" value={registerData.email} onChange={handleRegisterChange} required />
         </p>
 
         <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
           <label htmlFor="phone">
             Phone <span className="required">*</span>
           </label>
-          <input
-            type="tel"
-            className="woocommerce-Input woocommerce-Input--text input-text"
-            name="phone"
-            id="phone"
-            autoComplete="tel"
-            value={registerData.phone}
-            onChange={handleRegisterChange}
-            required
-          />
+          <input type="tel" className="woocommerce-Input woocommerce-Input--text input-text" name="phone" id="phone" autoComplete="tel" value={registerData.phone} onChange={handleRegisterChange} required />
         </p>
 
         <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
           <label htmlFor="designation">
             Designation <span className="required">*</span>
           </label>
-          <input
-            type="text"
-            className="woocommerce-Input woocommerce-Input--text input-text"
-            name="designation"
-            id="designation"
-            autoComplete="organization-title"
-            value={registerData.designation}
-            onChange={handleRegisterChange}
-            required
-          />
+          <input type="text" className="woocommerce-Input woocommerce-Input--text input-text" name="designation" id="designation" autoComplete="organization-title" value={registerData.designation} onChange={handleRegisterChange} required />
         </p>
 
         <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
@@ -118,54 +79,32 @@ const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
             Password <span className="required">*</span>
           </label>
           <span className="password-input">
-            <input
-              type={showPassword ? "text" : "password"}
-              className="woocommerce-Input woocommerce-Input--text input-text"
-              name="password"
-              id="reg_password"
-              autoComplete="new-password"
-              value={registerData.password}
-              onChange={handleRegisterChange}
-              required
-            />
+            <input type={showPassword ? "text" : "password"} className="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autoComplete="new-password" value={registerData.password} onChange={handleRegisterChange} required />
             <button
               type="button"
               className={`show-password-input
                         ${showPassword ? "display-password" : ""}
                       `}
-              aria-label={
-                showPassword ? "Hide password" : "Show password"
-              }
+              aria-label={showPassword ? "Hide password" : "Show password"}
               onClick={() => setShowPassword(!showPassword)}
             />
           </span>
         </p>
 
-          <p className="woocommerce-form-row form-row">
-            <label className="woocommerce-form__label woocommerce-form__label-for-checkbox">
-              <input
-                type="checkbox"
-                className="woocommerce-form__input woocommerce-form__input-checkbox"
-                name="agreeTerms"
-                checked={registerData.agreeTerms}
-                onChange={handleRegisterChange}
-                required
-              />
-              <span> I agree to the terms and conditions</span>
-            </label>
-          </p>
+        <p className="woocommerce-form-row form-row">
+          <label className="woocommerce-form__label woocommerce-form__label-for-checkbox">
+            <input type="checkbox" className="woocommerce-form__input woocommerce-form__input-checkbox" name="agreeTerms" checked={registerData.agreeTerms} onChange={handleRegisterChange} required />
+            <span> I agree to the terms and conditions</span>
+          </label>
+        </p>
 
-          <p className="woocommerce-form-row form-row">
-            <button
-              type="submit"
-              className="main-header-btn edu-btn btn-medium w-full!"
-            >
-              Register
-            </button>
-          </p>
+        <p className="woocommerce-form-row form-row mb-3!">
+          <button type="submit" className="main-header-btn edu-btn btn-medium w-full!">
+            Register
+          </button>
+        </p>
         <p className="my-0!">
-          Already have an account?{" "}
-          <a onClick={onSwitchToLogin}>Login here</a>
+          Already have an account? <a onClick={onSwitchToLogin}>Login here</a>
         </p>
       </form>
     </div>

@@ -19,7 +19,6 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     courseCategoryId,
     // courseCurriculumIds,
     description,
-    duration,
     // enrolledLearners,
     language,
     image = `${ImagePath}/course/course-01/course-01.jpg`,
@@ -34,12 +33,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   // const { name, description } = courseCategoryId;
 
   return (
-    <Link
-      to={`${ROUTES.COURSE.DETAILS.replace(":id", _id)}`}
-      className="h-full! mb-0!"
-      data-aos="fade-up"
-      data-aos-duration={1200}
-    >
+    <Link to={`${ROUTES.COURSE.DETAILS.replace(":id", _id)}`} className="h-full! mb-0!" data-aos="fade-up" data-aos-duration={1200}>
       <div className="edublink-single-course course-style-2 ">
         <div className="inner h-full! bg-white!">
           <div className="thumbnail">
@@ -67,10 +61,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             {/* Rating Stars */}
             <div className="course-rating">
               <div className="edublink-course-review-wrapper">
-                <div
-                  className="review-stars-rated"
-                  title={`${satisfactionRate} out of 5 stars`}
-                >
+                <div className="review-stars-rated" title={`${satisfactionRate} out of 5 stars`}>
                   {[1, 2, 3, 4, 5].map((i) => (
                     <div className="review-star" key={i}>
                       <span className="far">

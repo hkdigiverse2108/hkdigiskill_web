@@ -32,9 +32,7 @@ const VideoModal = () => {
           videoId = url.split("id=")[1]?.split("&")[0];
         }
 
-        return videoId
-          ? `https://drive.google.com/file/d/${videoId}/preview`
-          : url;
+        return videoId ? `https://drive.google.com/file/d/${videoId}/preview` : url;
       }
 
       return url;
@@ -49,25 +47,19 @@ const VideoModal = () => {
 
   return (
     <div className="fixed inset-0 z-99! flex items-center justify-center bg-black/70 ">
-      <button
-        onClick={handleCloseBtn}
-        // onClick={() => dispatch(setModalVideoLink(""))}
-        className="absolute top-0 right-0 border! border-black/40! text-white! bg-black/20! hover:bg-black/40! py-3! "
-      >
+      {/* <button onClick={handleCloseBtn} className="absolute top-0 right-0 border! border-black/40! text-white! bg-black/20! hover:bg-black/40! py-3! ">
         ✕
-      </button>
+      </button> */}
 
-      <div className=" w-[80%] h-[80%]  aspect-video  overflow-hidden shadow-xl">
-        <iframe
-          width="100%"
-          height="100%"
-          src={embedUrl}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay;  "
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
+      <div className=" w-[100%] h-[100%] relative  aspect-video  overflow-hidden shadow-xl">
+        <div className="video-container">
+          <div onClick={handleCloseBtn} className="overlay-top" title="Sharing disabled">
+            <button className="absolute top-0 right-0 border! border-black/40! text-white! bg-black/20! hover:bg-black/40! py-3! ">✕</button>
+          </div>
+          <div className="overlay-bottom-right" title="Watch on YouTube disabled"></div>
+          <div id="player"></div>
+        </div>
+        <iframe width="100%" height="100%" src={embedUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay;  " referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}></iframe>
       </div>
     </div>
   );

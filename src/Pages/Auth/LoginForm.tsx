@@ -97,7 +97,7 @@ const LoginForm = ({ onSwitchToRegister, onSwitchToForgot }: LoginFormProps) => 
           </span>
         </p>
 
-        <p className="woocommerce-form-row form-row">
+        {/* <p className="woocommerce-form-row form-row">
           <label className="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme ">
             <input
               type="checkbox"
@@ -107,9 +107,9 @@ const LoginForm = ({ onSwitchToRegister, onSwitchToForgot }: LoginFormProps) => 
             />
             <span> Remember me</span>
           </label>
-        </p>
+        </p> */}
 
-        <p className="woocommerce-form-row form-row">
+        <p className="woocommerce-form-row form-row mb-3!">
           <button type="submit" className="main-header-btn edu-btn btn-medium w-full!">
             Log in
           </button>
