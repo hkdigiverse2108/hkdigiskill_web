@@ -9,7 +9,9 @@ import type {
   ResetPasswordPayload,
   ResendOtpPayload,
   VerifyOtpPayload,
+  VerifyCoursePayload,
 } from "../Types";
+
 import { Post } from "./Methods";
 import { useMutations } from "./ReactQuery";
 
@@ -53,5 +55,9 @@ export const Mutation = {
   usePurchaseCourse: () =>
     useMutations<PurchaseCoursePayload, any>([KEYS.PURCHASE_COURSE], (input) =>
       Post(URL_KEYS.COURSE.PURCHASE, input),
+    ),
+  useVerifyCourse: () =>
+    useMutations<VerifyCoursePayload, any>([KEYS.VERIFY_COURSE], (input) =>
+      Post(URL_KEYS.COURSE.VERIFY, input),
     ),
 };

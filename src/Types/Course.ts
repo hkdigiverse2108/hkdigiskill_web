@@ -114,3 +114,13 @@ export interface PurchaseCoursePayload {
   razorpayOrderId: string;
   razorpayPaymentId: string;
 }
+
+export interface VerifyCoursePayload {
+  payment_id: string;
+}
+
+export interface VerifyCourseResponse extends MessageStatus {
+  data: {
+    razorpayOrderId: string;
+  };
+}

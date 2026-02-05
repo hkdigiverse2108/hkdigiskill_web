@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import type { Course } from "../../Types";
 import { ShareButtons, PaymentModal } from "../Common";
-import { ImagePath } from "../../Constants";
+import { ImagePath, PAYMENT_STATUS } from "../../Constants";
 import { useAppSelector, useAppDispatch } from "../../Store/Hook";
 import { Mutation } from "../../Api";
 import { setAuthModalOpen } from "../../Store/Slices/ModalSlice";
@@ -10,6 +10,8 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   const user = useAppSelector((state) => state.user.user);
   const dispatch = useAppDispatch();
 
+  const { mutate: verifyCourse, isPending: isVerifying } =
+    Mutation.useVerifyCourse();
   const { mutate: purchaseCourse, isPending: isPurchasing } =
     Mutation.usePurchaseCourse();
 
@@ -23,22 +25,39 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
 
   const handlePaymentComplete = (status: any, response: any) => {
     console.log("Payment completed", status, response);
-    if (status === "COMPLETED") {
-      purchaseCourse(
+    if (status === PAYMENT_STATUS.COMPLETED) {
+      verifyCourse(
         {
-          courseId: course?._id || "",
-          razorpayOrderId: response?.razorpay_order_id || "",
-          razorpayPaymentId: response?.razorpay_payment_id || "",
+          payment_id: response?.razorpay_payment_id || "",
         },
         {
-          onSuccess: () => {
-            alert("Payment Successful! Course Purchased.");
+          onSuccess: (verifyRes) => {
+            const razorPayOrderId = verifyRes?.data?.razorpayOrderId || "";
+            purchaseCourse(
+              {
+                courseId: course?._id || "",
+                razorpayOrderId: razorPayOrderId,
+                razorpayPaymentId: response?.razorpay_payment_id || "",
+              },
+              {
+                onSuccess: () => {
+                  alert("Payment Successful! Course Purchased.");
+                },
+                onError: (err: any) => {
+                  console.error("Purchase error:", err);
+                  alert(
+                    err?.response?.data?.message ||
+                      "Payment successful but course activation failed. Please contact support.",
+                  );
+                },
+              },
+            );
           },
           onError: (err: any) => {
-            console.error("Purchase error:", err);
+            console.error("Verification error:", err);
             alert(
               err?.response?.data?.message ||
-                "Payment successful but course activation failed. Please contact support.",
+                "Payment verification failed. Please contact support.",
             );
           },
         },
@@ -168,7 +187,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                 {user ? (
                   <PaymentModal
                     btnText="Buy Now"
-                    isLoading={isPurchasing}
+                    isLoading={isPurchasing || isVerifying}
                     amount={course?.price || 0}
                     userData={{
                       name: user.fullName,
