@@ -5,6 +5,8 @@ import { setUser } from "../../Store/Slices/UserSlice";
 import { Mutation } from "../../Api";
 import { STORAGE_KEYS } from "../../Constants/StorageKeys";
 import type { RegisterPayload } from "../../Types";
+import { AntdNotification } from "../../Utils/AntNotification";
+import { notification } from "antd";
 
 const AuthModal = () => {
   const dispatch = useAppDispatch();
@@ -77,7 +79,9 @@ const AuthModal = () => {
                 handleLoginSuccess(loginResponse?.data);
               },
               onError: (loginError: any) => {
-                alert(
+                AntdNotification(
+                  notification,
+                  "error",
                   loginError?.response?.data?.message ||
                     "Login failed. Please check your credentials.",
                 );
@@ -85,7 +89,11 @@ const AuthModal = () => {
             },
           );
         } else {
-          alert(errorMessage || "Registration failed. Please try again.");
+          AntdNotification(
+            notification,
+            "error",
+            errorMessage || "Registration failed. Please try again.",
+          );
         }
       },
     });

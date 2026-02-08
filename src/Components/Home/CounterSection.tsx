@@ -1,9 +1,7 @@
-import { Queries } from "../../Api";
+import { useAppSelector } from "../../Store/Hook";
 
 const CounterSection = () => {
-  const { data: settings } = Queries.useGetAllSettings();
-  const AllSettings = settings?.data;
-  // console.log("settings -", AllSettings);
+  const AllSettings = useAppSelector((state) => state.settings.settings);
 
   return (
     <section
@@ -127,7 +125,6 @@ const CounterSection = () => {
             </div>
           </div>
         </div>
-     
       </div>
     </section>
   );

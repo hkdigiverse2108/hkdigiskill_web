@@ -27,4 +27,5 @@ export const KEYS = {
   COURSE_LESSON: "course-lesson",
   PURCHASE_COURSE: "purchase-course",
   VERIFY_COURSE: "verify-course",
+  MY_COURSES: "my-courses",
 } as const;

@@ -60,7 +60,7 @@ const LatestBlogsSection = () => {
             <div className="elementor-element elementor-element-fe4ca5a elementor-widget elementor-widget-edublink-post">
               <div className="elementor-widget-container">
                 <div>
-                  <div className="grid grid-cols-1! sm:grid-cols-2! md:grid-cols-3! gap-9! ">
+                  <div className="grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! ">
                     {/* eb-blog-post-wrapper  eb-post-grid edublink-row eb-masonry-grid-wrapper */}
                     {featuredBlog?.slice(0, 3)?.map((blog: Blog) => (
                       <BlogCard key={blog._id} blog={blog} />

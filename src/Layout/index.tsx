@@ -6,10 +6,12 @@ import ImageModal from "../Components/Gallary/ImageModal";
 import LogoutModal from "../Components/Common/LogoutModal";
 import ScrollToTop from "../Components/Common/ScrollToTop";
 import AuthModal from "../Components/Common/AuthModal";
+import SettingsInitializer from "../Components/Common/SettingsInitializer";
 
 const Layout = () => {
   return (
-    <div id="page" className="site">
+    <div id="page" className="site relative">
+      <SettingsInitializer />
       <ScrollToTop />
       <Header />
       <div id="content" className="site-content">

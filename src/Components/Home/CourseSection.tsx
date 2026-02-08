@@ -39,7 +39,7 @@ const CourseSection = () => {
             <div className="elementor-element elementor-element-6bce914 distant-learning-course elementor-widget elementor-widget-edublink-lp-courses">
               <div className="elementor-widget-container">
                 <div className="edublink-course-widget-wrapper flex justify-center">
-                  <div className="edublink-archive-lp-courses grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! px-6! w-full edublink-course-archive edublink-lms-courses-grid active-white-bg edublink-row eb-masonry-grid-wrapper">
+                  <div className="edublink-archive-lp-courses grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! w-full edublink-course-archive edublink-lms-courses-grid active-white-bg edublink-row eb-masonry-grid-wrapper">
                     {Courses?.slice(0, 3)?.map((course) => (
                       <CourseCard key={course._id} course={course} />
                     ))}

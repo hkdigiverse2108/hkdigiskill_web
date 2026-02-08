@@ -9,13 +9,13 @@ import {
   SupportPolicy,
 } from "../Data";
 import { useState } from "react";
-import { Mutation, Queries } from "../Api";
+import { Mutation } from "../Api";
+import { useAppSelector } from "../Store/Hook";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
 
-  const { data: settings } = Queries.useGetAllSettings();
-  const AllSettings = settings?.data;
+  const AllSettings = useAppSelector((state) => state.settings.settings);
   const { facebook, instagram, linkedin, twitter } =
     AllSettings?.socialMediaLinks || {};
 
@@ -113,7 +113,7 @@ const Footer = () => {
                           >
                             <img
                               alt="logo-white"
-                              src={`${ImagePath}/logo/logo-white.png`}
+                              src={AllSettings?.logo}
                             />
                           </Link>
                         </span>

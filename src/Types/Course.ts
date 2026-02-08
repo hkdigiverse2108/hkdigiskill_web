@@ -124,3 +124,37 @@ export interface VerifyCourseResponse extends MessageStatus {
     razorpayOrderId: string;
   };
 }
+
+export interface MyCourse extends BaseType {
+  userId: {
+    _id: string;
+    fullName: string;
+    email: string;
+    profilePhoto: string | null;
+    designation: string;
+  };
+  courseId: {
+    _id: string;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+    duration: number;
+    enrolledLearners: number;
+    classCompleted: number;
+    satisfactionRate: number;
+  };
+  paymentStatus: string;
+  razorpayOrderId: string;
+  razorpayPaymentId: string;
+  isDeleted: boolean;
+  purchaseDate: string;
+  totalLesson: number;
+}
+
+export interface MyCourseResponse extends MessageStatus {
+  data: {
+    my_courses_data: MyCourse[];
+    totalData: number;
+  };
+}

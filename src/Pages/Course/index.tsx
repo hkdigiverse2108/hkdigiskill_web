@@ -3,29 +3,47 @@ import { Queries } from "../../Api";
 import { CourseCard } from "../../Components/Course";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useAppSelector } from "../../Store/Hook";
+import Loader from "../../Components/Common/Loader";
 
 const Course = () => {
   const LIMIT = 3;
+  const MY_COURSES_LIMIT = 3;
   const [page, setPage] = useState(1);
+  const [myCoursesPage, setMyCoursesPage] = useState(1);
 
   const location = useLocation();
   const id = location.state;
+  const { isAuthenticated } = useAppSelector((state) => state.user);
 
-  // console.log("ids", id);
+  // Fetch all courses
+  const { data } = Queries.useGetAllCourses({
+    page,
+    limit: LIMIT,
+    courseCategoryId: id,
+  });
 
-  const { data } = Queries.useGetAllCourses(
-    { page, limit: LIMIT, courseCategoryId: id },
-    // { keepPreviousData: true }
-  );
-
-  // console.log("page", page);
+  // Fetch my courses if authenticated
+  const { data: myCoursesData, isLoading: isMyCoursesLoading } =
+    Queries.useGetMyCourses(
+      { page: myCoursesPage, limit: MY_COURSES_LIMIT },
+      { enabled: isAuthenticated },
+    );
 
   const Courses = data?.data?.course_data || [];
   const totalData = data?.data?.totalData || 0;
   const totalPages = Math.ceil(totalData / LIMIT);
 
+  const myCourses = myCoursesData?.data?.my_courses_data || [];
+  const totalMyCourses = myCoursesData?.data?.totalData || 0;
+  const totalMyCoursesPages = Math.ceil(totalMyCourses / MY_COURSES_LIMIT);
+
   const start = (page - 1) * LIMIT + 1;
   const end = Math.min(page * LIMIT, totalData);
+
+  if (isMyCoursesLoading) {
+    return <Loader />;
+  }
 
   return (
     <div>
@@ -35,9 +53,88 @@ const Course = () => {
       <div id="content" className="site-content my-50! container-p">
         <div className="site-content-inner edublink-container">
           <div className="edublink-main-content-inner">
+            {/* MY COURSES SECTION */}
+            {isAuthenticated && myCourses.length > 0 && (
+              <div className="mb-10!">
+                <div className="edublink-course-archive-top-bar-wrapper">
+                  <div className="edublink-course-archive-top-bar edublink-row">
+                    <div className="edublink-col-md-6">
+                      <h3 className="mb-0! text-2xl font-bold!">My Courses</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1! sm:grid-cols-2! md:grid-cols-3! gap-9!  ">
+                  {myCourses.map((myCourse) => (
+                    <CourseCard
+                      key={myCourse._id}
+                      course={myCourse?.courseId}
+                    />
+                  ))}
+                </div>
+
+                {totalMyCourses > MY_COURSES_LIMIT && (
+                  <nav className="edublink-pagination-wrapper mt-6!">
+                    <ul className="page-number">
+                      <li className={myCoursesPage === 1 ? "opacity-30" : ""}>
+                        <a
+                          className="page-numbers"
+                          onClick={() =>
+                            myCoursesPage !== 1 &&
+                            setMyCoursesPage((p) => p - 1)
+                          }
+                        >
+                          <span className="edublink-pagination-icon icon-west "></span>
+                        </a>
+                      </li>
+
+                      {Array.from(
+                        { length: totalMyCoursesPages },
+                        (_, i) => i + 1,
+                      ).map((p) => (
+                        <li
+                          key={p}
+                          className={p === myCoursesPage ? "active" : ""}
+                        >
+                          <a
+                            className={`page-numbers ${p === myCoursesPage ? "current" : ""}`}
+                            onClick={() => setMyCoursesPage(p)}
+                          >
+                            {p}
+                          </a>
+                        </li>
+                      ))}
+
+                      <li
+                        className={
+                          myCoursesPage === totalMyCoursesPages
+                            ? "opacity-30!"
+                            : ""
+                        }
+                      >
+                        <a
+                          className="page-numbers"
+                          title="next"
+                          onClick={() =>
+                            myCoursesPage !== totalMyCoursesPages &&
+                            setMyCoursesPage((p) => p + 1)
+                          }
+                        >
+                          <span className="edublink-pagination-icon icon-east"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                )}
+                <hr className="my-10!" />
+              </div>
+            )}
+
+            {/* ALL COURSES SECTION */}
             <div className="edublink-course-archive-top-bar-wrapper">
               <div className="edublink-course-archive-top-bar edublink-row">
                 <div className="edublink-col-md-6">
+                  <h3 className="mb-4! text-2xl font-bold!">All Courses</h3>
                   <span className="edublink-course-archive-index-count">
                     Showing{" "}
                     <span>
@@ -49,9 +146,7 @@ const Course = () => {
               </div>
             </div>
 
-            {/* COURSES GRID */}
-
-            <div className="grid grid-cols-1! sm:grid-cols-2! md:grid-cols-3! gap-9! ">
+            <div className="grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! ">
               {Courses?.map((course) => (
                 <CourseCard key={course._id} course={course} />
               ))}
@@ -75,9 +170,7 @@ const Course = () => {
                     (p) => (
                       <li key={p} className={p === page ? "active" : ""}>
                         <a
-                          className={`page-numbers ${
-                            p === page ? "current" : ""
-                          }`}
+                          className={`page-numbers ${p === page ? "current" : ""}`}
                           onClick={() => setPage(p)}
                         >
                           {p}

@@ -17,6 +17,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { isAuthenticated } = useAppSelector((state) => state.user);
+  const AllSettings = useAppSelector((state) => state.settings.settings);
 
   const { data } = Queries.useGetCourseCategory();
   const allCategory = data?.data?.course_category_data;
@@ -43,7 +44,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`site-header theme-header-1 header-get-sticky ${
+        className={`site-header theme-header-1 header-get-sticky overflow-hidden ${
           fix ? "edublink-header-sticky " : ""
         }`}
       >
@@ -51,7 +52,7 @@ const Header = () => {
           <div className="edublink-container-fluid">
             <div className="eb-header-navbar edublink-align-items-center">
               <div className="site-branding site-logo-info">
-                <div className="logo-wrapper">
+                <div className="logo-wrapper ">
                   <Link
                     to=""
                     className="navbar-brand site-main-logo"
@@ -60,8 +61,8 @@ const Header = () => {
                     <img
                       width={158}
                       height={50}
-                      src={`${ImagePath}/logo/logo-dark.png`}
-                      className="site-logo"
+                      src={AllSettings?.logo}
+                      className="site-logo h-fit!"
                       alt="logo"
                       decoding="async"
                     />

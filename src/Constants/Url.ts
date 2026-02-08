@@ -36,6 +36,7 @@ export const URL_KEYS = {
     CURRICULUM_BY_LESSON: "course-curriculum/all?courseLessonId=",
     PURCHASE: "course/purchase",
     VERIFY: "course/verify",
+    MY_COURSES: "course/my-courses",
   },
   INSTRUCTOR: { ALL: "instructor/all" },
   LEGALITY: "legality",

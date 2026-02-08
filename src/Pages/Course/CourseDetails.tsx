@@ -39,7 +39,7 @@ const CourseDetails = () => {
           <div className="edublink-row">
             <div
               id="learn-press-course"
-              className="course-summary edublink-col-lg-8"
+              className={`course-summary   ${singleCourse?.isUnlocked ? "edublink-col-lg-12" : "edublink-col-lg-8"} `}
             >
               <div className="eb-course-details-page-content">
                 <div className="edublink-course-page-header edublink-course-page-header eb-course-details-header-4">
@@ -148,7 +148,9 @@ const CourseDetails = () => {
               </div>
             </div>
 
-            <CourseSidebarSection course={singleCourse} />
+            {!singleCourse?.isUnlocked && (
+              <CourseSidebarSection course={singleCourse} />
+            )}
           </div>
         </div>
 
@@ -160,7 +162,7 @@ const CourseDetails = () => {
           <div className="elementor-element elementor-element-6bce914 distant-learning-course elementor-widget elementor-widget-edublink-lp-courses">
             <div className="elementor-widget-container">
               <div className="edublink-course-widget-wrapper flex justify-center">
-                <div className="edublink-archive-lp-courses grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! px-6! w-full edublink-course-archive edublink-lms-courses-grid  edublink-row eb-masonry-grid-wrapper">
+                <div className="edublink-archive-lp-courses grid! grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6! w-full edublink-course-archive edublink-lms-courses-grid  edublink-row eb-masonry-grid-wrapper">
                   {AllCourses?.slice(0, 3)?.map((course: any) => (
                     <CourseCard key={course._id} course={course} />
                   ))}

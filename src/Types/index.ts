@@ -14,3 +14,4 @@ export * from "./Settings"
 export * from "./Instructor"
 export * from "./CoreComponents"
 export * from "./Razorpay";
+export * from "./AntD";

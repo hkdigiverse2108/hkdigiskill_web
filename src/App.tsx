@@ -6,7 +6,6 @@ import Aos from "aos";
 import { Provider } from "react-redux";
 import { Store } from "./Store/Store";
 import AuthInitializer from "./Components/Common/AuthInitializer";
-import SettingsInitializer from "./Components/Common/SettingsInitializer";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -19,7 +18,6 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <Provider store={Store}>
         <AuthInitializer />
-        <SettingsInitializer />
         <RouterProvider router={Router} />
       </Provider>
     </QueryClientProvider>

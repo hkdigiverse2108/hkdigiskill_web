@@ -5,6 +5,8 @@ import { ImagePath, PAYMENT_STATUS } from "../../Constants";
 import { useAppSelector, useAppDispatch } from "../../Store/Hook";
 import { Mutation } from "../../Api";
 import { setAuthModalOpen } from "../../Store/Slices/ModalSlice";
+import { AntdNotification } from "../../Utils/AntNotification";
+import { notification } from "antd";
 
 const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   const user = useAppSelector((state) => state.user.user);
@@ -15,7 +17,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   const { mutate: purchaseCourse, isPending: isPurchasing } =
     Mutation.usePurchaseCourse();
 
-  console.log(user, "user");
+  // console.log(user, "user");
   const handleBuyNowBtn = () => {
     if (!user) {
       dispatch(setAuthModalOpen(true));
@@ -32,7 +34,8 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
         },
         {
           onSuccess: (verifyRes) => {
-            const razorPayOrderId = verifyRes?.data?.razorpayOrderId || "";
+            const razorPayOrderId = verifyRes?.data?.id || "";
+            // console.log(razorPayOrderId, "razorPayOrderId");
             purchaseCourse(
               {
                 courseId: course?._id || "",
@@ -40,13 +43,20 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                 razorpayPaymentId: response?.razorpay_payment_id || "",
               },
               {
-                onSuccess: () => {
-                  alert("Payment Successful! Course Purchased.");
+                onSuccess: (res) => {
+                  // console.log("Payment Successful! Course Purchased.", res);
+                  AntdNotification(
+                    notification,
+                    "success",
+                    res?.message || "Payment Successful! Course Purchased.",
+                  );
                 },
                 onError: (err: any) => {
-                  console.error("Purchase error:", err);
-                  alert(
-                    err?.response?.data?.message ||
+                  // console.log("Purchase error:", err?.message);
+                  AntdNotification(
+                    notification,
+                    "error",
+                    err?.message ||
                       "Payment successful but course activation failed. Please contact support.",
                   );
                 },
@@ -55,7 +65,9 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
           },
           onError: (err: any) => {
             console.error("Verification error:", err);
-            alert(
+            AntdNotification(
+              notification,
+              "error",
               err?.response?.data?.message ||
                 "Payment verification failed. Please contact support.",
             );
@@ -63,7 +75,11 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
         },
       );
     } else {
-      alert("Payment Failed. Please try again.");
+      AntdNotification(
+        notification,
+        "error",
+        "Payment Failed. Please try again.",
+      );
     }
   };
 
