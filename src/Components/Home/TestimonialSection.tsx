@@ -2,15 +2,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { TestimonialSettings } from "../../Data";
 import { ImagePath, ROUTES } from "../../Constants";
 import { Link } from "react-router-dom";
-import { Queries } from "../../Api";
+import type { Testimonial } from "../../Types";
 
-const TestimonialSection = () => {
-  const { data } = Queries.useGetTestimonials();
-
-  const testimonials = data?.data?.testimonial_data;
-
+const TestimonialSection = ({ testimonials }: { testimonials?: Testimonial[] }) => {
   const featuredTestimonials = testimonials?.filter(
-    (item) => item.isFeatured === true
+    (item) => item.isFeatured === true,
   );
 
   const renderStars = (rate: number) =>

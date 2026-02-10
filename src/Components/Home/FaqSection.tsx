@@ -2,14 +2,12 @@
 import { MouseParallax } from "../../CoreComponents";
 import { ImagePath } from "../../Constants";
 import FaqCard from "../../Components/Faq/FaqCard";
-import { Queries } from "../../Api";
 import { useState } from "react";
+import type { FaqItem } from "../../Types";
 
-const FaqSection = () => {
+const FaqSection = ({ faq }: { faq?: FaqItem[] }) => {
   const [activeIndex, setActiveIndex] = useState(0); // first open by default
-  const { data } = Queries.useGetFaq();
 
-  const faq = data?.data?.faq_data;
   const featuedFaq = faq
     ?.filter((item) => item?.isFeatured === true)
     ?.slice(0, 5);

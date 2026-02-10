@@ -1,16 +1,12 @@
 import { ImagePath, ROUTES } from "../../Constants";
-import { Queries } from "../../Api";
 import type { Blog } from "../../Types";
 import { BlogCard } from "../Blog";
 import { Link } from "react-router-dom";
 
 
-const LatestBlogsSection = () => {
-  const { data } = Queries.useGetAllBlogs();
+const LatestBlogsSection = ({ blogs }: { blogs?: Blog[] }) => {
 
-  const Blogs = data?.data?.blog_data;
-
-  const featuredBlog = Blogs?.filter((item) => item?.isFeatured == true);
+  const featuredBlog = blogs?.filter((item) => item?.isFeatured == true);
 
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-178ad6d elementor-section-boxed elementor-section-height-default elementor-section-height-default">

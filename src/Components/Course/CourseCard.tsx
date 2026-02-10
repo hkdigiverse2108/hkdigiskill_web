@@ -86,7 +86,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                 </div>
 
                 <span>
-                  ({satisfactionRate}.0/ {satisfactionRate} Ratings)
+                  ({satisfactionRate}/ 5.0 Ratings)
                 </span>
               </div>
             </div>

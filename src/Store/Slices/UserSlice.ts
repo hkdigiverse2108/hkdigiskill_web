@@ -22,6 +22,7 @@ const UserSlice = createSlice({
     clearUser: (state) => {
       state.user = null;
       state.isAuthenticated = false;
+      window.location.reload();
     },
   },
 });

@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
-import { Queries } from "../../Api";
 import { ROUTES } from "../../Constants";
+import type { CourseCategory } from "../../Types";
 
-const CategoriesSection = () => {
-  const { data } = Queries.useGetCourseCategory();
-  const category = data?.data?.course_category_data;
-
+const CategoriesSection = ({ category }: { category?: CourseCategory[] }) => {
   const featuredCategory = category
     ?.filter((item) => item?.isFeatured === true)
     .slice(0, 4);
@@ -78,7 +75,7 @@ const CategoriesSection = () => {
                           <div className="content">
                             <h5 className="title">
                               {/* <Link to={`/courses?category=${item._id}`}> */}
-                                {item.name}
+                              {item.name}
                               {/* </Link> */}
                             </h5>
 

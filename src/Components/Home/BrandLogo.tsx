@@ -1,12 +1,9 @@
-import { Queries } from "../../Api";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
+import type { TrustedPartner } from "../../Types";
 
 
-const BrandLogo = () => {
-  const { data } = Queries.useGetTrutedPartner();
-  const brandImages = data?.data?.trusted_partner_data;
-  // console.log("trusted By", data?.data?.trusted_partner_data);
+const BrandLogo = ({ brandImages }: { brandImages?: TrustedPartner[] }) => {
 
   return (
     <section

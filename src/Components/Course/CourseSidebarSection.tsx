@@ -26,7 +26,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
   };
 
   const handlePaymentComplete = (status: any, response: any) => {
-    console.log("Payment completed", status, response);
+    // console.log("Payment completed", status, response);
     if (status === PAYMENT_STATUS.COMPLETED) {
       verifyCourse(
         {
@@ -103,7 +103,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                     <span className="course-item-price">
                       {/* <span className="origin-price">{course?.price}</span> */}
                       <span className="price text-success!">
-                        {course?.mrpPrice || 0}
+                        {Math.round(course?.mrpPrice || 0)}
                       </span>
                     </span>
                   </div>
@@ -119,7 +119,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                   <div className="course-price">
                     <span className="course-item-price">
                       {/* <span className="origin-price">{course?.price}</span> */}
-                      <span className="price">{discountPrice}</span>
+                      <span className="price">{Math.round(discountPrice)}</span>
                     </span>
                   </div>
                 </span>
@@ -135,7 +135,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                     <span className="course-item-price">
                       {/* <span className="origin-price">{course?.price}</span> */}
                       <span className="price  text-success!">
-                        {course?.price}
+                        {Math.round(course?.price || 0)}
                       </span>
                     </span>
                   </div>
@@ -204,7 +204,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                   <PaymentModal
                     btnText="Buy Now"
                     isLoading={isPurchasing || isVerifying}
-                    amount={course?.price || 0}
+                    amount={Math.round(course?.price || 0)}
                     userData={{
                       name: user.fullName,
                       email: user.email,

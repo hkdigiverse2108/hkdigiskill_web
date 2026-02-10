@@ -1,20 +1,12 @@
 import { Link } from "react-router-dom";
 import { ImagePath, ROUTES } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
-import { Queries } from "../../Api";
-import Loader from "../Common/Loader";
 import { useAppSelector } from "../../Store/Hook";
+import type { HeroBannerData } from "../../Types";
 
-const HeroBanner = () => {
-  const { data, isLoading } = Queries.useGetHeroBannerImage();
-  const banner = data?.data?.hero_banner_data[0];
-
+const HeroBanner = ({ banner }: { banner?: HeroBannerData }) => {
   const settings = useAppSelector((state) => state.settings.settings);
   const AllSettings = settings;
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   return (
     <section className="hero-banner hero-style-2 elementor-section elementor-top-section elementor-element elementor-element-843e85a elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle">
