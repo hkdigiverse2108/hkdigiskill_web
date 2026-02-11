@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -26,6 +26,10 @@ export default defineConfig(({ mode }) => {
           rewrite: (path) => path.replace(/^\/Api/, ""),
         },
       },
+    },
+    preview: {
+      port: PORT,
+      strictPort: true,
     },
     define: {
       "process.env.VITE_API_BASE_URL": JSON.stringify(API_BASE_URL),
