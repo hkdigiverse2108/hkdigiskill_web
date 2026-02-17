@@ -14,6 +14,18 @@ const App = () => {
     Aos.init({ once: false });
   }, []);
 
+  useEffect(() => {
+    const disableRightClick = (e: any) => {
+      e.preventDefault();
+    };
+
+    document.addEventListener("contextmenu", disableRightClick);
+
+    return () => {
+      document.removeEventListener("contextmenu", disableRightClick);
+    };
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={Store}>

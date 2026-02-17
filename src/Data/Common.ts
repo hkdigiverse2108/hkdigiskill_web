@@ -1,5 +1,5 @@
 
-export const HK_DigiVerse_Link = ""
+export const HK_DigiVerse_Link = "https://www.hkdigiverse.com/"
 
 export const ContactDetails = {
     Number: "+91 84604 64463",

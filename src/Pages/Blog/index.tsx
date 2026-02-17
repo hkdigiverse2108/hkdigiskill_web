@@ -5,7 +5,7 @@ import { useState } from "react";
 import Loader from "../../Components/Common/Loader";
 
 const Blog = () => {
-  const LIMIT = 3;
+  const LIMIT = 9;
 
   const [page, setPage] = useState(1);
 

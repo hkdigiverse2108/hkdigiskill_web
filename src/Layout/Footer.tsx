@@ -35,7 +35,7 @@ const Footer = () => {
           setEmail("");
         },
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const socialIcons = [
@@ -394,9 +394,8 @@ const Footer = () => {
                     <div className="elementor-widget-container">
                       <div className="edublink-copyright-wrapper">
                         <span>
-                          © 2025 HK edublink. All Rights Reserved. Designed &
-                          maintained by
-                          <Link to={HK_DigiVerse_Link}> HK DigiVerse LLP</Link>
+                          © 2025 HK DigiSkill. All Rights Reserved. Designed & maintained by
+                          <Link to={HK_DigiVerse_Link} target="_blank"> HK DigiVerse LLP</Link>
                         </span>
                       </div>
                     </div>

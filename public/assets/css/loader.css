@@ -1,4 +1,4 @@
-@keyframes rotateBall {
+/* @keyframes rotateBall {
   0% {
     transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
   }
@@ -182,6 +182,7 @@
 
 
 
+ */
 
 
 
@@ -191,9 +192,7 @@
 
 
 
-
-/* From Uiverse.io by web3relic */
-/* .pl {
+.pl {
   width: 8em;
   height: 8em;
 }
@@ -423,4 +422,4 @@
     stroke-dashoffset: -203.795111962;
     transform: rotate(4.75turn);
   }
-} */
+}

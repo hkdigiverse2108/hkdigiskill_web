@@ -75,7 +75,7 @@ const Faq = () => {
                                       activeTab === cat.id ? "active" : ""
                                     }`}
                                   >
-                                    <span className="eb-faq-title-heading">
+                                    <span className="eb-faq-title-heading capitalize ">
                                       {cat.label}
                                     </span>
                                   </li>

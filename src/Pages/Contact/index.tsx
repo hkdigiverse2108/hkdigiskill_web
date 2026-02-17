@@ -1,28 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
 import { BreadCrumb } from "../../Components/Common";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 import { ContactDetails, SocialMediaLink } from "../../Data";
 import { Link } from "react-router-dom";
 import { Mutation } from "../../Api";
+import { AntdNotification } from "../../Utils/AntNotification";
+import { notification } from "antd";
 
 const Contact = () => {
-  const { mutate: addContact } = Mutation.useAddContact();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    subject: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    subject: "",
+    message: "",
+  });
+
+  const { mutate: addContact, isPending } = Mutation.useAddContact();
+
+  const validate = () => {
+    let valid = true;
+    const newErrors = { name: "", email: "", phoneNumber: "", subject: "", message: "" };
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+      valid = false;
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+      valid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+      valid = false;
+    }
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = "Phone number is required";
+      valid = false;
+    } else if (!/^\d{10}$/.test(formData.phoneNumber.trim().replace(/\s/g, ""))) {
+      newErrors.phoneNumber = "Phone number must be 10 digits";
+      valid = false;
+    }
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+      valid = false;
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof typeof errors]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+    if (!validate()) return;
 
-    const payload = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      phoneNumber: formData.get("phoneNumber") as string,
-      subject: formData.get("subject") as string,
-      message: formData.get("message") as string,
-    };
-
-    addContact(payload);
+    addContact(formData, {
+      onSuccess: () => {
+        AntdNotification(notification, "success", "Message sent successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          subject: "",
+          message: "",
+        });
+      },
+      onError: () => {
+        AntdNotification(notification, "error", "Failed to send message. Please try again.");
+      },
+    });
   };
 
   return (
@@ -142,7 +211,7 @@ const Contact = () => {
                         >
                           <i
                             aria-hidden="true"
-                            className="edublink icon-share-alt"
+                            className="edublink icon-instagram"
                           />
                         </Link>
                         <Link
@@ -296,11 +365,14 @@ const Contact = () => {
                                   <div className="edublink-contact-form-single-item-content">
                                     <p>
                                       <input
-                                        className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required edublink-contact-form-field"
+                                        className={`wpcf7-form-control wpcf7-text wpcf7-validates-as-required edublink-contact-form-field ${errors.name ? "border-red-500!" : ""}`}
                                         placeholder="Your name *"
                                         type="text"
                                         name="name"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
                                       />
+                                      {errors.name && <span className="text-red-500 text-sm mt-1">{errors.name}</span>}
                                     </p>
                                   </div>
                                 </div>
@@ -310,25 +382,31 @@ const Contact = () => {
                                   <div className="edublink-contact-form-single-item-content">
                                     <p>
                                       <input
-                                        className="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email edublink-contact-form-field"
+                                        className={`wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email edublink-contact-form-field ${errors.email ? "border-red-500!" : ""}`}
                                         placeholder="Enter your email *"
                                         type="email"
                                         name="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
                                       />
+                                      {errors.email && <span className="text-red-500 text-sm mt-1">{errors.email}</span>}
                                     </p>
                                   </div>
                                 </div>
 
-                                {/* Subject */}
+                                {/* Phone Number */}
                                 <div className="edublink-contact-form-single-item">
                                   <div className="edublink-contact-form-single-item-content">
                                     <p>
                                       <input
-                                        className="wpcf7-form-control wpcf7-text edublink-contact-form-field"
-                                        placeholder="Phone Number"
+                                        className={`wpcf7-form-control wpcf7-text edublink-contact-form-field ${errors.phoneNumber ? "border-red-500!" : ""}`}
+                                        placeholder="Phone Number *"
                                         type="text"
                                         name="phoneNumber"
+                                        value={formData.phoneNumber}
+                                        onChange={handleInputChange}
                                       />
+                                      {errors.phoneNumber && <span className="text-red-500 text-sm mt-1">{errors.phoneNumber}</span>}
                                     </p>
                                   </div>
                                 </div>
@@ -337,11 +415,14 @@ const Contact = () => {
                                   <div className="edublink-contact-form-single-item-content">
                                     <p>
                                       <input
-                                        className="wpcf7-form-control wpcf7-text edublink-contact-form-field"
-                                        placeholder="Subject"
+                                        className={`wpcf7-form-control wpcf7-text edublink-contact-form-field ${errors.subject ? "border-red-500!" : ""}`}
+                                        placeholder="Subject *"
                                         type="text"
                                         name="subject"
+                                        value={formData.subject}
+                                        onChange={handleInputChange}
                                       />
+                                      {errors.subject && <span className="text-red-500 text-sm mt-1">{errors.subject}</span>}
                                     </p>
                                   </div>
                                 </div>
@@ -351,10 +432,13 @@ const Contact = () => {
                                   <div className="edublink-contact-form-single-item-content edublink-contact-form-textarea">
                                     <p>
                                       <textarea
-                                        className="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required edublink-contact-form-textarea edublink-contact-form-field"
-                                        placeholder="Your Message"
+                                        className={`wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required edublink-contact-form-textarea edublink-contact-form-field ${errors.message ? "border-red-500!" : ""}`}
+                                        placeholder="Your Message *"
                                         name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
                                       ></textarea>
+                                      {errors.message && <span className="text-red-500 text-sm mt-1">{errors.message}</span>}
                                     </p>
                                   </div>
                                 </div>
@@ -363,11 +447,20 @@ const Contact = () => {
                                 <div className="edublink-contact-form-single-item eb-contact-button">
                                   <div className="eb-contact-button-wrapper">
                                     <p>
-                                      <input
-                                        className="wpcf7-form-control wpcf7-submit has-spinner edublink-button-with-icon"
+                                      <button
+                                        className="wpcf7-form-control wpcf7-submit has-spinner edublink-button-with-icon  gap-2"
                                         type="submit"
-                                        value="Submit Message"
-                                      />
+                                        disabled={isPending}
+                                      >
+                                        {isPending ? (
+                                          <>
+                                            <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+                                            Sending...
+                                          </>
+                                        ) : (
+                                          "Submit Message"
+                                        )}
+                                      </button>
                                     </p>
                                   </div>
                                 </div>
@@ -424,7 +517,7 @@ const Contact = () => {
                           // style="border:0;"
                           // allowfullscreen=""
                           loading="lazy"
-                          // referrerpolicy="no-referrer-when-downgrade"
+                        // referrerpolicy="no-referrer-when-downgrade"
                         ></iframe>
                       </div>
                     </div>

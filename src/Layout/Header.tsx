@@ -44,9 +44,8 @@ const Header = () => {
   return (
     <>
       <header
-        className={`site-header theme-header-1 header-get-sticky overflow-hidden ${
-          fix ? "edublink-header-sticky " : ""
-        }`}
+        className={`site-header theme-header-1 header-get-sticky ${fix ? "edublink-header-sticky " : ""
+          }`}
       >
         <div className="edublink-header-area edublink-navbar edublink-navbar-expand-lg">
           <div className="edublink-container-fluid">
@@ -89,9 +88,7 @@ const Header = () => {
                             );
                           })}
 
-                          {/* <li className="cat-item">
-                          <Link to="/Bussiness">Cooking</Link>
-                        </li> */}
+
                         </ul>
                       </li>
                     )}
@@ -163,9 +160,8 @@ const Header = () => {
       <div className="edublink-mobile-menu">
         <div className="edublink-mobile-menu-overlay" />
         <div
-          className={`edublink-mobile-menu-nav-wrapper ${
-            isMobileMenu ? "edublink-mobile-menu-visible" : ""
-          }`}
+          className={`edublink-mobile-menu-nav-wrapper ${isMobileMenu ? "edublink-mobile-menu-visible" : ""
+            }`}
         >
           <div className="responsive-header-top">
             <div className="responsive-header-logo">
@@ -197,9 +193,8 @@ const Header = () => {
           >
             {allCategory?.length && (
               <li
-                className={`menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${
-                  activeSubMenu ? "mm-active" : ""
-                }`}
+                className={`menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${activeSubMenu ? "mm-active" : ""
+                  }`}
                 onClick={() => setActiveSubMenu(!activeSubMenu)}
               >
                 <a
@@ -209,9 +204,8 @@ const Header = () => {
                   Category
                 </a>
                 <ul
-                  className={`edublink-dropdown-menu ${
-                    activeSubMenu ? "block" : "hidden"
-                  }`}
+                  className={`edublink-dropdown-menu ${activeSubMenu ? "block" : "hidden"
+                    }`}
                 >
                   {allCategory?.map((item, index) => {
                     return (

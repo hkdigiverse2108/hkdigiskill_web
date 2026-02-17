@@ -7,8 +7,8 @@ import { useAppSelector } from "../../Store/Hook";
 import Loader from "../../Components/Common/Loader";
 
 const Course = () => {
-  const LIMIT = 3;
-  const MY_COURSES_LIMIT = 3;
+  const LIMIT = 9;
+  const MY_COURSES_LIMIT = 6;
   const [page, setPage] = useState(1);
   const [myCoursesPage, setMyCoursesPage] = useState(1);
 

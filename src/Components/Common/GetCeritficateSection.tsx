@@ -1,4 +1,5 @@
-import { ImagePath } from "../../Constants";
+import { Link } from "react-router-dom";
+import { ImagePath, ROUTES } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
 
 const GetCeritficateSection = () => {
@@ -8,14 +9,14 @@ const GetCeritficateSection = () => {
         <div className="hero-content">
           <h1 className="hero-title">
             Get Your Quality Skills <span>Certificate</span>
-            <br /> Through edublink
+            <br /> Through HK DigiSkill
           </h1>
 
           <div className="button-container">
             <div className="edublink-button-widget-wrapper">
-              <a className="edublink-button-item edublink-button-style-default edublink-button-size-custom edublink-button-icon-position-after default-style">
-                Get started now<i className="icon-4"></i>
-              </a>
+              <Link to={ROUTES.COURSE.BASE} className="edublink-button-item edublink-button-style-default edublink-button-size-custom edublink-button-icon-position-after default-style">
+                Explore Courses<i className="icon-4"></i>
+              </Link>
             </div>{" "}
           </div>
         </div>

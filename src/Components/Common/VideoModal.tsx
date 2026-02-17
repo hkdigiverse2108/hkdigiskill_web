@@ -51,7 +51,7 @@ const VideoModal = () => {
         ✕
       </button> */}
 
-      <div className=" w-[100%] h-[100%] relative  aspect-video  overflow-hidden shadow-xl">
+      <div onContextMenu={(e) => e.preventDefault()} className=" w-full h-full relative  aspect-video  overflow-hidden shadow-xl">
         <div className="video-container">
           <div onClick={handleCloseBtn} className="overlay-top" title="Sharing disabled">
             <button className="absolute top-0 right-0 border! border-black/40! text-white! bg-black/20! hover:bg-black/40! py-3! ">✕</button>
@@ -60,6 +60,10 @@ const VideoModal = () => {
           <div id="player"></div>
         </div>
         <iframe width="100%" height="100%" src={embedUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay;  " referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}></iframe>
+        <div
+          onContextMenu={(e) => e.preventDefault()}
+          className="absolute inset-0 z-10 bottom-20 top-25 "
+        />
       </div>
     </div>
   );
