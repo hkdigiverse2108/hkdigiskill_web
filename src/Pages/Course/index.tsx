@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../Store/Hook";
 import Loader from "../../Components/Common/Loader";
+import NoData from "../../Components/Common/NoData";
 
 const Course = () => {
   const LIMIT = 9;
@@ -132,7 +133,7 @@ const Course = () => {
 
               {/* ALL COURSES SECTION */}
               {
-                Courses?.length > 0 && (
+                Courses?.length > 0 ? (
                   <>
                     <div className="edublink-course-archive-top-bar-wrapper">
                       <div className="edublink-course-archive-top-bar edublink-row">
@@ -197,7 +198,7 @@ const Course = () => {
                       </nav>
                     )}
                   </>
-                )
+                ) : <NoData />
               }
 
 

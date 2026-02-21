@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Queries } from "../../Api";
 import FaqCard from "../Faq/FaqCard";
+import NoData from "../Common/NoData";
 
 const CourseFaqSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -28,10 +29,8 @@ const CourseFaqSection = () => {
               />
             ))
           ) : (
-            <div className="text-center py-8">
-              <p className="text-gray-500">
-                No FAQs available for this course.
-              </p>
+            <div className="text-center">
+              <NoData />
             </div>
           )}
         </div>

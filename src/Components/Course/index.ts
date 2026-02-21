@@ -2,7 +2,6 @@ import CourseCard from "./CourseCard";
 import CourseCard2 from "./CourseCard2";
 import CourseOverviewSection from "./CourseOverviewSection";
 import CourseCurriculumSection from "./CourseCurriculumSection";
-import CourseInstructorSection from "./CourseInstructorSection";
 import CourseReviewSection from "./CourseReviewSection";
 import CourseFaqSection from "./CourseFaqSection";
 import CourseSidebarSection from "./CourseSidebarSection";
@@ -14,7 +13,6 @@ export {
   CourseOverviewSection,
   CourseCurriculumSection,
   CourseReviewSection,
-  CourseInstructorSection,
   CourseFaqSection,
   CourseSidebarSection,
   MyCourseCard,

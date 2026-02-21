@@ -100,7 +100,7 @@ const CourseReviewSection = ({ courseId }: CourseReviewSectionProps) => {
           <h3 className="course-review-head">Reviews</h3>
 
           <ul className="course-reviews-list space-y-12!">
-            {testimonials.map((testimonial) => (
+            {testimonials?.map((testimonial) => (
               <li key={testimonial._id}>
                 <div className="review-author">
                   <img

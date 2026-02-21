@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { setModalVideoLink } from "../../Store/Slices/VideoModalSlice";
 import { Queries } from "../../Api";
 import type { CourseLesson } from "../../Types";
+import { Skeleton } from "antd";
+import NoData from "../Common/NoData";
 
 interface CourseCurriculumSectionProps {
   lessons?: CourseLesson[];
@@ -54,8 +56,8 @@ const CourseLessonItem = ({
 
         <ul className="section-content">
           {isLoading ? (
-            <li className="course-item" style={{ padding: "10px 20px" }}>
-              Loading curriculum...
+            <li className="course-item" style={{}}>
+              <Skeleton.Node active={true} style={{ width: "100%", height: 40 }} />
             </li>
           ) : curriculums.length > 0 ? (
             curriculums.map((curriculum) => (
@@ -106,8 +108,8 @@ const CourseLessonItem = ({
               </li>
             ))
           ) : (
-            <li className="course-item" style={{ padding: "10px 20px" }}>
-              No curriculum details found for this lesson.
+            <li className="course-item" >
+              <NoData />
             </li>
           )}
         </ul>
@@ -126,7 +128,7 @@ const CourseCurriculumSection = ({
         id="tab-curriculum"
       >
         <div className="course-curriculum" id="learn-press-course-curriculum">
-          <p className="no-curriculum-msg">No lessons found for this course.</p>
+          <NoData />
         </div>
       </div>
     );

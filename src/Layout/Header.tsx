@@ -10,7 +10,7 @@ import { setLogoutModalOpen } from "../Store/Slices/ModalSlice";
 
 const Header = () => {
   const [isMobileMenu, setMobileMenu] = useState(false);
-  const [activeSubMenu, setActiveSubMenu] = useState<boolean | null>(false);
+  const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [fix, setFix] = useState(false);
 
@@ -21,6 +21,10 @@ const Header = () => {
 
   const { data } = Queries.useGetCourseCategory();
   const allCategory = data?.data?.course_category_data;
+
+  const { data: blogData } = Queries.useGetAllBlogs({ limit: 100 });
+  const allBlogs = blogData?.data?.blog_data;
+  const featuredBlogs = allBlogs?.filter((blog) => blog.isFeatured);
 
   const scroll = 300;
   useEffect(() => {
@@ -88,7 +92,6 @@ const Header = () => {
                             );
                           })}
 
-
                         </ul>
                       </li>
                     )}
@@ -109,17 +112,35 @@ const Header = () => {
                         id="primary-menu-custom-id"
                         className="edublink-default-header-navbar edublink-navbar-nav edublink-navbar-right"
                       >
-                        {menuItems.map((item, index) => (
-                          <li
-                            key={index}
-                            id={`menu-item-${index}`}
-                            className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-align-left"
-                          >
-                            <NavLink to={item?.link || ""} className="nav-link">
-                              {item?.Title}
-                            </NavLink>
-                          </li>
-                        ))}
+                        {menuItems.map((item, index) => {
+                          const isBlog = item.Title === "Blog";
+                          const hasFeaturedBlogs = isBlog && featuredBlogs && featuredBlogs.length > 0;
+
+                          return (
+                            <li
+                              key={index}
+                              id={`menu-item-${index}`}
+                              className={`menu-item menu-item-type-custom menu-item-object-custom nav-item menu-align-left ${hasFeaturedBlogs ? "menu-item-has-children dropdown" : ""
+                                }`}
+                            >
+                              <NavLink to={item?.link || ""} className="nav-link">
+                                {item?.Title}
+                              </NavLink>
+                              {hasFeaturedBlogs && (
+                                <ul className="edublink-dropdown-menu  ">
+                                  {featuredBlogs.map((blog, idx) => (
+                                    <li key={idx} className="cat-item  ">
+                                      <Link to={ROUTES.BLOG.DETAILS.replace(":id", blog._id)}>
+                                        {blog.title}
+                                        <span className="eb-menu-new-badge w-fit h-fit ">NEW</span>
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   </div>
@@ -193,18 +214,18 @@ const Header = () => {
           >
             {allCategory?.length && (
               <li
-                className={`menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${activeSubMenu ? "mm-active" : ""
+                className={`menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children nav-item menu-item-13616 dropdown menu-align-left ${activeSubMenu === "Category" ? "mm-active" : ""
                   }`}
-                onClick={() => setActiveSubMenu(!activeSubMenu)}
+                onClick={() => setActiveSubMenu(activeSubMenu === "Category" ? null : "Category")}
               >
                 <a
                   className="nav-link"
-                  aria-expanded={activeSubMenu ? "true" : "false"}
+                  aria-expanded={activeSubMenu === "Category" ? "true" : "false"}
                 >
                   Category
                 </a>
                 <ul
-                  className={`edublink-dropdown-menu ${activeSubMenu ? "block" : "hidden"
+                  className={`edublink-dropdown-menu ${activeSubMenu === "Category" ? "block" : "hidden"
                     }`}
                 >
                   {allCategory?.map((item, index) => {
@@ -224,20 +245,64 @@ const Header = () => {
               </li>
             )}
 
-            {menuItems.map((item, index) => (
-              <li
-                key={index}
-                className="menu-item menu-item-type-custom menu-item-object-custom  nav-item menu-item-13617 dropdown menu-align-left"
-              >
-                <NavLink
-                  onClick={() => setMobileMenu(!isMobileMenu)}
-                  to={item?.link || ""}
-                  className="nav-link"
+            {menuItems.map((item, index) => {
+              const isBlog = item.Title === "Blog";
+              const hasFeaturedBlogs =
+                isBlog && featuredBlogs && featuredBlogs.length > 0;
+
+              return (
+                <li
+                  key={index}
+                  className={`menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-13617 dropdown menu-align-left ${hasFeaturedBlogs ? "menu-item-has-children" : ""
+                    } ${activeSubMenu === item.Title ? "mm-active" : ""}`}
+                  onClick={() => {
+                    if (hasFeaturedBlogs) {
+                      setActiveSubMenu(
+                        activeSubMenu === item.Title ? null : item.Title
+                      );
+                    }
+                  }}
                 >
-                  {item?.Title}
-                </NavLink>
-              </li>
-            ))}
+                  <NavLink
+                    onClick={(e) => {
+                      if (hasFeaturedBlogs) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setActiveSubMenu(
+                          activeSubMenu === item.Title ? null : item.Title
+                        );
+                      } else {
+                        setMobileMenu(false);
+                      }
+                    }}
+                    to={item?.link || ""}
+                    className="nav-link"
+                  >
+                    {item?.Title}
+                  </NavLink>
+                  {hasFeaturedBlogs && (
+                    <ul
+                      className={`edublink-dropdown-menu ${activeSubMenu === item.Title ? "block" : "hidden"
+                        }`}
+                    >
+                      {featuredBlogs.map((blog, idx) => (
+                        <li key={idx} className="cat-item">
+                          <Link
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setMobileMenu(false);
+                            }}
+                            to={ROUTES.BLOG.DETAILS.replace(":id", blog._id)}
+                          >
+                            {blog.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
