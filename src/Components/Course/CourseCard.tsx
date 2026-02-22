@@ -59,13 +59,12 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             <p>{description}</p>
 
             {/* Rating Stars */}
-            <div className="course-rating">
+            {/* <div className="course-rating">
               <div className="edublink-course-review-wrapper">
                 <div className="review-stars-rated" title={`${satisfactionRate} out of 5 stars`}>
                   {[1, 2, 3, 4, 5].map((i) => (
                     <div className="review-star" key={i}>
                       <span className="far">
-                        {/* Empty star */}
                         <svg width="17" height="16" viewBox="0 0 17 16">
                           <g fill="#FFB606">
                             <path d="M8.5,0L10.9,6.15H17L11.53,9.84L13.96,16L8.5,12.3L3.03,16L5.46,9.84L0,6.15H6.07L8.5,0Z" />
@@ -74,7 +73,6 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                       </span>
 
                       <span className="fas">
-                        {/* Full star */}
                         <svg width="17" height="16" viewBox="0 0 17 16">
                           <g fill="#FFB606">
                             <polygon points="8.5 12.3 3.03 16 5.46 9.84 0 6.15 6.07 6.15 8.5 0 10.92 6.15 17 6.15 11.53 9.84 13.96 16" />
@@ -89,7 +87,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                   ({satisfactionRate}/ 5.0 Ratings)
                 </span>
               </div>
-            </div>
+            </div> */}
 
             <div className="read-more-btn">
               <button className="edu-btn btn-small btn-secondary">

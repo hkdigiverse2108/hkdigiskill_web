@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ContactDetails, FooterAboutText, FooterContactText, HK_DigiVerse_Link, QuickLinks, SupportPolicy } from "../Data";
+import { ContactDetails, FooterContactText, HK_DigiVerse_Link, QuickLinks, SupportPolicy } from "../Data";
 import { useState } from "react";
 import { Mutation } from "../Api";
 import { useAppSelector } from "../Store/Hook";
@@ -83,11 +83,11 @@ const Footer = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="elementor-element elementor-element-eacdb72 elementor-widget elementor-widget-text-editor" data-id="eacdb72" data-element_type="widget" data-widget_type="text-editor.default">
+                  {/* <div className="elementor-element elementor-element-eacdb72 elementor-widget elementor-widget-text-editor" data-id="eacdb72" data-element_type="widget" data-widget_type="text-editor.default">
                     <div className="elementor-widget-container">
                       <p>{FooterAboutText}</p>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="elementor-element elementor-element-68c25a6 elementor-widget elementor-widget-text-editor" data-id="68c25a6" data-element_type="widget" data-widget_type="text-editor.default">
                     <div className="elementor-widget-container">
                       <p>

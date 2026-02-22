@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { BreadCrumb } from "../../Components/Common";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
-import { ContactDetails, SocialMediaLink } from "../../Data";
+import { ContactDetails } from "../../Data";
 import { Link } from "react-router-dom";
 import { Mutation } from "../../Api";
 import { AntdNotification } from "../../Utils/AntNotification";
 import { notification } from "antd";
+import { useAppSelector } from "../../Store/Hook";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +25,10 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+
+  const AllSettings = useAppSelector((state) => state.settings.settings);
+  const { facebook = "", instagram = "", linkedin = "", twitter = "" } = AllSettings?.socialMediaLinks || {};
+
 
   const { mutate: addContact, isPending } = Mutation.useAddContact();
 
@@ -206,7 +211,7 @@ const Contact = () => {
                     <div className="elementor-widget-container">
                       <div className="edublink-social-icons-wrapper">
                         <Link
-                          to={SocialMediaLink?.instagram}
+                          to={instagram}
                           className="  elementor-repeater-item-cf6a47b edublink-social-icon-each-item elementor-animation-"
                         >
                           <i
@@ -215,7 +220,7 @@ const Contact = () => {
                           />
                         </Link>
                         <Link
-                          to={SocialMediaLink?.instagram}
+                          to={facebook}
                           className="elementor-repeater-item-01aed80 edublink-social-icon-each-item elementor-animation-"
                         >
                           <i
@@ -224,7 +229,7 @@ const Contact = () => {
                           />
                         </Link>
                         <Link
-                          to={SocialMediaLink?.instagram}
+                          to={twitter}
                           className="elementor-repeater-item-9450a8b edublink-social-icon-each-item elementor-animation-"
                         >
                           <i
@@ -233,7 +238,7 @@ const Contact = () => {
                           />
                         </Link>
                         <Link
-                          to={SocialMediaLink?.instagram}
+                          to={linkedin}
                           className="elementor-repeater-item-60bf3fe edublink-social-icon-each-item elementor-animation-"
                         >
                           <i
