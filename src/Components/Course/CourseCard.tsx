@@ -26,7 +26,6 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     // price,
     name,
     // purchasedCoursesShow,
-    satisfactionRate,
     // isUnlocked,
   } = course;
   // image = `${ImagePath}/course/course-01/course-01.jpg`;

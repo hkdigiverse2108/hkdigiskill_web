@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { BreadCrumb } from "../../Components/Common";
 import { ImagePath } from "../../Constants";
 import { MouseParallax } from "../../CoreComponents";
@@ -8,90 +7,41 @@ import { Mutation } from "../../Api";
 import { AntdNotification } from "../../Utils/AntNotification";
 import { notification } from "antd";
 import { useAppSelector } from "../../Store/Hook";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import { FormInput, FormTextArea } from "../../Components/FormFields";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    subject: "",
-    message: "",
-  });
-
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    subject: "",
-    message: "",
-  });
-
   const AllSettings = useAppSelector((state) => state.settings.settings);
   const { facebook = "", instagram = "", linkedin = "", twitter = "" } = AllSettings?.socialMediaLinks || {};
 
-
   const { mutate: addContact, isPending } = Mutation.useAddContact();
 
-  const validate = () => {
-    let valid = true;
-    const newErrors = { name: "", email: "", phoneNumber: "", subject: "", message: "" };
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-      valid = false;
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-      valid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-      valid = false;
-    }
-    if (!formData.phoneNumber.trim()) {
-      newErrors.phoneNumber = "Phone number is required";
-      valid = false;
-    } else if (!/^\d{10}$/.test(formData.phoneNumber.trim().replace(/\s/g, ""))) {
-      newErrors.phoneNumber = "Phone number must be 10 digits";
-      valid = false;
-    }
-    if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required";
-      valid = false;
-    }
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-      valid = false;
-    }
-
-    setErrors(newErrors);
-    return valid;
+  const initialValues = {
+    name: "",
+    email: "",
+    phoneNumber: "",
+    subject: "",
+    message: "",
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name as keyof typeof errors]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  };
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    phoneNumber: Yup.string()
+      .matches(/^\d{10}$/, "Phone number must be exactly 10 digits")
+      .required("Phone number is required"),
+    subject: Yup.string().required("Subject is required"),
+    message: Yup.string().required("Message is required"),
+  });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!validate()) return;
-
-    addContact(formData, {
+  const handleSubmit = (values: typeof initialValues, { resetForm }: { resetForm: () => void }) => {
+    addContact(values, {
       onSuccess: () => {
         AntdNotification(notification, "success", "Message sent successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          phoneNumber: "",
-          subject: "",
-          message: "",
-        });
+        resetForm();
       },
       onError: () => {
         AntdNotification(notification, "error", "Failed to send message. Please try again.");
@@ -360,117 +310,69 @@ const Contact = () => {
                         <div className="elementor-widget-container">
                           <div className="edublink-contact-form-wrapper">
                             {/* FORM START */}
-                            <form
-                              className="wpcf7-form"
+                            <Formik
+                              initialValues={initialValues}
+                              validationSchema={validationSchema}
                               onSubmit={handleSubmit}
                             >
-                              <div className="edublink-contact-form-wrapper eb-contact-us-form">
-                                {/* Name */}
-                                <div className="edublink-contact-form-single-item">
-                                  <div className="edublink-contact-form-single-item-content">
-                                    <p>
-                                      <input
-                                        className={`wpcf7-form-control wpcf7-text wpcf7-validates-as-required edublink-contact-form-field ${errors.name ? "border-red-500!" : ""}`}
-                                        placeholder="Your name *"
-                                        type="text"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleInputChange}
-                                      />
-                                      {errors.name && <span className="text-red-500 text-sm mt-1">{errors.name}</span>}
-                                    </p>
-                                  </div>
-                                </div>
+                              {() => (
+                                <Form className="wpcf7-form">
+                                  <div className="edublink-contact-form-wrapper eb-contact-us-form">
+                                    <FormInput
+                                      name="name"
+                                      placeholder="Your name *"
+                                      type="text"
+                                    />
 
-                                {/* Email */}
-                                <div className="edublink-contact-form-single-item">
-                                  <div className="edublink-contact-form-single-item-content">
-                                    <p>
-                                      <input
-                                        className={`wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email edublink-contact-form-field ${errors.email ? "border-red-500!" : ""}`}
-                                        placeholder="Enter your email *"
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleInputChange}
-                                      />
-                                      {errors.email && <span className="text-red-500 text-sm mt-1">{errors.email}</span>}
-                                    </p>
-                                  </div>
-                                </div>
+                                    <FormInput
+                                      name="email"
+                                      placeholder="Enter your email *"
+                                      type="email"
+                                    />
 
-                                {/* Phone Number */}
-                                <div className="edublink-contact-form-single-item">
-                                  <div className="edublink-contact-form-single-item-content">
-                                    <p>
-                                      <input
-                                        className={`wpcf7-form-control wpcf7-text edublink-contact-form-field ${errors.phoneNumber ? "border-red-500!" : ""}`}
-                                        placeholder="Phone Number *"
-                                        type="text"
-                                        name="phoneNumber"
-                                        value={formData.phoneNumber}
-                                        onChange={handleInputChange}
-                                      />
-                                      {errors.phoneNumber && <span className="text-red-500 text-sm mt-1">{errors.phoneNumber}</span>}
-                                    </p>
-                                  </div>
-                                </div>
-                                {/* Subject */}
-                                <div className="edublink-contact-form-single-item">
-                                  <div className="edublink-contact-form-single-item-content">
-                                    <p>
-                                      <input
-                                        className={`wpcf7-form-control wpcf7-text edublink-contact-form-field ${errors.subject ? "border-red-500!" : ""}`}
-                                        placeholder="Subject *"
-                                        type="text"
-                                        name="subject"
-                                        value={formData.subject}
-                                        onChange={handleInputChange}
-                                      />
-                                      {errors.subject && <span className="text-red-500 text-sm mt-1">{errors.subject}</span>}
-                                    </p>
-                                  </div>
-                                </div>
+                                    <FormInput
+                                      name="phoneNumber"
+                                      placeholder="Phone Number *"
+                                      type="text"
+                                    />
 
-                                {/* Message */}
-                                <div className="edublink-contact-form-single-item">
-                                  <div className="edublink-contact-form-single-item-content edublink-contact-form-textarea">
-                                    <p>
-                                      <textarea
-                                        className={`wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required edublink-contact-form-textarea edublink-contact-form-field ${errors.message ? "border-red-500!" : ""}`}
-                                        placeholder="Your Message *"
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleInputChange}
-                                      ></textarea>
-                                      {errors.message && <span className="text-red-500 text-sm mt-1">{errors.message}</span>}
-                                    </p>
-                                  </div>
-                                </div>
+                                    <FormInput
+                                      name="subject"
+                                      placeholder="Subject *"
+                                      type="text"
+                                    />
 
-                                {/* Submit */}
-                                <div className="edublink-contact-form-single-item eb-contact-button">
-                                  <div className="eb-contact-button-wrapper">
-                                    <p>
-                                      <button
-                                        className="wpcf7-form-control wpcf7-submit has-spinner edublink-button-with-icon  gap-2"
-                                        type="submit"
-                                        disabled={isPending}
-                                      >
-                                        {isPending ? (
-                                          <>
-                                            <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
-                                            Sending...
-                                          </>
-                                        ) : (
-                                          "Submit Message"
-                                        )}
-                                      </button>
-                                    </p>
+                                    <FormTextArea
+                                      name="message"
+                                      placeholder="Your Message *"
+                                    />
+
+                                    {/* Submit */}
+                                    <div className="edublink-contact-form-single-item eb-contact-button">
+                                      <div className="eb-contact-button-wrapper">
+                                        <p>
+                                          <button
+                                            className="wpcf7-form-control wpcf7-submit has-spinner edublink-button-with-icon  gap-2"
+                                            type="submit"
+                                            disabled={isPending}
+                                          >
+                                            {isPending ? (
+                                              <>
+                                                <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+                                                Sending...
+                                              </>
+                                            ) : (
+                                              "Submit Message"
+                                            )}
+                                          </button>
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
-                              </div>
-                            </form>
+                                </Form>
+                              )}
+                            </Formik>
+                            {/* FORM END */}
                             {/* FORM END */}
                           </div>
                         </div>

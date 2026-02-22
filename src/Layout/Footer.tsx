@@ -1,33 +1,18 @@
 import { Link } from "react-router-dom";
 import { ContactDetails, FooterContactText, HK_DigiVerse_Link, QuickLinks, SupportPolicy } from "../Data";
-import { useState } from "react";
 import { Mutation } from "../Api";
 import { useAppSelector } from "../Store/Hook";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import { FormInput } from "../Components/FormFields";
+import { AntdNotification } from "../Utils/AntNotification";
+import { notification } from "antd";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-
   const AllSettings = useAppSelector((state) => state.settings.settings);
   const { facebook, instagram, linkedin, twitter } = AllSettings?.socialMediaLinks || {};
 
   const { mutate: useAddNewsLetterMutate } = Mutation.useAddNewsLetter();
-
-  const handleSubscribeBtn = async () => {
-    try {
-      if (!email) {
-        return false;
-      }
-
-      const payload = {
-        email: email,
-      };
-      useAddNewsLetterMutate(payload, {
-        onSuccess: () => {
-          setEmail("");
-        },
-      });
-    } catch (error) { }
-  };
 
   const socialIcons = [
     {
@@ -170,21 +155,52 @@ const Footer = () => {
                   <div className="elementor-element elementor-element-54f833c elementor-widget elementor-widget-edublink-mailchimp" data-id="54f833c" data-element_type="widget" data-widget_type="edublink-mailchimp.default">
                     <div className="elementor-widget-container">
                       <div className="edublink-mailchimp-wrapper edublink-mailchimp-horizontal-type edublink-mailchimp-mobile-yes">
-                        <form onSubmit={(e) => e.preventDefault()}>
-                          <div className="edublink-mailchimp-form-container">
-                            <div className="edublink-mailchimp-item edublink-mailchimp-email">
-                              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" className="edublink-mailchimp-input-field" placeholder="Your email" required autoComplete="off" />
-                            </div>
-                            <div className="edublink-mailchimp-submit-btn">
-                              <button onClick={handleSubscribeBtn} className="edublink-mailchimp-subscribe-btn edublink-button-item edublink-button-type-fill style-1 b-default">
-                                <span className="edublink-mailchimp-subscribe-btn-text">Subscribe</span>
-                                <span className="edublink-mailchimp-subscribe-btn-icon">
-                                  <i aria-hidden="true" className="edublink icon-4" />
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                        </form>
+                        <Formik
+                          initialValues={{ email: "" }}
+                          validationSchema={Yup.object({
+                            email: Yup.string().email("Invalid email").required("Required"),
+                          })}
+                          onSubmit={(values, { resetForm }) => {
+                            useAddNewsLetterMutate(values, {
+                              onSuccess: () => {
+                                AntdNotification(notification, "success", "Subscribed successfully!");
+                                resetForm();
+                              },
+                              onError: (error: any) => {
+                                AntdNotification(
+                                  notification,
+                                  "error",
+                                  error?.message || "Subscription failed."
+                                );
+                              },
+                            });
+                          }}
+                        >
+                          {() => (
+                            <Form>
+                              <div className="edublink-mailchimp-form-container">
+                                <div className="edublink-mailchimp-item edublink-mailchimp-email">
+                                  <FormInput
+                                    name="email"
+                                    type="email"
+                                    className="edublink-mailchimp-input-field"
+                                    placeholder="Your email"
+                                    containerClassName="m-0"
+                                    errorClassName="text-red-500 text-[10px] mt-1 block absolute"
+                                  />
+                                </div>
+                                <div className="edublink-mailchimp-submit-btn">
+                                  <button type="submit" className="edublink-mailchimp-subscribe-btn edublink-button-item edublink-button-type-fill style-1 b-default">
+                                    <span className="edublink-mailchimp-subscribe-btn-text">Subscribe</span>
+                                    <span className="edublink-mailchimp-subscribe-btn-icon">
+                                      <i aria-hidden="true" className="edublink icon-4" />
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                            </Form>
+                          )}
+                        </Formik>
                       </div>
                     </div>
                   </div>
