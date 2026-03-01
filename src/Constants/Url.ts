@@ -44,5 +44,6 @@ export const URL_KEYS = {
   GALLARY: "gallery/all",
   USER: {
     ONE: "user/",
+    SIGNUP: "user/signup",
   },
 } as const;

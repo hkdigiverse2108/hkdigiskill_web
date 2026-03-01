@@ -25,6 +25,10 @@ export const Mutation = {
     useMutations<RegisterPayload, any>([KEYS.REGISTER], (input) =>
       Post(URL_KEYS.AUTH.REGISTER, input),
     ),
+  useUserSignup: () =>
+    useMutations<RegisterPayload, any>([KEYS.USER], (input) =>
+      Post(URL_KEYS.USER.SIGNUP, input),
+    ),
   useForgotPassword: () =>
     useMutations<ForgotPasswordPayload, any>([KEYS.FORGOT_PASSWORD], (input) =>
       Post(URL_KEYS.AUTH.FORGOT_PASSWORD, input),

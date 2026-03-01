@@ -1,30 +1,18 @@
 import { useAppDispatch, useAppSelector } from "../../Store/Hook";
 import { setAuthModalOpen } from "../../Store/Slices/ModalSlice";
-import { AntdNotification } from "../../Utils/AntNotification";
-import { notification } from "antd";
-import { setUser } from "../../Store/Slices/UserSlice";
-import { Mutation } from "../../Api";
-import { STORAGE_KEYS } from "../../Constants/StorageKeys";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FormInput, FormPasswordInput, FormCheckbox } from "../FormFields";
+
+import { useAuthFlow } from "../../Hooks/useAuthFlow";
 
 const AuthModal = () => {
   const dispatch = useAppDispatch();
   const { isAuthModalOpen } = useAppSelector((state) => state.Modal);
 
-  const registerMutation = Mutation.useRegister();
-  const loginMutation = Mutation.useLogin();
+  const { executeSignup, isPending } = useAuthFlow();
 
   const handleClose = () => {
-    dispatch(setAuthModalOpen(false));
-  };
-
-  const handleLoginSuccess = (data: any) => {
-    localStorage.setItem(STORAGE_KEYS.TOKEN, data?.token);
-    localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(data));
-    dispatch(setUser(data));
-    AntdNotification(notification, "success", "Successfully logged in!");
     dispatch(setAuthModalOpen(false));
   };
 
@@ -32,7 +20,7 @@ const AuthModal = () => {
     fullName: "",
     email: "",
     password: "",
-    phone: "",
+    phoneNumber: "",
     designation: "",
     agreeTerms: false,
   };
@@ -40,47 +28,16 @@ const AuthModal = () => {
   const validationSchema = Yup.object({
     fullName: Yup.string().required("Full name is required"),
     email: Yup.string().email("Invalid email address").required("Email is required"),
-    password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
-    phone: Yup.string().matches(/^\d{10}$/, "Phone number must be 10 digits").required("Phone number is required"),
-    designation: Yup.string().required("Designation is required"),
+    password: Yup.string().min(6, "Password must be at least 6 characters"),
+    phoneNumber: Yup.string().matches(/^\d{10}$/, "Phone number must be 10 digits"),
+    designation: Yup.string(),
     agreeTerms: Yup.boolean().oneOf([true], "You must agree to the terms"),
   });
 
   const handleSubmit = (values: typeof initialValues) => {
-    registerMutation.mutate(values, {
-      onSuccess: (response) => {
-        handleLoginSuccess(response?.data);
-      },
-      onError: (error: any) => {
-        const errorMessage = error?.response?.data?.message || error?.message || "";
-
-        if (typeof errorMessage === "string" && errorMessage.toLowerCase().includes("already registered")) {
-          // Auto-login flow
-          loginMutation.mutate(
-            {
-              email: values.email,
-              password: values.password,
-            },
-            {
-              onSuccess: (loginResponse) => {
-                handleLoginSuccess(loginResponse?.data);
-              },
-              onError: (loginError: any) => {
-                AntdNotification(
-                  notification,
-                  "error",
-                  loginError?.response?.data?.message || "Login failed. Please check your credentials."
-                );
-              },
-            }
-          );
-        } else {
-          AntdNotification(
-            notification,
-            "error",
-            errorMessage || "Registration failed. Please try again."
-          );
-        }
+    executeSignup(values, {
+      onSuccess: () => {
+        handleClose();
       },
     });
   };
@@ -128,16 +85,16 @@ const AuthModal = () => {
               />
 
               <FormInput
-                label="Phone *"
-                name="phone"
-                id="phone"
+                label="Phone"
+                name="phoneNumber"
+                id="phoneNumber"
                 autoComplete="tel"
                 containerClassName="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-3!"
                 className="woocommerce-Input woocommerce-Input--text input-text"
               />
 
               <FormInput
-                label="Designation *"
+                label="Designation"
                 name="designation"
                 id="designation"
                 autoComplete="organization-title"
@@ -146,7 +103,7 @@ const AuthModal = () => {
               />
 
               <FormPasswordInput
-                label="Password *"
+                label="Password"
                 name="password"
                 id="reg_password"
                 autoComplete="new-password"
@@ -163,10 +120,10 @@ const AuthModal = () => {
               <p className="woocommerce-form-row form-row mb-3!">
                 <button
                   type="submit"
-                  disabled={registerMutation.isPending || loginMutation.isPending}
+                  disabled={isPending}
                   className="main-header-btn edu-btn btn-medium w-full! disabled:opacity-70"
                 >
-                  {registerMutation.isPending || loginMutation.isPending ? (
+                  {isPending ? (
                     <span>Processing...</span>
                   ) : (
                     <span>Submit & Continue</span>

@@ -144,7 +144,7 @@ const CourseDetails = () => {
 
                       <div className="course-tab-panels">
                         <CourseOverviewSection desc={singleCourse?.description} />
-                        <CourseCurriculumSection lessons={AllCourseLessons} />
+                        <CourseCurriculumSection lessons={AllCourseLessons} isUnlocked={singleCourse?.isUnlocked} />
                         <CourseFaqSection />
                         <CourseReviewSection courseId={singleCourse?._id} />
                       </div>

@@ -33,10 +33,10 @@ export interface LoginPayload {
 export interface RegisterPayload {
   fullName: string;
   email: string;
-  password: string;
-  phone: string;
-  designation: string;
-  agreeTerms: boolean;
+  phoneNumber?: string;
+  password?: string;
+  designation?: string;
+  agreeTerms?: boolean;
 }
 
 export interface ForgotPasswordPayload {

@@ -14,9 +14,11 @@ interface CourseCurriculumSectionProps {
 const CourseLessonItem = ({
   lesson,
   index,
+  isUnlocked,
 }: {
   lesson: CourseLesson;
   index?: number;
+  isUnlocked?: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState(index === 0);
   const dispatch = useDispatch();
@@ -60,53 +62,56 @@ const CourseLessonItem = ({
               <Skeleton.Node active={true} style={{ width: "100%", height: 40 }} />
             </li>
           ) : curriculums.length > 0 ? (
-            curriculums.map((curriculum) => (
-              <li
-                className={`course-item course-item-lp_lesson course-item-12783 ${curriculum.curriculumLock ? "item-locked" : "item-preview has-status"}`}
-                data-id="12783"
-              >
-                <div
-                  className="section-item-link before:content-none!"
-                  style={{
-                    cursor: curriculum.curriculumLock
-                      ? "not-allowed"
-                      : "pointer",
-                  }}
-                  onClick={() => {
-                    if (!curriculum.curriculumLock) {
-                      dispatch(setModalVideoLink(curriculum.videoLink));
-                    }
-                  }}
+            curriculums.map((curriculum) => {
+              const isActuallyLocked = !isUnlocked && curriculum.curriculumLock;
+              return (
+                <li
+                  className={`course-item course-item-lp_lesson course-item-12783 ${isActuallyLocked ? "item-locked" : "item-preview has-status"}`}
+                  key={curriculum._id}
                 >
-                  <img
-                    src={curriculum.thumbnail}
-                    alt={curriculum.title}
-                    className="w-20 me-2! rounded-lg!"
-                  />
-                  <span className="item-name"> {curriculum.title}</span>
-                  <div className="course-item-meta">
-                    {curriculum.curriculumLock && (
-                      <>
-                        <span className="item-meta duration">
-                          {curriculum.duration}
-                        </span>
-                      </>
-                    )}
+                  <div
+                    className="section-item-link before:content-none!"
+                    style={{
+                      cursor: isActuallyLocked
+                        ? "not-allowed"
+                        : "pointer",
+                    }}
+                    onClick={() => {
+                      if (!isActuallyLocked) {
+                        dispatch(setModalVideoLink(curriculum.videoLink));
+                      }
+                    }}
+                  >
+                    <img
+                      src={curriculum.thumbnail}
+                      alt={curriculum.title}
+                      className="w-20 me-2! rounded-lg!"
+                    />
+                    <span className="item-name"> {curriculum.title}</span>
+                    <div className="course-item-meta">
+                      {isActuallyLocked && (
+                        <>
+                          <span className="item-meta duration">
+                            {curriculum.duration}
+                          </span>
+                        </>
+                      )}
 
-                    <span
-                      className={
-                        curriculum.curriculumLock
-                          ? "item-meta course-item-status"
-                          : "item-meta course-item-preview"
-                      }
-                      data-preview={
-                        curriculum.curriculumLock ? "Unread" : "Preview"
-                      }
-                    ></span>
+                      <span
+                        className={
+                          isActuallyLocked
+                            ? "item-meta course-item-status"
+                            : "item-meta course-item-preview"
+                        }
+                        data-preview={
+                          isActuallyLocked ? "Unread" : "Preview"
+                        }
+                      ></span>
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))
+                </li>
+              );
+            })
           ) : (
             <li className="course-item" >
               <NoData />
@@ -120,7 +125,8 @@ const CourseLessonItem = ({
 
 const CourseCurriculumSection = ({
   lessons = [],
-}: CourseCurriculumSectionProps) => {
+  isUnlocked = false,
+}: CourseCurriculumSectionProps & { isUnlocked?: boolean }) => {
   if (!lessons || lessons.length === 0) {
     return (
       <div
@@ -147,6 +153,7 @@ const CourseCurriculumSection = ({
                 key={lesson._id}
                 lesson={lesson}
                 index={index}
+                isUnlocked={isUnlocked}
               />
             ))}
           </ul>

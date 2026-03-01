@@ -8,9 +8,13 @@ import { setAuthModalOpen } from "../../Store/Slices/ModalSlice";
 import { AntdNotification } from "../../Utils/AntNotification";
 import { notification } from "antd";
 
-const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
+import { useQueryClient } from "@tanstack/react-query";
+import { KEYS } from "../../Constants/Keys";
+
+const CourseSidebarSection: FC<{ course?: Course; onPurchaseSuccess?: () => void }> = ({ course = {}, onPurchaseSuccess }) => {
   const user = useAppSelector((state) => state.user.user);
   const dispatch = useAppDispatch();
+  const queryClient = useQueryClient();
 
   const { mutate: verifyCourse, isPending: isVerifying } =
     Mutation.useVerifyCourse();
@@ -50,6 +54,10 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                     "success",
                     res?.message || "Payment Successful! Course Purchased.",
                   );
+                  queryClient.invalidateQueries({ queryKey: [KEYS.COURSE_ONE, course?._id] });
+                  queryClient.invalidateQueries({ queryKey: [KEYS.COURSE_LESSON, course?._id] });
+                  queryClient.invalidateQueries({ queryKey: [KEYS.COURSE_CURRICULUM] });
+                  if (onPurchaseSuccess) onPurchaseSuccess();
                 },
                 onError: (err: any) => {
                   // console.log("Purchase error:", err?.message);
@@ -106,7 +114,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                       </span>
                       {/* <span className="origin-price">{course?.price}</span> */}
                       <span className="price text-success!">
-                        ₹{Math.round(discountPrice)} 
+                        ₹{Math.round(discountPrice)}
                       </span>
                       <span className="price text-danger! line-through text-[15px] ">
                         ₹{Math.round(course?.mrpPrice || 0)}
