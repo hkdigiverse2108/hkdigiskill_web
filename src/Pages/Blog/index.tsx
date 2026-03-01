@@ -28,7 +28,7 @@ const Blog = () => {
           <BreadCrumb title="Blog" />
         </section>
 
-        <section className="my-50! container-p">
+        <section className="my-10! container-p">
           <div className="site-content-inner edublink-container">
             <div className="edublink-main-content-inner edublink-row">
               <div id="primary" className="content-area edublink-col-lg-12">

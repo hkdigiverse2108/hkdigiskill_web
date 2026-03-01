@@ -24,7 +24,7 @@ const Testimonial = () => {
         </section>
         <MouseParallax>
           <section className="">
-            <section className="my-50! container space-y-6! elementor-section elementor-section-boxed">
+            <section className="my-10! container space-y-6! elementor-section elementor-section-boxed">
               {testimonials?.map((item) => (
                 <div className="eb-testimonial-item eb-testimonial">
                   <div className="eb-testimonial-grid  py-20! pb-0! ">

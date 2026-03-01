@@ -10,7 +10,7 @@ interface BreadCrumbProp {
 const BreadCrumb: FC<BreadCrumbProp> = ({ title }) => {
   return (
     <MouseParallax>
-      <div className="edublink-page-title-area edublink-default-breadcrumb ">
+      <div className="edublink-page-title-area edublink-default-breadcrumb  py-20! ">
         <div className="edublink-container">
           <div className="edublink-page-title">
             <h1 className="entry-title">{title}</h1>

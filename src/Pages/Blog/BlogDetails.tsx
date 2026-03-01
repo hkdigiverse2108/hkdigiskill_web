@@ -46,7 +46,7 @@ const BlogDetails = () => {
         </div>
         <div
           id="content"
-          className="site-content edublink-container my-50! w-full!  "
+          className="site-content edublink-container my-10! w-full!  "
         >
           <div className=" ">
             <div id="primary" className="content-area  w-full!">

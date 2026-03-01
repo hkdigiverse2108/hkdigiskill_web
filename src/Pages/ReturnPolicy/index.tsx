@@ -11,7 +11,7 @@ const ReturnPolicy = () => {
       <Loader loading={isLoading} />
       <div>
         <BreadCrumb title="Return Policy" />
-        <section className="container my-50!">
+        <section className="container my-10!">
           <div
             dangerouslySetInnerHTML={{
               __html: data?.data.content || "",

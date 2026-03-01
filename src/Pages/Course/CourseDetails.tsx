@@ -39,7 +39,7 @@ const CourseDetails = () => {
       <div className="lp-archive-courses">
         <BreadCrumb title="Course Details" />
 
-        <div className="edublink-course-details-page lp-course-single-page eb-course-single-style-4">
+        <div className="edublink-course-details-page lp-course-single-page eb-course-single-style-4 py-10!">
           <div className="edublink-container">
             <div className="edublink-row">
               <div

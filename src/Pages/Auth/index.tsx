@@ -14,7 +14,7 @@ const MyAccount = () => {
   return (
     <>
       <BreadCrumb title="My Account" />
-      <div id="content" className="site-content my-50! container-p">
+      <div id="content" className="site-content my-10! container-p">
         <div className="site-content-inner edublink-container">
           <div className="edublink-main-content-inner">
             <div className="edublink-row">

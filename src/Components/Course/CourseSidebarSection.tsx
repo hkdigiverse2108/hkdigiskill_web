@@ -57,7 +57,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                     notification,
                     "error",
                     err?.message ||
-                      "Payment successful but course activation failed. Please contact support.",
+                    "Payment successful but course activation failed. Please contact support.",
                   );
                 },
               },
@@ -69,7 +69,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
               notification,
               "error",
               err?.response?.data?.message ||
-                "Payment verification failed. Please contact support.",
+              "Payment verification failed. Please contact support.",
             );
           },
         },
@@ -96,21 +96,27 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
               <li className="edublink-course-details-features-item course-price">
                 <span className="edublink-course-feature-item-label">
                   <i className="icon-60"></i>
-                  Mrp Price:
+                  Price:
                 </span>
                 <span className="edublink-course-feature-item-value">
                   <div className="course-price">
                     <span className="course-item-price">
+                      <span className="price  text-success!">
+                        ₹{Math.round(course?.price || 0)}/
+                      </span>
                       {/* <span className="origin-price">{course?.price}</span> */}
                       <span className="price text-success!">
-                        {Math.round(course?.mrpPrice || 0)}
+                        ₹{Math.round(discountPrice)} 
+                      </span>
+                      <span className="price text-danger! line-through text-[15px] ">
+                        ₹{Math.round(course?.mrpPrice || 0)}
                       </span>
                     </span>
                   </div>
                 </span>
               </li>
 
-              <li className="edublink-course-details-features-item course-price">
+              {/* <li className="edublink-course-details-features-item course-price">
                 <span className="edublink-course-feature-item-label">
                   <i className="icon-60"></i>
                   Discount Price:
@@ -118,7 +124,6 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                 <span className="edublink-course-feature-item-value">
                   <div className="course-price">
                     <span className="course-item-price">
-                      {/* <span className="origin-price">{course?.price}</span> */}
                       <span className="price">{Math.round(discountPrice)}</span>
                     </span>
                   </div>
@@ -133,14 +138,13 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                 <span className="edublink-course-feature-item-value">
                   <div className="course-price">
                     <span className="course-item-price">
-                      {/* <span className="origin-price">{course?.price}</span> */}
                       <span className="price  text-success!">
                         {Math.round(course?.price || 0)}
                       </span>
                     </span>
                   </div>
                 </span>
-              </li>
+              </li> */}
 
               {/* <li className="edublink-course-details-features-item course-instructor">
                 <span className="edublink-course-feature-item-label">
@@ -167,7 +171,7 @@ const CourseSidebarSection: FC<{ course?: Course }> = ({ course = {} }) => {
                     className="edublink-course-sidebar-img-icon"
                     alt=""
                   />
-                  Lessons:
+                  Lectures:
                 </span>
                 <span className="edublink-course-feature-item-value">11</span>
               </li>

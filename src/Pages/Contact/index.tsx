@@ -62,7 +62,7 @@ const Contact = () => {
         >
           {/* ================= SECTION 1 ================= */}
           <section
-            className="mt-50! mb-30! elementor-section elementor-top-section elementor-element elementor-element-7ed12df elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            className="mt-10! mb-30! elementor-section elementor-top-section elementor-element elementor-element-7ed12df elementor-section-boxed elementor-section-height-default elementor-section-height-default"
             data-id="7ed12df"
             data-element_type="section"
           >

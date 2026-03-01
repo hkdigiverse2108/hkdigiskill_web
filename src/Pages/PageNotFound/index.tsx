@@ -8,7 +8,7 @@ const PageNotFound = () => {
     <div className="">
       <BreadCrumb title="404: Error Not Found" />
       <MouseParallax>
-        <section className="my-50! edublink-main-content-inner error-page-area">
+        <section className="my-10! edublink-main-content-inner error-page-area">
           <div className="edublink-container">
             <div className="edu-error">
               <div className="thumbnail">

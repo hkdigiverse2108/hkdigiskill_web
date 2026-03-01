@@ -92,12 +92,12 @@ const LoginForm = ({ onSwitchToRegister, onSwitchToForgot }: LoginFormProps) => 
             </p>
 
             <div className="flex max-sm:flex-col! justify-between gap-6! px-2! pb-0!">
-              <span className="woocommerce-LostPassword lost_password">
+              <span className="woocommerce-LostPassword lost_password font-bold ">
                 <a onClick={onSwitchToForgot}>Forgot your password?</a>
               </span>
               <span>
                 Don't have an account?{" "}
-                <a onClick={onSwitchToRegister}>Register here</a>
+                <a onClick={onSwitchToRegister} className="font-bold">Register here</a>
               </span>
             </div>
           </Form>

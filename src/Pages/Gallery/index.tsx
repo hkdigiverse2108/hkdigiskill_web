@@ -41,7 +41,7 @@ const Gallery = () => {
           >
             {/* ======================= SECTION 1 ======================= */}
             <section
-              className="my-50! elementor-section elementor-top-section elementor-element elementor-element-31af01f elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+              className="my-10! elementor-section elementor-top-section elementor-element elementor-element-31af01f elementor-section-boxed elementor-section-height-default elementor-section-height-default"
               data-id="31af01f"
               data-element_type="section"
             >

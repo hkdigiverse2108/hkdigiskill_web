@@ -53,7 +53,7 @@ const Faq = () => {
 
         <section className="">
           <div className="elementor elementor-11511">
-            <section className="my-50! elementor-section elementor-section-boxed">
+            <section className="my-10! elementor-section elementor-section-boxed">
               <div className="elementor-container elementor-column-gap-extended">
                 <div className="elementor-column elementor-col-100">
                   <div className="elementor-widget-wrap elementor-element-populated">
