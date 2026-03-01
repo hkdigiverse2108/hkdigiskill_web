@@ -69,6 +69,7 @@ export interface User {
   phone?: string;
   designation?: string;
   phoneNumber?: string;
+  profilePhoto?: string;
 }
 
 export interface UserResponse {

@@ -16,7 +16,7 @@ const Header = () => {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { isAuthenticated } = useAppSelector((state) => state.user);
+  const { isAuthenticated, user } = useAppSelector((state) => state.user);
   const AllSettings = useAppSelector((state) => state.settings.settings);
 
   const { data } = Queries.useGetCourseCategory();
@@ -146,14 +146,53 @@ const Header = () => {
                   </div>
                 </nav>
               </div>
-              <div className="edublink-header-right-side">
+              <div className="edublink-header-right-side gap-0! ">
                 {isAuthenticated ? (
-                  <button
-                    onClick={() => dispatch(setLogoutModalOpen(true))}
-                    className="main-header-btn edu-btn btn-medium"
-                  >
-                    Logout <i className="icon-4" />
-                  </button>
+                  <nav className="main-navigation flex! items-end justify-end! ">
+                    <ul className="category-menu edublink-navbar-nav  w-fit">
+                      <li className="cat-menu-item dropdown  w-fit!">
+                        <div className="w-fit! flex items-center justify-center gap-2 border border-gray-300 bg-white shadow rounded-md p-2! cursor-pointer ">
+                          <figure className="w-12 h-12 mb-0!">
+                            <img
+                              src={
+                                user?.profilePhoto ||
+                                `${ImagePath}/others/author.png`
+                              }
+                              alt="User"
+                              className="w-full h-full rounded-full object-cover!"
+                            />
+                          </figure>
+                          <section className="flex flex-col gap-0! max-sm:hidden! ">
+                            <p className="text-xl font-bold my-0! capitalize! ">
+                              {user?.fullName || "User"}
+                            </p>
+                            {user?.designation && (
+                              <p className="text-sm my-0! opacity-70!">
+                                {user?.designation}
+                              </p>
+                            )}
+                          </section>
+                        </div>
+                        <ul className="edublink-dropdown-menu -left-20! w-fit!">
+                          <li className="menu-item">
+                            <Link to={ROUTES.USER.PROFILE}>
+                              <i className="icon-70" /> Profile
+                            </Link>
+                          </li>
+                          <li className="menu-item">
+                            <a
+                              onClick={() =>
+                                dispatch(setLogoutModalOpen(true))
+                              }
+                              className="cursor-pointer!"
+                            >
+                              <i className="icon-4" />  Logout
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
                 ) : (
                   <button
                     onClick={() => navigate(ROUTES.AUTH.BASE)}
@@ -161,8 +200,9 @@ const Header = () => {
                   >
                     Login <i className="icon-4" />
                   </button>
+
                 )}
-                <div className="quote-icon edublink-theme-nav-responsive hamburger-icon">
+                <div className="quote-icon edublink-theme-nav-responsive hamburger-icon ms-3! p-0! ">
                   <div
                     className="edublink-mobile-hamburger-menu"
                     onClick={() => setMobileMenu(!isMobileMenu)}
@@ -173,10 +213,10 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </header>
+            </div >
+          </div >
+        </div >
+      </header >
 
       <div className="edublink-mobile-menu">
         <div className="edublink-mobile-menu-overlay" />

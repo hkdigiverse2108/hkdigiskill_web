@@ -32,4 +32,7 @@ export const ROUTES = {
     BASE: "/blog",
     DETAILS: "/blog/details/:id",
   },
+  USER: {
+    PROFILE: "/profile",
+  },
 } as const;
