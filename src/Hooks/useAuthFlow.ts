@@ -15,6 +15,10 @@ export const useAuthFlow = () => {
     localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(data?.data));
     dispatch(setUser(data?.data));
     AntdNotification(notification, "success", data?.message);
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   const executeSignup = (

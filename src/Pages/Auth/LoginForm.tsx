@@ -1,5 +1,4 @@
 import { Mutation } from "../../Api";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../Store/Hook";
 import { setUser } from "../../Store/Slices/UserSlice";
 import { STORAGE_KEYS } from "../../Constants/StorageKeys";
@@ -15,7 +14,6 @@ interface LoginFormProps {
 }
 
 const LoginForm = ({ onSwitchToRegister, onSwitchToForgot }: LoginFormProps) => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const loginMutation = Mutation.useLogin();
@@ -39,7 +37,9 @@ const LoginForm = ({ onSwitchToRegister, onSwitchToForgot }: LoginFormProps) => 
         localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(data?.data));
         dispatch(setUser(data?.data));
         AntdNotification(notification, "success", "Logged in successfully!");
-        navigate("/");
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
       },
       onError: (error: any) => {
         AntdNotification(
