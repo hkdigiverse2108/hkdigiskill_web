@@ -10,6 +10,7 @@ import type {
   ResendOtpPayload,
   VerifyOtpPayload,
   VerifyCoursePayload,
+  PurchaseWorkshopPayload,
 } from "../Types";
 
 import { Post } from "./Methods";
@@ -63,5 +64,11 @@ export const Mutation = {
   useVerifyCourse: () =>
     useMutations<VerifyCoursePayload, any>([KEYS.VERIFY_COURSE], (input) =>
       Post(URL_KEYS.COURSE.VERIFY, input),
+    ),
+  // ============= workshop =============
+  usePurchaseWorkshop: () =>
+    useMutations<PurchaseWorkshopPayload, any>(
+      [KEYS.PURCHASE_WORKSHOP],
+      (input) => Post(URL_KEYS.WORKSHOP.PURCHASE, input),
     ),
 };

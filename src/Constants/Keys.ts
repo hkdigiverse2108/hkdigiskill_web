@@ -28,4 +28,8 @@ export const KEYS = {
   PURCHASE_COURSE: "purchase-course",
   VERIFY_COURSE: "verify-course",
   MY_COURSES: "my-courses",
+  WORKSHOP: "workshop",
+  WORKSHOP_ONE: "workshop-one",
+  WORKSHOP_CURRICULUM: "workshop-curriculum",
+  PURCHASE_WORKSHOP: "purchase-workshop",
 } as const;

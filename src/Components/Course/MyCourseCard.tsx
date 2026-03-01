@@ -1,23 +1,21 @@
 import { Link } from "react-router-dom";
 import { ImagePath, ROUTES } from "../../Constants";
-import type { MyCourse } from "../../Types";
+import type { Course } from "../../Types";
 
 interface MyCourseCardProps {
-  myCourse: MyCourse;
+  course: Course;
 }
 
-const MyCourseCard: React.FC<MyCourseCardProps> = ({ myCourse }) => {
-  const { courseId } = myCourse;
-
-  if (!courseId) return null;
+const MyCourseCard: React.FC<MyCourseCardProps> = ({ course }) => {
+  if (!course) return null;
 
   const {
     _id,
     description,
     image = `${ImagePath}/course/course-01/course-01.jpg`,
     name,
-    satisfactionRate,
-  } = courseId;
+    satisfactionRate = 5,
+  } = course;
 
   return (
     <div className="h-full! mb-0!" data-aos="fade-up" data-aos-duration={1200}>
@@ -50,7 +48,6 @@ const MyCourseCard: React.FC<MyCourseCardProps> = ({ myCourse }) => {
 
             <p>{description}</p>
 
-            {/* Rating Stars */}
             <div className="course-rating">
               <div className="edublink-course-review-wrapper">
                 <div
@@ -79,7 +76,7 @@ const MyCourseCard: React.FC<MyCourseCardProps> = ({ myCourse }) => {
                 </div>
 
                 <span>
-                  ({satisfactionRate}.0/ {satisfactionRate} Ratings)
+                  ({satisfactionRate}.0 Ratings)
                 </span>
               </div>
             </div>

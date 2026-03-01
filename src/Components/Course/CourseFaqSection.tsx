@@ -3,10 +3,10 @@ import { Queries } from "../../Api";
 import FaqCard from "../Faq/FaqCard";
 import NoData from "../Common/NoData";
 
-const CourseFaqSection = () => {
+const CourseFaqSection = ({ type = "course" }: { type?: "course" | "workshop" }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const { data } = Queries.useGetFaqByType({ type: "course" });
+  const { data } = Queries.useGetFaqByType({ type });
 
   const faqs = data?.data?.faq_data || [];
 

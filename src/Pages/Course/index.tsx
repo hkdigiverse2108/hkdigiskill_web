@@ -1,6 +1,6 @@
 import { BreadCrumb } from "../../Components/Common";
 import { Queries } from "../../Api";
-import { CourseCard } from "../../Components/Course";
+import { CourseCard, MyCourseCard } from "../../Components/Course";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../Store/Hook";
@@ -70,7 +70,7 @@ const Course = () => {
                         myCoursesPage * MY_COURSES_LIMIT,
                       )
                       .map((myCourse) => (
-                        <CourseCard key={myCourse._id} course={myCourse} />
+                        <MyCourseCard key={myCourse._id} course={myCourse} />
                       ))}
                   </div>
 

@@ -21,6 +21,9 @@ import type {
   TestimonialResponse,
   TrustedPartnerResponse,
   UserResponse,
+  AllWorkshopApiResponse,
+  WorkshopApiResponse,
+  WorkshopCurriculumApiResponse,
 } from "../Types";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
@@ -117,7 +120,6 @@ export const Queries = {
     ),
 
   // ******************* Courses Curriculum *******************
-  // ******************* Courses Curriculum *******************
   useGetCourseCurriculum: (id?: string) =>
     useQueries<CourseCurriculumApiResponse>([KEYS.COURSE_CURRICULUM, id], () =>
       Get(`${URL_KEYS.COURSE.CURRICULUM}${id}`),
@@ -187,6 +189,29 @@ export const Queries = {
       [KEYS.GALLARY],
       () => Get(URL_KEYS.GALLARY),
       options,
+    ),
+  // ******************* Workshop *******************
+  useGetAllWorkshops: (
+    params?: QueryParams,
+    options?: AppQueryOptions<AllWorkshopApiResponse>,
+  ) =>
+    useQueries<AllWorkshopApiResponse>(
+      [KEYS.WORKSHOP, params],
+      () => Get(URL_KEYS.WORKSHOP.ALL, params),
+      options,
+    ),
+  useGetSingleWorkshop: (id?: string) =>
+    useQueries<WorkshopApiResponse>([KEYS.WORKSHOP_ONE, id], () =>
+      Get(`${URL_KEYS.WORKSHOP.ONE}${id}`),
+    ),
+  useGetWorkshopCurriculum: (
+    workshopId?: string,
+    options?: AppQueryOptions<WorkshopCurriculumApiResponse>,
+  ) =>
+    useQueries<WorkshopCurriculumApiResponse>(
+      [KEYS.WORKSHOP_CURRICULUM, workshopId],
+      () => Get(`${URL_KEYS.WORKSHOP.CURRICULUM}${workshopId}`),
+      { enabled: !!workshopId, ...options },
     ),
 
   // ******************* User *******************

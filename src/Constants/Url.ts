@@ -42,6 +42,12 @@ export const URL_KEYS = {
   LEGALITY: "legality",
   SETTINGS: "settings/all",
   GALLARY: "gallery/all",
+  WORKSHOP: {
+    ALL: "workshop/all",
+    ONE: "workshop/",
+    CURRICULUM: "workshop-curriculum/all?workshopFilter=",
+    PURCHASE: "workshop/purchase",
+  },
   USER: {
     ONE: "user/",
     SIGNUP: "user/signup",

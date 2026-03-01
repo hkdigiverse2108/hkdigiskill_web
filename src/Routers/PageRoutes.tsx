@@ -6,6 +6,8 @@ import BlogDetails from "../Pages/Blog/BlogDetails";
 import Contact from "../Pages/Contact";
 import Course from "../Pages/Course";
 import CourseDetails from "../Pages/Course/CourseDetails";
+import Workshop from "../Pages/Workshop";
+import WorkshopDetails from "../Pages/Workshop/WorkshopDetails";
 import Faq from "../Pages/Faq";
 import Gallery from "../Pages/Gallery";
 import Home from "../Pages/Home";
@@ -19,7 +21,9 @@ export const PageRoutes = [
   { path: ROUTES.HOME, element: <Home /> },
   { path: ROUTES.COURSE.BASE, element: <Course /> },
   { path: ROUTES.COURSE.DETAILS, element: <CourseDetails /> },
-  
+  { path: ROUTES.WORKSHOP.BASE, element: <Workshop /> },
+  { path: ROUTES.WORKSHOP.DETAILS, element: <WorkshopDetails /> },
+
   // ======= Auth =======
   { path: ROUTES.AUTH.BASE, element: <MyAccount /> },
 
