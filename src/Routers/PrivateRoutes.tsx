@@ -1,7 +1,11 @@
-export const PrivateRoutes = () => {
-  // const { isAuthenticated = false} = useAppSelector((store) => store.auth);
+import { Navigate, Outlet } from "react-router-dom";
+import { useAppSelector } from "../Store/Hook";
+import { ROUTES } from "../Constants";
 
-  // return isAuthenticated ? <Outlet /> : <Navigate to={ROUTES.AUTH.LOGIN} replace />;
+const PrivateRoutes = () => {
+  const { isAuthenticated } = useAppSelector((state) => state.user);
+
+  return isAuthenticated ? <Outlet /> : <Navigate to={ROUTES.AUTH.BASE} replace />;
 };
 
 export default PrivateRoutes;

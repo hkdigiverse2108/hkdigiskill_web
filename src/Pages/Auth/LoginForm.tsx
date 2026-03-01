@@ -7,6 +7,8 @@ import * as Yup from "yup";
 import { FormInput, FormPasswordInput } from "../../Components/FormFields";
 import { AntdNotification } from "../../Utils/AntNotification";
 import { notification } from "antd";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../Constants";
 
 interface LoginFormProps {
   onSwitchToRegister: () => void;
@@ -14,6 +16,7 @@ interface LoginFormProps {
 }
 
 const LoginForm = ({ onSwitchToRegister, onSwitchToForgot }: LoginFormProps) => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const loginMutation = Mutation.useLogin();
@@ -38,6 +41,7 @@ const LoginForm = ({ onSwitchToRegister, onSwitchToForgot }: LoginFormProps) => 
         dispatch(setUser(data?.data));
         AntdNotification(notification, "success", "Logged in successfully!");
         setTimeout(() => {
+          navigate(ROUTES.HOME);
           window.location.reload();
         }, 500);
       },

@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../Constants";
 import { useAppDispatch } from "../Store/Hook";
 import { setUser } from "../Store/Slices/UserSlice";
 import { STORAGE_KEYS } from "../Constants/StorageKeys";
@@ -7,6 +9,7 @@ import { Mutation } from "../Api";
 import type { RegisterPayload } from "../Types";
 
 export const useAuthFlow = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const signupMutation = Mutation.useUserSignup();
 
@@ -17,6 +20,7 @@ export const useAuthFlow = () => {
     AntdNotification(notification, "success", data?.message);
 
     setTimeout(() => {
+      navigate(ROUTES.HOME);
       window.location.reload();
     }, 500);
   };

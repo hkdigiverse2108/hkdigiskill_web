@@ -16,6 +16,8 @@ import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import ReturnPolicy from "../Pages/ReturnPolicy";
 import TermsCondition from "../Pages/TermsCondition";
 import Testimonial from "../Pages/Testimonial/Testimonial";
+import PublicRoutes from "./PublicRoutes";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, element: <Home /> },
@@ -24,8 +26,17 @@ export const PageRoutes = [
   { path: ROUTES.WORKSHOP.BASE, element: <Workshop /> },
   { path: ROUTES.WORKSHOP.DETAILS, element: <WorkshopDetails /> },
 
-  // ======= Auth =======
-  { path: ROUTES.AUTH.BASE, element: <MyAccount /> },
+  // ======= Auth (Public Only) =======
+  {
+    element: <PublicRoutes />,
+    children: [{ path: ROUTES.AUTH.BASE, element: <MyAccount /> }],
+  },
+
+  // ======= Protected Routes =======
+  {
+    element: <PrivateRoutes />,
+    children: [{ path: ROUTES.USER.PROFILE, element: <div>Profile Page</div> }],
+  },
 
   // ======= Quick Links =======
   { path: ROUTES.ABOUT, element: <About /> },
