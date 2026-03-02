@@ -11,6 +11,7 @@ import WorkshopDetails from "../Pages/Workshop/WorkshopDetails";
 import Faq from "../Pages/Faq";
 import Gallery from "../Pages/Gallery";
 import Home from "../Pages/Home";
+import UserProfile from "../Pages/User";
 import PageNotFound from "../Pages/PageNotFound";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import ReturnPolicy from "../Pages/ReturnPolicy";
@@ -35,7 +36,7 @@ export const PageRoutes = [
   // ======= Protected Routes =======
   {
     element: <PrivateRoutes />,
-    children: [{ path: ROUTES.USER.PROFILE, element: <div>Profile Page</div> }],
+    children: [{ path: ROUTES.USER.PROFILE, element: <UserProfile /> }],
   },
 
   // ======= Quick Links =======

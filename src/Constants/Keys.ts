@@ -32,4 +32,6 @@ export const KEYS = {
   WORKSHOP_ONE: "workshop-one",
   WORKSHOP_CURRICULUM: "workshop-curriculum",
   PURCHASE_WORKSHOP: "purchase-workshop",
+  UPDATE_USER: "update-user",
+  UPLOAD: "upload",
 } as const;

@@ -51,5 +51,7 @@ export const URL_KEYS = {
   USER: {
     ONE: "user/",
     SIGNUP: "user/signup",
+    UPDATE: "user/update",
   },
+  UPLOAD: "upload",
 } as const;

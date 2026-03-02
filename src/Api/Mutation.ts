@@ -51,7 +51,7 @@ export const Mutation = {
     useMutations<AddNewsletterPayload, any>([KEYS.NEWSLETTER], (input) =>
       Post(URL_KEYS.NEWSLETTER.ADD, input),
     ),
-  // ============= newsletter =============
+  // ============= contact =============
   useAddContact: () =>
     useMutations<AddNewsletterPayload, any>([KEYS.CONTACT], (input) =>
       Post(URL_KEYS.CONTACT.ADD, input),
@@ -70,5 +70,14 @@ export const Mutation = {
     useMutations<PurchaseWorkshopPayload, any>(
       [KEYS.PURCHASE_WORKSHOP],
       (input) => Post(URL_KEYS.WORKSHOP.PURCHASE, input),
+    ),
+  // ============= user =============
+  useUpdateUser: () =>
+    useMutations<any, any>([KEYS.UPDATE_USER], (input) =>
+      Post(URL_KEYS.USER.UPDATE, input),
+    ),
+  useUpload: () =>
+    useMutations<FormData, any>([KEYS.UPLOAD], (input) =>
+      Post(URL_KEYS.UPLOAD, input),
     ),
 };
