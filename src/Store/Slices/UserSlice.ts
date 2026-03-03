@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { User } from "../../Types";
+import { STORAGE_KEYS } from "../../Constants/StorageKeys";
+
+const storedUser = localStorage.getItem(STORAGE_KEYS.USER);
+const user: User | null = storedUser ? JSON.parse(storedUser) : null;
 
 interface UserState {
   user: User | null;
@@ -7,8 +11,8 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  user: null,
-  isAuthenticated: false,
+  user: user,
+  isAuthenticated: !!user,
 };
 
 const UserSlice = createSlice({

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "../../Store/Hook";
 import { Queries } from "../../Api";
 import { STORAGE_KEYS } from "../../Constants/StorageKeys";
-import { setUser } from "../../Store/Slices/UserSlice";
+import { setUser, clearUser } from "../../Store/Slices/UserSlice";
 
 const AuthInitializer = () => {
   const dispatch = useAppDispatch();
@@ -23,9 +23,11 @@ const AuthInitializer = () => {
     }
     if (error) {
       console.error("Failed to fetch user data", error);
-      // Optionally clear localStorage if API fails
+      // Clear storage
       localStorage.removeItem(STORAGE_KEYS.USER);
       localStorage.removeItem(STORAGE_KEYS.TOKEN);
+      // Clear redux also if unauthorized or API fails
+      dispatch(clearUser());
     }
   }, [data, error, dispatch]);
 

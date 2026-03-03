@@ -1,22 +1,51 @@
 import { useState } from "react";
-import { BreadCrumb } from "../../Components/Common";
+import { BreadCrumb, ImageUpload } from "../../Components/Common";
 import { useAppSelector, useAppDispatch } from "../../Store/Hook";
 import { ImagePath } from "../../Constants";
 import { Mutation } from "../../Api";
 import { setUser } from "../../Store/Slices/UserSlice";
 import { STORAGE_KEYS } from "../../Constants/StorageKeys";
 import { AntdNotification } from "../../Utils/AntNotification";
-import { notification, Modal, Upload } from "antd";
+import { notification, Modal } from "antd";
+import type { UploadFile } from "antd";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FormInput } from "../../Components/FormFields";
-import { UploadOutlined } from "@ant-design/icons";
+import { Queries } from "../../Api";
+import { MyCourseCard } from "../../Components/Course";
+import { MyWorkshopCard } from "../../Components/Workshop";
+import Loader from "../../Components/Common/Loader";
+import NoData from "../../Components/Common/NoData";
 
 const UserProfile = () => {
-    const { user } = useAppSelector((state) => state.user);
+    const { user, isAuthenticated } = useAppSelector((state) => state.user);
     const dispatch = useAppDispatch();
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [profileUrl, setProfileUrl] = useState(user?.profilePhoto || "");
+
+    // FETCHING ENROLLED DATA
+    const { data: myCoursesData, isLoading: isCoursesLoading } = Queries.useGetAllCourses(
+        {},
+        { enabled: isAuthenticated }
+    );
+    const { data: myWorkshopsData, isLoading: isWorkshopsLoading } = Queries.useGetAllWorkshops(
+        {},
+        { enabled: isAuthenticated }
+    );
+
+    const myCourses = myCoursesData?.data?.course_data?.filter((c: any) => c.isUnlocked) || [];
+    const myWorkshops = myWorkshopsData?.data?.workshop_data?.filter((w: any) => w.isUnlocked) || [];
+
+    const isAppLoading = isCoursesLoading || isWorkshopsLoading;
+    const [fileList, setFileList] = useState<UploadFile[]>(user?.profilePhoto ? [
+        {
+            uid: '-1',
+            name: 'profile-photo',
+            status: 'done',
+            url: user.profilePhoto,
+        }
+    ] : []);
 
     const updateMutation = Mutation.useUpdateUser();
     const uploadMutation = Mutation.useUpload();
@@ -46,12 +75,22 @@ const UserProfile = () => {
         });
     };
 
-    const handleUpload = (file: File) => {
+    const handleUpload = (file: any) => {
         const formData = new FormData();
-        formData.append("file", file);
+        formData.append("images", file);
+        formData.append("category", "user");
         uploadMutation.mutate(formData, {
             onSuccess: (data: any) => {
-                setProfileUrl(data?.data?.url);
+                const imageUrl = data?.data?.images?.[0];
+                setProfileUrl(imageUrl);
+                setFileList([
+                    {
+                        uid: '-1',
+                        name: 'profile-photo',
+                        status: 'done',
+                        url: imageUrl,
+                    },
+                ]);
                 AntdNotification(notification, "success", "Image uploaded successfully!");
             },
             onError: (err: any) => {
@@ -63,14 +102,15 @@ const UserProfile = () => {
 
     return (
         <>
+            <Loader loading={isAppLoading} />
             <BreadCrumb title="My Profile" />
             <div className="profile-page-area py-10! container-p">
                 <div className="edublink-container">
                     <div className="edublink-row flex justify-center">
-                        <div className="edublink-col-lg-8 px-0!">
+                        <div className="edublink-col-lg-10 px-0!">
                             <div className="profile-overview pb-10 px-0! ">
                                 <div className="profile-header flex max-sm:flex-col items-center gap-6 mb-8">
-                                    <div className="profile-img-wrapper w-32 h-32 rounded-full overflow-hidden border-2 border-primary">
+                                    <div className="profile-img-wrapper w-32 h-32 rounded-full overflow-hidden border-2 border-primary flex">
                                         <img
                                             src={user?.profilePhoto || `${ImagePath}others/author.png`}
                                             alt="Profile"
@@ -112,6 +152,35 @@ const UserProfile = () => {
                                     </button>
                                 </div>
                             </div>
+
+                            {/* MY COURSES SECTION */}
+                            {myCourses.length > 0 && (
+                                <div className="my-courses-section mt-16!">
+                                    <h3 className="text-3xl font-bold mb-8!">Enrolled Courses ({myCourses.length})</h3>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8!">
+                                        {myCourses.map((course: any) => (
+                                            <MyCourseCard key={course._id} course={course} />
+                                        ))}
+                                    </div>
+                                </div>
+                                // ) : (
+                                // <NoData />
+                            )}
+
+                            {/* MY WORKSHOPS SECTION */}
+                            {myWorkshops.length > 0 && (
+                                <div className="my-workshops-section mt-16!">
+                                    <h3 className="text-3xl font-bold mb-8!">Enrolled Workshops ({myWorkshops.length})</h3>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8!">
+                                        {myWorkshops.map((workshop: any) => (
+                                            <MyWorkshopCard key={workshop._id} workshop={workshop} />
+                                        ))}
+                                    </div>
+                                </div>
+
+                                // ) : (
+                                //     <NoData />
+                            )}
                         </div>
                     </div>
                 </div>
@@ -135,21 +204,15 @@ const UserProfile = () => {
                     </div>
 
                     <div className="upload-section mb-8 flex flex-col items-center gap-4">
-                        <div className="relative">
-                            <img
-                                src={profileUrl || `${ImagePath}others/author.png`}
-                                className="w-28 h-28 rounded-full object-cover border-2 border-gray-100 shadow-sm"
-                                alt="Preview"
-                            />
-                        </div>
-                        <Upload
+                        <ImageUpload
+                            fileList={fileList}
+                            onChange={(newFileList) => {
+                                setFileList(newFileList);
+                                if (newFileList.length === 0) setProfileUrl("");
+                            }}
+                            limit={1}
                             beforeUpload={handleUpload}
-                            showUploadList={false}
-                        >
-                            <button type="button" className="edu-btn btn-border btn-small py-2! px-5!">
-                                <UploadOutlined /> Change Photo
-                            </button>
-                        </Upload>
+                        />
                     </div>
 
                     <Formik

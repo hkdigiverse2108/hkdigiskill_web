@@ -6,6 +6,7 @@ import SettingsInitializer from "./SettingsInitializer";
 import AuthModal from "./AuthModal";
 import LogoutModal from "./LogoutModal";
 import VideoModal from "./VideoModal";
+import ImageUpload from "./ImageUpload";
 
 export {
   BreadCrumb,
@@ -16,4 +17,5 @@ export {
   AuthModal,
   LogoutModal,
   VideoModal,
+  ImageUpload,
 };

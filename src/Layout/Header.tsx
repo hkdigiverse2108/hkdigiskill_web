@@ -152,14 +152,14 @@ const Header = () => {
                     <ul className="category-menu edublink-navbar-nav  w-fit">
                       <li className="cat-menu-item dropdown  w-fit!">
                         <div className="w-fit! flex items-center justify-center gap-2 border border-gray-300 bg-white shadow rounded-md p-2! cursor-pointer ">
-                          <figure className="w-12 h-12 mb-0!">
+                          <figure className="w-12 h-12 mb-0! flex">
                             <img
                               src={
                                 user?.profilePhoto ||
                                 `${ImagePath}/others/author.png`
                               }
                               alt="User"
-                              className="w-full h-full rounded-full object-cover!"
+                              className="w-full! h-full! rounded-full object-cover!"
                             />
                           </figure>
                           <section className="flex flex-col gap-0! max-sm:hidden! ">

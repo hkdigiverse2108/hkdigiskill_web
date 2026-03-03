@@ -51,11 +51,11 @@ const Loader = ({ loading = true, delay = 200 }: LoaderProps) => {
           r="52.5"
           fill="none"
           stroke="#1ab69d"
-          stroke-width="12"
+          strokeWidth="12"
           transform="rotate(-90,64,64)"
-          stroke-linecap="round"
-          stroke-dasharray="329.9 329.9"
-          stroke-dashoffset="-329.3"
+          strokeLinecap="round"
+          strokeDasharray="329.9 329.9"
+          strokeDashoffset="-329.3"
         ></circle>
 
         <circle
@@ -65,11 +65,11 @@ const Loader = ({ loading = true, delay = 200 }: LoaderProps) => {
           r="37.5"
           fill="none"
           stroke="#1ab69d"
-          stroke-width="9"
+          strokeWidth="9"
           transform="rotate(-90,64,64)"
-          stroke-linecap="round"
-          stroke-dasharray="254.5 254.5"
-          stroke-dashoffset="-254"
+          strokeLinecap="round"
+          strokeDasharray="254.5 254.5"
+          strokeDashoffset="-254"
         ></circle>
 
         <circle
@@ -79,11 +79,11 @@ const Loader = ({ loading = true, delay = 200 }: LoaderProps) => {
           r="22.5"
           fill="none"
           stroke="#1ab69d"
-          stroke-width="9"
+          strokeWidth="9"
           transform="rotate(-90,64,64)"
-          stroke-linecap="round"
-          stroke-dasharray="204.2 204.2"
-          stroke-dashoffset="-203.9"
+          strokeLinecap="round"
+          strokeDasharray="204.2 204.2"
+          strokeDashoffset="-203.9"
         ></circle>
       </svg>
     </div>
