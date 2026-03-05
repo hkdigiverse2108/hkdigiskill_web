@@ -21,7 +21,6 @@ const CourseSidebarSection: FC<{ course?: Course; onPurchaseSuccess?: () => void
   const { mutate: purchaseCourse, isPending: isPurchasing } =
     Mutation.usePurchaseCourse();
 
-  // console.log(user, "user");
   const handleBuyNowBtn = () => {
     if (!user) {
       dispatch(setAuthModalOpen(true));
@@ -30,7 +29,6 @@ const CourseSidebarSection: FC<{ course?: Course; onPurchaseSuccess?: () => void
   };
 
   const handlePaymentComplete = (status: any, response: any) => {
-    // console.log("Payment completed", status, response);
     if (status === PAYMENT_STATUS.COMPLETED) {
       verifyCourse(
         {
@@ -39,7 +37,6 @@ const CourseSidebarSection: FC<{ course?: Course; onPurchaseSuccess?: () => void
         {
           onSuccess: (verifyRes) => {
             const razorPayOrderId = verifyRes?.data?.id || "";
-            // console.log(razorPayOrderId, "razorPayOrderId");
             purchaseCourse(
               {
                 courseId: course?._id || "",
@@ -48,7 +45,6 @@ const CourseSidebarSection: FC<{ course?: Course; onPurchaseSuccess?: () => void
               },
               {
                 onSuccess: (res) => {
-                  // console.log("Payment Successful! Course Purchased.", res);
                   AntdNotification(
                     notification,
                     "success",
@@ -60,7 +56,6 @@ const CourseSidebarSection: FC<{ course?: Course; onPurchaseSuccess?: () => void
                   if (onPurchaseSuccess) onPurchaseSuccess();
                 },
                 onError: (err: any) => {
-                  // console.log("Purchase error:", err?.message);
                   AntdNotification(
                     notification,
                     "error",
