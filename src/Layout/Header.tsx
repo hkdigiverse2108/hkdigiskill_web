@@ -8,6 +8,16 @@ import { Queries } from "../Api";
 import { useAppDispatch, useAppSelector } from "../Store/Hook";
 import { setLogoutModalOpen } from "../Store/Slices/ModalSlice";
 
+const calcDays = (date: Date) => {
+  const createdAt: any = new Date(date)
+  const now: any = new Date()
+  const diffTime = now - createdAt
+  const diffDays = diffTime / (1000 * 60 * 60 * 24)
+
+  if (diffDays <= 7) return "New"
+  return "Featured"
+}
+
 const Header = () => {
   const [isMobileMenu, setMobileMenu] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
@@ -130,9 +140,9 @@ const Header = () => {
                                 <ul className="edublink-dropdown-menu  ">
                                   {featuredBlogs.map((blog, idx) => (
                                     <li key={idx} className="cat-item  ">
-                                      <Link to={ROUTES.BLOG.DETAILS.replace(":id", blog._id)}>
+                                      <Link to={ROUTES.BLOG.DETAILS.replace(":id", blog._id)} className=" px-5!">
                                         {blog.title}
-                                        <span className="eb-menu-new-badge w-fit h-fit ">NEW</span>
+                                        <span className="eb-menu-new-badge w-fit h-fit  "> {calcDays(blog.createdAt)}</span>
                                       </Link>
                                     </li>
                                   ))}

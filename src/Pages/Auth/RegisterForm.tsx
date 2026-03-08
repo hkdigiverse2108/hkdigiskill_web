@@ -1,20 +1,22 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FormInput, FormPasswordInput, FormCheckbox } from "../../Components/FormFields";
-import { useAuthFlow } from "../../Hooks/useAuthFlow";
+import { Mutation } from "../../Api";
+import { AntdNotification } from "../../Utils/AntNotification";
+import { notification } from "antd";
 
 interface RegisterFormProps {
   onSwitchToLogin: () => void;
 }
 
 const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
-  const { executeSignup, isPending } = useAuthFlow();
+  const registerMutation = Mutation.useRegister();
 
   const initialValues = {
     fullName: "",
     email: "",
     password: "",
-    phoneNumber: "",
+    phone: "",
     designation: "",
     agreeTerms: false,
   };
@@ -26,14 +28,32 @@ const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
       .required("Email is required"),
     password: Yup.string()
       .min(6, "Password must be at least 6 characters"),
-    phoneNumber: Yup.string()
+    phone: Yup.string()
       .matches(/^\d{10}$/, "Phone number must be exactly 10 digits"),
     designation: Yup.string(),
     agreeTerms: Yup.boolean().oneOf([true], "You must agree to the terms"),
   });
 
   const handleRegisterSubmit = (values: typeof initialValues) => {
-    executeSignup(values);
+    registerMutation.mutate(values, {
+      onSuccess: (data) => {
+        AntdNotification(
+          notification,
+          "success",
+          data?.message || "Registration successful! Please login."
+        );
+        onSwitchToLogin();
+      },
+      onError: (error: any) => {
+        AntdNotification(
+          notification,
+          "error",
+          error?.response?.data?.message ||
+          error?.message ||
+          "Registration failed. Please try again."
+        );
+      },
+    });
   };
 
   return (
@@ -67,8 +87,8 @@ const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
 
             <FormInput
               label="Phone"
-              name="phoneNumber"
-              id="phoneNumber"
+              name="phone"
+              id="phone"
               autoComplete="tel"
               containerClassName="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide mb-3!"
               className="woocommerce-Input woocommerce-Input--text input-text"
@@ -102,9 +122,9 @@ const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
               <button
                 type="submit"
                 className="main-header-btn edu-btn btn-medium w-full!"
-                disabled={isPending}
+                disabled={registerMutation.isPending}
               >
-                {isPending ? "Registering..." : "Register"}
+                {registerMutation.isPending ? "Registering..." : "Register"}
               </button>
             </p>
             <p className="my-0!">
