@@ -54,8 +54,8 @@ const Header = () => {
         <div className="edublink-header-area edublink-navbar edublink-navbar-expand-lg">
           <div className="edublink-container-fluid">
             <div className="eb-header-navbar edublink-align-items-center">
-              <div className="site-branding site-logo-info">
-                <div className="logo-wrapper ">
+              <div className="site-branding site-logo-info overflow-hidden!">
+                <div className="logo-wrapper  ">
                   <Link
                     to=""
                     className="navbar-brand site-main-logo"
