@@ -27,7 +27,7 @@ export interface BaseType {
   isBlocked: boolean;
   isDeleted: boolean;
   _id: string;
-  createdAt: string;
+  createdAt: Date;
   updatedAt: string | Date;
 }
 
