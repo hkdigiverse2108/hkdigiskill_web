@@ -55,7 +55,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
               <span>{name}</span>
             </h6>
 
-            <p>{description}</p>
+            <p className="line-clamp-3">{description}</p>
 
             {/* Rating Stars */}
             {/* <div className="course-rating">

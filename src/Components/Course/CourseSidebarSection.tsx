@@ -86,7 +86,7 @@ const CourseSidebarSection: FC<{ course?: Course; onPurchaseSuccess?: () => void
     }
   };
 
-  const discountPrice = (course?.mrpPrice || 0) - (course?.price || 0);
+  // const discountPrice = (course?.mrpPrice || 0) - (course?.price || 0);
 
   return (
     <div className="ed-course-sidebar edublink-col-lg-4 ">
@@ -108,9 +108,9 @@ const CourseSidebarSection: FC<{ course?: Course; onPurchaseSuccess?: () => void
                         ₹{Math.round(course?.price || 0)}/
                       </span>
                       {/* <span className="origin-price">{course?.price}</span> */}
-                      <span className="price text-success!">
+                      {/* <span className="price text-success!">
                         ₹{Math.round(discountPrice)}
-                      </span>
+                      </span> */}
                       <span className="price text-danger! line-through text-[15px] ">
                         ₹{Math.round(course?.mrpPrice || 0)}
                       </span>
@@ -176,7 +176,7 @@ const CourseSidebarSection: FC<{ course?: Course; onPurchaseSuccess?: () => void
                   />
                   Lectures:
                 </span>
-                <span className="edublink-course-feature-item-value">11</span>
+                <span className="edublink-course-feature-item-value">{course?.totalLesson}</span>
               </li>
 
               <li className="edublink-course-details-features-item course-student">
